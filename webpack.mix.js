@@ -11,11 +11,16 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+mix.js('resources/assets/js/admin/admin.js', 'public/js')
+    .sass('resources/assets/sass/admin/admin.scss', 'public/css')
+    .copyDirectory('resources/assets/images', 'public/images')
+    .version();
 
-mix.js('resources/js/blog.js', 'public/js')
-    .sass('resources/sass/blog.scss', 'public/css');
+mix.js('resources/assets/js/app.js', 'public/js')
+   .sass('resources/assets/sass/app.scss', 'public/css');
+
+mix.js('resources/assets/js/blog.js', 'public/js')
+    .sass('resources/assets/sass/blog.scss', 'public/css');
 
 //
 // mix.webpackConfig({

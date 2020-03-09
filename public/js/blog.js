@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -18742,10 +18742,10 @@ module.exports = g;
 
 /***/ }),
 
-/***/ "./resources/js/blog.js":
-/*!******************************!*\
-  !*** ./resources/js/blog.js ***!
-  \******************************/
+/***/ "./resources/assets/js/blog.js":
+/*!*************************************!*\
+  !*** ./resources/assets/js/blog.js ***!
+  \*************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -18886,14 +18886,14 @@ new Masonry('.masonry-container', {
 
 /***/ }),
 
-/***/ 1:
-/*!************************************!*\
-  !*** multi ./resources/js/blog.js ***!
-  \************************************/
+/***/ 2:
+/*!*******************************************!*\
+  !*** multi ./resources/assets/js/blog.js ***!
+  \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\laragon\www\master\resources\js\blog.js */"./resources/js/blog.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\master\resources\assets\js\blog.js */"./resources/assets/js/blog.js");
 
 
 /***/ })

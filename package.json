@@ -10,22 +10,35 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
+        "@mdi/font": "^4.9.95",
         "axios": "^0.19",
         "bootstrap": "^4.4.1",
+        "buefy": "^0.8.12",
+        "bulma": "^0.8.0",
+        "chart.js": "^2.9.3",
         "cross-env": "^5.1",
         "jquery": "^3.2",
         "laravel-mix": "^5.0.1",
         "lodash": "^4.17.13",
         "popper.js": "^1.12",
-        "resolve-url-loader": "^2.3.1",
+        "resolve-url-loader": "^2.3.2",
         "sass": "^1.20.1",
         "sass-loader": "^8.0.0",
         "vue": "^2.5.17",
-        "vue-template-compiler": "^2.6.10"
+        "vue-chartjs": "^3.5.0",
+        "vue-router": "^3.1.6",
+        "vue-template-compiler": "^2.6.10",
+        "vuex": "^3.1.2"
     },
     "dependencies": {
+        "animate.css": "^3.7.2",
         "headroom.js": "^0.11.0",
         "masonry-layout": "^4.2.2",
-        "slick-carousel": "^1.8.1"
+        "moment": "^2.24.0",
+        "numeral": "^2.0.6",
+        "perfect-scrollbar": "^1.5.0",
+        "register-service-worker": "^1.6.2",
+        "slick-carousel": "^1.8.1",
+        "spinkit": "^2.0.1"
     }
 }

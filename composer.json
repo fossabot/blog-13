@@ -11,11 +11,13 @@
         "php": "^7.2",
         "ext-pdo": "*",
         "fideloper/proxy": "^4.0",
+        "laravel-notification-channels/pusher-push-notifications": "^2.1",
         "laravel/framework": "^6.2",
         "laravel/passport": "^8.4",
         "laravel/socialite": "^4.3",
         "laravel/tinker": "^2.0",
         "spatie/laravel-analytics": "^3.9",
+        "spatie/laravel-backup": "^6.8",
         "spatie/laravel-medialibrary": "^7.0.0",
         "spatie/laravel-permission": "^3.9"
     },
