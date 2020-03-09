@@ -1,78 +1,134 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
 
-## About Laravel
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/turahe/blog/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/turahe/blog/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/turahe/blog/badges/build.png?b=master)](https://scrutinizer-ci.com/g/turahe/blog/build-status/master)
+[![Build Status](https://travis-ci.org/turahe/blog.svg?branch=master)](https://travis-ci.org/turahe/blog)
+[![Latest Stable Version](https://poser.pugx.org/turahe/blog/v/stable)](https://packagist.org/packages/turahe/blog)
+[![Total Downloads](https://poser.pugx.org/turahe/blog/downloads)](https://packagist.org/packages/turahe/blog)
+[![License](https://poser.pugx.org/turahe/blog/license)](https://packagist.org/packages/turahe/blog)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## About Turahe
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Installation
 
-## Learning Laravel
+Development environment requirements :
+- [Docker](https://www.docker.com) >= 18.09 CE
+- [Docker Compose](https://docs.docker.com/compose/install/)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Setting up your development environment on your local machine :
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```bash
+$ git clone https://github.com/turahe/blog.git
+$ cd blog
+$ cp .env.example .env
+$ docker-compose run --rm --no-deps blog-server composer install
+$ docker-compose run --rm --no-deps blog-server php artisan key:generate
+$ docker-compose run --rm --no-deps blog-server php artisan vendor:publish --provider="Laravel\Horizon\HorizonServiceProvider"
+$ docker-compose run --rm --no-deps blog-server php artisan storage:link
+$ docker run --rm -it -v $(pwd):/app -w /app node yarn
+$ docker-compose up -d
+```
 
-## Laravel Sponsors
+Now you can access the application via [http://localhost:8000](http://localhost:8000).
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+**There is no need to run ```php artisan serve```. PHP is already running in a dedicated container.**
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
+## Before starting
 
-## Contributing
+You need to run the migrations with the seeds :
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+$ docker-compose run --rm blog-server php artisan migrate --seed
+```
 
-## Code of Conduct
+This will create a new user that you can use to sign in :
+```yml
+email: wachid@outlook.com
+password: secret
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+And then, compile the assets :
 
-## Security Vulnerabilities
+```bash
+$ docker run --rm -it -v $(pwd):/app -w /app node yarn dev
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Starting job for newsletter :
+
+```
+$ docker-compose run blog-server php artisan tinker
+> PrepareNewsletterSubscriptionEmail::dispatch();
+```
+
+## Useful commands
+
+Seeding the database :
+
+```bash
+$ docker-compose run --rm blog-server php artisan db:seed
+```
+
+Running tests :
+
+```bash
+$ docker-compose run --rm blog-server ./vendor/bin/phpunit --cache-result --order-by=defects --stop-on-defect
+```
+
+Running php-cs-fixer :
+
+```bash
+$ docker-compose run --rm --no-deps blog-server ./vendor/bin/php-cs-fixer fix --config=.php_cs --verbose --dry-run --diff
+```
+
+Generating backup :
+
+```bash
+$ docker-compose run --rm blog-server php artisan backup:run
+```
+
+Generating fake data :
+
+```bash
+$ docker-compose run --rm blog-server php artisan db:seed --class=DevDatabaseSeeder
+```
+
+Discover package
+
+```bash
+$ docker-compose run --rm --no-deps blog-server php artisan package:discover
+```
+
+In development environnement, rebuild the database :
+
+```bash
+$ docker-compose run --rm blog-server php artisan migrate:fresh --seed
+```
+
+## Accessing the API
+
+Clients can access to the REST API. API requests require authentication via token. You can create a new token in your user profile.
+
+Then, you can use this token either as url parameter or in Authorization header :
+
+```bash
+# Url parameter
+GET http://blog.wah/api/v1/posts?api_token=your_private_token_here
+
+# Authorization Header
+curl --header "Authorization: Bearer your_private_token_here" http://blog.wah/api/v1/posts
+```
+
+API are prefixed by ```api``` and the API version number like so ```v1```.
+
+Do not forget to set the ```X-Requested-With``` header to ```XMLHttpRequest```. Otherwise, Laravel won't recognize the call as an AJAX request.
+
+To list all the available routes for API :
+
+```bash
+$ docker-compose run --rm --no-deps blog-server php artisan route:list --path=api
+```
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is released under the [MIT](http://opensource.org/licenses/MIT) license.
