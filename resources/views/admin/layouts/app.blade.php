@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'JustBoil Admin One') }}</title>
+    <title>{{ config('app.name', 'Siji') }}</title>
 
     {{-- Scripts --}}
     @stack('head-scripts')
@@ -17,8 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     {{-- Styles --}}
-    <link href="{{ mix($stylesheet ?? 'css/app.css') }}" rel="stylesheet">
-    <link href="{{ mix('css/vendor.css') }}" rel="stylesheet">
+    <link href="{{ mix($stylesheet ?? 'css/admin.css') }}" rel="stylesheet">
 
     @stack('head-after')
 </head>

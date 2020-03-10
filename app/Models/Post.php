@@ -6,6 +6,7 @@ use App\Repositories\Likeable;
 use App\Repositories\ReadTime;
 use App\Repositories\Slug\HasSlug;
 use App\Repositories\Slug\SlugOptions;
+use App\Repositories\Users\Avatar;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -376,6 +377,8 @@ class Post extends Model implements HasMedia
         return $this->attributes['published_at'] = Carbon::parse($value)->diffForHumans();
     }
 
+
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -445,6 +448,13 @@ class Post extends Model implements HasMedia
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function getAuthorAttribute()
+    {
+        if (!empty($this->user)) {
+            return $this->user->name;
+        }
     }
 
     /**

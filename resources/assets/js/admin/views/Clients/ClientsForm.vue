@@ -154,7 +154,7 @@ export default {
     getData () {
       if (this.id) {
         axios
-          .get(`/clients/${this.id}`)
+          .get(`/api/post/${this.id}`)
           .then(r => {
             this.form = r.data.data
             this.item = clone(r.data.data)
@@ -182,11 +182,11 @@ export default {
     submit () {
       this.isLoading = true
       let method = 'post'
-      let url = '/clients/store'
+      let url = '/api/post/store'
 
       if (this.id) {
         method = 'patch'
-        url = `/clients/${this.id}`
+        url = `/api/post/${this.id}`
       }
 
       axios({

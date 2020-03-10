@@ -86,7 +86,7 @@ export default {
       this.isLoading = true
       this.errors = {}
       axios
-        .patch('/user', this.form)
+        .patch('/api/user', this.form)
         .then(r => {
           this.isLoading = false
           this.$store.commit('user', r.data.data)

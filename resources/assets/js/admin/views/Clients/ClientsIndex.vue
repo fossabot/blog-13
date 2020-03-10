@@ -1,14 +1,14 @@
 <template>
   <div>
-    <title-bar :title-stack="['Admin', 'Clients']"/>
+    <title-bar :title-stack="['Admin', 'Posts']"/>
     <hero-bar>
-      Clients
-      <router-link to="/clients/new" class="button" slot="right">
-        New Client
+      Posts
+      <router-link to="/posts/new" class="button" slot="right">
+        New Post
       </router-link>
     </hero-bar>
     <section class="section is-main-section">
-      <card-component class="has-table has-mobile-sort-spaced" title="Clients" icon="account-multiple">
+      <card-component class="has-table has-mobile-sort-spaced" title="Posts" icon="account-multiple">
         <card-toolbar>
           <button slot="right" type="button" class="button is-danger is-small has-checked-rows-number" @click="trashModal(null)" :disabled="!checkedRows.length">
             <b-icon icon="trash-can" custom-size="default"/>
@@ -34,12 +34,15 @@
               <div v-if="props.row.avatar" class="image">
                 <img :src="props.row.avatar" class="is-rounded">
               </div>
+                <div v-if="props.row.author" class="image">
+                    {{ props.row.author }}
+                </div>
             </b-table-column>
-            <b-table-column label="Name" field="name" sortable>
-              {{ props.row.name }}
+            <b-table-column label="Title" field="title" sortable>
+              {{ props.row.title }}
             </b-table-column>
-            <b-table-column label="Company" field="company" sortable>
-              {{ props.row.company }}
+            <b-table-column label="Subtitle" field="subtitle" sortable>
+              {{ props.row.subtitle }}
             </b-table-column>
             <b-table-column label="City" field="city" sortable>
               {{ props.row.city }}
@@ -52,7 +55,7 @@
             </b-table-column>
             <b-table-column custom-key="actions" class="is-actions-cell">
               <div class="buttons is-right">
-                <router-link :to="{name:'clients.edit', params: {id: props.row.id}}" class="button is-small is-primary">
+                <router-link :to="{name:'posts.edit', params: {id: props.row.id}}" class="button is-small is-primary">
                   <b-icon icon="account-edit" size="is-small"/>
                 </router-link>
                 <button class="button is-small is-danger" type="button" @click.prevent="trashModal(props.row)">
@@ -127,7 +130,7 @@ export default {
     getData () {
       this.isLoading = true
       axios
-        .get('/clients')
+        .get('/api/post')
         .then(r => {
           this.isLoading = false
           if (r.data && r.data.data) {
@@ -161,10 +164,10 @@ export default {
 
       if (this.trashObject) {
         method = 'delete'
-        url = `/clients/${this.trashObject.id}/destroy`
+        url = `/api/post/${this.trashObject.id}/destroy`
       } else if (this.checkedRows.length) {
         method = 'post'
-        url = '/clients/destroy'
+        url = '/api/post/destroy'
         data = {
           ids: map(this.checkedRows, row => row.id)
         }

@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
 
         foreach ($users as $name => $email) {
             $user = \App\Models\User::firstOrCreate([
-                'name' => $name,
+                'name' => strtolower($name),
                 'email' => $email,
                 'email_verified_at' => Carbon::now(),
                 'password' => bcrypt('secret'),

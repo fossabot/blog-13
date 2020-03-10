@@ -44,10 +44,10 @@ class LoginController extends Controller
      *
      * @return string
      */
-    public function username()
-    {
-        return 'username';
-    }
+//    public function username()
+//    {
+//        return 'username';
+//    }
 
     /**
      * Redirect the user to the GitHub authentication page.

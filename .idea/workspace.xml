@@ -2,116 +2,59 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="159c7ff8-cdc8-4859-bc91-19c4903a20af" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/0.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/1.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/3.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/4.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/5.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/6.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/7.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/8.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/9.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/admin.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/fonts/vendor/@mdi/materialdesignicons-webfont.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/fonts/vendor/@mdi/materialdesignicons-webfont.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/fonts/vendor/@mdi/materialdesignicons-webfont.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/fonts/vendor/@mdi/materialdesignicons-webfont.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/justboil-logo-black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/justboil-logo-darkblue.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/justboil-logo-white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/justboil-logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/trianglify-bw-50@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/admin.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/App.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/admin.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/components/AsideMenu.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/components/AsideMenuItem.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/components/AsideMenuList.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/components/AsideTools.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/components/CardComponent.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/components/CardToolbar.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/components/CardWidget.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/components/Charts/LineChart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/components/Charts/chart.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/components/CheckboxPicker.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/components/ClientsTableSample.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/components/FilePicker.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/components/FooterBar.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/components/GrowingNumber.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/components/HeroBar.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/components/ModalBox.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/components/ModalTrashBox.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/components/NavBar.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/components/NavBarMenu.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/components/Notification.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/components/PasswordUpdateForm.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/components/ProfileUpdateForm.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/components/RadioPicker.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/components/Tiles.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/components/TitleBar.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/components/UserAvatar.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/router.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/store.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/views/Clients/ClientsForm.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/views/Clients/ClientsIndex.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/views/Forms.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/views/Home.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/views/Profile.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/js/admin/views/Tables.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/sass/admin/_aside.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/sass/admin/_card.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/sass/admin/_footer.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/sass/admin/_form.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/sass/admin/_hero-bar.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/sass/admin/_main-section.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/sass/admin/_misc.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/sass/admin/_mixins.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/sass/admin/_modal.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/sass/admin/_nav-bar.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/sass/admin/_table.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/sass/admin/_theme-default.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/sass/admin/_tiles.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/sass/admin/_title-bar.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/sass/admin/admin.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/sass/admin/libs/_all.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/auth/login.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/auth/passwords/email.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/auth/passwords/reset.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/auth/register.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/auth/verify.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/components/card.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/components/full-page-section.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/home.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/layouts/app.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/welcome.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/master.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/master.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CommentController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Controller.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/TagController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/PostController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/UserController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/PasswordUpdateRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/ProfileUpdateRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Resources/PostResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Repositories/Users/Avatar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/admin.js.LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/app.js.LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/blog.js.LICENSE.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.phpstorm.meta.php" beforeDir="false" afterPath="$PROJECT_DIR$/.phpstorm.meta.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_ide_helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/_ide_helper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/MediaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/MediaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PermissionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PermissionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PostController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/RoleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/RoleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Post.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/0.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/0.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/1.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/2.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/3.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/3.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/4.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/4.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/5.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/5.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/6.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/6.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/7.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/7.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/admin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/blog.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/blog.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/blog.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/blog.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/blog.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/blog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/ExampleComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/components/ExampleComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/passport/AuthorizedClients.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/components/passport/AuthorizedClients.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/passport/Clients.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/components/passport/Clients.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/passport/PersonalAccessTokens.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/components/passport/PersonalAccessTokens.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/_style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/sass/_style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/sass/_variables.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/sass/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/blog.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/sass/blog.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/blog/_slide.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/sass/blog/_slide.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/admin/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/admin/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/admin/components/ProfileUpdateForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/admin/components/ProfileUpdateForm.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/admin/components/TitleBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/admin/components/TitleBar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/admin/views/Clients/ClientsForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/admin/views/Clients/ClientsForm.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/js/admin/views/Clients/ClientsIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/js/admin/views/Clients/ClientsIndex.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/welcome.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,20 +102,6 @@
         <item name="laravel@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="laravel: schema" type="76f4a085:MysqlImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="laravel@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="laravel: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="media: table" type="285a2a93:MysqlImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="laravel@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="laravel: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="taggables: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -412,6 +341,9 @@
       <workItem from="1583671899530" duration="583000" />
       <workItem from="1583683940626" duration="596000" />
       <workItem from="1583693635458" duration="5573000" />
+      <workItem from="1583822661694" duration="257000" />
+      <workItem from="1583824878573" duration="614000" />
+      <workItem from="1583836762243" duration="11287000" />
     </task>
     <servers />
   </component>
@@ -434,10 +366,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="446" y="167" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1583032803391" />
-    <state x="486" y="80" key="#com.intellij.ide.util.MemberChooser" timestamp="1583579182570">
+    <state x="486" y="80" key="#com.intellij.ide.util.MemberChooser" timestamp="1583823064801">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="486" y="80" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583579182570" />
+    <state x="486" y="80" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583823064801" />
     <state x="486" y="80" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1583034090825" />
     <state x="437" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1583577392815">
       <screen x="0" y="0" width="1366" height="728" />
@@ -447,23 +379,23 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="411" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1583033630796" />
-    <state x="472" y="178" key="NewPhpClassDialog" timestamp="1583647259044">
+    <state x="472" y="178" key="NewPhpClassDialog" timestamp="1583842848632">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="472" y="178" key="NewPhpClassDialog/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583647259044" />
+    <state x="472" y="178" key="NewPhpClassDialog/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583842848632" />
     <state x="472" y="178" key="NewPhpClassDialog/0.0.1366.728@0.0.1366.728" timestamp="1583025583663" />
     <state x="517" y="287" key="NewPhpFileDialog" timestamp="1583600242369">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="517" y="287" key="NewPhpFileDialog/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583600242369" />
-    <state x="377" y="96" width="612" height="536" key="find.popup" timestamp="1583600790219">
+    <state x="377" y="96" width="612" height="536" key="find.popup" timestamp="1583844050934">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="377" y="96" width="612" height="536" key="find.popup/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583600790219" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1583700360970">
+    <state x="377" y="96" width="612" height="536" key="find.popup/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583844050934" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1583848670263">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583648031836" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1583848670263" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1583700360970" />
   </component>
 </project>

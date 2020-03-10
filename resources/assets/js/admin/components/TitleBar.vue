@@ -10,12 +10,12 @@
       </div>
       <div class="level-right">
         <div class="level-item">
-          <div class="buttons is-right">
+          <!--<div class="buttons is-right">
             <a href="https://admin-one-laravel.justboil.me/" target="_blank" class="button is-primary">
               <b-icon icon="credit-card" custom-size="default"/>
               <span>Premium Demo</span>
             </a>
-          </div>
+          </div>-->
         </div>
       </div>
     </div>

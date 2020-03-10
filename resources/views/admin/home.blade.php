@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 
 @push('html-class') has-spinner-active has-aside-left has-aside-mobile-transition has-navbar-fixed-top has-aside-expanded @endpush
 
 @push('head-scripts')
-    <script src="{{ mix('js/app.js') }}" defer></script>
+    <script src="{{ mix('js/admin.js') }}" defer></script>
 @endpush
 
 @push('bottom')

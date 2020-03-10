@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Comment;
 use App\Models\Post;
 use App\Models\User;
@@ -14,10 +13,11 @@ class AdminController extends Controller
      */
     public function __invoke()
     {
-        return view('admin.dashboard.index', [
-            'comments' =>  Comment::lastWeek()->get(),
-            'posts' => Post::lastWeek()->get(),
-            'users' => User::lastWeek()->get(),
-        ]);
+        return view('admin.home');
+//        return view('admin.dashboard.index', [
+//            'comments' =>  Comment::lastWeek()->get(),
+//            'posts' => Post::lastWeek()->get(),
+//            'users' => User::lastWeek()->get(),
+//        ]);
     }
 }
