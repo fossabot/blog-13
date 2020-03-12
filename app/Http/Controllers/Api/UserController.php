@@ -3,81 +3,54 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\PasswordUpdateRequest;
-use App\Http\Requests\Admin\ProfileUpdateRequest;
+use App\Http\Requests\UsersRequest;
+use App\Http\Resources\User as UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-//    public function __construct()
-//    {
-//        $this->middleware('auth');
-//    }
-
-    /**
-     * Get current user's profile
-     *
+     * Return the users.
      * @param Request $request
-     *
-     * @return \Illuminate\Http\JsonResponse
+     * @return ResourceCollection
      */
-    public function show( Request $request ) {
-        $user = $request->user();
-
-//        $user->load('file');
-//        $user->append('avatar');
-
-        return response()->json([
-            'data' => $request->user()
-        ]);
+    public function index(Request $request): ResourceCollection
+    {
+        return UserResource::collection(
+            User::withCount(['comments', 'posts'])->with('roles')->latest()->paginate($request->input('limit', 20))
+        );
     }
 
     /**
-     * Update current user's profile
-     *
-     * @param ProfileUpdateRequest $request
-     *
-     * @return \Illuminate\Http\JsonResponse
+     * Return the specified resource.
      */
-    public function update( ProfileUpdateRequest $request ) {
-        $user = $request->user();
+    public function show(User $user): UserResource
+    {
+        return new UserResource($user);
+    }
 
-        $user->fill($request->only(['name','email']));
+    /**
+     * Update the specified resource in storage.
+     * @param UsersRequest $request
+     * @param User $user
+     * @return UserResource
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function update(UsersRequest $request, User $user): UserResource
+    {
+        $this->authorize('update', $user);
 
-        if (filled($request->file_id)) {
-            $user->file_id = $request->file_id;
+        if ($request->filled('password')) {
+            $request->merge([
+                'password' => Hash::make($request->input('password'))
+            ]);
         }
 
-        $user->save();
+        $user->update(array_filter($request->only(['name', 'email', 'password'])));
 
-        $user->load('file');
-        $user->append('avatar');
-
-        return response()->json([
-            'data' => $user
-        ]);
-    }
-
-    /**
-     * Update current user's password
-     *
-     * @param PasswordUpdateRequest $request
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function updatePassword( PasswordUpdateRequest $request ) {
-        $user = $request->user();
-        $user->password = bcrypt($request->password);
-        $user->save();
-
-        return response()->json([
-            'status' => true
-        ]);
+        return new UserResource($user);
     }
 }

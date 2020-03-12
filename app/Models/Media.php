@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\MediaLibrary\Models\Media as Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
@@ -49,6 +50,7 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
  */
 class Media extends Model
 {
+    use LogsActivity;
     /**
      * The attributes that should be mutated to dates.
      *

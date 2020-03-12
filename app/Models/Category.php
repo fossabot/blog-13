@@ -7,6 +7,7 @@ use App\Repositories\Slug\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Permission\Traits\HasRoles;
 
 /**
@@ -58,7 +59,7 @@ use Spatie\Permission\Traits\HasRoles;
  */
 class Category extends Model
 {
-    use SoftDeletes, HasRoles, HasSlug;
+    use SoftDeletes, HasRoles, LogsActivity, HasSlug;
 
     /**
      * @var array

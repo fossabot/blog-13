@@ -6,11 +6,14 @@ use App\Repositories\Slug\HasSlug;
 use App\Repositories\Slug\SlugOptions;
 use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Translation\HasLocalePreference;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\Permission\Models\Role;
@@ -64,9 +67,9 @@ use Spatie\Permission\Traits\HasRoles;
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\MediaLibrary\Models\Media[] $media
  * @property-read int|null $media_count
  */
-class User extends Authenticatable implements MustVerifyEmail, HasMedia
+class User extends Authenticatable implements MustVerifyEmail, HasLocalePreference ,HasMedia
 {
-    use Notifiable, HasRoles, HasSlug, HasMediaTrait, HasApiTokens;
+    use Notifiable, HasRoles, HasSlug, HasMediaTrait, HasApiTokens, LogsActivity;
 
     /**
      * The attributes that are mass assignable.
@@ -76,6 +79,16 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     protected $fillable = [
         'name', 'email', 'password', 'provider', 'provider_id', 'registered_at', 'api_token'
     ];
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'registered_at'
+    ];
+
 
     /**
      * The attributes that should be hidden for arrays.
@@ -94,6 +107,16 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the user's preferred locale.
+     *
+     * @return string
+     */
+    public function preferredLocale()
+    {
+        return $this->locale;
+    }
 
     /**
      * @return SlugOptions
@@ -222,5 +245,21 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     public function comments(): HasMany
     {
         return $this->hasMany(Comment::class, 'user_id');
+    }
+
+    /**
+     * Return the user's likes
+     */
+    public function likes(): HasMany
+    {
+        return $this->hasMany(Like::class, 'user_id');
+    }
+
+    /**
+     * Return the user's roles
+     */
+    public function roles(): BelongsToMany
+    {
+        return $this->belongsToMany(Role::class)->withTimestamps();
     }
 }

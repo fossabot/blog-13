@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Psr\Log\LoggerTrait;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Permission\Traits\HasRoles;
 
 /**
@@ -44,7 +46,7 @@ use Spatie\Permission\Traits\HasRoles;
  */
 class Tag extends Model
 {
-    use HasRoles, SoftDeletes;
+    use HasRoles, SoftDeletes, LogsActivity;
     /**
      * @var array
      */

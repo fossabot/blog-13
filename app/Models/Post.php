@@ -7,7 +7,9 @@ use App\Repositories\ReadTime;
 use App\Repositories\Slug\HasSlug;
 use App\Repositories\Slug\SlugOptions;
 use App\Repositories\Users\Avatar;
+use App\Scopes\PostedScope;
 use Carbon\Carbon;
+use DateTimeInterface;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -20,6 +22,7 @@ use League\CommonMark\Converter;
 use League\CommonMark\DocParser;
 use League\CommonMark\Environment;
 use League\CommonMark\HtmlRenderer;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\Permission\Traits\HasRoles;
@@ -106,17 +109,11 @@ use Spatie\Permission\Traits\HasRoles;
  */
 class Post extends Model implements HasMedia
 {
-    use HasRoles, HasSlug, SoftDeletes, Likeable, HasMediaTrait;
+    use HasRoles, HasSlug, SoftDeletes, Likeable, HasMediaTrait, LogsActivity;
     /**
      * @var array
      */
     protected $dates = ['published_at'];
-
-    /**
-     * @var array
-     */
-    protected $guarded = [];
-
 
     /**
      * The attributes that are mass assignable.
@@ -138,10 +135,37 @@ class Post extends Model implements HasMedia
         'published_at',
     ];
 
+
     /**
-     * @var array
+     * The "booting" method of the model.
      */
-    public static $rules = [];
+    protected static function boot(): void
+    {
+        parent::boot();
+        static::addGlobalScope(new PostedScope);
+    }
+
+    /**
+     * Prepare a date for array / JSON serialization.
+     * @param DateTimeInterface $date
+     * @return string
+     */
+    protected function serializeDate(DateTimeInterface $date): string
+    {
+        return $date->format('Y-m-d H:i:s');
+    }
+
+    /**
+     * Get the route key for the model.
+     */
+    public function getRouteKeyName(): string
+    {
+        if (request()->expectsJson()) {
+            return 'id';
+        }
+
+        return 'slug';
+    }
 
 
     /**

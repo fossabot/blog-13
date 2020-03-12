@@ -11,6 +11,11 @@
 |
 */
 
-Broadcast::channel('App.User.{id}', function ($user, $id) {
-    return (int) $user->id === (int) $id;
-});
+use App\Broadcasting\PostChannel;
+
+//Broadcast::channel('App.User.{id}', function ($user, $id) {
+//    return (int) $user->id === (int) $id;
+//});
+//Broadcast::channel('App.User.{id}', fn ($user, $id) => (int) $user->id === (int) $id);
+
+Broadcast::channel('post.{post}', PostChannel::class);

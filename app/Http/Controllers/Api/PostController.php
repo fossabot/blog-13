@@ -4,123 +4,79 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PostRequest;
-use App\Http\Resources\PostResource;
+use App\Http\Resources\Post as PostResource;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Http\Response;
 
 class PostController extends Controller
 {
     /**
-     * Index resource
-     *
-     * @return \Illuminate\Http\JsonResponse
+     * Return the posts.
+     * @param Request $request
+     * @return ResourceCollection
      */
-    public function index() {
-//        return  new PostResource(Post::get());
-        $posts = Post::with('user')->get();
-
-        $posts->each(function ($post) {
-            $post->append('author');
-        });
-
-        return response()->json([
-            'data' => $posts
-        ]);
+    public function index(Request $request): ResourceCollection
+    {
+        return PostResource::collection(
+            Post::search($request->input('q'))->withCount('comments')->latest()->paginate($request->input('limit', 20))
+        );
     }
 
     /**
-     * Get single resource
-     *
-     * @param Post $post
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function show( Post $post ) {
-//        $post->append('avatar');
-//        $post->append('avatar_filename');
-//        $post->append('created_mm_dd_yyyy');
-        dd($post);
-
-        return response()->json([
-            'data' => $post
-        ]);
-    }
-
-    /**
-     * Update single resource
-     *
+     * Update the specified resource in storage.
      * @param PostRequest $request
      * @param Post $post
-     *
-     * @return \Illuminate\Http\JsonResponse
-     * @throws \Exception
+     * @return PostResource
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function update( PostRequest $request, Post $post ) {
-        $post->fill($request->postFillData());
-        $post->save();
+    public function update(PostRequest $request, Post $post): PostResource
+    {
+        $this->authorize('update', $post);
 
-//        $post->append('avatar');
+        $post->update($request->only(['title', 'content', 'posted_at', 'author_id', 'thumbnail_id']));
 
-        return response()->json([
-            'status' => true,
-            'data' => $post
-        ]);
+        return new PostResource($post);
     }
 
     /**
-     * Store new resource
-     *
+     * Store a newly created resource in storage.
      * @param PostRequest $request
-     *
-     * @return \Illuminate\Http\JsonResponse
-     * @throws \Exception
+     * @return PostResource
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function store( PostRequest $request ) {
-        $post = new Post();
-        $post->fill($request->postFillData());
-        $post->save();
+    public function store(PostRequest $request): PostResource
+    {
+        $this->authorize('store', Post::class);
 
-        return response()->json([
-            'status' => true,
-            'created' => true,
-            'data' => [
-                'id' => $post->id
-            ]
-        ]);
+        return new PostResource(
+            Post::create($request->only(['title', 'content', 'posted_at', 'author_id', 'thumbnail_id']))
+        );
     }
 
     /**
-     * Destroy single resource
-     *
+     * Return the specified resource.
      * @param Post $post
-     *
-     * @return \Illuminate\Http\JsonResponse
-     * @throws \Exception
+     * @return PostResource
      */
-    public function destroy( Post $post ) {
+    public function show(Post $post): PostResource
+    {
+        return new PostResource($post);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     * @param Post $post
+     * @return Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function destroy(Post $post): Response
+    {
+        $this->authorize('delete', $post);
+
         $post->delete();
 
-        return response()->json([
-            'status' => true
-        ]);
-    }
-
-    /**
-     * Destroy resources by ids
-     *
-     * @param Request $request
-     *
-     * @return \Illuminate\Http\JsonResponse
-     * @throws \Exception
-     */
-    public function destroyMass( Request $request ) {
-        $request->validate([
-            'ids' => 'required|array'
-        ]);
-
-        Post::destroy($request->ids);
-
-        return response()->json([
-            'status' => true
-        ]);
+        return response()->noContent();
     }
 }

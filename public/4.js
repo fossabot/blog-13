@@ -1,1 +1,927 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{EwQA:function(e,t,n){var o=n("zZ0H");e.exports=function(e){return"function"==typeof e?e:o}},O0oS:function(e,t,n){var o=n("Cwc5"),l=function(){try{var e=o(Object,"defineProperty");return e({},"",{}),e}catch(e){}}();e.exports=l},bNQv:function(e,t,n){var o=n("gFfm"),l=n("SKAX"),a=n("EwQA"),i=n("Z0cm");e.exports=function(e,t){return(i(e)?o:l)(e,a(t))}},gFfm:function(e,t){e.exports=function(e,t){for(var n=-1,o=null==e?0:e.length;++n<o&&!1!==t(e[n],n,e););return e}},hypo:function(e,t,n){var o=n("O0oS");e.exports=function(e,t,n){"__proto__"==t&&o?o(e,t,{configurable:!0,enumerable:!0,value:n,writable:!0}):e[t]=n}},noZS:function(e,t,n){var o=n("hypo"),l=n("JC6p"),a=n("ut/Y");e.exports=function(e,t){var n={};return t=a(t,3),l(e,(function(e,l,a){o(n,l,t(e,l,a))})),n}},qsDL:function(e,t,n){"use strict";n.r(t);var o=n("Vikk"),l=n("gDkN"),a=n("noZS"),i=n.n(a),r={name:"CheckboxPicker",props:{options:{type:Object,default:null},type:{type:String,default:null},value:{default:[]}},data:function(){return{newValue:[]}},created:function(){this.newValue=this.value},methods:{input:function(){this.$emit("input",this.newValue)}},watch:{value:function(e){this.newValue=e}}},s=n("KHd+"),u=Object(s.a)(r,(function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("b-field",{attrs:{grouped:"","group-multiline":""}},e._l(e.options,(function(t,o){return n("div",{key:o,staticClass:"control"},[n("b-checkbox",{attrs:{"native-value":o,type:e.type},on:{input:e.input},model:{value:e.newValue,callback:function(t){e.newValue=t},expression:"newValue"}},[e._v("\n      "+e._s(t)+"\n    ")])],1)})),0)}),[],!1,null,null,null).exports,c={name:"RadioPicker",props:{options:{type:Object,default:null},type:{type:String,default:null},value:{default:null}},data:function(){return{newValue:null}},created:function(){this.newValue=this.value},methods:{input:function(){this.$emit("input",this.newValue)}},watch:{value:function(e){this.newValue=e}}},p=Object(s.a)(c,(function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("b-field",{attrs:{grouped:"","group-multiline":""}},e._l(e.options,(function(t,o){return n("div",{key:o,staticClass:"control"},[n("b-radio",{attrs:{"native-value":o,type:e.type},on:{input:e.input},model:{value:e.newValue,callback:function(t){e.newValue=t},expression:"newValue"}},[e._v("\n      "+e._s(t)+"\n    ")])],1)})),0)}),[],!1,null,null,null).exports,m=n("sZFS");function f(e){return(f="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}var d={name:"Forms",components:{HeroBar:n("SRaX").a,FilePicker:m.a,RadioPicker:p,CheckboxPicker:u,CardComponent:l.a,TitleBar:o.a},data:function(){return{isLoading:!1,form:{name:null,email:null,phone:null,department:null,subject:null,question:null},customElementsForm:{checkbox:[],radio:null,switch:!0,file:null},departments:["Business Development","Marketing","Sales"]}},computed:{titleStack:function(){return["Admin","Forms"]}},methods:{submit:function(){},reset:function(){this.form=i()(this.form,(function(e){return e&&"object"===f(e)?[]:null})),this.$buefy.snackbar.open({message:"Reset successfully",queue:!1})}}},b=Object(s.a)(d,(function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div",[n("title-bar",{attrs:{"title-stack":e.titleStack}}),e._v(" "),n("hero-bar",[e._v("\n    Forms\n    "),n("router-link",{staticClass:"button",attrs:{slot:"right",to:"/"},slot:"right"},[e._v("\n      Dashboard\n    ")])],1),e._v(" "),n("section",{staticClass:"section is-main-section"},[n("card-component",{attrs:{title:"Forms",icon:"ballot"}},[n("form",{on:{submit:function(t){return t.preventDefault(),e.submit(t)}}},[n("b-field",{attrs:{label:"From",horizontal:""}},[n("b-field",[n("b-input",{attrs:{icon:"account",placeholder:"Name",name:"name",required:""},model:{value:e.form.name,callback:function(t){e.$set(e.form,"name",t)},expression:"form.name"}})],1),e._v(" "),n("b-field",[n("b-input",{attrs:{icon:"email",type:"email",placeholder:"E-mail",name:"email",required:""},model:{value:e.form.email,callback:function(t){e.$set(e.form,"email",t)},expression:"form.email"}})],1)],1),e._v(" "),n("b-field",{attrs:{message:"Do not enter the leading zero",horizontal:""}},[n("b-field",[n("p",{staticClass:"control"},[n("a",{staticClass:"button is-static"},[e._v("\n                +44\n              ")])]),e._v(" "),n("b-input",{attrs:{type:"tel",name:"phone",expanded:""},model:{value:e.form.phone,callback:function(t){e.$set(e.form,"phone",t)},expression:"form.phone"}})],1)],1),e._v(" "),n("b-field",{attrs:{label:"Department",horizontal:""}},[n("b-select",{attrs:{placeholder:"Select a department",required:""},model:{value:e.form.department,callback:function(t){e.$set(e.form,"department",t)},expression:"form.department"}},e._l(e.departments,(function(t,o){return n("option",{key:o,domProps:{value:t}},[e._v("\n              "+e._s(t)+"\n            ")])})),0)],1),e._v(" "),n("hr"),e._v(" "),n("b-field",{attrs:{label:"Subject",message:"Message subject",horizontal:""}},[n("b-input",{attrs:{placeholder:"e.g. Partnership proposal",required:""},model:{value:e.form.subject,callback:function(t){e.$set(e.form,"subject",t)},expression:"form.subject"}})],1),e._v(" "),n("b-field",{attrs:{label:"Question",message:"Your question. Max 255 characters",horizontal:""}},[n("b-input",{attrs:{type:"textarea",placeholder:"Explain how we can help you",maxlength:"255",required:""},model:{value:e.form.question,callback:function(t){e.$set(e.form,"question",t)},expression:"form.question"}})],1),e._v(" "),n("hr"),e._v(" "),n("b-field",{attrs:{horizontal:""}},[n("b-field",{attrs:{grouped:""}},[n("div",{staticClass:"control"},[n("b-button",{attrs:{"native-type":"submit",type:"is-primary"}},[e._v("Submit")])],1),e._v(" "),n("div",{staticClass:"control"},[n("b-button",{attrs:{type:"is-primary is-outlined"},on:{click:e.reset}},[e._v("Reset")])],1)])],1)],1)]),e._v(" "),n("card-component",{attrs:{title:"Custom elements",icon:"ballot-outline"}},[n("b-field",{staticClass:"has-check",attrs:{label:"Checkbox",horizontal:""}},[n("checkbox-picker",{attrs:{options:{lorem:"Lorem",ipsum:"Ipsum",dolore:"Dolore"},type:"is-primary"},model:{value:e.customElementsForm.checkbox,callback:function(t){e.$set(e.customElementsForm,"checkbox",t)},expression:"customElementsForm.checkbox"}})],1),e._v(" "),n("hr"),e._v(" "),n("b-field",{staticClass:"has-check",attrs:{label:"Radio",horizontal:""}},[n("radio-picker",{attrs:{options:{one:"One",two:"Two"}},model:{value:e.customElementsForm.radio,callback:function(t){e.$set(e.customElementsForm,"radio",t)},expression:"customElementsForm.radio"}})],1),e._v(" "),n("hr"),e._v(" "),n("b-field",{attrs:{label:"Switch",horizontal:""}},[n("b-switch",{model:{value:e.customElementsForm.switch,callback:function(t){e.$set(e.customElementsForm,"switch",t)},expression:"customElementsForm.switch"}},[e._v("\n          Default\n        ")])],1),e._v(" "),n("hr"),e._v(" "),n("b-field",{attrs:{label:"File",horizontal:""}},[n("file-picker",{model:{value:e.customElementsForm.file,callback:function(t){e.$set(e.customElementsForm,"file",t)},expression:"customElementsForm.file"}})],1)],1)],1)],1)}),[],!1,null,null,null);t.default=b.exports},sZFS:function(e,t,n){"use strict";var o=n("xkGU"),l=n.n(o),a={name:"FilePicker",props:{label:{type:String,default:null},message:{type:String,default:null},currentFile:{default:null}},data:function(){return{errors:{},file:null,uploadPercent:0,isUploadSuccess:!1}},computed:{fieldFileMessage:function(){return this.errors.file?this.errors.file[0]:this.isUploadSuccess?"File uploaded. Submit to store":this.uploadPercent?"Uploading ".concat(this.uploadPercent,"%"):this.message},uploadButtonText:function(){return this.fileName?null:"Pick a file"},uploadButtonIcon:function(){return this.fileName?"cloud-sync":"cloud-upload"},fieldFileType:function(){return this.errors.file?"is-danger":null},fileName:function(){return this.file?this.file.name:this.currentFile?this.currentFile:null}},methods:{upload:function(e){var t=this;this.errors={};var n=new FormData;n.append("file",this.file),this.isUploadSuccess=!1,axios.post("/files/store",n,{headers:{"Content-Type":"multipart/form-data"},onUploadProgress:this.progressEvent}).then((function(e){t.isUploadSuccess=!0,t.$emit("file-updated",e.data.data),t.$emit("file-id-updated",e.data.data.id)})).catch((function(e){t.file=null,t.uploadPercent=0,e.response.data.errors?t.errors=e.response.data.errors:t.errors={_all:["Upload error"]},l()(t.errors,(function(e){t.$buefy.toast.open({message:e[0],type:"is-danger",queue:!1})}))}))},dropFile:function(){this.file=null,this.isUploadSuccess=!1,this.uploadPercent=0,this.$emit("file-updated",null),this.$emit("file-id-updated",null)},progressEvent:function(e){this.uploadPercent=Math.round(100*e.loaded/e.total)}}},i=n("KHd+"),r=Object(i.a)(a,(function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("b-field",{attrs:{label:e.label,message:e.fieldFileMessage,type:e.fieldFileType}},[n("b-field",[n("b-upload",{on:{input:e.upload},model:{value:e.file,callback:function(t){e.file=t},expression:"file"}},[n("a",{staticClass:"button is-primary"},[n("b-icon",{attrs:{icon:e.uploadButtonIcon,"custom-size":"default"}}),e._v(" "),e.uploadButtonText?n("span",[e._v(e._s(e.uploadButtonText))]):e._e()],1)]),e._v(" "),e.fileName?n("div",{staticClass:"control"},[n("a",{staticClass:"button is-static is-file-upload-label"},[n("span",{attrs:{title:e.fileName}},[e._v(e._s(e.fileName))]),e._v(" "),n("span",{staticClass:"delete",on:{click:function(t){return t.preventDefault(),e.dropFile(t)}}})])]):e._e()],1)],1)}),[],!1,null,null,null);t.a=r.exports},xkGU:function(e,t,n){e.exports=n("bNQv")}}]);
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[4],{
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/admin/components/CardToolbar.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/admin/components/CardToolbar.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'CardToolbar',
+  props: {
+    isMobile: {
+      type: Boolean,
+      "default": false
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/admin/views/Clients/ClientsIndex.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/admin/views/Clients/ClientsIndex.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var lodash_map__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/map */ "./node_modules/lodash/map.js");
+/* harmony import */ var lodash_map__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_map__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_CardComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/CardComponent */ "./resources/assets/js/admin/components/CardComponent.vue");
+/* harmony import */ var _components_ModalBox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/ModalBox */ "./resources/assets/js/admin/components/ModalBox.vue");
+/* harmony import */ var _components_TitleBar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/TitleBar */ "./resources/assets/js/admin/components/TitleBar.vue");
+/* harmony import */ var _components_HeroBar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/HeroBar */ "./resources/assets/js/admin/components/HeroBar.vue");
+/* harmony import */ var _components_CardToolbar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/CardToolbar */ "./resources/assets/js/admin/components/CardToolbar.vue");
+/* harmony import */ var _components_ModalTrashBox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/ModalTrashBox */ "./resources/assets/js/admin/components/ModalTrashBox.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "ClientIndex",
+  components: {
+    ModalTrashBox: _components_ModalTrashBox__WEBPACK_IMPORTED_MODULE_6__["default"],
+    CardToolbar: _components_CardToolbar__WEBPACK_IMPORTED_MODULE_5__["default"],
+    HeroBar: _components_HeroBar__WEBPACK_IMPORTED_MODULE_4__["default"],
+    TitleBar: _components_TitleBar__WEBPACK_IMPORTED_MODULE_3__["default"],
+    ModalBox: _components_ModalBox__WEBPACK_IMPORTED_MODULE_2__["default"],
+    CardComponent: _components_CardComponent__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  data: function data() {
+    return {
+      isModalActive: false,
+      trashObject: null,
+      clients: [],
+      isLoading: false,
+      paginated: false,
+      perPage: 10,
+      checkedRows: []
+    };
+  },
+  computed: {
+    trashSubject: function trashSubject() {
+      if (this.trashObject) {
+        return this.trashObject.name;
+      }
+
+      if (this.checkedRows.length) {
+        return "".concat(this.checkedRows.length, " entries");
+      }
+
+      return null;
+    }
+  },
+  created: function created() {
+    this.getData();
+  },
+  methods: {
+    getData: function getData() {
+      var _this = this;
+
+      this.isLoading = true;
+      axios.get('/api/post').then(function (r) {
+        _this.isLoading = false;
+
+        if (r.data && r.data.data) {
+          if (r.data.data.length > _this.perPage) {
+            _this.paginated = true;
+          }
+
+          _this.clients = r.data.data;
+        }
+      })["catch"](function (err) {
+        _this.isLoading = false;
+
+        _this.$buefy.toast.open({
+          message: "Error: ".concat(err.message),
+          type: 'is-danger',
+          queue: false
+        });
+      });
+    },
+    trashModal: function trashModal() {
+      var trashObject = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+
+      if (trashObject || this.checkedRows.length) {
+        this.trashObject = trashObject;
+        this.isModalActive = true;
+      }
+    },
+    trashConfirm: function trashConfirm() {
+      var _this2 = this;
+
+      var url;
+      var method;
+      var data = null;
+      this.isModalActive = false;
+
+      if (this.trashObject) {
+        method = 'delete';
+        url = "/api/post/".concat(this.trashObject.id, "/destroy");
+      } else if (this.checkedRows.length) {
+        method = 'post';
+        url = '/api/post/destroy';
+        data = {
+          ids: lodash_map__WEBPACK_IMPORTED_MODULE_0___default()(this.checkedRows, function (row) {
+            return row.id;
+          })
+        };
+      }
+
+      axios({
+        method: method,
+        url: url,
+        data: data
+      }).then(function (r) {
+        _this2.getData();
+
+        _this2.trashObject = null;
+        _this2.checkedRows = [];
+
+        _this2.$buefy.snackbar.open({
+          message: "Deleted",
+          queue: false
+        });
+      })["catch"](function (err) {
+        _this2.$buefy.toast.open({
+          message: "Error: ".concat(err.message),
+          type: 'is-danger',
+          queue: false
+        });
+      });
+    },
+    trashCancel: function trashCancel() {
+      this.isModalActive = false;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_baseMap.js":
+/*!*****************************************!*\
+  !*** ./node_modules/lodash/_baseMap.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var baseEach = __webpack_require__(/*! ./_baseEach */ "./node_modules/lodash/_baseEach.js"),
+    isArrayLike = __webpack_require__(/*! ./isArrayLike */ "./node_modules/lodash/isArrayLike.js");
+
+/**
+ * The base implementation of `_.map` without support for iteratee shorthands.
+ *
+ * @private
+ * @param {Array|Object} collection The collection to iterate over.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {Array} Returns the new mapped array.
+ */
+function baseMap(collection, iteratee) {
+  var index = -1,
+      result = isArrayLike(collection) ? Array(collection.length) : [];
+
+  baseEach(collection, function(value, key, collection) {
+    result[++index] = iteratee(value, key, collection);
+  });
+  return result;
+}
+
+module.exports = baseMap;
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash/map.js":
+/*!************************************!*\
+  !*** ./node_modules/lodash/map.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayMap = __webpack_require__(/*! ./_arrayMap */ "./node_modules/lodash/_arrayMap.js"),
+    baseIteratee = __webpack_require__(/*! ./_baseIteratee */ "./node_modules/lodash/_baseIteratee.js"),
+    baseMap = __webpack_require__(/*! ./_baseMap */ "./node_modules/lodash/_baseMap.js"),
+    isArray = __webpack_require__(/*! ./isArray */ "./node_modules/lodash/isArray.js");
+
+/**
+ * Creates an array of values by running each element in `collection` thru
+ * `iteratee`. The iteratee is invoked with three arguments:
+ * (value, index|key, collection).
+ *
+ * Many lodash methods are guarded to work as iteratees for methods like
+ * `_.every`, `_.filter`, `_.map`, `_.mapValues`, `_.reject`, and `_.some`.
+ *
+ * The guarded methods are:
+ * `ary`, `chunk`, `curry`, `curryRight`, `drop`, `dropRight`, `every`,
+ * `fill`, `invert`, `parseInt`, `random`, `range`, `rangeRight`, `repeat`,
+ * `sampleSize`, `slice`, `some`, `sortBy`, `split`, `take`, `takeRight`,
+ * `template`, `trim`, `trimEnd`, `trimStart`, and `words`
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Collection
+ * @param {Array|Object} collection The collection to iterate over.
+ * @param {Function} [iteratee=_.identity] The function invoked per iteration.
+ * @returns {Array} Returns the new mapped array.
+ * @example
+ *
+ * function square(n) {
+ *   return n * n;
+ * }
+ *
+ * _.map([4, 8], square);
+ * // => [16, 64]
+ *
+ * _.map({ 'a': 4, 'b': 8 }, square);
+ * // => [16, 64] (iteration order is not guaranteed)
+ *
+ * var users = [
+ *   { 'user': 'barney' },
+ *   { 'user': 'fred' }
+ * ];
+ *
+ * // The `_.property` iteratee shorthand.
+ * _.map(users, 'user');
+ * // => ['barney', 'fred']
+ */
+function map(collection, iteratee) {
+  var func = isArray(collection) ? arrayMap : baseMap;
+  return func(collection, baseIteratee(iteratee, 3));
+}
+
+module.exports = map;
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/admin/components/CardToolbar.vue?vue&type=template&id=68fe67a4&":
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/admin/components/CardToolbar.vue?vue&type=template&id=68fe67a4& ***!
+  \***************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "notification is-card-toolbar" }, [
+    _c("div", { staticClass: "level", class: { "is-mobile": _vm.isMobile } }, [
+      _c("div", { staticClass: "level-left" }, [
+        _c("div", { staticClass: "level-item" }, [_vm._t("left")], 2)
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "level-right" }, [
+        _c("div", { staticClass: "level-item" }, [_vm._t("right")], 2)
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/admin/views/Clients/ClientsIndex.vue?vue&type=template&id=7534ef84&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/admin/views/Clients/ClientsIndex.vue?vue&type=template&id=7534ef84& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("title-bar", { attrs: { "title-stack": ["Admin", "Posts"] } }),
+      _vm._v(" "),
+      _c(
+        "hero-bar",
+        [
+          _vm._v("\n    Posts\n    "),
+          _c(
+            "router-link",
+            {
+              staticClass: "button",
+              attrs: { slot: "right", to: "/posts/new" },
+              slot: "right"
+            },
+            [_vm._v("\n      New Post\n    ")]
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "section",
+        { staticClass: "section is-main-section" },
+        [
+          _c(
+            "card-component",
+            {
+              staticClass: "has-table has-mobile-sort-spaced",
+              attrs: { title: "Posts", icon: "account-multiple" }
+            },
+            [
+              _c("card-toolbar", [
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "button is-danger is-small has-checked-rows-number",
+                    attrs: {
+                      slot: "right",
+                      type: "button",
+                      disabled: !_vm.checkedRows.length
+                    },
+                    on: {
+                      click: function($event) {
+                        return _vm.trashModal(null)
+                      }
+                    },
+                    slot: "right"
+                  },
+                  [
+                    _c("b-icon", {
+                      attrs: { icon: "trash-can", "custom-size": "default" }
+                    }),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("Delete")]),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: !!_vm.checkedRows.length,
+                            expression: "!!checkedRows.length"
+                          }
+                        ]
+                      },
+                      [_vm._v("(" + _vm._s(_vm.checkedRows.length) + ")")]
+                    )
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c("modal-trash-box", {
+                attrs: {
+                  "is-active": _vm.isModalActive,
+                  "trash-subject": _vm.trashSubject
+                },
+                on: { confirm: _vm.trashConfirm, cancel: _vm.trashCancel }
+              }),
+              _vm._v(" "),
+              _c(
+                "b-table",
+                {
+                  attrs: {
+                    "checked-rows": _vm.checkedRows,
+                    checkable: true,
+                    loading: _vm.isLoading,
+                    paginated: _vm.paginated,
+                    "per-page": _vm.perPage,
+                    striped: true,
+                    hoverable: true,
+                    "default-sort": "name",
+                    data: _vm.clients
+                  },
+                  on: {
+                    "update:checkedRows": function($event) {
+                      _vm.checkedRows = $event
+                    },
+                    "update:checked-rows": function($event) {
+                      _vm.checkedRows = $event
+                    }
+                  },
+                  scopedSlots: _vm._u([
+                    {
+                      key: "default",
+                      fn: function(props) {
+                        return [
+                          _c(
+                            "b-table-column",
+                            { staticClass: "has-no-head-mobile is-image-cell" },
+                            [
+                              props.row.avatar
+                                ? _c("div", { staticClass: "image" }, [
+                                    _c("img", {
+                                      staticClass: "is-rounded",
+                                      attrs: { src: props.row.avatar }
+                                    })
+                                  ])
+                                : _vm._e(),
+                              _vm._v(" "),
+                              props.row.author
+                                ? _c("div", { staticClass: "image" }, [
+                                    _vm._v(
+                                      "\n                  " +
+                                        _vm._s(props.row.author) +
+                                        "\n              "
+                                    )
+                                  ])
+                                : _vm._e()
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "b-table-column",
+                            {
+                              attrs: {
+                                label: "Title",
+                                field: "title",
+                                sortable: ""
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n            " +
+                                  _vm._s(props.row.title) +
+                                  "\n          "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "b-table-column",
+                            {
+                              attrs: {
+                                label: "Subtitle",
+                                field: "subtitle",
+                                sortable: ""
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n            " +
+                                  _vm._s(props.row.subtitle) +
+                                  "\n          "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "b-table-column",
+                            {
+                              attrs: {
+                                label: "City",
+                                field: "city",
+                                sortable: ""
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n            " +
+                                  _vm._s(props.row.city) +
+                                  "\n          "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "b-table-column",
+                            {
+                              staticClass: "is-progress-col",
+                              attrs: {
+                                label: "Progress",
+                                field: "progress",
+                                sortable: ""
+                              }
+                            },
+                            [
+                              _c(
+                                "progress",
+                                {
+                                  staticClass: "progress is-small is-primary",
+                                  attrs: { max: "100" },
+                                  domProps: { value: props.row.progress }
+                                },
+                                [_vm._v(_vm._s(props.row.progress))]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "b-table-column",
+                            { attrs: { label: "Created" } },
+                            [
+                              _c(
+                                "small",
+                                {
+                                  staticClass: "has-text-grey is-abbr-like",
+                                  attrs: { title: props.row.created }
+                                },
+                                [_vm._v(_vm._s(props.row.created))]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "b-table-column",
+                            {
+                              staticClass: "is-actions-cell",
+                              attrs: { "custom-key": "actions" }
+                            },
+                            [
+                              _c(
+                                "div",
+                                { staticClass: "buttons is-right" },
+                                [
+                                  _c(
+                                    "router-link",
+                                    {
+                                      staticClass: "button is-small is-primary",
+                                      attrs: {
+                                        to: {
+                                          name: "posts.edit",
+                                          params: { id: props.row.id }
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _c("b-icon", {
+                                        attrs: {
+                                          icon: "account-edit",
+                                          size: "is-small"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "button is-small is-danger",
+                                      attrs: { type: "button" },
+                                      on: {
+                                        click: function($event) {
+                                          $event.preventDefault()
+                                          return _vm.trashModal(props.row)
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _c("b-icon", {
+                                        attrs: {
+                                          icon: "trash-can",
+                                          size: "is-small"
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ]
+                          )
+                        ]
+                      }
+                    }
+                  ])
+                },
+                [
+                  _vm._v(" "),
+                  _c(
+                    "section",
+                    {
+                      staticClass: "section",
+                      attrs: { slot: "empty" },
+                      slot: "empty"
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "content has-text-grey has-text-centered"
+                        },
+                        [
+                          _vm.isLoading
+                            ? [
+                                _c(
+                                  "p",
+                                  [
+                                    _c("b-icon", {
+                                      attrs: {
+                                        icon: "dots-horizontal",
+                                        size: "is-large"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c("p", [_vm._v("Fetching data...")])
+                              ]
+                            : [
+                                _c(
+                                  "p",
+                                  [
+                                    _c("b-icon", {
+                                      attrs: {
+                                        icon: "emoticon-sad",
+                                        size: "is-large"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c("p", [_vm._v("Nothing's here…")])
+                              ]
+                        ],
+                        2
+                      )
+                    ]
+                  )
+                ]
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/admin/components/CardToolbar.vue":
+/*!**************************************************************!*\
+  !*** ./resources/assets/js/admin/components/CardToolbar.vue ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CardToolbar_vue_vue_type_template_id_68fe67a4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CardToolbar.vue?vue&type=template&id=68fe67a4& */ "./resources/assets/js/admin/components/CardToolbar.vue?vue&type=template&id=68fe67a4&");
+/* harmony import */ var _CardToolbar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CardToolbar.vue?vue&type=script&lang=js& */ "./resources/assets/js/admin/components/CardToolbar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CardToolbar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CardToolbar_vue_vue_type_template_id_68fe67a4___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CardToolbar_vue_vue_type_template_id_68fe67a4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/assets/js/admin/components/CardToolbar.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/assets/js/admin/components/CardToolbar.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************!*\
+  !*** ./resources/assets/js/admin/components/CardToolbar.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CardToolbar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CardToolbar.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/admin/components/CardToolbar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CardToolbar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/admin/components/CardToolbar.vue?vue&type=template&id=68fe67a4&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/assets/js/admin/components/CardToolbar.vue?vue&type=template&id=68fe67a4& ***!
+  \*********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CardToolbar_vue_vue_type_template_id_68fe67a4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CardToolbar.vue?vue&type=template&id=68fe67a4& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/admin/components/CardToolbar.vue?vue&type=template&id=68fe67a4&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CardToolbar_vue_vue_type_template_id_68fe67a4___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CardToolbar_vue_vue_type_template_id_68fe67a4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/admin/views/Clients/ClientsIndex.vue":
+/*!******************************************************************!*\
+  !*** ./resources/assets/js/admin/views/Clients/ClientsIndex.vue ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ClientsIndex_vue_vue_type_template_id_7534ef84___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ClientsIndex.vue?vue&type=template&id=7534ef84& */ "./resources/assets/js/admin/views/Clients/ClientsIndex.vue?vue&type=template&id=7534ef84&");
+/* harmony import */ var _ClientsIndex_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ClientsIndex.vue?vue&type=script&lang=js& */ "./resources/assets/js/admin/views/Clients/ClientsIndex.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ClientsIndex_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ClientsIndex_vue_vue_type_template_id_7534ef84___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ClientsIndex_vue_vue_type_template_id_7534ef84___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/assets/js/admin/views/Clients/ClientsIndex.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/assets/js/admin/views/Clients/ClientsIndex.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/assets/js/admin/views/Clients/ClientsIndex.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ClientsIndex_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./ClientsIndex.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/admin/views/Clients/ClientsIndex.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ClientsIndex_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/admin/views/Clients/ClientsIndex.vue?vue&type=template&id=7534ef84&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/assets/js/admin/views/Clients/ClientsIndex.vue?vue&type=template&id=7534ef84& ***!
+  \*************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ClientsIndex_vue_vue_type_template_id_7534ef84___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./ClientsIndex.vue?vue&type=template&id=7534ef84& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/admin/views/Clients/ClientsIndex.vue?vue&type=template&id=7534ef84&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ClientsIndex_vue_vue_type_template_id_7534ef84___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ClientsIndex_vue_vue_type_template_id_7534ef84___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ })
+
+}]);

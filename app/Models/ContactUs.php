@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * Class ContactUs
@@ -43,7 +44,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class ContactUs extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, LogsActivity;
     /**
      * @var string
      */

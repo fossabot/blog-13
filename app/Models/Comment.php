@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Permission\Traits\HasRoles;
 
 /**
@@ -59,7 +60,7 @@ use Spatie\Permission\Traits\HasRoles;
  */
 class Comment extends Model
 {
-    use SoftDeletes, HasRoles;
+    use SoftDeletes, LogsActivity, HasRoles;
 
     protected $fillable = [
         'user_id',

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Permission\Models\Role as Model;
 
 /**
@@ -40,7 +41,7 @@ use Spatie\Permission\Models\Role as Model;
  */
 class Role extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, LogsActivity;
 
     /**
      *
