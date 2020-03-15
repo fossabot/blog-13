@@ -10,10 +10,10 @@ return [
          * is often just the "Permission" model but you may use whatever you like.
          *
          * The model you want to use as a Permission model needs to implement the
-         * `Spatie\Permission\Contracts\Permission` contract.
+         * `App\Contracts\Permission` contract.
          */
 
-        'permission' => Spatie\Permission\Models\Permission::class,
+        'permission' => App\Models\Permission::class,
 
         /*
          * When using the "HasRoles" trait from this package, we need to know which
@@ -21,10 +21,10 @@ return [
          * is often just the "Role" model but you may use whatever you like.
          *
          * The model you want to use as a Role model needs to implement the
-         * `Spatie\Permission\Contracts\Role` contract.
+         * `App\Contracts\Role` contract.
          */
 
-        'role' => Spatie\Permission\Models\Role::class,
+        'role' => App\Models\Role::class,
 
     ],
 

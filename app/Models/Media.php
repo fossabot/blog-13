@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Spatie\Activitylog\Traits\LogsActivity;
-use Spatie\MediaLibrary\Models\Media as Model;
+use Spatie\MediaLibrary\MediaCollections\Models\Media as Model;
 
 /**
  * App\Models\Media

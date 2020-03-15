@@ -3,13 +3,13 @@
 
   <div class="card-body">
     <h4 v-pre class="card-title">
-        <a href="{{ route('posts.show', $post->slug) }}"></a>
-        {{ $post->title }}
+        <a href="{{ route('posts.show', $post->slug) }}">
+        {{ $post->title }}</a>
     </h4>
 
     <p class="card-text"><small v-pre class="text-muted">
-            <a href="{{ route('users.show', $post->user->slug ) }}"></a>
-            {{ $post->user->name }}
+            <a href="{{ route('users.show', $post->user->slug ) }}">
+            {{ $post->user->name }}</a>
         </small></p>
 
     <p class="card-text">
