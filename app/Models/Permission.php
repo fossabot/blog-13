@@ -41,6 +41,8 @@ use Spatie\Permission\Models\Permission as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Permission whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Permission whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Permission whereUpdatedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activities
+ * @property-read int|null $activities_count
  */
 class Permission extends Model
 {

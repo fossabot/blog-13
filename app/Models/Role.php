@@ -38,6 +38,8 @@ use Spatie\Permission\Models\Role as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Role whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Role whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Role whereUpdatedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activities
+ * @property-read int|null $activities_count
  */
 class Role extends Model
 {

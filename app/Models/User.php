@@ -14,6 +14,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -64,10 +66,24 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereSlug($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\MediaLibrary\Models\Media[] $media
  * @property-read null|int $media_count
+ * @property \Illuminate\Support\Carbon|null $registered_at
+ * @property string|null $provider
+ * @property string|null $provider_id
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activities
+ * @property-read int|null $activities_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Passport\Client[] $clients
+ * @property-read int|null $clients_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Like[] $likes
+ * @property-read int|null $likes_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Passport\Token[] $tokens
+ * @property-read int|null $tokens_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereProvider($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereProviderId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereRegisteredAt($value)
  */
-class User extends Authenticatable implements MustVerifyEmail, HasLocalePreference
+class User extends Authenticatable implements MustVerifyEmail, HasLocalePreference, HasMedia
 {
-    use Notifiable, HasRoles, HasSlug, HasApiTokens, LogsActivity;
+    use Notifiable, HasRoles, HasSlug, HasApiTokens, InteractsWithMedia, LogsActivity;
 
     /**
      * The attributes that are mass assignable.
