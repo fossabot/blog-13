@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use Illuminate\Http\Request;
 
 /**
  * Class BlogController
@@ -50,7 +49,7 @@ class BlogController extends Controller
 
 
 
-        $content = $this->post->where('type', '=','sticky')
+        $content = $this->post->where('type', '=', 'sticky')
             ->random(1)
             ->first();
 

@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Http\Response;
 
-
 class CommentController extends Controller
 {
     /**
@@ -37,8 +36,8 @@ class CommentController extends Controller
     /**
      * Remove the specified resource from storage.
      * @param Comment $comment
-     * @return Response
      * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return Response
      */
     public function destroy(Comment $comment): Response
     {

@@ -3,6 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use Faker\Generator as Faker;
+
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -16,7 +17,7 @@ use Faker\Generator as Faker;
 $factory->define(\App\Models\Like::class, function (Faker $faker) {
     return [
         'likeable_type' => $faker->randomElement(['App\Models\Post', 'App\Models\Media', 'App\Models\Comment']),
-        'likeable_id' => mt_rand(1,100),
-        'user_id' => mt_rand(1,100)
+        'likeable_id' => mt_rand(1, 100),
+        'user_id' => mt_rand(1, 100)
     ];
 });

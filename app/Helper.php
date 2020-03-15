@@ -88,11 +88,11 @@ if (! function_exists('dirToArray')) {
          */
         function random_unique($min, $max): int
         {
-            $uniques = array();
-            for($i = 0; $i < 500; $i++) {
+            $uniques = [];
+            for ($i = 0; $i < 500; $i++) {
                 do {
                     $code = mt_rand($min, $max);
-                } while(in_array($code, $uniques));
+                } while (in_array($code, $uniques));
                 $uniques[] = $code;
             }
         }

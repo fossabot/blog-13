@@ -28,8 +28,8 @@ class MediaController extends Controller
     /**
      * Store a newly created resource in storage.
      * @param MediaLibraryRequest $request
-     * @return MediaResource
      * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return MediaResource
      */
     public function store(MediaLibraryRequest $request): MediaResource
     {
@@ -53,8 +53,8 @@ class MediaController extends Controller
     /**
      * Remove the specified resource from storage.
      * @param Media $medium
-     * @return Response
      * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return Response
      */
     public function destroy(Media $medium): Response
     {

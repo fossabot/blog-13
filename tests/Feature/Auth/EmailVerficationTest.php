@@ -17,5 +17,4 @@ class EmailVerficationTest extends TestCase
 
         $response->assertStatus(200);
     }
-
 }

@@ -3,7 +3,6 @@
 
 namespace App\Repositories;
 
-
 use App\Models\Activity;
 use Carbon\Carbon;
 
@@ -38,22 +37,18 @@ class ActivityTraits
         unset($list_changes['updated_at']);
         $old_keys = [];
         $old_value_array = [];
-        if(empty($list_changes)){
+        if (empty($list_changes)) {
             $changes = 'No attribute changed';
-
-        }else{
-
-            if(count($before)>0){
-
-                foreach($before as $key=>$original){
-                    if(array_key_exists($key,$list_changes)){
-
+        } else {
+            if (count($before)>0) {
+                foreach ($before as $key=>$original) {
+                    if (array_key_exists($key, $list_changes)) {
                         $old_keys[$key]=$original;
                     }
                 }
             }
             $old_value_array = $old_keys;
-            $changes = 'Updated with attributes '.implode(', ',array_keys($old_keys)).' with '.implode(', ',array_values($old_keys)).' to '.implode(', ',array_values($list_changes));
+            $changes = 'Updated with attributes '.implode(', ', array_keys($old_keys)).' with '.implode(', ', array_values($old_keys)).' to '.implode(', ', array_values($list_changes));
         }
 
         $properties = [
@@ -118,7 +113,8 @@ class ActivityTraits
      * @param $model
      * @return mixed
      */
-    public function unsetAttributes($model){
+    public function unsetAttributes($model)
+    {
         unset($model->created_at);
         unset($model->updated_at);
         return $model;

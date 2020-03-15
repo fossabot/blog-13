@@ -34,7 +34,7 @@ class HomeController extends Controller
 
         $wiki = $this->post('wiki', 5);
 
-        $content = $this->post->where('type', '=','sticky')
+        $content = $this->post->where('type', '=', 'sticky')
             ->random(1)
             ->first();
 

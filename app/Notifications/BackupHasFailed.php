@@ -2,10 +2,9 @@
 
 namespace App\Notifications;
 
-
-use Spatie\Backup\Notifications\Notifications\BackupHasFailed as BaseNotification;
 use NotificationChannels\PusherPushNotifications\PusherChannel;
 use NotificationChannels\PusherPushNotifications\PusherMessage;
+use Spatie\Backup\Notifications\Notifications\BackupHasFailed as BaseNotification;
 
 class BackupHasFailed extends BaseNotification
 {

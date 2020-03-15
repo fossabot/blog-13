@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('locale/{locale}', function ($locale){
+Route::get('locale/{locale}', function ($locale) {
     Session::put('locale', $locale);
     return redirect()->back();
 });
@@ -49,4 +49,3 @@ Route::get('blog', 'BlogController@index')->name('blog');
 Route::get('blog/{slug}', 'BlogController@show')->name('blog.show');
 Route::get('category/', 'CategoryController@index');
 Route::get('category/{slug}', 'CategoryController@show');
-

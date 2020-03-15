@@ -15,14 +15,14 @@ use Spatie\Permission\Traits\HasRoles;
  *
  * @property int $id
  * @property string $slug
- * @property int|null $parent_id
- * @property int|null $order_column
+ * @property null|int $parent_id
+ * @property null|int $order_column
  * @property string $title
- * @property string|null $subtitle
+ * @property null|string $subtitle
  * @property string $description
- * @property string|null $deleted_at
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property null|string $deleted_at
+ * @property null|\Illuminate\Support\Carbon $created_at
+ * @property null|\Illuminate\Support\Carbon $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category query()
@@ -37,18 +37,18 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereUpdatedAt($value)
  * @mixin \Eloquent
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Category[] $children
- * @property-read int|null $children_count
+ * @property-read \App\Models\Category[]|\Illuminate\Database\Eloquent\Collection $children
+ * @property-read null|int $children_count
  * @property-read \Category $first_child
  * @property-read \Category[]|\Illuminate\Database\Eloquent\Collection $siblings
  * @property-read mixed $url
- * @property-read \App\Models\Category|null $parent
+ * @property-read null|\App\Models\Category $parent
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions
- * @property-read int|null $permissions_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Post[] $posts
- * @property-read int|null $posts_count
+ * @property-read null|int $permissions_count
+ * @property-read \App\Models\Post[]|\Illuminate\Database\Eloquent\Collection $posts
+ * @property-read null|int $posts_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Role[] $roles
- * @property-read int|null $roles_count
+ * @property-read null|int $roles_count
  * @method static bool|null forceDelete()
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Category onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category permission($permissions)

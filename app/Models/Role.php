@@ -11,9 +11,9 @@ use Spatie\Permission\Models\Role as Model;
  *
  * @package App\Models
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions
- * @property-read int|null $permissions_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $users
- * @property-read int|null $users_count
+ * @property-read null|int $permissions_count
+ * @property-read \App\Models\User[]|\Illuminate\Database\Eloquent\Collection $users
+ * @property-read null|int $users_count
  * @method static bool|null forceDelete()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Role newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Role newQuery()
@@ -26,11 +26,11 @@ use Spatie\Permission\Models\Role as Model;
  * @mixin \Eloquent
  * @property int $id
  * @property string $name
- * @property string|null $description
+ * @property null|string $description
  * @property string $guard_name
- * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property null|\Illuminate\Support\Carbon $deleted_at
+ * @property null|\Illuminate\Support\Carbon $created_at
+ * @property null|\Illuminate\Support\Carbon $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Role whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Role whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Role whereDescription($value)

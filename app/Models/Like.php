@@ -12,12 +12,12 @@ use Spatie\Activitylog\Traits\LogsActivity;
  *
  * @property int $id
  * @property int $user_id
- * @property string|null $likeable_type
- * @property int|null $likeable_id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property null|string $likeable_type
+ * @property null|int $likeable_id
+ * @property null|\Illuminate\Support\Carbon $created_at
+ * @property null|\Illuminate\Support\Carbon $updated_at
  * @property-read \App\Models\User $author
- * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $likeable
+ * @property-read \Eloquent|\Illuminate\Database\Eloquent\Model $likeable
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Like newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Like newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Like query()

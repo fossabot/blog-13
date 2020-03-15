@@ -4,6 +4,7 @@
 
 use Carbon\Carbon;
 use Faker\Generator as Faker;
+
 /*
 |--------------------------------------------------------------------------
 | Model Factories

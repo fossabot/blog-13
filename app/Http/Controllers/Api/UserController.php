@@ -36,8 +36,8 @@ class UserController extends Controller
      * Update the specified resource in storage.
      * @param UsersRequest $request
      * @param User $user
-     * @return UserResource
      * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return UserResource
      */
     public function update(UsersRequest $request, User $user): UserResource
     {

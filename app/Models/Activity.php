@@ -12,7 +12,7 @@ class Activity extends Model
      */
     public function getUser(): HasOne
     {
-        return $this->hasOne(User::class,'id','causer_id');
+        return $this->hasOne(User::class, 'id', 'causer_id');
     }
 
     /**
@@ -20,6 +20,6 @@ class Activity extends Model
      */
     public function getSubject(): HasOne
     {
-        return $this->hasOne(User::class,'id','causer_id');
+        return $this->hasOne(User::class, 'id', 'causer_id');
     }
 }

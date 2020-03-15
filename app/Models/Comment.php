@@ -15,11 +15,11 @@ use Spatie\Permission\Traits\HasRoles;
  * App\Models\Comment
  *
  * @property-read \App\Models\User $author
- * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $commentable
+ * @property-read \Eloquent|\Illuminate\Database\Eloquent\Model $commentable
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions
- * @property-read int|null $permissions_count
+ * @property-read null|int $permissions_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Role[] $roles
- * @property-read int|null $roles_count
+ * @property-read null|int $roles_count
  * @method static bool|null forceDelete()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment lastWeek()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment latest()
@@ -35,16 +35,16 @@ use Spatie\Permission\Traits\HasRoles;
  * @mixin \Eloquent
  * @property int $id
  * @property int $user_id
- * @property int|null $parent_id
- * @property string|null $title
+ * @property null|int $parent_id
+ * @property null|string $title
  * @property string $body
- * @property string|null $commentable_type
- * @property int|null $commentable_id
- * @property \Illuminate\Support\Carbon|null $published_at
+ * @property null|string $commentable_type
+ * @property null|int $commentable_id
+ * @property null|\Illuminate\Support\Carbon $published_at
  * @property int $approved
- * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property null|\Illuminate\Support\Carbon $deleted_at
+ * @property null|\Illuminate\Support\Carbon $created_at
+ * @property null|\Illuminate\Support\Carbon $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment whereApproved($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment whereBody($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment whereCommentableId($value)

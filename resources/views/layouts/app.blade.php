@@ -1,35 +1,40 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="@stack('html-class')">
+<!doctype html>
+<html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    @auth
+        <meta name="api-token" content="{{ auth()->user()->api_token }}">
+    @endauth
 
-    <title>{{ config('app.name', 'Siji') }}</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-    {{-- Scripts --}}
-    @stack('head-scripts')
-
-    {{-- Fonts --}}
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-
-    {{-- Styles --}}
-    <link href="{{ mix($stylesheet ?? 'css/admin.css') }}" rel="stylesheet">
-
-    @stack('head-after')
+    <!-- Styles -->
+    <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class="bg-light">
+    <div id="app">
+        @include('shared/navbar')
 
-<div id="app">
+        <div class="container">
+            @include('shared/alerts')
 
-    @yield('content')
+            <div class="row">
+                <div class="col-md-12">
+                    @yield('content')
+                </div>
+            </div>
+        </div>
 
-</div>
+        @include('shared/footer')
+    </div>
 
-@stack('bottom')
-
+    <!-- Scripts -->
+    <script src="{{ mix('/js/app.js') }}"></script>
+    @stack('inline-scripts')
 </body>
 </html>

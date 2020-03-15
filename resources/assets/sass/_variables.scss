@@ -1,19 +1,13 @@
-// Body
-$body-bg: #f8fafc;
+$orange:    hsl(14,  100%, 53%);
+$yellow:    hsl(48,  100%, 67%);
+$green:     hsl(141, 71%,  48%);
+$turquoise: hsl(171, 100%, 41%);
+$cyan:      hsl(204, 86%,  53%);
+$blue:      hsl(217, 71%,  53%);
+$purple:    hsl(271, 100%, 71%);
+$red:       hsl(348, 100%, 61%);
 
-// Typography
-$font-family-sans-serif: 'Nunito', sans-serif;
-$font-size-base: 0.9rem;
-$line-height-base: 1.6;
-
-// Colors
-$blue: #3490dc;
-$indigo: #6574cd;
-$purple: #9561e2;
-$pink: #f66d9b;
-$red: #e3342f;
-$orange: #f6993f;
-$yellow: #ffed4a;
-$green: #38c172;
-$teal: #4dc0b5;
-$cyan: #6cb2eb;
+// Sidebar
+$sidenav-base-width: 250px;
+$sidenav-collapsed-width: 55px;
+$navbar-base-height: 56px;

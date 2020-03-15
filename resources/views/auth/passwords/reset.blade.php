@@ -1,61 +1,44 @@
 @extends('layouts.app')
 
 @section('content')
-    @component('components.full-page-section')
-        @component('components.card')
-            @slot('title')
-                <span class="icon"><i class="mdi mdi-lock-reset"></i></span>
-                <span>{{ __('Reset Password') }}</span>
-            @endslot
+<div class="row justify-content-md-center m-3">
+    <div class="col-md-6">
+        <h1>@lang('auth.reset_password')</h1>
 
-            <form method="POST" action="{{ route('password.update') }}">
-                @csrf
+        {!! Form::open(['route' => 'password.request', 'role' => 'form', 'method' => 'POST']) !!}
+        {!! Form::hidden('token', $token) !!}
+            <div class="form-group">
+                {!! Form::label('email', __('validation.attributes.email'), ['class' => 'control-label']) !!}
+                {!! Form::email('email', $email ?? old('email'), ['class' => 'form-control' . ($errors->has('email') ? ' is-invalid' : ''), 'required']) !!}
 
-                <input type="hidden" name="token" value="{{ $token }}">
+                @error('email')
+                    <span class="invalid-feedback">{{ $message }}</span>
+                @enderror
+            </div>
 
-                <div class="field">
-                    <label class="label" for="email">{{ __('E-Mail Address') }}</label>
-                    <div class="control">
-                        <input id="email" type="email" class="input @error('email') is-danger @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
-                    </div>
-                    @error('email')
-                        <p class="help is-danger" role="alert">
-                            {{ $message }}
-                        </p>
-                    @enderror
-                </div>
+            <div class="form-group">
+                {!! Form::label('password', __('validation.attributes.password'), ['class' => 'control-label']) !!}
+                {!! Form::password('password', ['class' => 'form-control' . ($errors->has('password') ? ' is-invalid' : ''), 'required']) !!}
 
-                <hr>
+                @error('password')
+                    <span class="invalid-feedback">{{ $message }}</span>
+                @enderror
+            </div>
 
-                <div class="field">
-                    <label class="label" for="password">{{ __('Password') }}</label>
-                    <div class="control">
-                        <input id="password" type="password" class="input @error('password') is-danger @enderror" name="password" required autocomplete="new-password" autofocus>
-                    </div>
-                    @error('password')
-                        <p class="help is-danger" role="alert">
-                            {{ $message }}
-                        </p>
-                    @enderror
-                </div>
+            <div class="form-group">
+                {!! Form::label('password_confirmation', __('validation.attributes.password_confirmation'), ['class' => 'control-label']) !!}
+                {!! Form::password('password_confirmation', ['class' => 'form-control' . ($errors->has('password_confirmation') ? ' is-invalid' : ''), 'required']) !!}
 
-                <div class="field">
-                    <label class="label" for="password-confirm">{{ __('Confirm Password') }}</label>
-                    <div class="control">
-                        <input id="password-confirm" type="password" class="input" name="password_confirmation" required autocomplete="new-password" autofocus>
-                    </div>
-                </div>
+                @error('password_confirmation')
+                    <span class="invalid-feedback">{{ $message }}</span>
+                @enderror
+            </div>
 
-                <hr>
+            <div class="form-group">
+                {!! Form::submit(__('auth.reset_password'), ['class' => 'btn btn-primary']) !!}
+            </div>
 
-                <div class="field is-form-action-buttons">
-                    <button type="submit" class="button is-black">
-                        {{ __('Reset Password') }}
-                    </button>
-                </div>
-
-            </form>
-
-        @endcomponent
-    @endcomponent
+        {!! Form::close() !!}
+    </div>
+</div>
 @endsection

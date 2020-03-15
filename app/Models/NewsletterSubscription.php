@@ -12,8 +12,8 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @property int $id
  * @property string $name
  * @property string $email
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property null|\Illuminate\Support\Carbon $created_at
+ * @property null|\Illuminate\Support\Carbon $updated_at
  * @method static bool|null forceDelete()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\NewsletterSubscription newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\NewsletterSubscription newQuery()

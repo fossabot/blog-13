@@ -3,7 +3,6 @@
 
 namespace App\Scopes;
 
-
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
@@ -25,5 +24,4 @@ class PostedScope implements Scope
             $builder->where('published_at', '<=', now());
         }
     }
-
 }

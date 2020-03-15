@@ -25,13 +25,13 @@ use Spatie\Permission\Traits\HasRoles;
  * @property int $id
  * @property string $name
  * @property string $email
- * @property \Illuminate\Support\Carbon|null $email_verified_at
+ * @property null|\Illuminate\Support\Carbon $email_verified_at
  * @property string $password
- * @property string|null $remember_token
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
- * @property-read int|null $notifications_count
+ * @property null|string $remember_token
+ * @property null|\Illuminate\Support\Carbon $created_at
+ * @property null|\Illuminate\Support\Carbon $updated_at
+ * @property-read \Illuminate\Notifications\DatabaseNotification[]|\Illuminate\Notifications\DatabaseNotificationCollection $notifications
+ * @property-read null|int $notifications_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User query()
@@ -45,18 +45,18 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereUpdatedAt($value)
  * @mixin \Eloquent
  * @property string $slug
- * @property string|null $api_token
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Comment[] $comments
- * @property-read int|null $comments_count
+ * @property null|string $api_token
+ * @property-read \App\Models\Comment[]|\Illuminate\Database\Eloquent\Collection $comments
+ * @property-read null|int $comments_count
  * @property-read string $avatar
  * @property-read string $full_name
  * @property-read mixed|string $url
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions
- * @property-read int|null $permissions_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Post[] $posts
- * @property-read int|null $posts_count
+ * @property-read null|int $permissions_count
+ * @property-read \App\Models\Post[]|\Illuminate\Database\Eloquent\Collection $posts
+ * @property-read null|int $posts_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Role[] $roles
- * @property-read int|null $roles_count
+ * @property-read null|int $roles_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User authors()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User lastWeek()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User latest()
@@ -65,9 +65,9 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereApiToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereSlug($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\MediaLibrary\Models\Media[] $media
- * @property-read int|null $media_count
+ * @property-read null|int $media_count
  */
-class User extends Authenticatable implements MustVerifyEmail, HasLocalePreference ,HasMedia
+class User extends Authenticatable implements MustVerifyEmail, HasLocalePreference, HasMedia
 {
     use Notifiable, HasRoles, HasSlug, HasMediaTrait, HasApiTokens, LogsActivity;
 
@@ -152,11 +152,10 @@ class User extends Authenticatable implements MustVerifyEmail, HasLocalePreferen
     public function getAvatarAttribute(): string
     {
         $avatar = \Storage::url("users/{$this->photo}");
-        if (isset($this->avatar)){
+        if (isset($this->avatar)) {
             return $avatar;
-        }else {
-            return \Storage::url("users/avatar.png");
         }
+        return \Storage::url("users/avatar.png");
     }
     /**
      * Scope a query to only include users registered last week.

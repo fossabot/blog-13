@@ -6,7 +6,6 @@ use App\Repositories\Likeable;
 use App\Repositories\ReadTime;
 use App\Repositories\Slug\HasSlug;
 use App\Repositories\Slug\SlugOptions;
-use App\Repositories\Users\Avatar;
 use App\Scopes\PostedScope;
 use Carbon\Carbon;
 use DateTimeInterface;
@@ -18,10 +17,6 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
-use League\CommonMark\Converter;
-use League\CommonMark\DocParser;
-use League\CommonMark\Environment;
-use League\CommonMark\HtmlRenderer;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
@@ -33,7 +28,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @property int $id
  * @property int $category_id
  * @property int $user_id
- * @property int|null $parent_id
+ * @property null|int $parent_id
  * @property string $slug
  * @property string $title
  * @property string $subtitle
@@ -43,9 +38,9 @@ use Spatie\Permission\Traits\HasRoles;
  * @property string $is_draft
  * @property string $type
  * @property string $published_at
- * @property string|null $deleted_at
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property null|string $deleted_at
+ * @property null|\Illuminate\Support\Carbon $created_at
+ * @property null|\Illuminate\Support\Carbon $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post query()
@@ -67,10 +62,10 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereUserId($value)
  * @mixin \Eloquent
  * @property-read \App\Models\Category $category
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Post[] $children
- * @property-read int|null $children_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Comment[] $comments
- * @property-read int|null $comments_count
+ * @property-read \App\Models\Post[]|\Illuminate\Database\Eloquent\Collection $children
+ * @property-read null|int $children_count
+ * @property-read \App\Models\Comment[]|\Illuminate\Database\Eloquent\Collection $comments
+ * @property-read null|int $comments_count
  * @property-read mixed $content
  * @property-read string $date
  * @property-read string $excerpt
@@ -83,15 +78,15 @@ use Spatie\Permission\Traits\HasRoles;
  * @property-read \Illuminate\Database\Eloquent\Collection|\Post[] $siblings
  * @property-read string $time_elapsed
  * @property-read string $url
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Like[] $likes
- * @property-read int|null $likes_count
- * @property-read \App\Models\Post|null $parent
+ * @property-read \App\Models\Like[]|\Illuminate\Database\Eloquent\Collection $likes
+ * @property-read null|int $likes_count
+ * @property-read null|\App\Models\Post $parent
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions
- * @property-read int|null $permissions_count
+ * @property-read null|int $permissions_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Role[] $roles
- * @property-read int|null $roles_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Tag[] $tags
- * @property-read int|null $tags_count
+ * @property-read null|int $roles_count
+ * @property-read \App\Models\Tag[]|\Illuminate\Database\Eloquent\Collection $tags
+ * @property-read null|int $tags_count
  * @property-read \App\Models\User $user
  * @method static bool|null forceDelete()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post lastMonth($limit = 5)
@@ -105,7 +100,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Post withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Post withoutTrashed()
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\MediaLibrary\Models\Media[] $media
- * @property-read int|null $media_count
+ * @property-read null|int $media_count
  */
 class Post extends Model implements HasMedia
 {
