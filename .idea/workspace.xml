@@ -2,36 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="159c7ff8-cdc8-4859-bc91-19c4903a20af" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/config/analytics.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/debug-server.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/image.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/media-library.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/passport.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/PassportClientFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2016_06_01_000001_create_oauth_auth_codes_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2016_06_01_000002_create_oauth_access_tokens_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2016_06_01_000003_create_oauth_refresh_tokens_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2016_06_01_000004_create_oauth_clients_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2016_06_01_000005_create_oauth_personal_access_clients_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2018_08_08_100000_create_telescope_entries_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/passport/AuthorizedClients.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/passport/Clients.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/passport/PersonalAccessTokens.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/media-library/image.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/media-library/placeholderSvg.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/media-library/responsiveImage.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/media-library/responsiveImageWithPlaceholder.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.cloud/docker/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.cloud/nginx/nginx.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/renovate.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Bootstrap.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Feature/Admin/CommentTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Feature/Admin/DashboardTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Feature/Admin/PostTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Feature/Admin/UserTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Feature/Api/V1/Auth/AuthenticateTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Feature/Api/V1/CommentTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Feature/Api/V1/PostLikeTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Feature/Api/V1/PostTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Feature/Api/V1/UserTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Feature/NewsletterSubscriptionTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Feature/PostTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Feature/TokenTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Feature/UserTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Unit/CheckRoleMiddlewareTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Unit/CommentTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Unit/DateHelperTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Unit/LikeableTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Unit/NewsletterMailTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Unit/PostTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Unit/TokenTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Unit/UserTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE/bug_report.md" beforeDir="false" afterPath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE/bug_report.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Media.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Media.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/permission.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/permission.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_29_065618_create_media_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_03_15_210904_create_media_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_03_12_191157_create_activity_log_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_03_15_210904_create_activity_log_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/TestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestCase.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
