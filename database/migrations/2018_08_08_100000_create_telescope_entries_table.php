@@ -26,7 +26,7 @@ class CreateTelescopeEntriesTable extends Migration
     /**
      * Get the migration connection name.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getConnection()
     {
