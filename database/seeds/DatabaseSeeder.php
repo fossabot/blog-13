@@ -15,12 +15,18 @@ class DatabaseSeeder extends Seeder
             PermissionsTableSeeder::class,
             RolesTableSeeder::class,
             UsersTableSeeder::class,
-            CategoriesTableSeeder::class,
-            PostsTableSeeder::class,
-            TagsTableSeeder::class,
-            LikesTableSeeder::class,
+
+        ]);
+
+        if (App::environment(['local', 'staging', 'testing'])) {
+            $this->call([
+                CategoriesTableSeeder::class,
+                PostsTableSeeder::class,
+                TagsTableSeeder::class,
+                LikesTableSeeder::class
+            ]);
 //            ContactsUsTableSeeder::class,
 //            NewsletterSubscriptionTableSeeder::class,
-        ]);
+        }
     }
 }
