@@ -18,8 +18,7 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 use Spatie\Activitylog\Traits\LogsActivity;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\HasMedia;
 use Spatie\Permission\Traits\HasRoles;
 
 /**
@@ -102,9 +101,9 @@ use Spatie\Permission\Traits\HasRoles;
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\MediaLibrary\Models\Media[] $media
  * @property-read null|int $media_count
  */
-class Post extends Model implements HasMedia
+class Post extends Model
 {
-    use HasRoles, HasSlug, SoftDeletes, Likeable, HasMediaTrait, LogsActivity;
+    use HasRoles, HasSlug, SoftDeletes, Likeable, LogsActivity;
     /**
      * @var array
      */

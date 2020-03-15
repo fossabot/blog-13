@@ -14,8 +14,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Activitylog\Traits\LogsActivity;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -67,9 +65,9 @@ use Spatie\Permission\Traits\HasRoles;
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\MediaLibrary\Models\Media[] $media
  * @property-read null|int $media_count
  */
-class User extends Authenticatable implements MustVerifyEmail, HasLocalePreference, HasMedia
+class User extends Authenticatable implements MustVerifyEmail, HasLocalePreference
 {
-    use Notifiable, HasRoles, HasSlug, HasMediaTrait, HasApiTokens, LogsActivity;
+    use Notifiable, HasRoles, HasSlug, HasApiTokens, LogsActivity;
 
     /**
      * The attributes that are mass assignable.

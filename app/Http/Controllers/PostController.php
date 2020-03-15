@@ -2,19 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
     /**
      * Show the application dashboard.
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(Request $request): View
+    public function index(Request $request)
     {
         return view('posts.index', [
             'posts' => Post::search($request->input('q'))
-                ->with('author', 'likes')
-                ->withCount('comments', 'thumbnail', 'likes')
+                ->with('user', 'likes')
+                ->withCount('comments', 'likes')
                 ->latest()
                 ->paginate(20)
         ]);
@@ -22,11 +25,14 @@ class PostController extends Controller
 
     /**
      * Display the specified resource.
+     * @param Request $request
+     * @param Post $post
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show(Request $request, Post $post): View
+    public function show(Request $request, Post $post)
     {
-        $post->comments_count = $post->comments()->count();
-        $post->likes_count = $post->likes()->count();
+        $post = $post->comments()->count();
+        $post = $post->likes()->count();
 
         return view('posts.show', [
             'post' => $post
