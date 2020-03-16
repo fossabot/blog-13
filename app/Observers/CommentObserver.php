@@ -12,6 +12,6 @@ class CommentObserver
      */
     public function creating(Comment $comment): void
     {
-        $comment->posted_at = now();
+        $comment->published_at = now();
     }
 }

@@ -12,6 +12,6 @@ class MediaObserver
      */
     public function creating(Media $medium): void
     {
-        $medium->posted_at = now();
+        $medium->published_at = now();
     }
 }

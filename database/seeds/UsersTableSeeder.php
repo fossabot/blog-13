@@ -23,7 +23,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => Str::random(10),
                 'api_token' => Str::random(32)
             ]);
-//            $user->assignRole('admin');
+            $user->assignRole('admin');
         }
 
         if (App::environment(['local', 'staging', 'testing'])) {

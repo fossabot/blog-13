@@ -20,11 +20,11 @@ class Comment extends JsonResource
         return [
             'id' => $this->id,
             'content' => $this->content,
-            'posted_at' => $this->posted_at->toIso8601String(),
-            'humanized_posted_at' => Carbon::parse($this->posted_at)->diffForHumans(),
-            'author_id' => $this->author_id,
+            'published_at' => $this->published_at->toIso8601String(),
+            'humanized_published_at' => Carbon::parse($this->published_at)->diffForHumans(),
+            'user_id' => $this->user_id,
             'post_id' => $this->post_id,
-            'author_name' => $this->author->name,
+            'author_name' => $this->user->name,
             'author_url' => route('users.show', $this->author),
             'can_delete' => $user ? $user->can('delete', $this->resource) : false
         ];
