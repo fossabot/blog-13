@@ -31,7 +31,7 @@ class UnsubscribeNewsletter implements ShouldQueue
      * @throws \Exception
      * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         $email = $this->email;
 

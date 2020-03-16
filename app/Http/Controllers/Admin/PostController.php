@@ -6,16 +6,22 @@ use App\Http\Requests\Admin\PostRequest;
 use App\Models\MediaLibrary;
 use App\Models\Post;
 use App\Models\User;
-use Illuminate\Http\Request;
+use Exception;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
+use Illuminate\View\View;
 
+/**
+ * Class PostController
+ * @package App\Http\Controllers\Admin
+ */
 class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return View
      */
-    public function index()
+    public function index(): View
     {
         return view('admin.posts.index', [
             'posts' => Post::withCount('comments', 'likes')
@@ -27,10 +33,9 @@ class PostController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return View
      */
-    public function create()
+    public function create(): View
     {
         return view('admin.posts.create', [
             'users' => User::authors()->pluck('name', 'id'),
@@ -41,34 +46,24 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param PostRequest $request
+     * @return RedirectResponse
      */
-    public function store(PostRequest $request)
+    public function store(PostRequest $request): RedirectResponse
     {
         $post = Post::create($request->only(['title', 'content', 'posted_at', 'author_id', 'thumbnail_id']));
 
         return redirect()->route('admin.posts.edit', $post)->withSuccess(__('posts.created'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param Post $post
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return View
      */
-    public function edit(Post $post)
+    public function edit(Post $post): View
     {
         return view('admin.posts.edit', [
             'post' => $post,
@@ -82,26 +77,30 @@ class PostController extends Controller
      *
      * @param PostRequest $request
      * @param Post $post
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
-    public function update(PostRequest $request, Post $post)
+    public function update(PostRequest $request, Post $post): RedirectResponse
     {
         $post->update($request->only(['title', 'content', 'posted_at', 'author_id', 'thumbnail_id']));
 
-        return redirect()->route('admin.posts.edit', $post)->withSuccess(__('posts.updated'));
+        return redirect()
+            ->route('admin.posts.edit', $post)
+            ->withSuccess(__('posts.updated'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param Post $post
-     * @return \Illuminate\Http\Response
-     * @throws \Exception
+     * @return RedirectResponse
+     * @throws Exception
      */
-    public function destroy(Post $post)
+    public function destroy(Post $post): RedirectResponse
     {
         $post->delete();
 
-        return redirect()->route('admin.posts.index')->withSuccess(__('posts.deleted'));
+        return redirect()
+            ->route('admin.posts.index')
+            ->withSuccess(__('posts.deleted'));
     }
 }

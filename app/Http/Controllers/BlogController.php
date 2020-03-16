@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\View\View;
 
 /**
  * Class BlogController
@@ -27,7 +28,7 @@ class BlogController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index(): View
     {
         $blogs = $this->post->take(7);
         return view('blogs.index', compact('blogs'));
@@ -37,7 +38,7 @@ class BlogController extends Controller
      * @param $slug
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show($slug)
+    public function show($slug): View
     {
         $blog = Post::whereSlug($slug)->first();
         dd($blog);

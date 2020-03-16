@@ -9,6 +9,7 @@ class UserObserver
 {
     /**
      * Listen to the User creating event.
+     * @param User $user
      */
     public function creating(User $user): void
     {

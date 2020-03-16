@@ -5,6 +5,10 @@ namespace App\Http\Resources;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+/**
+ * Class Comment
+ * @package App\Http\Resources
+ */
 class Comment extends JsonResource
 {
     /**
@@ -13,7 +17,7 @@ class Comment extends JsonResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function toArray($request)
+    public function toArray($request): array
     {
         $user = \Auth::guard('api')->user();
 

@@ -3,8 +3,16 @@
 
 namespace App\Repositories\Users;
 
+/**
+ * Class Avatar
+ * @package App\Repositories\Users
+ */
 class Avatar
 {
+    /**
+     * @param $model
+     * @return string|null
+     */
     public static function get($model)
     {
         if (empty($model->file)) {

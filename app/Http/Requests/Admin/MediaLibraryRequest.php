@@ -13,7 +13,7 @@ class MediaLibraryRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,10 +21,11 @@ class MediaLibraryRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            //
+            'image' => 'required|image',
+            'name' => 'nullable|string|max:255'
         ];
     }
 }

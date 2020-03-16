@@ -24,6 +24,7 @@ abstract class TestCase extends BaseTestCase
 
     /**
      * Return an admin user
+     * @param array $overrides
      * @return User $admin
      */
     protected function admin($overrides = [])
@@ -38,6 +39,7 @@ abstract class TestCase extends BaseTestCase
 
     /**
      * Return an user
+     * @param array $overrides
      * @return User
      */
     protected function user($overrides = [])
@@ -47,6 +49,8 @@ abstract class TestCase extends BaseTestCase
 
     /**
      * Acting as an admin
+     * @param null $api
+     * @return TestCase
      */
     protected function actingAsAdmin($api = null)
     {
@@ -57,6 +61,8 @@ abstract class TestCase extends BaseTestCase
 
     /**
      * Acting as an user
+     * @param null $api
+     * @return TestCase
      */
     protected function actingAsUser($api = null)
     {

@@ -8,6 +8,7 @@ class PostObserver
 {
     /**
      * Listen to the Post saving event.
+     * @param Post $post
      */
     public function saving(Post $post): void
     {

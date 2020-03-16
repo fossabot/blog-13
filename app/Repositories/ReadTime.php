@@ -11,6 +11,10 @@
 
 namespace App\Repositories;
 
+/**
+ * Class ReadTime
+ * @package App\Repositories
+ */
 class ReadTime
 {
     /**
@@ -62,6 +66,15 @@ class ReadTime
      * @var (int)
      */
     public $wordsPerMinute;
+
+    /**
+     * ReadTime constructor.
+     * @param $content
+     * @param bool $omitSeconds
+     * @param bool $abbreviated
+     * @param int $wordsPerMinute
+     * @throws \Exception
+     */
     public function __construct($content, bool $omitSeconds = true, bool $abbreviated = false, int $wordsPerMinute = 230)
     {
         $this->abbreviated = $abbreviated;
@@ -73,10 +86,18 @@ class ReadTime
         $this->wordsInContent = (int) str_word_count($this->content);
         $this->wordsPerMinute = (int) $wordsPerMinute;
     }
+
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->get();
     }
+
+    /**
+     * @return string
+     */
     public function __invoke()
     {
         return $this->get();

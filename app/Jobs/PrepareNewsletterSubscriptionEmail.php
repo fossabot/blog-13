@@ -10,23 +10,14 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Carbon;
 
+/**
+ * Class PrepareNewsletterSubscriptionEmail
+ * @package App\Jobs
+ */
 class PrepareNewsletterSubscriptionEmail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    /**
-     * Create a new job instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $newsletterSubscriptions = NewsletterSubscription::all();
-
-        $newsletterSubscriptions->each(fn ($newsletterSubscription) => SendNewsletterSubscriptionEmail::dispatch($newsletterSubscription->email));
-
-        PrepareNewsletterSubscriptionEmail::dispatch()->delay(Carbon::tomorrow());
-    }
 
     /**
      * Execute the job.
@@ -35,6 +26,10 @@ class PrepareNewsletterSubscriptionEmail implements ShouldQueue
      */
     public function handle()
     {
-        //
+        $newsletterSubscriptions = NewsletterSubscription::all();
+
+        $newsletterSubscriptions->each(fn ($newsletterSubscription) => SendNewsletterSubscriptionEmail::dispatch($newsletterSubscription->email));
+
+        PrepareNewsletterSubscriptionEmail::dispatch()->delay(Carbon::tomorrow());
     }
 }

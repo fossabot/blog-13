@@ -7,6 +7,10 @@ use App\Models\Comment;
 use App\Models\Post;
 use App\Models\User;
 
+/**
+ * Class ShowDashboard
+ * @package App\Http\Controllers\Admin
+ */
 class ShowDashboard extends Controller
 {
     /**

@@ -3,83 +3,64 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\Api\CommentsRequest;
+use App\Models\Comment;
+use App\Models\User;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
+/**
+ * Class CommentController
+ * @package App\Http\Controllers\Admin
+ */
 class CommentController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Show the application comments index.
      */
-    public function index()
+    public function index(): View
     {
-        //
+        return view('admin.comments.index', [
+            'comments' => Comment::with('post', 'author')->latest()->paginate(50)
+        ]);
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Display the specified resource edit form.
+     * @param Comment $comment
+     * @return View
      */
-    public function create()
+    public function edit(Comment $comment): View
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return view('admin.comments.edit', [
+            'comment' => $comment,
+            'users' => User::pluck('name', 'id')
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param CommentsRequest $request
+     * @param Comment $comment
+     * @return RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(CommentsRequest $request, Comment $comment): RedirectResponse
     {
-        //
+        $comment->update($request->validated());
+
+        return redirect()->route('admin.comments.edit', $comment)->withSuccess(__('comments.updated'));
     }
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Comment $comment
+     * @return RedirectResponse
+     * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(Comment $comment): RedirectResponse
     {
-        //
+        $comment->delete();
+
+        return redirect()->route('admin.comments.index')->withSuccess(__('comments.deleted'));
     }
 }
