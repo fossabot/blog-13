@@ -1,7 +1,7 @@
 <nav class="navbar navbar-dark bg-dark fixed-top navbar-expand-md">
     <div class="container">
         <!-- Branding Image -->
-        {{ link_to_route('home', config('app.name', 'Laravel'), [], ['class' => 'navbar-brand']) }}
+        <a href="{{ route('home') }}" class="navbar-brand">{{ config('blog.title') }}</a>
 
         <!-- Collapsed Hamburger -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,15 +12,15 @@
             @admin
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        {{ link_to_route('admin.dashboard', __('dashboard.dashboard'), [], ['class' => 'nav-link']) }}
+                        <a href="{{ route('admin.dashboard') }}" class="nav-link">{{ __('dashboard.dashboard') }}</a>
                     </li>
                 </ul>
             @endadmin
 
             <ul class="navbar-nav ml-auto">
                 @guest
-                    <li class="nav-item">{{ link_to_route('login', __('auth.login'), [], ['class' => 'nav-link']) }}</li>
-                    <li class="nav-item">{{ link_to_route('register', __('auth.register'), [], ['class' => 'nav-link']) }}</li>
+                    <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">{{  __('auth.login') }}</a></li>
+                    <li class="nav-item"><a href="{{ route('register') }}" class="nav-link">{{ __('auth.register') }}</a></li>
                 @else
                     <li class="nav-item dropdown">
                         <a v-pre href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
