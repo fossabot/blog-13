@@ -42,6 +42,8 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag role($roles, $guard = null)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Tag withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Tag withoutTrashed()
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activities
+ * @property-read int|null $activities_count
  */
 class Tag extends Model
 {

@@ -41,6 +41,8 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\ContactUs withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\Models\ContactUs withoutTrashed()
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activities
+ * @property-read int|null $activities_count
  */
 class ContactUs extends Model
 {

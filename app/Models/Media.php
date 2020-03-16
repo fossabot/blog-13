@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media as Model;
 
 /**
@@ -47,10 +49,23 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media as Model;
  * @mixin \Eloquent
  * @property-read \App\Models\Tag[]|\Illuminate\Database\Eloquent\Collection $tags
  * @property-read null|int $tags_count
+ * @property string|null $uuid
+ * @property string|null $conversions_disk
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activities
+ * @property-read int|null $activities_count
+ * @property-read mixed $extension
+ * @property-read mixed $human_readable_size
+ * @property-read mixed $type
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $model
+ * @method static \Illuminate\Database\Eloquent\Builder|\Spatie\MediaLibrary\MediaCollections\Models\Media ordered()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Media whereConversionsDisk($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Media whereUuid($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\MediaLibrary\MediaCollections\Models\Media[] $media
+ * @property-read int|null $media_count
  */
-class Media extends Model
+class Media extends Model implements HasMedia
 {
-    use LogsActivity;
+    use InteractsWithMedia, LogsActivity;
     /**
      * The attributes that should be mutated to dates.
      *

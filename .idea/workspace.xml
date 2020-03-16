@@ -2,35 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="159c7ff8-cdc8-4859-bc91-19c4903a20af" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.cloud/docker/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.cloud/nginx/nginx.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.github/renovate.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Bootstrap.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Feature/Admin/CommentTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Feature/Admin/DashboardTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Feature/Admin/PostTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Feature/Admin/UserTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Feature/Api/V1/Auth/AuthenticateTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Feature/Api/V1/CommentTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Feature/Api/V1/PostLikeTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Feature/Api/V1/PostTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Feature/Api/V1/UserTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Feature/NewsletterSubscriptionTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Feature/PostTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Feature/TokenTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Feature/UserTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Unit/CheckRoleMiddlewareTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Unit/CommentTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Unit/DateHelperTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Unit/LikeableTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Unit/NewsletterMailTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Unit/PostTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Unit/TokenTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Unit/UserTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE/bug_report.md" beforeDir="false" afterPath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE/bug_report.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/TestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestCase.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.phpstorm.meta.php" beforeDir="false" afterPath="$PROJECT_DIR$/.phpstorm.meta.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_ide_helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/_ide_helper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Activity.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Activity.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Comment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/ContactUs.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ContactUs.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Like.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Like.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Media.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Media.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/MediaLibrary.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/MediaLibrary.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/NewsletterSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/NewsletterSubscription.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Permission.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Permission.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Post.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Role.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Role.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Tag.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Tag.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Token.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Token.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
