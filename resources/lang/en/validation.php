@@ -146,6 +146,43 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes'           => [
+        'name'                  => 'Name',
+        'username'              => 'Username',
+        'email'                 => 'Email',
+        'first_name'            => 'First name',
+        'last_name'             => 'Last name',
+        'current_password'      => 'Current password',
+        'password'              => 'Password',
+        'password_confirmation' => 'Password confirmation',
+        'city'                  => 'City',
+        'country'               => 'Country',
+        'address'               => 'Address',
+        'phone'                 => 'Phone',
+        'mobile'                => 'Mobile',
+        'age'                   => 'Age',
+        'sex'                   => 'Sex',
+        'gender'                => 'Gender',
+        'day'                   => 'Day',
+        'month'                 => 'Month',
+        'year'                  => 'Year',
+        'hour'                  => 'Hour',
+        'minute'                => 'Minute',
+        'second'                => 'Second',
+        'title'                 => 'Title',
+        'content'               => 'Content',
+        'description'           => 'Description',
+        'excerpt'               => 'Excerpt',
+        'date'                  => 'Date',
+        'time'                  => 'Time',
+        'available'             => 'Available',
+        'size'                  => 'Size',
+        'posted_at'             => 'Posted at',
+        'author_id'             => 'Author',
+        'post_id'               => 'Post',
+        'thumbnail_id'          => 'Thumbnail',
+    ],
+
+    'errors' => ":count error :|:count errors : "
 
 ];
