@@ -2,64 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="159c7ff8-cdc8-4859-bc91-19c4903a20af" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/MediaLibraryController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Auth/AuthenticateController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/RoleMiddleware.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/View/Components/Alert.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/View/Components/Card.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CommentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CommentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/MediaController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PermissionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PermissionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PostController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/RoleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/RoleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ShowDashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ShowDashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/TagController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/TagController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/ConfirmPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ConfirmPasswordController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/ForgotPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ForgotPasswordController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/ResetPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ResetPasswordController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BlogController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BlogController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/CategoryRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/CategoryRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/CommentRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/CommentRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/MediaLibraryRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/MediaLibraryRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/PasswordUpdateRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/PasswordUpdateRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Comment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Media.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Media.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Post.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Role.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Role.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/PrepareNewsletterSubscriptionEmail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/PrepareNewsletterSubscriptionEmail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/UnsubscribeNewsletter.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/UnsubscribeNewsletter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Observers/PostObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Observers/PostObserver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Observers/UserObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Observers/UserObserver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Policies/CommentPolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Policies/CommentPolicy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Policies/MediaPolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Policies/MediaPolicy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Policies/PostPolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Policies/PostPolicy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Policies/UserPolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Policies/UserPolicy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/BladeServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/BladeServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/HorizonServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/HorizonServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/ObserverServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/ObserverServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/TelescopeServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/TelescopeServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/ReadTime.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/ReadTime.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/Slug/SlugOptions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/Slug/SlugOptions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/Users/Avatar.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/Users/Avatar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/activitylog.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/activitylog.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/debugbar.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/ide-helper.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/media-library.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/medialibrary.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/telescope.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/tinker.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/trustedproxy.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -459,10 +402,11 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="92" y="92" width="1182" height="544" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1366.728@0.0.1366.728" timestamp="1584306105099" />
-    <state x="377" y="96" width="612" height="536" key="find.popup" timestamp="1584342363917">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="1743" y="96" width="612" height="536" key="find.popup" timestamp="1584430692791">
+      <screen x="1366" y="0" width="1366" height="728" />
     </state>
     <state x="377" y="96" width="612" height="536" key="find.popup/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1584342363917" />
+    <state x="1743" y="96" width="612" height="536" key="find.popup/0.0.1366.728/1366.0.1366.728@1366.0.1366.728" timestamp="1584430692791" />
     <state x="377" y="96" width="612" height="536" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1584306518955" />
     <state x="1772" y="6" key="refactoring.ChangeSignatureDialog" timestamp="1584385990791">
       <screen x="1366" y="0" width="1366" height="728" />
