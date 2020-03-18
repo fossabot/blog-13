@@ -72,7 +72,7 @@ class Comment extends Model implements HasMedia
         'user_id',
         'parent_id',
         'title',
-        'body',
+        'content',
         'published_at'
     ];
 
@@ -110,7 +110,7 @@ class Comment extends Model implements HasMedia
     /**
      * Return the comment's author
      */
-    public function author(): BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
     }

@@ -39,6 +39,9 @@ Route::prefix('v1')->namespace('Api')->group(function () {
     Route::post('/authenticate', 'Auth\AuthenticateController@authenticate')->name('authenticate');
 
     // Comments
+//    Route::apiResource('posts.comments', function (App\Models\Post $post) {
+//        return $post->id;
+//    });
     Route::apiResource('posts.comments', 'PostCommentController')->only('index');
     Route::apiResource('users.comments', 'UserCommentController')->only('index');
     Route::apiResource('comments', 'CommentController')->only(['index', 'show']);

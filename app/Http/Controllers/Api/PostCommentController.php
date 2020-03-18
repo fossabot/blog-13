@@ -22,7 +22,10 @@ class PostCommentController extends Controller
     public function index(Request $request, Post $post): ResourceCollection
     {
         return CommentResource::collection(
-            $post->comments()->with('users')->latest()->paginate($request->input('limit', 20))
+            $post->comments()->with('user')
+                ->whereApproved(true)
+                ->latest()
+                ->paginate($request->input('limit', 20))
         );
     }
 
@@ -32,13 +35,10 @@ class PostCommentController extends Controller
      * @param Post $post
      * @return CommentResource
      */
-    public function store(CommentsRequest $request, Post $post): CommentResource
+    public function store(Request $request, Post $post): CommentResource
     {
         $comment = new CommentResource(
-            Auth::user()->comments()->create([
-                'post_id' => $post->id,
-                'content' => $request->input('content')
-            ])
+            Auth::user()->comments()->create($request->all())
         );
 
         broadcast(new CommentPosted($comment, $post))->toOthers();

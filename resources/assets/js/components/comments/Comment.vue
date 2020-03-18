@@ -19,7 +19,7 @@
         {{ comment.content }}
       </p>
       <p class="card-text">
-        <small class="text-muted">{{ comment.humanized_posted_at }}</small>
+        <small class="text-muted">{{ comment.humanized_published_at }}</small>
       </p>
     </div>
   </div>

@@ -31,8 +31,9 @@ class PostController extends Controller
      */
     public function show(Request $request, Post $post)
     {
-        $post = $post->comments()->count();
-        $post = $post->likes()->count();
+//        dd($post->likes()->count());
+//        $post->comments_count = $post->comments()->count();
+//        $post->likes_count = $post->likes()->count();
 
         return view('posts.show', [
             'post' => $post

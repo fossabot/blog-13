@@ -326,6 +326,7 @@ class Post extends Model
 
     /**
      * @return ReadTime
+     * @throws \Exception
      */
     public function getReadTimeAttribute()
     {

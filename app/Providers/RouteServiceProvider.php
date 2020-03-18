@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Media;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,7 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot();
+        Route::model('medium', Media::class);
     }
 
     /**
@@ -58,7 +60,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function mapWebRoutes()
+    protected function mapWebRoutes(): void
     {
         Route::middleware('web')
             ->namespace($this->namespace)
@@ -86,7 +88,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function mapApiRoutes()
+    protected function mapApiRoutes(): void
     {
         Route::prefix('api')
             ->middleware('api')

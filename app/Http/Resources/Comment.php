@@ -29,7 +29,8 @@ class Comment extends JsonResource
             'user_id' => $this->user_id,
             'post_id' => $this->post_id,
             'author_name' => $this->user->name,
-            'author_url' => route('users.show', $this->author),
+            'author_url' => route('users.show', $this->user),
+            'approved' => $this->approved,
             'can_delete' => $user ? $user->can('delete', $this->resource) : false
         ];
     }

@@ -19,7 +19,7 @@ $factory->define(\App\Models\Comment::class, function (Faker $faker) {
     return [
         'user_id' => mt_rand(1, 10), //factory(\App\Models\User::class)->create()->id,
         'title' => $faker->sentence,
-        'body' => \Str::limit($faker->sentence(mt_rand(3, 5))),
+        'content' => \Str::limit($faker->sentence(mt_rand(3, 5))),
         'published_at' => Carbon::now(),
         'approved' => $faker->boolean
     ];

@@ -13,7 +13,7 @@ class CommentsRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,16 @@ class CommentsRequest extends FormRequest
      */
     public function rules()
     {
+
+        $polymorphExistsRule = '';
+        if ($this->has('commentable_type')) {
+            $polymorphExistsRule .= '|model_exists:' . $this->commentable_type . ',id';
+        }
+
         return [
-            //
+            'content' => 'required',
+            'commentable_type' => 'required_with:comentable_id',
+            'comentable_id' => 'required_with:commentable_type' . $polymorphExistsRule,
         ];
     }
 }
