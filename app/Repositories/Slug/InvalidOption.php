@@ -3,11 +3,13 @@
 
 namespace App\Repositories\Slug;
 
+use Exception;
+
 /**
  * Class InvalidOption
  * @package App\Repositories\Slug
  */
-class InvalidOption extends \Exception
+class InvalidOption extends Exception
 {
     /**
      * @return InvalidOption

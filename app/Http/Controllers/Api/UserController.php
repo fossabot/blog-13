@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UsersRequest;
 use App\Http\Resources\User as UserResource;
 use App\Models\User;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Facades\Hash;
@@ -36,7 +37,7 @@ class UserController extends Controller
      * Update the specified resource in storage.
      * @param UsersRequest $request
      * @param User $user
-     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @throws AuthorizationException
      * @return UserResource
      */
     public function update(UsersRequest $request, User $user): UserResource

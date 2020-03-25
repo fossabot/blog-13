@@ -2,10 +2,18 @@
 
 namespace App\Http\Resources;
 
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
  * Class User
+ * @property mixed provider
+ * @property integer provider_id
+ * @property integer registered_at
+ * @property mixed roles
+ * @property mixed email
+ * @property integer id
+ * @property string name
  * @package App\Http\Resources
  */
 class User extends JsonResource
@@ -13,7 +21,7 @@ class User extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Request  $request
      * @return array
      */
     public function toArray($request): array

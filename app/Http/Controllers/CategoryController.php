@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\View\View;
 
 /**
  * Class CategoryController
@@ -11,9 +13,9 @@ use App\Models\Category;
 class CategoryController extends Controller
 {
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
-    public function index()
+    public function index(): View
     {
         $categories = Category::with(['posts.user', 'posts.tags'])->get();
         return view('blogs.categories.index', compact('categories'));
@@ -21,9 +23,9 @@ class CategoryController extends Controller
 
     /**
      * @param $slug
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
-    public function show($slug)
+    public function show($slug): View
     {
         $category = Category::whereSlug($slug)->firstOrFail();
 //        dd($category);

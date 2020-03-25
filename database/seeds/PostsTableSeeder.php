@@ -2,6 +2,9 @@
 
 use Illuminate\Database\Seeder;
 
+/**
+ * Class PostsTableSeeder
+ */
 class PostsTableSeeder extends Seeder
 {
     /**

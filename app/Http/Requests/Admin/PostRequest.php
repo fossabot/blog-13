@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Admin;
 
+use Auth;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PostRequest extends FormRequest
@@ -18,6 +20,17 @@ class PostRequest extends FormRequest
     }
 
     /**
+     * Prepare the data for validation.
+     */
+    protected function prepareForValidation(): void
+    {
+
+        $this->merge([
+            'published_at' => Carbon::parse($this->input('published_at'))
+        ]);
+    }
+
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array
@@ -28,13 +41,13 @@ class PostRequest extends FormRequest
             'title' => ['required', 'string', 'max:255'],
             'subtitle' => ['string', 'max:255'],
             'content' => ['required'],
-            'publish_date' => ['required', 'date'],
-            'publish_time' => ['required']
+//            'publish_date' => ['required', 'date'],
+//            'publish_time' => ['required']
         ];
     }
 
     /**
-     * @throws \Exception
+     * @throws Exception
      * @return array
      */
     public function postFillData()
@@ -46,10 +59,11 @@ class PostRequest extends FormRequest
             'title' => $this->title,
             'subtitle' => $this->subtitle,
             'content_raw' => $this->get('content'),
+            'user_id' => $this->user ?: Auth::id(),
             'category_id' => $this->category,
-            'type' => $this->type,
+            'type' => $this->type ?: 'blog',
             'image' => $this->image,
-            'meta_description' => $this->meta_description,
+            'meta_description' => $this->meta_description ?: 'meta' .$this->title,
             'is_draft' => (bool)$this->is_draft,
             'published_at' => $published_at
         ];

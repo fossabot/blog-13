@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PostRequest;
 use App\Http\Resources\Post as PostResource;
 use App\Models\Post;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Http\Response;
@@ -28,7 +29,7 @@ class PostController extends Controller
      * Update the specified resource in storage.
      * @param PostRequest $request
      * @param Post $post
-     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @throws AuthorizationException
      * @return PostResource
      */
     public function update(PostRequest $request, Post $post): PostResource
@@ -43,7 +44,7 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      * @param PostRequest $request
-     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @throws AuthorizationException
      * @return PostResource
      */
     public function store(PostRequest $request): PostResource
@@ -68,7 +69,7 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      * @param Post $post
-     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @throws AuthorizationException
      * @return Response
      */
     public function destroy(Post $post): Response

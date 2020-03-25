@@ -11,6 +11,8 @@
 
 namespace App\Repositories;
 
+use Exception;
+
 /**
  * Class ReadTime
  * @package App\Repositories
@@ -22,50 +24,50 @@ class ReadTime
      *
      * @var bool
      */
-    public $abbreviated;
+    public bool $abbreviated;
     /**
      * The string content to evaluate
      *
      * @var string
      */
-    public $content;
+    public string $content;
     /**
      * An array containing the read time estimate data
      * @var array
      */
-    protected $estimate;
+    protected array $estimate;
     /**
      * The direction the language reads. Default ltr is true.
      * @var bool
      */
-    public $ltr;
+    public bool $ltr;
     /**
      * Omit seconds from being displayed in the read time estimate
      * @var bool
      */
-    public $omitSeconds;
+    public bool $omitSeconds;
     /**
      * Whether or not only the time should be displayed
      * @var bool
      */
-    public $timeOnly;
+    public bool $timeOnly;
     /**
      * An array containing all translation values
      *
      * @var array
      */
-    public $translations;
+    public array $translations;
     /**
      * The sum total number of words in the content
      *
      * @var int
      */
-    protected $wordsInContent;
+    protected int $wordsInContent;
     /**
      * The average words read per minute
-     * @var (int)
+     * @var int (int)
      */
-    public $wordsPerMinute;
+    public int $wordsPerMinute;
 
     /**
      * ReadTime constructor.
@@ -73,7 +75,7 @@ class ReadTime
      * @param bool $omitSeconds
      * @param bool $abbreviated
      * @param int $wordsPerMinute
-     * @throws \Exception
+     * @throws Exception
      */
     public function __construct($content, bool $omitSeconds = true, bool $abbreviated = false, int $wordsPerMinute = 230)
     {
@@ -90,7 +92,7 @@ class ReadTime
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->get();
     }
@@ -98,7 +100,7 @@ class ReadTime
     /**
      * @return string
      */
-    public function __invoke()
+    public function __invoke(): string
     {
         return $this->get();
     }
@@ -109,7 +111,7 @@ class ReadTime
      * @param bool $abbreviated
      * @return ReadTime
      */
-    public function abbreviated($abbreviated = true)
+    public function abbreviated($abbreviated = true): self
     {
         $this->abbreviated = $abbreviated;
         return $this;
@@ -260,13 +262,13 @@ class ReadTime
      * Parse the given content so it can be output as a read time
      *
      * @param mixed $receivedContent String or array of content
-     * @throws \Exception
+     * @throws Exception
      * @return string
      */
     protected function parseContent($receivedContent)
     {
         if ($this->invalidContent($receivedContent)) {
-            throw new \Exception('Content must be type of array or string');
+            throw new Exception('Content must be type of array or string');
         }
         if (is_array($receivedContent)) {
             $content = '';
@@ -367,7 +369,7 @@ class ReadTime
      * @param int $wordsPerMinute
      * @return ReadTime
      */
-    public function wpm(int $wordsPerMinute)
+    public function wpm(int $wordsPerMinute): self
     {
         $this->wordsPerMinute = $wordsPerMinute;
         return $this;

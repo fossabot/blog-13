@@ -4,6 +4,9 @@ use App\Models\Permission;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\PermissionRegistrar;
 
+/**
+ * Class PermissionsTableSeeder
+ */
 class PermissionsTableSeeder extends Seeder
 {
     /**
@@ -25,6 +28,9 @@ class PermissionsTableSeeder extends Seeder
         }
     }
 
+    /**
+     * @return array
+     */
     private static function defaultPermissions()
     {
         return [

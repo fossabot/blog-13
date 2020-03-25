@@ -4,13 +4,14 @@ namespace Tests\Browser;
 
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
+use Throwable;
 
 class ExampleTest extends DuskTestCase
 {
     /**
      * A basic browser test example.
      *
-     * @throws \Throwable
+     * @throws Throwable
      * @return void
      */
     public function testBasicExample()

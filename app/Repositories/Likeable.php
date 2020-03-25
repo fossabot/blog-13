@@ -38,7 +38,7 @@ trait Likeable
     /**
      * Create a like if it does not exist yet.
      *
-     * @return \Illuminate\Database\Eloquent\Model
+     * @return Model
      */
     public function like(): Model
     {
@@ -66,6 +66,10 @@ trait Likeable
      */
     public function dislike()
     {
-        return $this->likes()->where('user_id', auth()->id())->get()->each->delete();
+        return $this->likes()
+            ->where('user_id', auth()->id())
+            ->get()
+            ->each
+            ->delete();
     }
 }

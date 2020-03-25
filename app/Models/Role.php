@@ -2,7 +2,11 @@
 
 namespace App\Models;
 
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Carbon;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Permission\Models\Role as Model;
 
@@ -10,35 +14,35 @@ use Spatie\Permission\Models\Role as Model;
  * Class Role
  *
  * @package App\Models
- * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions
+ * @property-read Collection|\Spatie\Permission\Models\Permission[] $permissions
  * @property-read null|int $permissions_count
- * @property-read \App\Models\User[]|\Illuminate\Database\Eloquent\Collection $users
+ * @property-read User[]|Collection $users
  * @property-read null|int $users_count
  * @method static bool|null forceDelete()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Role newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Role newQuery()
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Role onlyTrashed()
- * @method static \Illuminate\Database\Eloquent\Builder|\Spatie\Permission\Models\Role permission($permissions)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Role query()
+ * @method static Builder|Role newModelQuery()
+ * @method static Builder|Role newQuery()
+ * @method static \Illuminate\Database\Query\Builder|Role onlyTrashed()
+ * @method static Builder|Model permission($permissions)
+ * @method static Builder|Role query()
  * @method static bool|null restore()
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Role withTrashed()
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Role withoutTrashed()
- * @mixin \Eloquent
+ * @method static \Illuminate\Database\Query\Builder|Role withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|Role withoutTrashed()
+ * @mixin Eloquent
  * @property int $id
  * @property string $name
  * @property null|string $description
  * @property string $guard_name
- * @property null|\Illuminate\Support\Carbon $deleted_at
- * @property null|\Illuminate\Support\Carbon $created_at
- * @property null|\Illuminate\Support\Carbon $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Role whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Role whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Role whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Role whereGuardName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Role whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Role whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Role whereUpdatedAt($value)
- * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activities
+ * @property null|Carbon $deleted_at
+ * @property null|Carbon $created_at
+ * @property null|Carbon $updated_at
+ * @method static Builder|Role whereCreatedAt($value)
+ * @method static Builder|Role whereDeletedAt($value)
+ * @method static Builder|Role whereDescription($value)
+ * @method static Builder|Role whereGuardName($value)
+ * @method static Builder|Role whereId($value)
+ * @method static Builder|Role whereName($value)
+ * @method static Builder|Role whereUpdatedAt($value)
+ * @property-read Collection|\Spatie\Activitylog\Models\Activity[] $activities
  * @property-read int|null $activities_count
  */
 class Role extends Model

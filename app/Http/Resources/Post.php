@@ -2,10 +2,17 @@
 
 namespace App\Http\Resources;
 
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
  * Class Post
+ * @property mixed user_id
+ * @property mixed published_at
+ * @property mixed content
+ * @property mixed slug
+ * @property mixed title
+ * @property mixed id
  * @package App\Http\Resources
  */
 class Post extends JsonResource
@@ -13,7 +20,7 @@ class Post extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Request  $request
      * @return array
      */
     public function toArray($request): array

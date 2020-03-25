@@ -9,11 +9,12 @@
     "license": "MIT",
     "require": {
         "php": "^7.4",
+        "ext-json": "*",
         "ext-pdo": "*",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
-        "laravel/framework": "^7.1",
+        "laravel/framework": "^7.2",
         "laravel/passport": "^8.4",
         "laravel/socialite": "^4.3",
         "laravel/tinker": "^2.0",
@@ -23,9 +24,8 @@
         "spatie/laravel-activitylog": "^3.13",
         "spatie/laravel-analytics": "^3.9",
         "spatie/laravel-backup": "^6.8",
-        "spatie/laravel-medialibrary": "^8.0",
-        "spatie/laravel-permission": "^3.11",
-        "ext-json": "*"
+        "spatie/laravel-medialibrary": "^8.0.0",
+        "spatie/laravel-permission": "^3.11"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",

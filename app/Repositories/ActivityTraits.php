@@ -4,6 +4,7 @@
 namespace App\Repositories;
 
 use App\Models\Activity;
+use Auth;
 use Carbon\Carbon;
 
 class ActivityTraits
@@ -17,7 +18,7 @@ class ActivityTraits
     public function logCreatedActivity($logModel, $changes, $request)
     {
         $activity = activity()
-            ->causedBy(\Auth::user())
+            ->causedBy(Auth::user())
             ->performedOn($logModel)
             ->withProperties(['attributes'=>$request])
             ->log($changes);
@@ -57,10 +58,10 @@ class ActivityTraits
         ];
 
         $activity = activity()
-            ->causedBy(\Auth::user())
+            ->causedBy(Auth::user())
             ->performedOn($list)
             ->withProperties($properties)
-            ->log($changes.' made by '.\Auth::user()->name);
+            ->log($changes.' made by '. Auth::user()->name);
 
         return true;
     }
@@ -79,7 +80,7 @@ class ActivityTraits
         ];
 
         $activity = activity()
-            ->causedBy(\Auth::user())
+            ->causedBy(Auth::user())
             ->performedOn($list)
             ->withProperties($properties)
             ->log($changeLogs);
@@ -98,10 +99,10 @@ class ActivityTraits
             'attributes' =>['name'=>$user->username,'description'=>'Login into the system by '.$updated_at]
         ];
 
-        $changes = 'User '.$user->username.' loged in into the system';
+        $changes = 'User '.$user->username.' logged in into the system';
 
         $activity = activity()
-            ->causedBy(\Auth::user())
+            ->causedBy(Auth::user())
             ->performedOn($user)
             ->withProperties($properties)
             ->log($changes);

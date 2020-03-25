@@ -2,7 +2,11 @@
 
 namespace App\Models;
 
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Collection;
 use Spatie\Activitylog\Models\Activity as Model;
 
 /**
@@ -15,34 +19,37 @@ use Spatie\Activitylog\Models\Activity as Model;
  * @property string|null $subject_type
  * @property int|null $causer_id
  * @property string|null $causer_type
- * @property \Illuminate\Support\Collection|null $properties
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $causer
+ * @property Collection|null $properties
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Model|Eloquent $causer
  * @property-read mixed $changes
- * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $subject
- * @method static \Illuminate\Database\Eloquent\Builder|\Spatie\Activitylog\Models\Activity causedBy(\Illuminate\Database\Eloquent\Model $causer)
- * @method static \Illuminate\Database\Eloquent\Builder|\Spatie\Activitylog\Models\Activity forSubject(\Illuminate\Database\Eloquent\Model $subject)
- * @method static \Illuminate\Database\Eloquent\Builder|\Spatie\Activitylog\Models\Activity inLog($logNames)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Activity newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Activity newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Activity query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Activity whereCauserId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Activity whereCauserType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Activity whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Activity whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Activity whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Activity whereLogName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Activity whereProperties($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Activity whereSubjectId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Activity whereSubjectType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Activity whereUpdatedAt($value)
- * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Model|Eloquent $subject
+ * @method static Builder|Model causedBy(\Illuminate\Database\Eloquent\Model $causer)
+ * @method static Builder|Model forSubject(\Illuminate\Database\Eloquent\Model $subject)
+ * @method static Builder|Model inLog($logNames)
+ * @method static Builder|Activity newModelQuery()
+ * @method static Builder|Activity newQuery()
+ * @method static Builder|Activity query()
+ * @method static Builder|Activity whereCauserId($value)
+ * @method static Builder|Activity whereCauserType($value)
+ * @method static Builder|Activity whereCreatedAt($value)
+ * @method static Builder|Activity whereDescription($value)
+ * @method static Builder|Activity whereId($value)
+ * @method static Builder|Activity whereLogName($value)
+ * @method static Builder|Activity whereProperties($value)
+ * @method static Builder|Activity whereSubjectId($value)
+ * @method static Builder|Activity whereSubjectType($value)
+ * @method static Builder|Activity whereUpdatedAt($value)
+ * @mixin Eloquent
+ * @method static Builder|Model forEvent($event)
+ * @property string|null $event
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Activity whereEvent($value)
  */
 class Activity extends Model
 {
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return HasOne
      */
     public function getUser(): HasOne
     {
@@ -50,7 +57,7 @@ class Activity extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return HasOne
      */
     public function getSubject(): HasOne
     {

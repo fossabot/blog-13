@@ -3,28 +3,38 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 
 /**
  * Class HomeController
  * @package App\Http\Controllers
  */
-class HomeController extends Controller
+final class HomeController extends Controller
 {
+    /**
+     * @var
+     */
     protected $post;
 
+    /**
+     * HomeController constructor.
+     * @param Post $post
+     */
     public function __construct(Post $post)
     {
         $this->post = $post->with(['user', 'category'])
-            ->whereIsDraft(0)
+            ->where('is_draft',0)
             ->get();
     }
 
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return Renderable
      */
-    public function index()
+    public function index(): Renderable
     {
         $slides = $this->post('slide', 10);
         $tutorials = $this->post('tutorial', 3);
@@ -38,7 +48,6 @@ class HomeController extends Controller
             ->random(1)
             ->first();
 
-//        dd($slides);
 
         return view('frontpage', [
             'blogs' => $blogs,
@@ -52,7 +61,7 @@ class HomeController extends Controller
     /**
      * @param string $value
      * @param int $limit
-     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|Post[]
+     * @return Builder[]|Collection|Post[]
      */
     private function post(string $value, int $limit)
     {

@@ -34,7 +34,7 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot();
-        Route::model('medium', Media::class);
+//        Route::model('medium', Media::class);
     }
 
     /**

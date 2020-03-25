@@ -4,27 +4,32 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactRequest;
 use App\Models\ContactUs;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 /**
  * Class ContactUsController
  * @package App\Http\Controllers
  */
-class ContactUsController extends Controller
+final class ContactUsController extends Controller
 {
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
-    public function contactUs()
+    public function contactUs(): View
     {
         return view('contact');
     }
 
     /**
+     * Save request from Contact Us Form
+     *
      * @param ContactRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
-    public function store(ContactRequest $request)
+    public function store(ContactRequest $request): RedirectResponse
     {
         ContactUs::create($request->all());
 

@@ -3,13 +3,17 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Admin\PostRequest;
-use App\Models\MediaLibrary;
+use App\Jobs\PostFormField;
+use App\Models\Category;
+use App\Models\Media;
 use App\Models\Post;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
+use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 
 /**
  * Class PostController
@@ -37,10 +41,14 @@ class PostController extends Controller
      */
     public function create(): View
     {
-        return view('admin.posts.create', [
-            'users' => User::authors()->pluck('name', 'id'),
-            'media' => MediaLibrary::first()->media()->get()->pluck('name', 'id')
-        ]);
+        $data =  $this->dispatch(new PostFormField());
+        dd($data);
+        return view('admin.posts.create', $data );
+//        return view('admin.posts.create', [
+//            'users' => User::authors()->pluck('name', 'id'),
+//            'categories' => Category::pluck('title', 'id'),
+//            'media' => Media::pluck('name', 'id')
+//        ]);
     }
 
     /**
@@ -48,10 +56,17 @@ class PostController extends Controller
      *
      * @param PostRequest $request
      * @return RedirectResponse
+     * @throws Exception
      */
     public function store(PostRequest $request): RedirectResponse
     {
-        $post = Post::create($request->only(['title', 'content', 'posted_at', 'author_id', 'thumbnail_id']));
+//        dd($request->all());
+        $post = Post::create($request->postFillData());
+        //Store Image
+        if($request->hasFile('image') && $request->file('image')->isValid()){
+            $post->addMediaFromRequest('image')->toMediaCollection('images');
+            dd($post);
+        }
 
         return redirect()->route('admin.posts.edit', $post)->withSuccess(__('posts.created'));
     }
@@ -65,10 +80,12 @@ class PostController extends Controller
      */
     public function edit(Post $post): View
     {
+//        $this->dispatch()
         return view('admin.posts.edit', [
             'post' => $post,
             'users' => User::authors()->pluck('name', 'id'),
-            'media' => MediaLibrary::first()->media()->get()->pluck('name', 'id')
+            'categories' => Category::pluck('title', 'id'),
+            'media' => Media::pluck('name', 'id')
         ]);
     }
 
@@ -78,10 +95,17 @@ class PostController extends Controller
      * @param PostRequest $request
      * @param Post $post
      * @return RedirectResponse
+     * @throws FileDoesNotExist
+     * @throws FileIsTooBig
      */
-    public function update(PostRequest $request, Post $post): RedirectResponse
+    public function update(Request $request, Post $post): RedirectResponse
     {
-        $post->update($request->only(['title', 'content', 'posted_at', 'author_id', 'thumbnail_id']));
+//        $post->update($request->postFillData());
+        dd($request->hasFile('image'));
+        if($request->hasFile('image') && $request->file('image')->isValid()){
+            $post->addMediaFromRequest('image')->toMediaCollection('images');
+            dd($post);
+        }
 
         return redirect()
             ->route('admin.posts.edit', $post)

@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Token;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
-class UserTokenController extends Controller
+final class UserTokenController extends Controller
 {
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit()
+    public function edit(): View
     {
         $user = auth()->user();
 
@@ -19,9 +21,12 @@ class UserTokenController extends Controller
     }
 
     /**
-     * Generate a personnal access token for the specified resource in storage.
+     * Generate a personal access token for the specified resource in storage.
+     *
+     * @return RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function update()
+    public function update(): RedirectResponse
     {
         $user = auth()->user();
 
@@ -31,6 +36,8 @@ class UserTokenController extends Controller
             'api_token' => Token::generate()
         ]);
 
-        return redirect()->route('users.token')->withSuccess(__('tokens.updated'));
+        return redirect()
+            ->route('users.token')
+            ->withSuccess(__('tokens.updated'));
     }
 }

@@ -2,24 +2,34 @@
 
 namespace App\Http\Resources;
 
+use Auth;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
  * Class Comment
+ * @property int user_id
+ * @property int post_id
+ * @property mixed user
+ * @property boolean approved
+ * @property mixed published_at
+ * @property mixed content
+ * @property int id
  * @package App\Http\Resources
  */
 class Comment extends JsonResource
 {
+
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Request  $request
      * @return array
      */
     public function toArray($request): array
     {
-        $user = \Auth::guard('api')->user();
+        $user = Auth::guard('api')->user();
 
         return [
             'id' => $this->id,

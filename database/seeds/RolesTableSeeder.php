@@ -4,6 +4,9 @@ use App\Models\Permission;
 use App\Models\Role;
 use Illuminate\Database\Seeder;
 
+/**
+ * Class RolesTableSeeder
+ */
 class RolesTableSeeder extends Seeder
 {
     /**

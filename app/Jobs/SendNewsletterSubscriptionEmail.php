@@ -9,12 +9,20 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Mail;
 
+/**
+ * Class SendNewsletterSubscriptionEmail
+ * @package App\Jobs
+ */
 class SendNewsletterSubscriptionEmail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $email;
+    /**
+     * @var string
+     */
+    protected string $email;
 
     /**
      * Create a new job instance.
@@ -36,6 +44,6 @@ class SendNewsletterSubscriptionEmail implements ShouldQueue
         $posts = Post::lastMonth()->get();
         $email = $this->email;
 
-        \Mail::to($this->email)->send(new Newsletter($posts, $email));
+        Mail::to($this->email)->send(new Newsletter($posts, $email));
     }
 }

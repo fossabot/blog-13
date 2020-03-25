@@ -13,8 +13,10 @@ namespace App\Repositories;
 
 use App\Models\Visit;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use ReflectionClass;
+use ReflectionException;
 
 trait Popular
 {
@@ -22,8 +24,8 @@ trait Popular
      * Registrates a visit into the database if it does not exist on current day
      * (Registers unique visitors)
      * @param string $ip
-     * @throws \ReflectionException
-     * @return \Illuminate\Database\Eloquent\Model
+     * @throws ReflectionException
+     * @return Model
      */
     public function visit($ip = '')
     {

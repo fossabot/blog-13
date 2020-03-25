@@ -15,11 +15,15 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .sass('resources/assets/sass/app.scss', 'public/css')
 
 mix.js('resources/assets/js/admin.js', 'public/js')
-    .sass('resources/assets/sass/admin.scss', 'public/css')
+    .sass('resources/assets/sass/admin.scss', 'public/css');
 
-mix.copy('node_modules/trumbowyg/dist/ui/icons.svg', 'public/js/ui/icons.svg')
+mix.copy('node_modules/trumbowyg/dist/ui/icons.svg', 'public/js/ui/icons.svg');
 
 if (mix.inProduction()) {
     mix.version()
 }
-
+mix.webpackConfig({
+    output: {
+        chunkFilename: mix.inProduction() ? "js/chunk/[name].[chunkhash].js" : "js/chunk/[name].js",
+    }
+})

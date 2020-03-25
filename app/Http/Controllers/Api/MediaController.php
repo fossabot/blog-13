@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\MediaLibraryRequest;
 use App\Http\Resources\Media as MediaResource;
 use App\Models\Media;
 use App\Models\MediaLibrary;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Http\Response;
@@ -28,7 +29,7 @@ class MediaController extends Controller
     /**
      * Store a newly created resource in storage.
      * @param MediaLibraryRequest $request
-     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @throws AuthorizationException
      * @return MediaResource
      */
     public function store(MediaLibraryRequest $request): MediaResource
@@ -53,7 +54,7 @@ class MediaController extends Controller
     /**
      * Remove the specified resource from storage.
      * @param Media $medium
-     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @throws AuthorizationException
      * @return Response
      */
     public function destroy(Media $medium): Response

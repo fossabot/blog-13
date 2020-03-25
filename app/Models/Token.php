@@ -2,27 +2,30 @@
 
 namespace App\Models;
 
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 
 /**
  * App\Models\Token
  *
  * @property int $id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Token newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Token newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Token query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Token whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Token whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Token whereUpdatedAt($value)
- * @mixin \Eloquent
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @method static Builder|Token newModelQuery()
+ * @method static Builder|Token newQuery()
+ * @method static Builder|Token query()
+ * @method static Builder|Token whereCreatedAt($value)
+ * @method static Builder|Token whereId($value)
+ * @method static Builder|Token whereUpdatedAt($value)
+ * @mixin Eloquent
  */
 class Token extends Model
 {
     /**
-     * Return a unique personnal access token.
+     * Return a unique personal access token.
      */
     public static function generate(): string
     {

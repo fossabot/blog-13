@@ -2,6 +2,9 @@
 
 use Illuminate\Database\Seeder;
 
+/**
+ * Class DatabaseSeeder
+ */
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -15,6 +18,7 @@ class DatabaseSeeder extends Seeder
             PermissionsTableSeeder::class,
             RolesTableSeeder::class,
             UsersTableSeeder::class,
+            BanksTableSeeder::class
 
         ]);
 
@@ -25,6 +29,7 @@ class DatabaseSeeder extends Seeder
                 TagsTableSeeder::class,
                 LikesTableSeeder::class
             ]);
+
 //            ContactsUsTableSeeder::class,
 //            NewsletterSubscriptionTableSeeder::class,
         }

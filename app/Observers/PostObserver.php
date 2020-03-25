@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Post;
+use Str;
 
 class PostObserver
 {
@@ -12,6 +13,6 @@ class PostObserver
      */
     public function saving(Post $post): void
     {
-        $post->slug = \Str::slug($post->title, '-');
+        $post->slug = Str::slug($post->title, '-');
     }
 }

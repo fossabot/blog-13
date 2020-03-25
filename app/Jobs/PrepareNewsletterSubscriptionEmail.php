@@ -3,12 +3,12 @@
 namespace App\Jobs;
 
 use App\Models\NewsletterSubscription;
+use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Carbon;
 
 /**
  * Class PrepareNewsletterSubscriptionEmail
@@ -24,7 +24,7 @@ class PrepareNewsletterSubscriptionEmail implements ShouldQueue
      *
      * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         $newsletterSubscriptions = NewsletterSubscription::all();
 

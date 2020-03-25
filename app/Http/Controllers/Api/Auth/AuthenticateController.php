@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\User as UserResource;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,7 +14,7 @@ class AuthenticateController extends Controller
     /**
      * Return the user's access token.
      * @param Request $request
-     * @return UserResource|\Illuminate\Http\JsonResponse
+     * @return UserResource|JsonResponse
      */
     public function authenticate(Request $request)
     {

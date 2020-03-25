@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Admin\PermissionRequest;
 use App\Models\Permission;
+use Exception;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
 use Illuminate\View\View;
 
 /**
@@ -28,7 +30,7 @@ class PermissionController extends Controller
      * Store a newly created resource in storage.
      *
      * @param PermissionRequest $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(PermissionRequest $request): RedirectResponse
     {
@@ -61,7 +63,7 @@ class PermissionController extends Controller
      *
      * @param int $id
      * @return RedirectResponse
-     * @throws \Exception
+     * @throws Exception
      */
     public function destroy($id): RedirectResponse
     {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Admin\RoleRequest;
 use App\Models\Role;
+use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
@@ -80,7 +81,7 @@ class RoleController extends Controller
      *
      * @param int $id
      * @return RedirectResponse
-     * @throws \Exception
+     * @throws Exception
      */
     public function destroy($id): RedirectResponse
     {

@@ -9,7 +9,11 @@ use App\Repositories\Slug\SlugOptions;
 use App\Scopes\PostedScope;
 use Carbon\Carbon;
 use DateTimeInterface;
+use Eloquent;
+use Exception;
+use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -17,8 +21,12 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
+use League\CommonMark\CommonMarkConverter;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Permission\Traits\HasRoles;
+use Storage;
 
 /**
  * App\Models\Post
@@ -39,73 +47,73 @@ use Spatie\Permission\Traits\HasRoles;
  * @property null|string $deleted_at
  * @property null|\Illuminate\Support\Carbon $created_at
  * @property null|\Illuminate\Support\Carbon $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereCategoryId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereContentHtml($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereContentRaw($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereIsDraft($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereMetaDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereParentId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post wherePublishedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereSubtitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereUserId($value)
- * @mixin \Eloquent
- * @property-read \App\Models\Category $category
- * @property-read \App\Models\Post[]|\Illuminate\Database\Eloquent\Collection $children
+ * @method static Builder|Post newModelQuery()
+ * @method static Builder|Post newQuery()
+ * @method static Builder|Post query()
+ * @method static Builder|Post whereCategoryId($value)
+ * @method static Builder|Post whereContentHtml($value)
+ * @method static Builder|Post whereContentRaw($value)
+ * @method static Builder|Post whereCreatedAt($value)
+ * @method static Builder|Post whereDeletedAt($value)
+ * @method static Builder|Post whereId($value)
+ * @method static Builder|Post whereIsDraft($value)
+ * @method static Builder|Post whereMetaDescription($value)
+ * @method static Builder|Post whereParentId($value)
+ * @method static Builder|Post wherePublishedAt($value)
+ * @method static Builder|Post whereSlug($value)
+ * @method static Builder|Post whereSubtitle($value)
+ * @method static Builder|Post whereTitle($value)
+ * @method static Builder|Post whereType($value)
+ * @method static Builder|Post whereUpdatedAt($value)
+ * @method static Builder|Post whereUserId($value)
+ * @mixin Eloquent
+ * @property-read Category $category
+ * @property-read Post[]|Collection $children
  * @property-read null|int $children_count
- * @property-read \App\Models\Comment[]|\Illuminate\Database\Eloquent\Collection $comments
+ * @property-read Comment[]|Collection $comments
  * @property-read null|int $comments_count
  * @property-read mixed $content
  * @property-read string $date
  * @property-read string $excerpt
  * @property-read \Post $first_child
- * @property-read \Illuminate\Contracts\Routing\UrlGenerator|string $image
+ * @property-read UrlGenerator|string $image
  * @property-read string $month
  * @property-read mixed $publish_date
  * @property-read mixed $publish_time
  * @property-read \ReadTime $read_time
- * @property-read \Illuminate\Database\Eloquent\Collection|\Post[] $siblings
+ * @property-read Collection|\Post[] $siblings
  * @property-read string $time_elapsed
  * @property-read string $url
- * @property-read \App\Models\Like[]|\Illuminate\Database\Eloquent\Collection $likes
+ * @property-read Like[]|Collection $likes
  * @property-read null|int $likes_count
- * @property-read null|\App\Models\Post $parent
- * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions
+ * @property-read null|Post $parent
+ * @property-read Collection|\Spatie\Permission\Models\Permission[] $permissions
  * @property-read null|int $permissions_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Role[] $roles
+ * @property-read Collection|\Spatie\Permission\Models\Role[] $roles
  * @property-read null|int $roles_count
- * @property-read \App\Models\Tag[]|\Illuminate\Database\Eloquent\Collection $tags
+ * @property-read Tag[]|Collection $tags
  * @property-read null|int $tags_count
- * @property-read \App\Models\User $user
+ * @property-read User $user
  * @method static bool|null forceDelete()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post lastMonth($limit = 5)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post lastWeek()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post latest()
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Post onlyTrashed()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post permission($permissions)
+ * @method static Builder|Post lastMonth($limit = 5)
+ * @method static Builder|Post lastWeek()
+ * @method static Builder|Post latest()
+ * @method static \Illuminate\Database\Query\Builder|Post onlyTrashed()
+ * @method static Builder|Post permission($permissions)
  * @method static bool|null restore()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post role($roles, $guard = null)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post search($search)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Post withTrashed()
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Post withoutTrashed()
- * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\MediaLibrary\Models\Media[] $media
+ * @method static Builder|Post role($roles, $guard = null)
+ * @method static Builder|Post search($search)
+ * @method static \Illuminate\Database\Query\Builder|Post withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|Post withoutTrashed()
+ * @property-read Collection|\Spatie\MediaLibrary\Models\Media[] $media
  * @property-read null|int $media_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activities
+ * @property-read Collection|\Spatie\Activitylog\Models\Activity[] $activities
  * @property-read int|null $activities_count
  * @property-read mixed $author
  */
-class Post extends Model
+class Post extends Model implements HasMedia
 {
-    use HasRoles, HasSlug, SoftDeletes, Likeable, LogsActivity;
+    use HasRoles, SoftDeletes, Likeable, LogsActivity, HasSlug, InteractsWithMedia;
     /**
      * @var array
      */
@@ -142,7 +150,19 @@ class Post extends Model
     }
 
     /**
+     * @return SlugOptions
+     */
+    public function getSlugOptions(): SlugOptions
+    {
+        // TODO: Implement getSlugOptions() method.
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug');
+    }
+
+    /**
      * Prepare a date for array / JSON serialization.
+     *
      * @param DateTimeInterface $date
      * @return string
      */
@@ -163,26 +183,13 @@ class Post extends Model
         return 'slug';
     }
 
-
-    /**
-     * @return SlugOptions
-     */
-    public function getSlugOptions(): SlugOptions
-    {
-        // TODO: Implement getSlugOptions() method.
-        return SlugOptions::create()
-            ->generateSlugsFrom('title')
-            ->saveSlugsTo('slug');
-    }
-
-
     /**
      * @param $value
-     * @return \Illuminate\Contracts\Routing\UrlGenerator|string
+     * @return UrlGenerator|string
      */
-    public function getImageAttribute($value)
+    public function getImageAttribute($value): string
     {
-        $file =  \Storage::url("images/{$value}");
+        $file =  Storage::url("images/{$value}");
         return url($file);
     }
 
@@ -190,7 +197,7 @@ class Post extends Model
      * @param $value
      * @return string
      */
-    public function getUrlAttribute()
+    public function getUrlAttribute():string
     {
         return route('blog.show', $this->slug);
     }
@@ -200,7 +207,7 @@ class Post extends Model
      * @param $value
      * @return string
      */
-    public function getPublishedAtAttribute($value)
+    public function getPublishedAtAttribute($value): string
     {
         return $this->attributes['published_at'] = Carbon::parse($value)->format('d, M Y');
     }
@@ -223,17 +230,15 @@ class Post extends Model
      * Creating new query databases with relations
      *
      * @param array $relation
-     * @return Builder[]|\Illuminate\Database\Eloquent\Collection|Post[]
+     * @return Builder[]|Collection|Post[]
      */
     public function queryAll(array $relation = [])
     {
-        $queries = static::where('published_at', '<=', now())
+        return static::where('published_at', '<=', now())
             ->where('is_draft', 0)
             ->orderBy('published_at', 'desc')
             ->with($relation)
             ->get();
-
-        return $queries;
     }
 
     /**
@@ -241,14 +246,13 @@ class Post extends Model
      * @param array $relation
      * @param int $id
      * @param int $limit
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @return Collection
      */
     public function queryFilter(string $model, array $relation, int $id, int $limit)
     {
-        $query = $this->queryAll($relation)->filter(function ($post) use ($model, $id) {
+        return $this->queryAll($relation)->filter(function ($post) use ($model, $id) {
             return $post->postable_type = $model && $post->postable_id == $id;
         })->take($limit);
-        return $query;
     }
 
     /**
@@ -292,7 +296,7 @@ class Post extends Model
      * set content raw markdown to convert to html with Parsedown
      *
      * @param $value
-     * @throws \Exception
+     * @throws Exception
      * @return string
      */
     public function setContentRawAttribute($value)
@@ -314,9 +318,8 @@ class Post extends Model
     /**
      * return the excerpt of the post content
      *
-     * @param int $length
-     * @throws \Exception
      * @return string
+     * @throws Exception
      */
     public function getExcerptAttribute(): string
     {
@@ -326,7 +329,7 @@ class Post extends Model
 
     /**
      * @return ReadTime
-     * @throws \Exception
+     * @throws Exception
      */
     public function getReadTimeAttribute()
     {
@@ -351,7 +354,7 @@ class Post extends Model
      * get publish date attribute
      *
      * @param $value
-     * @throws \Exception
+     * @throws Exception
      * @return mixed
      */
     public function getPublishDateAttribute($value): string
@@ -363,7 +366,7 @@ class Post extends Model
      * get publish time attribute
      *
      * @param $value
-     * @throws \Exception
+     * @throws Exception
      * @return mixed
      */
     public function getPublishTimeAttribute($value): string
@@ -401,7 +404,7 @@ class Post extends Model
 
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function children(): HasMany
     {
@@ -422,20 +425,20 @@ class Post extends Model
     /**
      * get first element children models
      *
-     * @throws \Exception
+     * @throws Exception
      * @return Post
      */
     public function getFirstChildAttribute(): self
     {
         if (! $this->hasChildren()) {
-            throw new \Exception("Article `{$this->title}` doesn't have any children.");
+            throw new Exception("Article `{$this->title}` doesn't have any children.");
         }
 
         return $this->children->sortBy('order_column')->first();
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Collection|Post[]
+     * @return Collection|Post[]
      */
     public function getSiblingsAttribute()
     {
@@ -445,7 +448,7 @@ class Post extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function parent(): BelongsTo
     {
@@ -464,14 +467,17 @@ class Post extends Model
      * one to many relationship between user and posts
      * example: $post->user->name
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function getAuthorAttribute()
+    /**
+     * @return string
+     */
+    public function getAuthorAttribute(): string
     {
         if (!empty($this->user)) {
             return $this->user->name;
@@ -486,7 +492,7 @@ class Post extends Model
      * @foreach($post->tags as $tag)
      * $tag->title
      *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
+     * @return MorphToMany
      */
     public function tags(): MorphToMany
     {
@@ -495,7 +501,7 @@ class Post extends Model
 
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function category(): BelongsTo
     {
@@ -516,12 +522,12 @@ class Post extends Model
 
     /**
      * @param string $text
-     * @throws \Exception
+     * @throws Exception
      * @return string
      */
     private function markdown(string $text): string
     {
-        $markdown = new \League\CommonMark\CommonMarkConverter();
+        $markdown = new CommonMarkConverter();
         return $markdown->convertToHtml($text);
     }
 }

@@ -3,10 +3,11 @@
 @section('content')
     <h1>@lang('posts.create')</h1>
 
-    {!! Form::open(['route' => ['admin.posts.store'], 'method' =>'POST']) !!}
-        @include('admin/posts/_form')
+    <form method="POST" action="{{ route('admin.posts.store') }}"  enctype="multipart/form-data">
 
-        {{ link_to_route('admin.posts.index', __('forms.actions.back'), [], ['class' => 'btn btn-secondary']) }}
-        {!! Form::submit(__('forms.actions.save'), ['class' => 'btn btn-primary']) !!}
-    {!! Form::close() !!}
+{{--        @include('admin/posts/_form')--}}
+
+        <a href="{{ route('admin.posts.index') }}" class="btn btn-secondary">{{  __('forms.actions.back') }}</a>
+        <input class="btn btn-primary" type="submit" value="{{ __('forms.actions.save') }}">
+    </form>
 @endsection

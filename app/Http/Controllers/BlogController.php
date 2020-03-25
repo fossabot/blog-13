@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\View\View;
 
 /**
@@ -12,7 +15,7 @@ use Illuminate\View\View;
 class BlogController extends Controller
 {
     /**
-     * @var \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|Post[]
+     * @var Builder[]|Collection|Post[]
      */
     protected $post;
 
@@ -26,7 +29,7 @@ class BlogController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function index(): View
     {
@@ -36,7 +39,7 @@ class BlogController extends Controller
 
     /**
      * @param $slug
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function show($slug): View
     {

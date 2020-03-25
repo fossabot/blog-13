@@ -2,9 +2,13 @@
 
 namespace App\Models;
 
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Support\Carbon;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
@@ -14,21 +18,21 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @property int $user_id
  * @property null|string $likeable_type
  * @property null|int $likeable_id
- * @property null|\Illuminate\Support\Carbon $created_at
- * @property null|\Illuminate\Support\Carbon $updated_at
- * @property-read \App\Models\User $author
- * @property-read \Eloquent|\Illuminate\Database\Eloquent\Model $likeable
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Like newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Like newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Like query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Like whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Like whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Like whereLikeableId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Like whereLikeableType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Like whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Like whereUserId($value)
- * @mixin \Eloquent
- * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activities
+ * @property null|Carbon $created_at
+ * @property null|Carbon $updated_at
+ * @property-read User $author
+ * @property-read Eloquent|Model $likeable
+ * @method static Builder|Like newModelQuery()
+ * @method static Builder|Like newQuery()
+ * @method static Builder|Like query()
+ * @method static Builder|Like whereCreatedAt($value)
+ * @method static Builder|Like whereId($value)
+ * @method static Builder|Like whereLikeableId($value)
+ * @method static Builder|Like whereLikeableType($value)
+ * @method static Builder|Like whereUpdatedAt($value)
+ * @method static Builder|Like whereUserId($value)
+ * @mixin Eloquent
+ * @property-read Collection|\Spatie\Activitylog\Models\Activity[] $activities
  * @property-read int|null $activities_count
  */
 class Like extends Model

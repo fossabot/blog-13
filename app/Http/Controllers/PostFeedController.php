@@ -3,15 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Response;
+use Cache;
+use Illuminate\Http\Response;
 
-class PostFeedController extends Controller
+final class PostFeedController extends Controller
 {
     /**
      * Show the rss feed of posts.
+     *
+     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         $posts = Cache::remember('feed-posts', now()->addHour(), fn () => Post::latest()->limit(20)->get());
 

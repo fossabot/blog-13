@@ -15,12 +15,4 @@ use Illuminate\Routing\Controller as BaseController;
 abstract class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-
-    /**
-     * Controller constructor.
-     */
-    public function __construct()
-    {
-//        $this->middleware(['role:super-admin','permission:publish articles|edit articles']);
-    }
 }

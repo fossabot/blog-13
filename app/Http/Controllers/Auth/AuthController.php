@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Exception;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -25,13 +29,13 @@ class AuthController extends Controller
      * Obtain the user information from provider.
      *
      * @param $provider
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function handleProviderCallback($provider)
     {
         try {
             $user = Socialite::driver($provider)->stateless()->user();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return redirect()->route('login');
         }
 
@@ -48,7 +52,7 @@ class AuthController extends Controller
      *
      * @param $user
      * @param $provider
-     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|object
+     * @return Builder|Model|object
      */
     private function findOrCreateUser($user, $provider)
     {

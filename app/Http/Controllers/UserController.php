@@ -5,18 +5,19 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UsersRequest;
 use App\Models\Role;
 use App\Models\User;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Request;
+use Illuminate\View\View;
 
-class UserController extends Controller
+final class UserController extends Controller
 {
     /**
      * Display the specified resource.
-     * @param Request $request
      * @param User $user
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
-    public function show(Request $request, User $user)
+    public function show(User $user): View
     {
         return view('users.show', [
             'user' => $user,
@@ -30,8 +31,11 @@ class UserController extends Controller
 
     /**
      * Show the form for editing the specified resource.
+     *
+     * @return View
+     * @throws AuthorizationException
      */
-    public function edit()
+    public function edit(): View
     {
         $user = auth()->user();
 
@@ -47,7 +51,7 @@ class UserController extends Controller
      * Update the specified resource in storage.
      * @param UsersRequest $request
      * @return RedirectResponse
-     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @throws AuthorizationException
      */
     public function update(UsersRequest $request): RedirectResponse
     {
@@ -57,6 +61,8 @@ class UserController extends Controller
 
         $user->update($request->validated());
 
-        return redirect()->route('users.edit')->withSuccess(__('users.updated'));
+        return redirect()
+            ->route('users.edit')
+            ->withSuccess(__('users.updated'));
     }
 }

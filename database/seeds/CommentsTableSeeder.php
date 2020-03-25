@@ -2,6 +2,9 @@
 
 use Illuminate\Database\Seeder;
 
+/**
+ * Class CommentsTableSeeder
+ */
 class CommentsTableSeeder extends Seeder
 {
     /**

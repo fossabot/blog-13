@@ -5,18 +5,24 @@ namespace App\Models;
 use App\Repositories\Slug\HasSlug;
 use App\Repositories\Slug\SlugOptions;
 use Carbon\Carbon;
+use Eloquent;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Contracts\Translation\HasLocalePreference;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\DatabaseNotification;
+use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Str;
+use Laravel\Passport\Client;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Permission\Traits\HasRoles;
+use Storage;
+use Str;
 
 /**
  * App\Models\User
@@ -29,60 +35,60 @@ use Spatie\Permission\Traits\HasRoles;
  * @property null|string $remember_token
  * @property null|\Illuminate\Support\Carbon $created_at
  * @property null|\Illuminate\Support\Carbon $updated_at
- * @property-read \Illuminate\Notifications\DatabaseNotification[]|\Illuminate\Notifications\DatabaseNotificationCollection $notifications
+ * @property-read DatabaseNotification[]|DatabaseNotificationCollection $notifications
  * @property-read null|int $notifications_count
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereEmailVerifiedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User wherePassword($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereRememberToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereUpdatedAt($value)
- * @mixin \Eloquent
+ * @method static Builder|User newModelQuery()
+ * @method static Builder|User newQuery()
+ * @method static Builder|User query()
+ * @method static Builder|User whereCreatedAt($value)
+ * @method static Builder|User whereEmail($value)
+ * @method static Builder|User whereEmailVerifiedAt($value)
+ * @method static Builder|User whereId($value)
+ * @method static Builder|User whereName($value)
+ * @method static Builder|User wherePassword($value)
+ * @method static Builder|User whereRememberToken($value)
+ * @method static Builder|User whereUpdatedAt($value)
+ * @mixin Eloquent
  * @property string $slug
  * @property null|string $api_token
- * @property-read \App\Models\Comment[]|\Illuminate\Database\Eloquent\Collection $comments
+ * @property-read Comment[]|Collection $comments
  * @property-read null|int $comments_count
  * @property-read string $avatar
  * @property-read string $full_name
  * @property-read mixed|string $url
- * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions
+ * @property-read Collection|\Spatie\Permission\Models\Permission[] $permissions
  * @property-read null|int $permissions_count
- * @property-read \App\Models\Post[]|\Illuminate\Database\Eloquent\Collection $posts
+ * @property-read Post[]|Collection $posts
  * @property-read null|int $posts_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Role[] $roles
+ * @property-read Collection|\Spatie\Permission\Models\Role[] $roles
  * @property-read null|int $roles_count
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User authors()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User lastWeek()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User latest()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User permission($permissions)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User role($roles, $guard = null)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereApiToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereSlug($value)
- * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\MediaLibrary\Models\Media[] $media
+ * @method static Builder|User authors()
+ * @method static Builder|User lastWeek()
+ * @method static Builder|User latest()
+ * @method static Builder|User permission($permissions)
+ * @method static Builder|User role($roles, $guard = null)
+ * @method static Builder|User whereApiToken($value)
+ * @method static Builder|User whereSlug($value)
+ * @property-read Collection|\Spatie\MediaLibrary\Models\Media[] $media
  * @property-read null|int $media_count
  * @property \Illuminate\Support\Carbon|null $registered_at
  * @property string|null $provider
  * @property string|null $provider_id
- * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activities
+ * @property-read Collection|\Spatie\Activitylog\Models\Activity[] $activities
  * @property-read int|null $activities_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Passport\Client[] $clients
+ * @property-read Collection|Client[] $clients
  * @property-read int|null $clients_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Like[] $likes
+ * @property-read Collection|Like[] $likes
  * @property-read int|null $likes_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Passport\Token[] $tokens
+ * @property-read Collection|\Laravel\Passport\Token[] $tokens
  * @property-read int|null $tokens_count
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereProvider($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereProviderId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereRegisteredAt($value)
+ * @method static Builder|User whereProvider($value)
+ * @method static Builder|User whereProviderId($value)
+ * @method static Builder|User whereRegisteredAt($value)
  */
 class User extends Authenticatable implements MustVerifyEmail, HasLocalePreference, HasMedia
 {
-    use Notifiable, HasRoles, HasSlug, HasApiTokens, InteractsWithMedia, LogsActivity;
+    use Notifiable, HasRoles, HasApiTokens, LogsActivity, HasSlug, InteractsWithMedia;
 
     /**
      * The attributes that are mass assignable.
@@ -122,15 +128,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasLocalePreferen
         'email_verified_at' => 'datetime',
     ];
 
-    /**
-     * Get the user's preferred locale.
-     *
-     * @return string
-     */
-    public function preferredLocale()
-    {
-        return $this->locale;
-    }
+    private $photo;
 
     /**
      * @return SlugOptions
@@ -144,12 +142,22 @@ class User extends Authenticatable implements MustVerifyEmail, HasLocalePreferen
     }
 
     /**
+     * Get the user's preferred locale.
+     *
+     * @return string
+     */
+    public function preferredLocale()
+    {
+        return $this->locale;
+    }
+
+    /**
      * Get the user's full_name titleized.
      * @return string
      */
     public function getFullNameAttribute(): string
     {
-        return \Str::title($this->name);
+        return Str::title($this->name);
     }
 
     /**
@@ -165,11 +173,11 @@ class User extends Authenticatable implements MustVerifyEmail, HasLocalePreferen
      */
     public function getAvatarAttribute(): string
     {
-        $avatar = \Storage::url("users/{$this->photo}");
+        $avatar = Storage::url("users/{$this->photo}");
         if (isset($this->avatar)) {
             return $avatar;
         }
-        return \Storage::url("users/avatar.png");
+        return Storage::url("users/avatar.png");
     }
     /**
      * Scope a query to only include users registered last week.
@@ -243,7 +251,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasLocalePreferen
      * every users has many posts
      * example: $user->posts
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function posts(): HasMany
     {
@@ -253,7 +261,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasLocalePreferen
     /**
      * Return the user's comments
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function comments(): HasMany
     {
@@ -262,6 +270,10 @@ class User extends Authenticatable implements MustVerifyEmail, HasLocalePreferen
 
     /**
      * Return the user's likes
+     * One to many between user's likes and like
+     * Example: user->likes
+     *
+     * @return HasMany
      */
     public function likes(): HasMany
     {

@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class PostLikeController extends Controller
 {
@@ -13,7 +15,7 @@ class PostLikeController extends Controller
      *
      * @param Request $request
      * @param Post $post
-     * @return \Illuminate\Database\Eloquent\Model
+     * @return Model
      */
     public function store(Request $request, Post $post)
     {
@@ -24,7 +26,7 @@ class PostLikeController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  Post $post
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(Post $post)
     {

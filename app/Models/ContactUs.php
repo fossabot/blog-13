@@ -2,8 +2,12 @@
 
 namespace App\Models;
 
+use Eloquent;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Carbon;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
@@ -18,30 +22,30 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @property string $message
  * @property int $status
  * @property int $read
- * @property null|\Illuminate\Support\Carbon $deleted_at
- * @property null|\Illuminate\Support\Carbon $created_at
- * @property null|\Illuminate\Support\Carbon $updated_at
+ * @property null|Carbon $deleted_at
+ * @property null|Carbon $created_at
+ * @property null|Carbon $updated_at
  * @method static bool|null forceDelete()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ContactUs newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ContactUs newQuery()
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ContactUs onlyTrashed()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ContactUs query()
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactUs newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactUs newQuery()
+ * @method static Builder|ContactUs onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactUs query()
  * @method static bool|null restore()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ContactUs whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ContactUs whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ContactUs whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ContactUs whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ContactUs whereMessage($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ContactUs whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ContactUs wherePhone($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ContactUs whereRead($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ContactUs whereStatus($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ContactUs whereSubject($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ContactUs whereUpdatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ContactUs withTrashed()
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ContactUs withoutTrashed()
- * @mixin \Eloquent
- * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activities
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactUs whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactUs whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactUs whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactUs whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactUs whereMessage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactUs whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactUs wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactUs whereRead($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactUs whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactUs whereSubject($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactUs whereUpdatedAt($value)
+ * @method static Builder|ContactUs withTrashed()
+ * @method static Builder|ContactUs withoutTrashed()
+ * @mixin Eloquent
+ * @property-read Collection|\Spatie\Activitylog\Models\Activity[] $activities
  * @property-read int|null $activities_count
  */
 class ContactUs extends Model

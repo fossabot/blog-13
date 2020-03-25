@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Models\Token;
 use App\Models\User;
+use Str;
 
 class UserObserver
 {
@@ -13,6 +14,7 @@ class UserObserver
      */
     public function creating(User $user): void
     {
+        $user->slug = Str::slug($user->name, '-');
         $user->registered_at = now();
         $user->api_token = Token::generate();
     }

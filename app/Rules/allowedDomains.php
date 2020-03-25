@@ -16,7 +16,7 @@ class allowedDomains implements Rule
         //
     }
 
-    protected $allowedDomains = [
+    protected array $allowedDomains = [
         'domain.com',
         'another-domain.com',
     ];

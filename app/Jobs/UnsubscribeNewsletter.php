@@ -3,17 +3,25 @@
 namespace App\Jobs;
 
 use App\Models\NewsletterSubscription;
+use Exception;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
+/**
+ * Class UnsubscribeNewsletter
+ * @package App\Jobs
+ */
 class UnsubscribeNewsletter implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $email;
+    /**
+     * @var string
+     */
+    protected string $email;
 
     /**
      * Create a new job instance.
@@ -28,7 +36,7 @@ class UnsubscribeNewsletter implements ShouldQueue
     /**
      * Execute the job.
      *
-     * @throws \Exception
+     * @throws Exception
      * @return void
      */
     public function handle(): void

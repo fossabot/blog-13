@@ -43,7 +43,7 @@ class CommentPosted implements ShouldBroadcast
     /**
      * Get the channels the event should broadcast on.
      *
-     * @return array|\Illuminate\Broadcasting\Channel
+     * @return array|Channel
      */
     public function broadcastOn(): Channel
     {

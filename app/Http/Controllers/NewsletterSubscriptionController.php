@@ -5,19 +5,25 @@ namespace App\Http\Controllers;
 use App\Http\Requests\NewsletterSubscriptionRequest;
 use App\Jobs\UnsubscribeNewsletter;
 use App\Models\NewsletterSubscription;
+use Auth;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
+use Session;
+use Validator;
 
 /**
  * Class NewsletterSubscriptionController
  * @package App\Http\Controllers
  */
-class NewsletterSubscriptionController extends Controller
+final class NewsletterSubscriptionController extends Controller
 {
     /**
      * @param NewsletterSubscriptionRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
-    public function store(NewsletterSubscriptionRequest $request)
+    public function store(NewsletterSubscriptionRequest $request): RedirectResponse
     {
         $newsletterSubscription = NewsletterSubscription::create($request->validated());
 
@@ -27,11 +33,11 @@ class NewsletterSubscriptionController extends Controller
 
     /**
      * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     * @return Factory|RedirectResponse|View
      */
     public function unsubscribe(Request $request)
     {
-        $validator = \Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             'email' => 'required|email|exists:newsletter_subscriptions,email'
         ]);
 
@@ -39,7 +45,7 @@ class NewsletterSubscriptionController extends Controller
             $errors = $validator->errors()->all();
             $route = 'login';
 
-            if (\Auth::check()) {
+            if (Auth::check()) {
                 $route = 'home';
             }
 
@@ -48,7 +54,7 @@ class NewsletterSubscriptionController extends Controller
 
         UnsubscribeNewsletter::dispatch($request->input('email'));
 
-        \Session::flash('success', __('newsletter.unsubscribed'));
+        Session::flash('success', __('newsletter.unsubscribed'));
 
         return view('newsletters.unsubscribed');
     }

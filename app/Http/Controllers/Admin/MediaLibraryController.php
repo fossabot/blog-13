@@ -5,10 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\MediaLibraryRequest;
 use App\Models\Media;
-use App\Models\MediaLibrary;
+use Exception;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
+use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 
 /**
  * Class MediaLibraryController
@@ -18,18 +19,19 @@ class MediaLibraryController extends Controller
 {
     /**
      * Return the media library.
-     * @param Request $request
+     *
      * @return View
      */
-    public function index(Request $request): View
+    public function index(): View
     {
         return view('admin.media.index', [
-            'media' => MediaLibrary::first()->media()->get()
+            'media' => Media::all()
         ]);
     }
 
     /**
      * Display the specified resource.
+     *
      * @param Media $medium
      * @return Media
      */
@@ -40,10 +42,9 @@ class MediaLibraryController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     * @param Request $request
      * @return View
      */
-    public function create(Request $request): View
+    public function create(): View
     {
         return view('admin.media.create');
     }
@@ -52,8 +53,8 @@ class MediaLibraryController extends Controller
      * Store a newly created resource in storage.
      * @param MediaLibraryRequest $request
      * @return RedirectResponse
-     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
-     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
+     * @throws FileDoesNotExist
+     * @throws FileIsTooBig
      */
     public function store(MediaLibraryRequest $request): RedirectResponse
     {
@@ -64,19 +65,23 @@ class MediaLibraryController extends Controller
             $name = $request->input('name');
         }
 
-        MediaLibrary::first()
+        dd($request->all());
+
+        Media::first()
             ->addMedia($image)
             ->usingName($name)
             ->toMediaCollection();
-
-        return redirect()->route('admin.media.index')->withSuccess(__('media.created'));
+//
+        return redirect()
+            ->route('admin.media.index')
+            ->withSuccess(__('media.created'));
     }
 
     /**
      * Remove the specified resource from storage.
      * @param Media $medium
      * @return RedirectResponse
-     * @throws \Exception
+     * @throws Exception
      */
     public function destroy(Media $medium): RedirectResponse
     {

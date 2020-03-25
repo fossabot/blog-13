@@ -2,9 +2,13 @@
 
 namespace App\Models;
 
+use Eloquent;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Carbon;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -16,33 +20,33 @@ use Spatie\Permission\Traits\HasRoles;
  * @property string $meta_description
  * @property string $description
  * @property null|string $deleted_at
- * @property null|\Illuminate\Support\Carbon $created_at
- * @property null|\Illuminate\Support\Carbon $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag whereMetaDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag whereTag($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag whereUpdatedAt($value)
- * @mixin \Eloquent
- * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions
+ * @property null|Carbon $created_at
+ * @property null|Carbon $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag whereMetaDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag whereTag($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag whereUpdatedAt($value)
+ * @mixin Eloquent
+ * @property-read Collection|\Spatie\Permission\Models\Permission[] $permissions
  * @property-read null|int $permissions_count
- * @property-read \App\Models\Post[]|\Illuminate\Database\Eloquent\Collection $post
+ * @property-read Post[]|Collection $post
  * @property-read null|int $post_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Role[] $roles
+ * @property-read Collection|\Spatie\Permission\Models\Role[] $roles
  * @property-read null|int $roles_count
  * @method static bool|null forceDelete()
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Tag onlyTrashed()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag permission($permissions)
+ * @method static Builder|Tag onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag permission($permissions)
  * @method static bool|null restore()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag role($roles, $guard = null)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Tag withTrashed()
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Tag withoutTrashed()
- * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activities
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag role($roles, $guard = null)
+ * @method static Builder|Tag withTrashed()
+ * @method static Builder|Tag withoutTrashed()
+ * @property-read Collection|\Spatie\Activitylog\Models\Activity[] $activities
  * @property-read int|null $activities_count
  */
 class Tag extends Model
@@ -58,7 +62,7 @@ class Tag extends Model
     /**
      * many to many polymorphic relationship between posts and tags
      *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
+     * @return MorphToMany
      */
     public function post(): MorphToMany
     {

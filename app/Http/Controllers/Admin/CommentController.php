@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\CommentsRequest;
 use App\Models\Comment;
 use App\Models\User;
+use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -55,7 +56,7 @@ class CommentController extends Controller
      * Remove the specified resource from storage.
      * @param Comment $comment
      * @return RedirectResponse
-     * @throws \Exception
+     * @throws Exception
      */
     public function destroy(Comment $comment): RedirectResponse
     {
