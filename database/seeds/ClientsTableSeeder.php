@@ -11,6 +11,8 @@ class ClientsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Client::class, 50)->create();
+        if (App::environment(['local', 'staging', 'testing'])) {
+            factory(App\Client::class, 50)->create();
+        }
     }
 }
