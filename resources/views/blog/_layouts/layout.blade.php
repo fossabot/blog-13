@@ -7,6 +7,12 @@
     <!-- mobile responsive meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="{{ $description ?? config('blog.description') }}">
+    <meta name="og:title" property="og:title" content="{{ $title ?? config('blog.title') }}">
+    <meta property="og:type" content="video.movie" />
+    <meta property="og:url" content="{{ $link ?? config('blog.link') }}" />
+    <meta property="og:image" content="{{ $image ?? config('blog.image') }}" />
 
     <!-- ** Plugins Needed for the Project ** -->
     <!-- Bootstrap -->

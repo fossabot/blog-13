@@ -28,7 +28,6 @@ class BlogController extends Controller
             ->orderBy('published_at', 'desc')
             ->with(['images', 'category']);
 
-        dd($query->get());
         $blogs = $query
             ->where('type', 'blog')
             ->paginate(9);

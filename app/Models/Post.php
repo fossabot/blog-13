@@ -109,8 +109,6 @@ use Storage;
  * @property-read mixed $author
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Posts\Rate[] $rates
  * @property-read int|null $rates_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Image[] $images
- * @property-read int|null $images_count
  */
 class Post extends Model
 {
@@ -225,7 +223,7 @@ class Post extends Model
      * @param null|string $search
      * @return Builder
      */
-    public function scopeSearch(Builder $query, ?string $search): Builder
+    public function scopeSearch(Builder $query, ?string $search)
     {
         if ($search) {
             return $query->where('title', 'LIKE', "%{$search}%");
@@ -236,14 +234,15 @@ class Post extends Model
      * Creating new query databases with relations
      *
      * @param array $relation
-     * @return Builder
+     * @return Builder[]|Collection|Post[]
      */
-    public function queryAll(array $relation = []): Builder
+    public function queryAll(array $relation = [])
     {
         return static::where('published_at', '<=', now())
             ->where('is_draft', 0)
             ->orderBy('published_at', 'desc')
-            ->with($relation);
+            ->with($relation)
+            ->get();
     }
 
     /**
@@ -537,10 +536,6 @@ class Post extends Model
     public function images(): MorphMany
     {
         return $this->morphMany(Image::class, 'imageable');
-    }
-    public function getThumbnailAttribute()
-    {
-        dd();
     }
 
     /**
