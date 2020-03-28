@@ -1,60 +1,65 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row justify-content-md-center">
-    <div class="col-md-6">
-        <h1>@lang('auth.login')</h1>
+    @component('components.full-page-section')
 
-        {!! Form::open(['route' => 'login', 'role' => 'form', 'method' => 'POST']) !!}
-            <div class="form-group">
-                {!! Form::label('email', __('validation.attributes.email'), ['class' => 'control-label']) !!}
-                {!! Form::email('email', old('email'), ['class' => 'form-control' . ($errors->has('email') ? ' is-invalid' : ''), 'required', 'autofocus']) !!}
 
-                @error('email')
-                    <span class="invalid-feedback">{{ $message }}</span>
-                @enderror
-            </div>
 
-            <div class="form-group">
-                {!! Form::label('password', __('validation.attributes.password'), ['class' => 'control-label']) !!}
-                {!! Form::password('password', ['class' => 'form-control' . ($errors->has('password') ? ' is-invalid' : ''), 'required']) !!}
+        @component('components.card')
+            @slot('title')
+                <span class="icon"><i class="mdi mdi-lock"></i></span>
+                <span>{{ __('Login') }}</span>
+            @endslot
 
-                @error('password')
-                    <span class="invalid-feedback">{{ $message }}</span>
-                @enderror
-            </div>
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
 
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        {!! Form::checkbox('remember', null, old('remember')) !!} @lang('auth.remember_me')
+                <div class="field">
+                    <label class="label" for="email">{{ __('E-Mail Address') }}</label>
+                    <div class="control">
+                        <input id="email" type="email" class="input @error('email') is-danger @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                    </div>
+                    @error('email')
+                        <p class="help is-danger" role="alert">
+                            {{ $message }}
+                        </p>
+                    @enderror
+                </div>
+
+                <div class="field">
+                    <label class="label" for="password">{{ __('Password') }}</label>
+                    <div class="control">
+                        <input id="password" type="password" class="input @error('password') is-danger @enderror" name="password" required autocomplete="current-password" autofocus>
+                    </div>
+                    @error('password')
+                        <p class="help is-danger" role="alert">
+                            {{ $message }}
+                        </p>
+                    @enderror
+                </div>
+
+                <div class="control">
+                    <label tabindex="0" class="b-checkbox checkbox is-thin">
+                        <input type="checkbox" value="false" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                        <span class="check is-black"></span>
+                        <span class="control-label">{{ __('Remember Me') }}</span>
                     </label>
                 </div>
-            </div>
 
-            <div class="form-group">
-                {!! Form::submit(__('auth.login'), ['class' => 'btn btn-primary']) !!}
-                {{ link_to('/password/reset', __('auth.forgotten_password'), ['class' => 'btn btn-link'])}}
-            </div>
-        {!! Form::close() !!}
+                <hr>
 
-        <hr>
+                <div class="field is-form-action-buttons">
+                    <button type="submit" class="button is-black">
+                        {{ __('Login') }}
+                    </button>
 
-        <div class="d-flex justify-content-between flex-wrap">
-            @if (env('GITHUB_ID'))
-                <a href="{{ route('auth.provider', ['provider' => 'github']) }}" class="btn btn-secondary mb-2">
-                    @lang('auth.services.github')
-                    <i class="fa fa-github" aria-hidden="true"></i>
-                </a>
-            @endif
-
-            @if (env('TWITTER_ID'))
-                <a href="{{ route('auth.provider', ['provider' => 'twitter']) }}" class="btn btn-secondary mb-2">
-                    @lang('auth.services.twitter')
-                    <i class="fa fa-twitter" aria-hidden="true"></i>
-                </a>
-            @endif
-        </div>
-    </div>
-</div>
+                    @if (Route::has('password.request'))
+                        <a class="button is-black is-outlined" href="{{ route('password.request') }}">
+                            {{ __('Forgot Your Password?') }}
+                        </a>
+                    @endif
+                </div>
+            </form>
+        @endcomponent
+    @endcomponent
 @endsection

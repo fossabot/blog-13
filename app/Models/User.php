@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\File;
+use App\Processors\AvatarProcessor;
 use App\Repositories\Slug\HasSlug;
 use App\Repositories\Slug\SlugOptions;
 use Carbon\Carbon;
@@ -171,13 +173,22 @@ class User extends Authenticatable implements MustVerifyEmail, HasLocalePreferen
     /**
      * @return string
      */
-    public function getAvatarAttribute(): string
+//    public function getAvatarAttribute(): string
+//    {
+//        $avatar = Storage::url("users/{$this->photo}");
+//        if (isset($this->avatar)) {
+//            return $avatar;
+//        }
+//        return Storage::url("users/avatar.png");
+//    }
+
+    public function file() {
+        return $this->belongsTo(File::class);
+    }
+
+    public function getAvatarAttribute()
     {
-        $avatar = Storage::url("users/{$this->photo}");
-        if (isset($this->avatar)) {
-            return $avatar;
-        }
-        return Storage::url("users/avatar.png");
+        return AvatarProcessor::get($this);
     }
     /**
      * Scope a query to only include users registered last week.
@@ -246,6 +257,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasLocalePreferen
     {
         return $this->hasRole(Role::ROLE_EDITOR);
     }
+
     /**
      * One to many between users and post
      * every users has many posts

@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -54,3 +52,4 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::resource('newsletter-subscriptions', 'NewsletterSubscriptionController')->only('store');
 });
+

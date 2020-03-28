@@ -24,7 +24,8 @@ class UsersTableSeeder extends Seeder
                 'email_verified_at' => Carbon::now(),
                 'password' => bcrypt('secret'),
                 'remember_token' => Str::random(10),
-                'api_token' => Str::random(32)
+                'api_token' => Str::random(32),
+                'registered_at' => now(),
             ]);
             $user->assignRole('admin');
         }

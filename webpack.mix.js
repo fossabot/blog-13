@@ -1,5 +1,8 @@
 const mix = require('laravel-mix');
 
+/* Laravel Mix Alias (allows to use vue-cli style paths in components `@/` */
+require('laravel-mix-alias');
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -11,19 +14,16 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
-    .sass('resources/assets/sass/app.scss', 'public/css')
-
-mix.js('resources/assets/js/admin.js', 'public/js')
-    .sass('resources/assets/sass/admin.scss', 'public/css');
-
-mix.copy('node_modules/trumbowyg/dist/ui/icons.svg', 'public/js/ui/icons.svg');
-
-if (mix.inProduction()) {
-    mix.version()
-}
-mix.webpackConfig({
-    output: {
-        chunkFilename: mix.inProduction() ? "js/chunk/[name].[chunkhash].js" : "js/chunk/[name].js",
-    }
-})
+mix
+  .alias({
+    '@': '/resources/js',
+    '@/components': '/resources/js/components',
+  })
+  .js('resources/js/app.js', 'public/js')
+  .sass('resources/sass/app.scss', 'public/css')
+  .styles([
+    'node_modules/@mdi/font/css/materialdesignicons.css',
+  ], 'public/css/vendor.css')
+  .copyDirectory('node_modules/@mdi/font/fonts', 'public/fonts')
+  .copyDirectory('resources/images', 'public/images')
+  .version();

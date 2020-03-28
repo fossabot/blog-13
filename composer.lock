@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "219a289de0b2ed976d719ab4ec25849e",
+    "content-hash": "150e710c7a29551f4f26020c8ab2177d",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8952,6 +8952,60 @@
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
             "time": "2019-06-13T22:48:21+00:00"
+        },
+        {
+            "name": "vikdiesel/admin-one-laravel-dashboard",
+            "version": "v1.3.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vikdiesel/admin-one-laravel-dashboard.git",
+                "reference": "ccbf2b07e0485e251a895c1b06f91f185a01b1d4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vikdiesel/admin-one-laravel-dashboard/zipball/ccbf2b07e0485e251a895c1b06f91f185a01b1d4",
+                "reference": "ccbf2b07e0485e251a895c1b06f91f185a01b1d4",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "AdminOneLaravelDashboard\\Package\\PackageServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "AdminOneLaravelDashboard\\Package\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Viktor Kuzhelnyi"
+                }
+            ],
+            "description": "Admin One - Laravel Dashboard Preset (SPA)",
+            "homepage": "https://github.com/vikdiesel/admin-one-laravel-dashboard",
+            "keywords": [
+                "SPA",
+                "bulma",
+                "dashboard",
+                "laravel",
+                "preset",
+                "template",
+                "vue",
+                "vue-js",
+                "vuex"
+            ],
+            "time": "2020-03-19T11:06:17+00:00"
         },
         {
             "name": "webmozart/assert",

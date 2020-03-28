@@ -1,7 +1,7 @@
 <nav class="navbar navbar-dark bg-dark fixed-top navbar-expand-md">
     <div class="container">
         <!-- Branding Image -->
-        <a href="{{ route('home') }}" class="navbar-brand">{{ config('blog.title') }}</a>
+        <a href="{{ url('/') }}" class="navbar-brand">{{ config('blog.title') }}</a>
 
         <!-- Collapsed Hamburger -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

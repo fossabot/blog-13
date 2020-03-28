@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             PermissionsTableSeeder::class,
             RolesTableSeeder::class,
             UsersTableSeeder::class,
+            ClientsTableSeeder::class,
             BanksTableSeeder::class,
             CategoriesTableSeeder::class,
             PostsTableSeeder::class,

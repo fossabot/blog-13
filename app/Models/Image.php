@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Storage;
 
 /**
  * App\Models\Image
@@ -29,11 +30,31 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
 class Image extends Model
 {
     /**
+     * @var array
+     */
+    protected $appends  = [
+        'url'
+    ];
+    /**
      * Get the owning imageable model.
      */
     public function imageable()
     {
         return $this->morphTo();
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getUrlAttribute()
+    {
+        if (empty($this->name)) {
+            return null;
+        }
+
+//        return \Storage::url('images/posts/' .$this->name);
+
+        return Storage::url($this->name);
     }
     /**
      * many to many polymorphic relationship between tags and images
@@ -49,8 +70,5 @@ class Image extends Model
     {
         return $this->morphToMany(Tag::class, 'taggable');
     }
-    public function getUrlAttribute()
-    {
-        return \Storage::url('images/posts/' .$this->name);
-    }
+
 }

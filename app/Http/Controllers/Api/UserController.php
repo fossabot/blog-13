@@ -11,6 +11,10 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Facades\Hash;
 
+/**
+ * Class UserController
+ * @package App\Http\Controllers\Api
+ */
 class UserController extends Controller
 {
     /**
@@ -21,12 +25,17 @@ class UserController extends Controller
     public function index(Request $request): ResourceCollection
     {
         return UserResource::collection(
-            User::withCount(['comments', 'posts'])->with('roles')->latest()->paginate($request->input('limit', 20))
+            User::withCount(['comments', 'posts'])
+                ->with('roles')->latest()
+                ->get()
+//                ->paginate($request->input('limit', 20))
         );
     }
 
     /**
      * Return the specified resource.
+     * @param User $user
+     * @return UserResource
      */
     public function show(User $user): UserResource
     {

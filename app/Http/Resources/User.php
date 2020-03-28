@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -14,6 +15,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * @property mixed email
  * @property integer id
  * @property string name
+ * @property string avatar
  * @package App\Http\Resources
  */
 class User extends JsonResource
@@ -29,10 +31,12 @@ class User extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'avatar' => $this->avatar,
             'email' => $this->email,
             'provider' => $this->provider,
             'provider_id' => $this->provider_id,
-            'registered_at' => $this->registered_at->toIso8601String(),
+            'registered_at' => $this->registered_at->toIso8601String() ?? now(),
+            'time_humanize'=> Carbon::parse($this->registered_at)->diffForHumans(),
             'comments_count' => $this->comments_count ?? $this->comments()->count(),
             'posts_count' => $this->posts_count ?? $this->posts()->count(),
             'roles' => Role::collection($this->roles),

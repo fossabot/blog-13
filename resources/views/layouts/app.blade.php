@@ -1,40 +1,36 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="@stack('html-class')">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    @auth
-        <meta name="api-token" content="{{ auth()->user()->api_token }}">
-    @endauth
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Turahe') }}</title>
 
-    <!-- Styles -->
-    <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
+    {{-- Scripts --}}
+    @stack('head-scripts')
+
+    {{-- Fonts --}}
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+
+    {{-- Styles --}}
+    <link href="{{ mix($stylesheet ?? 'css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/vendor.css') }}" rel="stylesheet">
+
+    @stack('head-after')
 </head>
-<body class="bg-light">
-    <div id="app">
-        @include('shared/navbar')
+<body>
 
-        <div class="container">
-            @include('shared/alerts')
+<div id="app">
 
-            <div class="row">
-                <div class="col-md-12">
-                    @yield('content')
-                </div>
-            </div>
-        </div>
+    @yield('content')
 
-        @include('shared/footer')
-    </div>
+</div>
 
-    <!-- Scripts -->
-    <script src="{{ mix('/js/app.js') }}"></script>
-    @stack('inline-scripts')
+@stack('bottom')
+
 </body>
 </html>

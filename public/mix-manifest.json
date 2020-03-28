@@ -1,7 +1,5 @@
 {
-    "/js/admin.js": "/js/admin.js",
-    "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
-    "/css/admin.css": "/css/admin.css",
-    "/js/ui/icons.svg": "/js/ui/icons.svg"
+    "/js/app.js": "/js/app.js?id=67e385fe8da66814dee0",
+    "/css/app.css": "/css/app.css?id=3240a86aceee5ff5d907",
+    "/css/vendor.css": "/css/vendor.css?id=1fd1572065c949d95414"
 }

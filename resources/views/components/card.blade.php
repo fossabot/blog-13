@@ -1,18 +1,21 @@
-<div {{ $attributes->merge(['class' => 'card']) }}>
-
-    @if (isset($title))
-        <div class="card-header">
-            {{ $title }}
-        </div>
+<div class="card">
+    @if (!empty($title))
+    <header class="card-header">
+        <p class="card-header-title">
+            {!! $title !!}
+        </p>
+    </header>
     @endif
 
-    <div class="card-body">
-        {{ $slot }}
+    {!! @$upperToolbar !!}
+
+    <div class="card-content">
+        {!! $slot !!}
     </div>
 
-    @if (isset($footer))
-        <div class="card-footer">
-            {{ $footer }}
-        </div>
+    @if(!empty($footer))
+    <footer class="card-footer">
+        {!! $footer !!}
+    </footer>
     @endif
 </div>
