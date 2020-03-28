@@ -7,6 +7,20 @@ use Carbon\Carbon;
 use Exception;
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * Class PostRequest
+ * @property mixed publish_date
+ * @property mixed publish_time
+ * @property mixed subtitle
+ * @property mixed title
+ * @property mixed category
+ * @property mixed image
+ * @property mixed type
+ * @property mixed user
+ * @property mixed meta_description
+ * @property mixed is_draft
+ * @package App\Http\Requests\Admin
+ */
 class PostRequest extends FormRequest
 {
     /**

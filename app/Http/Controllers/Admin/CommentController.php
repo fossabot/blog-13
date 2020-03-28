@@ -49,7 +49,9 @@ class CommentController extends Controller
     {
         $comment->update($request->validated());
 
-        return redirect()->route('admin.comments.edit', $comment)->withSuccess(__('comments.updated'));
+        return redirect()
+            ->route('admin.comments.edit', $comment)
+            ->withSuccess(__('comments.updated'));
     }
 
     /**
@@ -62,6 +64,8 @@ class CommentController extends Controller
     {
         $comment->delete();
 
-        return redirect()->route('admin.comments.index')->withSuccess(__('comments.deleted'));
+        return redirect()
+            ->route('admin.comments.index')
+            ->withSuccess(__('comments.deleted'));
     }
 }

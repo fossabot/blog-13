@@ -27,6 +27,7 @@ class CreatePostsTable extends Migration
             $table->text('content_html');
 
             $table->string('is_draft')->default(false);
+            $table->string('is_sticky')->default(false);
             $table->string('type');
 
             $table->timestamp('published_at');

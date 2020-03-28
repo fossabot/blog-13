@@ -31,7 +31,7 @@ class PostController extends Controller
             'posts' => Post::withCount('comments', 'likes')
                 ->with('user')
                 ->latest()
-                ->paginate(50)
+                ->paginate(10)
         ]);
     }
 
@@ -41,14 +41,12 @@ class PostController extends Controller
      */
     public function create(): View
     {
-        $data =  $this->dispatch(new PostFormField());
-        dd($data);
-        return view('admin.posts.create', $data );
-//        return view('admin.posts.create', [
-//            'users' => User::authors()->pluck('name', 'id'),
-//            'categories' => Category::pluck('title', 'id'),
-//            'media' => Media::pluck('name', 'id')
-//        ]);
+
+        return view('admin.posts.create', [
+            'users' => User::authors()->pluck('name', 'id'),
+            'categories' => Category::pluck('title', 'id'),
+            'media' => Media::pluck('name', 'id')
+        ]);
     }
 
     /**

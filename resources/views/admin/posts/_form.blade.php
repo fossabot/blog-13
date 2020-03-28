@@ -69,10 +69,8 @@
 
 
 <div class="form-group">
-    <label for="image">Product Image</label>
+    <label for="content">{{  __('posts.attributes.content') }}</label>
     <textarea class="form-control trumbowyg-form {{ $errors->has('content') ? ' is-invalid' : '' }}" id="content" name="content" required>{{ old('content') ?? isset($post) ? $post->content : null }}</textarea>
-    {!! Form::label('content', __('posts.attributes.content')) !!}
-    {!! Form::textarea('content', null, ['class' => 'form-control trumbowyg-form' . ($errors->has('content') ? ' is-invalid' : ''), 'required']) !!}
 
     @error('content')
     <span class="invalid-feedback">{{ $message }}</span>

@@ -35,11 +35,19 @@ class CategoryController extends Controller
      * Store a newly created resource in storage.
      *
      * @param Request $request
+     * @param Category $category
      * @return RedirectResponse
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request, Category $category): RedirectResponse
     {
         Category::create($request->all());
+        //Store Image
+        if($request->hasFile('image') && $request->file('image')->isValid()){
+            $category->addMediaFromRequest('image')->toMediaCollection('images');
+        }
+
         return redirect()
             ->route('admin.category.index')
             ->with('success', 'New Category successfully');

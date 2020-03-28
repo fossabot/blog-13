@@ -4,7 +4,7 @@
 namespace App\Repositories\Slug;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
+use Str;
 
 /**
  * Trait HasSlug

@@ -7,11 +7,5 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/laravel</jdbc-url>
     </data-source>
-    <data-source source="LOCAL" name="database" uuid="6f79cdbc-b30d-435d-a4b5-fc42b4f7b27d">
-      <driver-ref>sqlite.xerial</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\laragon\www\master\database\database.sqlite</jdbc-url>
-    </data-source>
   </component>
 </project>

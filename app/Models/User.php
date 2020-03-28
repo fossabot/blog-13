@@ -11,6 +11,7 @@ use Illuminate\Contracts\Translation\HasLocalePreference;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\DatabaseNotificationCollection;
@@ -18,8 +19,6 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\Client;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Activitylog\Traits\LogsActivity;
-use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Permission\Traits\HasRoles;
 use Storage;
 use Str;
@@ -85,10 +84,11 @@ use Str;
  * @method static Builder|User whereProvider($value)
  * @method static Builder|User whereProviderId($value)
  * @method static Builder|User whereRegisteredAt($value)
+ * @property-read \App\Models\Image $image
  */
-class User extends Authenticatable implements MustVerifyEmail, HasLocalePreference, HasMedia
+class User extends Authenticatable implements MustVerifyEmail, HasLocalePreference
 {
-    use Notifiable, HasRoles, HasApiTokens, LogsActivity, HasSlug, InteractsWithMedia;
+    use Notifiable, HasRoles, HasApiTokens, LogsActivity, HasSlug;
 
     /**
      * The attributes that are mass assignable.
@@ -266,6 +266,11 @@ class User extends Authenticatable implements MustVerifyEmail, HasLocalePreferen
     public function comments(): HasMany
     {
         return $this->hasMany(Comment::class, 'user_id');
+    }
+
+    public function image(): MorphOne
+    {
+        return $this->morphOne(Image::class, 'imageable');
     }
 
     /**

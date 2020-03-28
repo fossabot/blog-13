@@ -39,6 +39,7 @@ class NewsletterSubscription extends Model
 {
     use SoftDeletes, LogsActivity;
     /**
+     * The attributes that are mass assignable.
      * @var array
      */
     protected $fillable = [ 'name', 'email' ];

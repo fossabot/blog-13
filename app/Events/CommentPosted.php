@@ -19,14 +19,14 @@ class CommentPosted implements ShouldBroadcast
      *
      * @var CommentResource
      */
-    public $comment;
+    public CommentResource $comment;
 
     /**
      * Post details
      *
      * @var Post
      */
-    private $post;
+    private Post $post;
 
     /**
      * Create a new event instance.

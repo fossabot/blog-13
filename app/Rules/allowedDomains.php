@@ -4,6 +4,10 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
+/**
+ * Class allowedDomains
+ * @package App\Rules
+ */
 class allowedDomains implements Rule
 {
     /**
@@ -16,6 +20,9 @@ class allowedDomains implements Rule
         //
     }
 
+    /**
+     * @var array
+     */
     protected array $allowedDomains = [
         'domain.com',
         'another-domain.com',

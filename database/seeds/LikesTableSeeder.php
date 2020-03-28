@@ -14,6 +14,8 @@ class LikesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Models\Like::class, 100)->create();
+        if (App::environment(['local', 'staging', 'testing'])) {
+            factory(\App\Models\Like::class, 100)->create();
+        }
     }
 }

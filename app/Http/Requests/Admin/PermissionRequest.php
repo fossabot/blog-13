@@ -4,6 +4,10 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * Class PermissionRequest
+ * @package App\Http\Requests\Admin
+ */
 class PermissionRequest extends FormRequest
 {
     /**

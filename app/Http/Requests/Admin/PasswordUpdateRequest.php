@@ -3,9 +3,14 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Hash;
+use Hash;
 use Illuminate\Validation\Validator;
 
+/**
+ * Class PasswordUpdateRequest
+ * @property mixed password_current
+ * @package App\Http\Requests\Admin
+ */
 class PasswordUpdateRequest extends FormRequest
 {
     /**
@@ -42,7 +47,7 @@ class PasswordUpdateRequest extends FormRequest
         // checks user's current password
         // before making password update
         $validator->after(function ($validator) {
-            if (!Hash::check($this->password_current, $this->user()->password)) {
+            if (! Hash::check($this->password_current, $this->user()->password)) {
                 $validator->errors()->add('password_current', 'Your current password is incorrect.');
             }
         });

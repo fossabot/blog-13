@@ -31,7 +31,9 @@ class UsersTableSeeder extends Seeder
 
         if (App::environment(['local', 'staging', 'testing'])) {
             // return local database settings array
-            factory(\App\Models\User::class, 100)->create();
+            factory(\App\Models\User::class, 100)->create()->each(function ($user) {
+                $user->image()->save(factory(\App\Models\Image::class)->make());
+            });
         }
     }
 

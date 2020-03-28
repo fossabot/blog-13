@@ -6,7 +6,6 @@ use App\Http\Requests\ContactRequest;
 use App\Models\ContactUs;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 /**
@@ -20,7 +19,7 @@ final class ContactUsController extends Controller
      */
     public function contactUs(): View
     {
-        return view('contact');
+        return view('blog.contact');
     }
 
     /**

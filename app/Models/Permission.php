@@ -53,6 +53,7 @@ class Permission extends Model
     use SoftDeletes, LogsActivity;
 
     /**
+     * The attributes that are mass assignable.
      * @var array
      */
     protected $fillable = ['name', 'description', 'guard_name'];

@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Contracts\View\Factory;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 /**
@@ -15,49 +14,52 @@ use Illuminate\View\View;
 class BlogController extends Controller
 {
     /**
-     * @var Builder[]|Collection|Post[]
-     */
-    protected $post;
-
-    /**
-     * BlogController constructor.
-     * @param Post $post
-     */
-    public function __construct(Post $post)
-    {
-        $this->post = $post->with(['user', 'category', 'tags'])->get();
-    }
-
-    /**
+     * Show all blog
+     *
+     * @param Request $request
      * @return Factory|View
      */
-    public function index(): View
+    public function index(Request $request): View
     {
-        $blogs = $this->post->take(7);
-        return view('blogs.index', compact('blogs'));
+        $query = Post::search($request->input('query'))
+            ->where('published_at', '<=', now())
+            ->where('is_draft', 0)
+            ->orderBy('published_at', 'desc')
+            ->with(['images', 'category']);
+
+        $blogs = $query
+            ->where('type', 'blog')
+            ->paginate(9);
+
+        $featured = $query->where('is_sticky', true)->get();
+
+        return view('blog.index',[
+            'blogs' => $blogs,
+            'featured' => $featured
+        ]);
     }
 
     /**
+     * Show blog by slug
+     *
      * @param $slug
      * @return Factory|View
      */
     public function show($slug): View
     {
-        $blog = Post::whereSlug($slug)->first();
-        dd($blog);
-        $blog = $this->post->where('slug', $slug)->first();
-        dd($blog);
-//        $posts =  $this->post->where('category_id', $blog->category->id)
+        $query = Post::with(['images', 'tags', 'category', 'user'])->get();
+        $blog = $query->where('slug', $slug)->first();
+        $posts =  $query->where('category_id', $blog->category->id)
+            ->except($blog->id);
 //            ->where('type', $blog->type)
 //            ->take(3);
 
 
-
-        $content = $this->post->where('type', '=', 'sticky')
-            ->random(1)
-            ->first();
-
-
-        return view('blogs.show', compact('blog', 'content'));
+        return view('blog.show', [
+            'blog' => $blog,
+            'posts' => $posts
+        ]);
     }
+
+
 }

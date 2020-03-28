@@ -15,9 +15,8 @@ use Faker\Generator as Faker;
 |
 */
 $factory->define(\App\Models\Category::class, function (Faker $faker) {
-    $titles = ['book', 'video', 'blog', 'test', 'docker', 'git', 'code', 'deploy', 'monitor', 'monitor', 'plan', 'release', 'Continuous Integration', 'Continuous Delivery', 'Continuous Deployment', 'server', 'Internet Of Think'];
     return [
-        'title' => $faker->randomElement($titles),
+        'title' => $faker->unique()->word,
         'subtitle' => \Str::limit($faker->sentence(mt_rand(10, 20)), 252),
         'description' => $faker->sentence(mt_rand(10, 20)),
     ];

@@ -12,8 +12,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\Traits\LogsActivity;
-use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Permission\Traits\HasRoles;
 
 /**
@@ -70,11 +68,13 @@ use Spatie\Permission\Traits\HasRoles;
  * @property-read User $user
  * @method static Builder|Comment whereContent($value)
  */
-class Comment extends Model implements HasMedia
+class Comment extends Model
 {
-    use SoftDeletes, LogsActivity, HasRoles, InteractsWithMedia;
+    use SoftDeletes, LogsActivity, HasRoles;
 
     /**
+     * The attributes that are mass assignable.
+     *
      * @var array
      */
     protected $fillable = [

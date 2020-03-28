@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use Illuminate\Contracts\View\Factory;
 use Illuminate\View\View;
 
 /**
@@ -13,23 +12,34 @@ use Illuminate\View\View;
 class CategoryController extends Controller
 {
     /**
-     * @return Factory|View
+     * @param Category $category
+     * @return View
      */
-    public function index(): View
+    public function index(Category $category): View
     {
-        $categories = Category::with(['posts.user', 'posts.tags'])->get();
-        return view('blogs.categories.index', compact('categories'));
+        $categories = $category->with('image')->get();
+
+        $cats = $categories->reject(function ($cat) {
+            return $cat->id ===1;
+        });
+
+        return view('blog.categories.index', [
+            'categories' => $cats
+        ]);
     }
 
     /**
      * @param $slug
-     * @return Factory|View
+     * @return View
      */
     public function show($slug): View
     {
-        $category = Category::whereSlug($slug)->firstOrFail();
-//        dd($category);
+        $category = Category::with('posts.images')
+            ->where('slug', $slug)
+            ->firstOrFail();
 
-        return view('blogs.categories.show', compact('category'));
+        return view('blog.categories.show', [
+            'category' => $category
+        ]);
     }
 }

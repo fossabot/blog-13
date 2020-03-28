@@ -14,15 +14,17 @@ class TagsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Models\Tag::class, 10)->create();
+        if (App::environment(['local', 'staging', 'testing'])) {
+            factory(\App\Models\Tag::class, 10)->create();
 
-        $tags = \App\Models\Tag::all();
-        $post = \App\Models\Post::all();
-        $media = \App\Models\Media::all();
+            $tags = \App\Models\Tag::all();
+            $post = \App\Models\Post::all();
+            $image = \App\Models\Image::all();
 
 
-        self::taggable($post, $tags);
-        self::taggable($media, $tags);
+            self::taggable($post, $tags);
+            self::taggable($image, $tags);
+        }
     }
 
     /**

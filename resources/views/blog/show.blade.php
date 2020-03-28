@@ -1,4 +1,6 @@
-@extends('layouts.layout')
+@extends('blog._layouts.layout', [
+    'title' => $blog->title
+])
 
 @section('content')
 <!-- page-title -->
@@ -27,7 +29,7 @@
                     {!! $blog->content_html !!}
                 </div>
             </div>
-            @include('partials._sidebar')
+            @include('blog._partials._sidebar')
         </div>
     </div>
 </section>

@@ -44,7 +44,7 @@ use Spatie\Activitylog\Models\Activity as Model;
  * @mixin Eloquent
  * @method static Builder|Model forEvent($event)
  * @property string|null $event
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Activity whereEvent($value)
+ * @method static Builder|Activity whereEvent($value)
  */
 class Activity extends Model
 {

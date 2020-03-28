@@ -13,10 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'PostController@index')->name('home');
+//Route::get('/', 'PostController@index')->name('home');
 Route::get('/posts/feed', 'PostFeedController@index')->name('posts.feed');
 Route::resource('posts', 'PostController')->only('show');
 Route::resource('users', 'UserController')->only('show');
+
+Route::get('/', 'BlogController@index')->name('blog');
+Route::get('blog/{slug}', 'BlogController@show')->name('blog.show');
+Route::get('categories/', 'CategoryController@index');
+Route::get('category/{category}', 'CategoryController@show');
+
+//static pages
+Route::get('contact', 'ContactUsController@contactUs');
+Route::post('contact', 'ContactUsController@store');
+Route::get('/privacy', 'PageController')->defaults('post', 'privacy-and-policy');
+Route::get('/about', 'PageController')->defaults('post', 'about');
 
 Route::get('newsletter-subscriptions/unsubscribe', 'NewsletterSubscriptionController@unsubscribe')->name('newsletter-subscriptions.unsubscribe');
 

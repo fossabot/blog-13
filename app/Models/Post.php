@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Posts\Rate;
 use App\Repositories\Likeable;
 use App\Repositories\ReadTime;
 use App\Repositories\Slug\HasSlug;
@@ -23,8 +24,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 use League\CommonMark\CommonMarkConverter;
 use Spatie\Activitylog\Traits\LogsActivity;
-use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Permission\Traits\HasRoles;
 use Storage;
 
@@ -105,15 +104,17 @@ use Storage;
  * @method static Builder|Post search($search)
  * @method static \Illuminate\Database\Query\Builder|Post withTrashed()
  * @method static \Illuminate\Database\Query\Builder|Post withoutTrashed()
- * @property-read Collection|\Spatie\MediaLibrary\Models\Media[] $media
- * @property-read null|int $media_count
  * @property-read Collection|\Spatie\Activitylog\Models\Activity[] $activities
  * @property-read int|null $activities_count
  * @property-read mixed $author
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Posts\Rate[] $rates
+ * @property-read int|null $rates_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Image[] $images
+ * @property-read int|null $images_count
  */
-class Post extends Model implements HasMedia
+class Post extends Model
 {
-    use HasRoles, SoftDeletes, Likeable, LogsActivity, HasSlug, InteractsWithMedia;
+    use HasRoles, SoftDeletes, Likeable, LogsActivity, HasSlug;
     /**
      * @var array
      */
@@ -199,7 +200,12 @@ class Post extends Model implements HasMedia
      */
     public function getUrlAttribute():string
     {
-        return route('blog.show', $this->slug);
+        if ($this->type === 'blog') {
+            return route('blog.show', $this->slug);
+        }
+
+        return route('posts.show', $this->slug);
+
     }
 
 
@@ -230,15 +236,14 @@ class Post extends Model implements HasMedia
      * Creating new query databases with relations
      *
      * @param array $relation
-     * @return Builder[]|Collection|Post[]
+     * @return Builder
      */
-    public function queryAll(array $relation = [])
+    public function queryAll(array $relation = []): Builder
     {
         return static::where('published_at', '<=', now())
             ->where('is_draft', 0)
             ->orderBy('published_at', 'desc')
-            ->with($relation)
-            ->get();
+            ->with($relation);
     }
 
     /**
@@ -456,6 +461,8 @@ class Post extends Model implements HasMedia
     }
 
     /**
+     * Check if parent is exist or not null
+     *
      * @return bool
      */
     public function hasParent(): bool
@@ -475,6 +482,8 @@ class Post extends Model implements HasMedia
     }
 
     /**
+     * Get Author name from table user
+     *
      * @return string
      */
     public function getAuthorAttribute(): string
@@ -509,6 +518,14 @@ class Post extends Model implements HasMedia
     }
 
     /**
+     * @return HasMany
+     */
+    public function rates(): HasMany
+    {
+        return $this->hasMany(Rate::class,'post_id');
+    }
+
+    /**
      * Return the post's comments
      *
      * @return MorphMany
@@ -517,10 +534,18 @@ class Post extends Model implements HasMedia
     {
         return $this->morphMany(Comment::class, 'commentable');
     }
-
-
+    public function images(): MorphMany
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
+    public function getThumbnailAttribute()
+    {
+        dd();
+    }
 
     /**
+     * Convert markdown to HTML
+     *
      * @param string $text
      * @throws Exception
      * @return string

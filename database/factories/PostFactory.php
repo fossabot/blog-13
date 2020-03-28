@@ -17,14 +17,15 @@ use Faker\Generator as Faker;
 $factory->define(\App\Models\Post::class, function (Faker $faker) {
     $title = $faker->unique()->realText(50, 2);
     return [
-        'user_id' => mt_rand(1, 4),//factory(\App\Models\User::class)->create()->id,
+        'user_id' => mt_rand(1, 100),//factory(\App\Models\User::class)->create()->id,
         'category_id' => mt_rand(1, 30),
         'title' => $title,
         'subtitle' => \Str::limit($faker->realText(300, 3), 190),
         'content_raw' => join("\n\n", $faker->paragraphs(mt_rand(7, 16))),
         'meta_description' => "Meta for $title",
+        'is_sticky' => $faker->boolean,
         'published_at' => $faker->dateTimeBetween('-1 Month', '+3 days'),
-        'type' => $faker->randomElement(['blog', 'post', 'wiki', 'tutorial', 'book', 'slide', 'sticky']),
+        'type' => $faker->randomElement(['blog', 'post', 'wiki', 'tutorial', 'book']),
 
     ];
 });
