@@ -225,7 +225,7 @@ class Post extends Model
      * @param null|string $search
      * @return Builder
      */
-    public function scopeSearch(Builder $query, ?string $search)
+    public function scopeSearch(Builder $query, ?string $search): Builder
     {
         if ($search) {
             return $query->where('title', 'LIKE', "%{$search}%");

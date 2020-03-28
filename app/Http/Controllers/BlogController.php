@@ -21,12 +21,14 @@ class BlogController extends Controller
      */
     public function index(Request $request): View
     {
+
         $query = Post::search($request->input('query'))
             ->where('published_at', '<=', now())
             ->where('is_draft', 0)
             ->orderBy('published_at', 'desc')
             ->with(['images', 'category']);
 
+        dd($query->get());
         $blogs = $query
             ->where('type', 'blog')
             ->paginate(9);
@@ -51,8 +53,6 @@ class BlogController extends Controller
         $blog = $query->where('slug', $slug)->first();
         $posts =  $query->where('category_id', $blog->category->id)
             ->except($blog->id);
-//            ->where('type', $blog->type)
-//            ->take(3);
 
 
         return view('blog.show', [
