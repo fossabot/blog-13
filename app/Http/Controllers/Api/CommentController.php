@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Http\Response;
 
+/**
+ * Class CommentController
+ * @package App\Http\Controllers\Api
+ */
 class CommentController extends Controller
 {
     /**
@@ -38,8 +42,9 @@ class CommentController extends Controller
     /**
      * Remove the specified resource from storage.
      * @param Comment $comment
-     * @throws AuthorizationException
      * @return Response
+     * @throws \Exception
+     * @throws AuthorizationException
      */
     public function destroy(Comment $comment): Response
     {

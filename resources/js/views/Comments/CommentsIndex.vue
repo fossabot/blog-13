@@ -1,14 +1,14 @@
 <template>
   <div>
-    <title-bar :title-stack="['Admin', 'Users']"/>
+    <title-bar :title-stack="['Admin', 'Comments']"/>
     <hero-bar>
-      Users
+      Comments
       <router-link to="/comments/new" class="button" slot="right">
-        New User
+        New Comment
       </router-link>
     </hero-bar>
     <section class="section is-main-section">
-      <card-component class="has-table has-mobile-sort-spaced" title="Users" icon="account-multiple">
+      <card-component class="has-table has-mobile-sort-spaced" title="Comments" icon="account-multiple">
         <card-toolbar>
           <button slot="right" type="button" class="button is-danger is-small has-checked-rows-number" @click="trashModal(null)" :disabled="!checkedRows.length">
             <b-icon icon="trash-can" custom-size="default"/>
@@ -26,15 +26,16 @@
           :per-page="perPage"
           :striped="true"
           :hoverable="true"
-          default-sort="name"
+          default-sort="content"
           :data="comments">
 
           <template slot-scope="props">
             <b-table-column class="has-no-head-mobile is-image-cell">
-              <div v-if="props.row.avatar" class="image">
-                <img :src="props.row.avatar" class="is-rounded">
-              </div>
-              {{ props.row.author }}
+              <b-tooltip v-bind:label="props.row.author">
+                <div v-if="props.row.avatar" class="image">
+                  <img :src="props.row.avatar" class="is-rounded">
+                </div>
+              </b-tooltip>
             </b-table-column>
             <b-table-column label="Content" field="content" sortable>
               {{ props.row.content }}
@@ -83,115 +84,115 @@
 </template>
 
 <script>
-import map from 'lodash/map'
-import CardComponent from './../../components/CardComponent'
-import ModalBox from './../../components/ModalBox'
-import TitleBar from './../../components/TitleBar'
-import HeroBar from './../../components/HeroBar'
-import CardToolbar from './../../components/CardToolbar'
-import ModalTrashBox from './../../components/ModalTrashBox'
-export default {
-  name: "UsersIndex",
-  components: {ModalTrashBox, CardToolbar, HeroBar, TitleBar, ModalBox, CardComponent},
-  data () {
-    return {
-      isModalActive: false,
-      trashObject: null,
-      comments: [],
-      isLoading: false,
-      paginated: false,
-      perPage: 10,
-      checkedRows: []
-    }
-  },
-  computed: {
-    trashSubject () {
-      if (this.trashObject) {
-        return this.trashObject.name
+  import map from 'lodash/map'
+  import CardComponent from './../../components/CardComponent'
+  import ModalBox from './../../components/ModalBox'
+  import TitleBar from './../../components/TitleBar'
+  import HeroBar from './../../components/HeroBar'
+  import CardToolbar from './../../components/CardToolbar'
+  import ModalTrashBox from './../../components/ModalTrashBox'
+  export default {
+    name: "CommentsIndex",
+    components: {ModalTrashBox, CardToolbar, HeroBar, TitleBar, ModalBox, CardComponent},
+    data () {
+      return {
+        isModalActive: false,
+        trashObject: null,
+        comments: [],
+        isLoading: false,
+        paginated: false,
+        perPage: 10,
+        checkedRows: []
       }
+    },
+    computed: {
+      trashSubject () {
+        if (this.trashObject) {
+          return this.trashObject.name
+        }
 
-      if (this.checkedRows.length) {
-        return `${this.checkedRows.length} entries`
+        if (this.checkedRows.length) {
+          return `${this.checkedRows.length} entries`
+        }
+
+        return null
       }
-
-      return null
-    }
-  },
-  created () {
-    this.getData()
-  },
-  methods: {
-    getData () {
-      this.isLoading = true
-      axios
-        .get('/api/v1/comments')
-        .then(r => {
-          this.isLoading = false
-          if (r.data && r.data.data) {
-            if (r.data.data.length > this.perPage) {
-              this.paginated = true
+    },
+    created () {
+      this.getData()
+    },
+    methods: {
+      getData () {
+        this.isLoading = true
+        axios
+          .get('/api/v1/comments')
+          .then(r => {
+            this.isLoading = false
+            if (r.data && r.data.data) {
+              if (r.data.data.length > this.perPage) {
+                this.paginated = true
+              }
+              this.comments = r.data.data
             }
-            this.comments = r.data.data
+          })
+          .catch( err => {
+            this.isLoading = false
+            this.$buefy.toast.open({
+              message: `Error: ${err.message}`,
+              type: 'is-danger',
+              queue: false
+            })
+          })
+      },
+      trashModal (trashObject = null) {
+        if (trashObject || this.checkedRows.length) {
+          this.trashObject = trashObject
+          this.isModalActive = true
+        }
+      },
+      trashConfirm () {
+        let url
+        let method
+        let data = null
+
+        this.isModalActive = false
+
+        if (this.trashObject) {
+          method = 'delete'
+          url = `/api/v1/comments/${this.trashObject.id}/destroy`
+        } else if (this.checkedRows.length) {
+          method = 'post'
+          url = '/api/v1/comments/destroy'
+          data = {
+            ids: map(this.checkedRows, row => row.id)
           }
-        })
-        .catch( err => {
-          this.isLoading = false
+        }
+
+        axios({
+          method,
+          url,
+          data
+        }).then( r => {
+          this.getData()
+
+          this.trashObject = null
+          this.checkedRows = []
+
+          this.$buefy.snackbar.open({
+            message: `Deleted`,
+            queue: false
+          })
+        }).catch( err => {
           this.$buefy.toast.open({
             message: `Error: ${err.message}`,
             type: 'is-danger',
             queue: false
           })
         })
-    },
-    trashModal (trashObject = null) {
-      if (trashObject || this.checkedRows.length) {
-        this.trashObject = trashObject
-        this.isModalActive = true
+      },
+      trashCancel () {
+        this.isModalActive = false
       }
-    },
-    trashConfirm () {
-      let url
-      let method
-      let data = null
-
-      this.isModalActive = false
-
-      if (this.trashObject) {
-        method = 'delete'
-        url = `/api/v1/comments/${this.trashObject.id}/destroy`
-      } else if (this.checkedRows.length) {
-        method = 'post'
-        url = '/api/v1/comments/destroy'
-        data = {
-          ids: map(this.checkedRows, row => row.id)
-        }
-      }
-
-      axios({
-        method,
-        url,
-        data
-      }).then( r => {
-        this.getData()
-
-        this.trashObject = null
-        this.checkedRows = []
-
-        this.$buefy.snackbar.open({
-          message: `Deleted`,
-          queue: false
-        })
-      }).catch( err => {
-        this.$buefy.toast.open({
-          message: `Error: ${err.message}`,
-          type: 'is-danger',
-          queue: false
-        })
-      })
-    },
-    trashCancel () {
-      this.isModalActive = false
     }
   }
-}
 </script>

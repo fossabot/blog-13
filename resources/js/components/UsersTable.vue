@@ -14,9 +14,11 @@
 
       <template slot-scope="props">
         <b-table-column class="has-no-head-mobile is-image-cell">
-          <div v-if="props.row.avatar" class="image">
-            <img :src="props.row.avatar" class="is-rounded">
-          </div>
+          <b-tooltip v-bind:label="props.row.name">
+            <div v-if="props.row.avatar" class="image">
+              <img :src="props.row.avatar" class="is-rounded">
+            </div>
+          </b-tooltip>
         </b-table-column>
         <b-table-column label="Name" field="name" sortable>
           {{ props.row.name }}

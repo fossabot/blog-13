@@ -1,14 +1,14 @@
 <template>
   <div>
-    <title-bar :title-stack="['Admin', 'Users']"/>
+    <title-bar :title-stack="['Admin', 'Tags']"/>
     <hero-bar>
-      Users
-      <router-link to="/users/new" class="button" slot="right">
-        New User
+      Tags
+      <router-link to="/tags/new" class="button" slot="right">
+        New Tag
       </router-link>
     </hero-bar>
     <section class="section is-main-section">
-      <card-component class="has-table has-mobile-sort-spaced" title="Users" icon="account-multiple">
+      <card-component class="has-table has-mobile-sort-spaced" title="Tags" icon="account-multiple">
         <card-toolbar>
           <button slot="right" type="button" class="button is-danger is-small has-checked-rows-number" @click="trashModal(null)" :disabled="!checkedRows.length">
             <b-icon icon="trash-can" custom-size="default"/>
@@ -27,31 +27,28 @@
           :striped="true"
           :hoverable="true"
           default-sort="name"
-          :data="users">
+          :data="tags">
 
           <template slot-scope="props">
             <b-table-column class="has-no-head-mobile is-image-cell">
-              <div v-if="props.row.avatar" class="image">
-                <img :src="props.row.avatar" class="is-rounded">
-              </div>
             </b-table-column>
-            <b-table-column label="Name" field="name" sortable>
-              {{ props.row.name }}
+            <b-table-column label="Name" field="tag" sortable>
+              {{ props.row.tag }}
             </b-table-column>
-            <b-table-column label="Comment Counts" field="comments_count" sortable>
-                <progress class="progress is-small is-primary" :value="props.row.comments_count" max="10">{{ props.row.comments_count }}</progress>
+            <b-table-column label="Meta" field="meta_description" sortable>
+              {{ props.row.meta_description }}
             </b-table-column>
-            <b-table-column label="Post Counts" field="posts_count" sortable>
-                <progress class="progress is-small is-primary" :value="props.row.posts_count" max="10">{{ props.row.posts_count }}</progress>
+            <b-table-column label="Description" field="description" sortable>
+              {{ props.row.description }}
             </b-table-column>
-            <b-table-column label="Registered At">
-              <b-tooltip v-bind:label="props.row.registered_at">
+            <b-table-column label="Created">
+              <b-tooltip v-bind:label="props.row.created_at">
                 <small class="has-text-grey is-abbr-like" :title="props.row.time_humanize">{{ props.row.time_humanize }}</small>
               </b-tooltip>
             </b-table-column>
             <b-table-column custom-key="actions" class="is-actions-cell">
               <div class="buttons is-right">
-                <router-link :to="{name:'users.edit', params: {id: props.row.id}}" class="button is-small is-primary">
+                <router-link :to="{name:'tags.edit', params: {id: props.row.id}}" class="button is-small is-primary">
                   <b-icon icon="account-edit" size="is-small"/>
                 </router-link>
                 <button class="button is-small is-danger" type="button" @click.prevent="trashModal(props.row)">
@@ -93,13 +90,13 @@ import HeroBar from './../../components/HeroBar'
 import CardToolbar from './../../components/CardToolbar'
 import ModalTrashBox from './../../components/ModalTrashBox'
 export default {
-  name: "UsersIndex",
+  name: "TagsIndex",
   components: {ModalTrashBox, CardToolbar, HeroBar, TitleBar, ModalBox, CardComponent},
   data () {
     return {
       isModalActive: false,
       trashObject: null,
-      users: [],
+      tags: [],
       isLoading: false,
       paginated: false,
       perPage: 10,
@@ -126,14 +123,14 @@ export default {
     getData () {
       this.isLoading = true
       axios
-        .get('/api/v1/users')
+        .get('/api/v1/tags')
         .then(r => {
           this.isLoading = false
           if (r.data && r.data.data) {
             if (r.data.data.length > this.perPage) {
               this.paginated = true
             }
-            this.users = r.data.data
+            this.tags = r.data.data
           }
         })
         .catch( err => {
@@ -160,10 +157,10 @@ export default {
 
       if (this.trashObject) {
         method = 'delete'
-        url = `/api/v1/users/${this.trashObject.id}/destroy`
+        url = `/api/v1/tags/${this.trashObject.id}/destroy`
       } else if (this.checkedRows.length) {
         method = 'post'
-        url = '/api/v1/users/destroy'
+        url = '/api/v1/tags/destroy'
         data = {
           ids: map(this.checkedRows, row => row.id)
         }

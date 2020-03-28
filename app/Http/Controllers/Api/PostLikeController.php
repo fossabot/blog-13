@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
+/**
+ * Class PostLikeController
+ * @package App\Http\Controllers\Api
+ */
 class PostLikeController extends Controller
 {
     /**

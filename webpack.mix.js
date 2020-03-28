@@ -27,3 +27,7 @@ mix
   .copyDirectory('node_modules/@mdi/font/fonts', 'public/fonts')
   .copyDirectory('resources/images', 'public/images')
   .version();
+
+mix.js('resources/js/blog.js', 'public/js')
+  .sass('resources/sass/blog.scss', 'public/css')
+  .version();

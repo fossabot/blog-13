@@ -3,8 +3,8 @@
     <title-bar :title-stack="titleStack"/>
     <hero-bar>
       {{ heroTitle }}
-      <router-link slot="right" to="/users/index" class="button">
-        Users
+      <router-link slot="right" to="/comments/index" class="button">
+        Comments
       </router-link>
     </hero-bar>
     <section class="section is-main-section">
@@ -87,7 +87,7 @@ import UserAvatar from './../../components/UserAvatar'
 import Notification from './../../components/Notification'
 
 export default {
-  name: 'UserForm',
+  name: 'CommentsForm',
   components: { UserAvatar, FilePicker, CardComponent, Tiles, HeroBar, TitleBar, Notification },
   props: {
     id: {
@@ -114,7 +114,7 @@ export default {
 
       return [
         'Admin',
-        'Users',
+        'Comments',
         lastCrumb
       ]
     },
@@ -158,7 +158,7 @@ export default {
     getData () {
       if (this.id) {
         axios
-          .get(`/api/v1/users/${this.id}`)
+          .get(`/api/v1/comments/${this.id}`)
           .then(r => {
             this.form = r.data.data
             this.item = clone(r.data.data)
@@ -186,11 +186,11 @@ export default {
     submit () {
       this.isLoading = true
       let method = 'post'
-      let url = '/api/v1/users/store'
+      let url = '/api/v1/comments/store'
 
       if (this.id) {
         method = 'patch'
-        url = `/api/v1/users/${this.id}`
+        url = `/api/v1/comments/${this.id}`
       }
 
       axios({
@@ -201,7 +201,7 @@ export default {
         this.isLoading = false
 
         if (!this.id && r.data.data.id) {
-          this.$router.push({name: 'users.edit', params: {id: r.data.data.id}})
+          this.$router.push({name: 'comments.edit', params: {id: r.data.data.id}})
 
           this.$buefy.snackbar.open({
             message: 'Created',

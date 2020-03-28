@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import AsideMenuItem from '@/components/AsideMenuItem'
+import AsideMenuItem from './AsideMenuItem'
 
 export default {
   name: 'AsideMenuList',

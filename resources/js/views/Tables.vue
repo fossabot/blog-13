@@ -16,7 +16,7 @@
       </notification>
 
       <card-component class="has-table has-mobile-sort-spaced" title="Clients" icon="account-multiple">
-        <clients-table-sample data-url="/clients" :checkable="true"/>
+        <users-table data-url="/clients" :checkable="true"/>
       </card-component>
 
       <hr>
@@ -29,7 +29,7 @@
       </notification>
 
       <card-component class="has-table has-mobile-sort-spaced">
-        <clients-table-sample data-url="/clients" :checkable="true"/>
+        <users-table data-url="/clients" :checkable="true"/>
       </card-component>
 
       <hr>
@@ -42,7 +42,7 @@
       </notification>
 
       <card-component class="has-table">
-        <clients-table-sample/>
+        <users-table/>
       </card-component>
     </section>
   </div>

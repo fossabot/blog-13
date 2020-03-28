@@ -11,6 +11,10 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Http\Response;
 
+/**
+ * Class PostController
+ * @package App\Http\Controllers\Api
+ */
 class PostController extends Controller
 {
     /**
@@ -23,8 +27,7 @@ class PostController extends Controller
         return PostResource::collection(
             Post::search($request->input('q'))
                 ->withCount('comments')->latest()
-                ->get()
-//                ->paginate($request->input('limit', 20))
+                ->paginate($request->input('limit', 20))
         );
     }
 

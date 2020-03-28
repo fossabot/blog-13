@@ -25,7 +25,7 @@
 
 <script>
 import each from 'lodash/each'
-import CardComponent from '@/components/CardComponent'
+import CardComponent from './CardComponent'
 
 export default {
   name: 'PasswordUpdateForm',

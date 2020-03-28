@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Repositories\Likeable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Storage;
@@ -29,6 +30,7 @@ use Storage;
  */
 class Image extends Model
 {
+    use Likeable;
     /**
      * @var array
      */
@@ -54,7 +56,7 @@ class Image extends Model
 
 //        return \Storage::url('images/posts/' .$this->name);
 
-        return Storage::url($this->name);
+        return Storage::url($this->file);
     }
     /**
      * many to many polymorphic relationship between tags and images

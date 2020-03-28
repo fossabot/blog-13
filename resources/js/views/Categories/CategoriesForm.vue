@@ -87,7 +87,7 @@ import UserAvatar from './../../components/UserAvatar'
 import Notification from './../../components/Notification'
 
 export default {
-  name: 'UserForm',
+  name: 'CategoriesForm',
   components: { UserAvatar, FilePicker, CardComponent, Tiles, HeroBar, TitleBar, Notification },
   props: {
     id: {

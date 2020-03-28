@@ -9,12 +9,14 @@
                         <img class="card-img rounded-0 img-fluid w-100" src="{{ $slide->images[0]->url }}" alt="{{ $slide->title }}">
                         <div class="card-img-overlay">
                             <div class="card-content">
-
-
                                 <p class="text-uppercase">{{ $slide->category->title }}</p>
 
-                                <h4 class="card-title mb-4"><a class="text-white" href="{{ $slide->images[0]->url }}">{{ $slide->title }}</a></h4>
-                                <a class="btn btn-outline-light" href="{{ $slide->url }}">read more</a>
+                                <h4 class="card-title mb-4">
+                                    <a class="text-white" href="{{ $slide->images[0]->url }}">
+                                        {{ $slide->title }}
+                                    </a>
+                                </h4>
+                                <a class="btn btn-outline-light" href="{{ $slide->url }}">@lang('read_more')</a>
                             </div>
                         </div>
                     </article>

@@ -8,6 +8,10 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
+/**
+ * Class UserPostController
+ * @package App\Http\Controllers\Api
+ */
 class UserPostController extends Controller
 {
     /**

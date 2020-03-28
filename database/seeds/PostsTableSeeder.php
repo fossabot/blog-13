@@ -30,7 +30,10 @@ class PostsTableSeeder extends Seeder
 
         if (App::environment(['local', 'staging', 'testing'])) {
             factory(\App\Models\Post::class, 100)->create()->each(function ($post) {
-                $post->images()->saveMany(factory(\App\Models\Image::class, 3)->make());
+                $post->images()->saveMany(factory(\App\Models\Image::class, 3)->create()->each(function ($img) {
+                    $img->likes()->saveMany(factory(\App\Models\Like::class, 5)->make());
+                }));
+                $post->likes()->saveMany(factory(\App\Models\Like::class, 5)->make());
                 $post->comments()->saveMany(factory(\App\Models\Comment::class, 3)->make());
                 $post->rates()->saveMany(factory(\App\Models\Posts\Rate::class, 3)->make());
             });
@@ -49,6 +52,7 @@ class PostsTableSeeder extends Seeder
         return  [
             'Privacy and Policy'  => file_get_contents(database_path('contents/privacy.md')),
             'about'  => file_get_contents(database_path('contents/about.md')),
+            'Syarat dan Ketentuan'  => file_get_contents(database_path('contents/terms.md')),
         ];
     }
 }

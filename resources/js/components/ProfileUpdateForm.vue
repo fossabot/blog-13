@@ -26,8 +26,8 @@
 <script>
 import each from 'lodash/each'
 import { mapState } from 'vuex'
-import FilePicker from '@/components/FilePicker'
-import CardComponent from '@/components/CardComponent'
+import FilePicker from './FilePicker'
+import CardComponent from './CardComponent'
 
 export default {
   name: 'ProfileUpdateForm',

@@ -79,13 +79,13 @@
 </template>
 
 <script>
-import TitleBar from '@/components/TitleBar'
-import CardComponent from '@/components/CardComponent'
+import TitleBar from './../components/TitleBar'
+import CardComponent from './../components/CardComponent'
 import mapValues from 'lodash/mapValues'
-import CheckboxPicker from '@/components/CheckboxPicker'
-import RadioPicker from '@/components/RadioPicker'
-import FilePicker from '@/components/FilePicker'
-import HeroBar from '@/components/HeroBar'
+import CheckboxPicker from './../components/CheckboxPicker'
+import RadioPicker from './../components/RadioPicker'
+import FilePicker from './../components/FilePicker'
+import HeroBar from './../components/HeroBar'
 export default {
   name: 'Forms',
   components: { HeroBar, FilePicker, RadioPicker, CheckboxPicker, CardComponent, TitleBar },

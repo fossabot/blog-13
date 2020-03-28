@@ -4,7 +4,7 @@
     <hero-bar>
       {{ heroTitle }}
       <router-link slot="right" to="/users/index" class="button">
-        Users
+        Tags
       </router-link>
     </hero-bar>
     <section class="section is-main-section">
@@ -87,7 +87,7 @@ import UserAvatar from './../../components/UserAvatar'
 import Notification from './../../components/Notification'
 
 export default {
-  name: 'UserForm',
+  name: 'TagsForm',
   components: { UserAvatar, FilePicker, CardComponent, Tiles, HeroBar, TitleBar, Notification },
   props: {
     id: {

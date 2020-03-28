@@ -28,6 +28,16 @@
                 <div class="content">
                     {!! $blog->content_html !!}
                 </div>
+
+                <p class="mt-3">
+                    <like
+                        :likes-count="{{ $blog->likes_count }}"
+                        :liked="{{ json_encode($blog->isLiked()) }}"
+                        :item-id="{{ $blog->id }}"
+                        item-type="posts"
+                        :logged-in="{{ json_encode(Auth::check()) }}"></like>
+                </p>
+
             </div>
             @include('blog._partials._sidebar')
         </div>

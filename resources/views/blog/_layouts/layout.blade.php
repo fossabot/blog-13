@@ -11,19 +11,12 @@
     <meta name="description" content="{{ $description ?? config('blog.description') }}">
     <meta name="og:title" property="og:title" content="{{ $title ?? config('blog.title') }}">
     <meta property="og:type" content="video.movie" />
-    <meta property="og:url" content="{{ $link ?? config('blog.link') }}" />
+    <meta property="og:url" content="{{ $link ?? url()->current() }}" />
     <meta property="og:image" content="{{ $image ?? config('blog.image') }}" />
 
-    <!-- ** Plugins Needed for the Project ** -->
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="{{ asset('/assets/plugins/bootstrap/bootstrap.min.css') }}">
-    <!-- slick slider -->
     <link rel="stylesheet" href="{{ asset('/assets/plugins/slick/slick.css') }}">
-    <!-- themefy-icon -->
     <link rel="stylesheet" href="{{ asset('/assets/plugins/themify-icons/themify-icons.css') }}">
-
-    <!-- Main Stylesheet -->
-    <link href="{{ asset('/assets/css/style.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/blog.css') }}" rel="stylesheet">
 
 </head>
 
@@ -61,9 +54,8 @@
 
 @include('blog._partials.footer')
 <!-- jQuery -->
-<script src="{{ asset('/assets/plugins/jQuery/jquery.min.js') }}"></script>
+<script src="{{ mix('js/blog.js') }}"></script>
 <!-- Bootstrap JS -->
-<script src="{{ asset('/assets/plugins/bootstrap/bootstrap.min.js') }}"></script>
 <!-- slick slider -->
 <script src="{{ asset('/assets/plugins/slick/slick.min.js') }}"></script>
 <!-- masonry -->

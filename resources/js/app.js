@@ -13,7 +13,7 @@ import store from './store'
 import App from './App.vue'
 
 /* Vue. Component in recursion */
-import AsideMenuList from '@/components/AsideMenuList'
+import AsideMenuList from './components/AsideMenuList'
 
 /* Collapse mobile aside menu on route change */
 router.afterEach(() => {

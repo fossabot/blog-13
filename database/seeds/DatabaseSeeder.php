@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             CategoriesTableSeeder::class,
             PostsTableSeeder::class,
             TagsTableSeeder::class,
-            LikesTableSeeder::class,
+//            LikesTableSeeder::class,
             ContactsUsTableSeeder::class,
             NewsletterSubscriptionTableSeeder::class,
 

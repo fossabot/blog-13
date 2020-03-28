@@ -11,6 +11,10 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Class PostCommentController
+ * @package App\Http\Controllers\Api
+ */
 class PostCommentController extends Controller
 {
     /**

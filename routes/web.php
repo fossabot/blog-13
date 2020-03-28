@@ -17,7 +17,7 @@ Route::resource('posts', 'PostController')->only('show');
 Route::resource('users', 'UserController')->only('show');
 
 Route::get('/', 'BlogController@index')->name('blog');
-Route::get('blog/{slug}', 'BlogController@show')->name('blog.show');
+Route::get('blog/{post}', 'BlogController@show')->name('blog.show');
 Route::get('categories/', 'CategoryController@index');
 Route::get('category/{category}', 'CategoryController@show');
 

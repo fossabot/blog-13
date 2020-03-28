@@ -4,7 +4,7 @@
             <div class="row">
 
                 <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
-                    <a href="{{ url('/') }}"><img src="/assets/images/logo.png" alt="{{ config('blog.title') }}" class="img-fluid"></a>
+                    <a href="{{ url('/') }}"><img src="{{ asset('/assets/images/logo.png') }}" alt="{{ config('blog.title') }}" class="img-fluid"></a>
                 </div>
 
 
