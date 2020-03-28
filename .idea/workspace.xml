@@ -6,27 +6,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="159c7ff8-cdc8-4859-bc91-19c4903a20af" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/views/Categories/CategoriesForm.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/views/Categories/CategoriesIndex.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/views/Comments/CommentsForm.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/views/Comments/CommentsIndex.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/views/Posts/PostsForm.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/views/Posts/PostsIndex.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/views/Tags/TagsForm.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/views/Tags/TagsIndex.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/CommentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/CommentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/PostController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Comment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Post.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/vendor.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/vendor.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js.LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js.LICENSE.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/AsideMenu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AsideMenu.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/TitleBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/TitleBar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/Forms.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/Forms.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/Users/UsersForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/Users/UsersForm.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -367,7 +351,7 @@
       <workItem from="1585127190657" duration="3713000" />
       <workItem from="1585136432293" duration="224000" />
       <workItem from="1585143489547" duration="4142000" />
-      <workItem from="1585223011686" duration="98144000" />
+      <workItem from="1585223011686" duration="98747000" />
     </task>
     <servers />
   </component>
