@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -13,6 +14,8 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * @property mixed slug
  * @property mixed title
  * @property mixed id
+ * @property mixed subtitle
+ * @property mixed user
  * @package App\Http\Resources
  */
 class Post extends JsonResource
@@ -29,9 +32,11 @@ class Post extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'slug' => $this->slug,
-            'content' => $this->content,
+            'subtitle' => $this->subtitle,
             'published_at' => $this->published_at,
-            'user_id' => $this->user_id,
+//            'time_humanize' => Carbon::parse($this->published_at)->diffForHumans(),
+            'author' => $this->user->name,
+            'avatar' => $this->user->avatar,
             'comments_count' => $this->comments_count ?? $this->comments()->count(),
 //            'thumbnail_url' => $this->when($this->hasThumbnail(), url(optional($this->thumbnail)->getUrl())),
 //            'thumb_thumbnail_url' => $this->when($this->hasThumbnail(), url(optional($this->thumbnail)->getUrl('thumb')))

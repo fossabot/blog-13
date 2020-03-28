@@ -3,8 +3,8 @@
     <title-bar :title-stack="titleStack"/>
     <hero-bar>
       {{ heroTitle }}
-      <router-link slot="right" to="/users/index" class="button">
-        Users
+      <router-link slot="right" to="/posts/index" class="button">
+        Posts
       </router-link>
     </hero-bar>
     <section class="section is-main-section">
@@ -114,7 +114,7 @@ export default {
 
       return [
         'Admin',
-        'Users',
+        'Posts',
         lastCrumb
       ]
     },

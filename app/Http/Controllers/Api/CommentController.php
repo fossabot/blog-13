@@ -20,7 +20,8 @@ class CommentController extends Controller
     public function index(Request $request): ResourceCollection
     {
         return CommentResource::collection(
-            Comment::latest()->paginate($request->input('limit', 20))
+            Comment::latest()
+                ->paginate($request->input('limit', 20))
         );
     }
 

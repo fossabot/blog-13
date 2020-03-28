@@ -31,6 +31,33 @@ export default {
             label: 'Dashboard'
           }
         ],
+        'Posts',
+        [
+          {
+            to: '/posts/index',
+            label: 'Posts',
+            icon: 'post',
+            // updateMark: true
+          },
+          {
+            to: '/comments/index',
+            label: 'Comments',
+            icon: 'comment',
+            // updateMark: true
+          },
+          {
+            to: '/categories/index',
+            label: 'Categories',
+            icon: 'bookmark',
+            // updateMark: true
+          },
+          {
+            to: '/tags/index',
+            label: 'Tags',
+            icon: 'code-tags',
+            // updateMark: true
+          },
+        ],
         'Resource',
         [
           {
@@ -81,11 +108,11 @@ export default {
         ],
         'About',
         [
-          {
-            href: 'https://admin-one-laravel.justboil.me',
-            label: 'Premium Demo',
-            icon: 'credit-card'
-          },
+          // {
+          //   href: 'https://admin-one-laravel.justboil.me',
+          //   label: 'Premium Demo',
+          //   icon: 'credit-card'
+          // },
           {
             href: 'https://justboil.me/bulma-admin-template/one',
             label: 'About',

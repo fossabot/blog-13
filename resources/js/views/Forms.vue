@@ -9,7 +9,7 @@
     </hero-bar>
     <section class="section is-main-section">
       <card-component title="Forms" icon="ballot">
-        <form ./..submit.prevent="submit">
+        <form @submit.prevent="submit">
           <b-field label="From" horizontal>
             <b-field>
               <b-input icon="account" v-model="form.name" placeholder="Name" name="name" required />
@@ -49,7 +49,7 @@
                 <b-button native-type="submit" type="is-primary">Submit</b-button>
               </div>
               <div class="control">
-                <b-button type="is-primary is-outlined" ./..click="reset">Reset</b-button>
+                <b-button type="is-primary is-outlined" @click="reset">Reset</b-button>
               </div>
             </b-field>
           </b-field>
@@ -79,13 +79,13 @@
 </template>
 
 <script>
-import TitleBar from './../components/TitleBar'
-import CardComponent from './../components/CardComponent'
+import TitleBar from '@/components/TitleBar'
+import CardComponent from '@/components/CardComponent'
 import mapValues from 'lodash/mapValues'
-import CheckboxPicker from './../components/CheckboxPicker'
-import RadioPicker from './../components/RadioPicker'
-import FilePicker from './../components/FilePicker'
-import HeroBar from './../components/HeroBar'
+import CheckboxPicker from '@/components/CheckboxPicker'
+import RadioPicker from '@/components/RadioPicker'
+import FilePicker from '@/components/FilePicker'
+import HeroBar from '@/components/HeroBar'
 export default {
   name: 'Forms',
   components: { HeroBar, FilePicker, RadioPicker, CheckboxPicker, CardComponent, TitleBar },

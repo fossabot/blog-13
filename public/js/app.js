@@ -2052,6 +2052,26 @@ __webpack_require__.r(__webpack_exports__);
         to: '/',
         icon: 'desktop-mac',
         label: 'Dashboard'
+      }], 'Posts', [{
+        to: '/posts/index',
+        label: 'Posts',
+        icon: 'post' // updateMark: true
+
+      }, {
+        to: '/comments/index',
+        label: 'Comments',
+        icon: 'comment' // updateMark: true
+
+      }, {
+        to: '/categories/index',
+        label: 'Categories',
+        icon: 'bookmark' // updateMark: true
+
+      }, {
+        to: '/tags/index',
+        label: 'Tags',
+        icon: 'code-tags' // updateMark: true
+
       }], 'Resource', [{
         to: '/clients/index',
         label: 'Clients',
@@ -2085,11 +2105,12 @@ __webpack_require__.r(__webpack_exports__);
           href: '#void',
           label: 'Sub-item Two'
         }]
-      }], 'About', [{
-        href: 'https://admin-one-laravel.justboil.me',
-        label: 'Premium Demo',
-        icon: 'credit-card'
-      }, {
+      }], 'About', [// {
+      //   href: 'https://admin-one-laravel.justboil.me',
+      //   label: 'Premium Demo',
+      //   icon: 'credit-card'
+      // },
+      {
         href: 'https://justboil.me/bulma-admin-template/one',
         label: 'About',
         icon: 'help-circle'
@@ -58377,8 +58398,8 @@ var render = function() {
     [
       _c("aside-tools", { attrs: { "is-main-menu": true } }, [
         _c("span", { attrs: { slot: "label" }, slot: "label" }, [
-          _c("b", [_vm._v("Admin")]),
-          _vm._v(" One\n    ")
+          _c("b", [_vm._v("Turahe")]),
+          _vm._v(".id\n    ")
         ])
       ]),
       _vm._v(" "),
@@ -59366,30 +59387,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "level-right" }, [
-        _c("div", { staticClass: "level-item" }, [
-          _c("div", { staticClass: "buttons is-right" }, [
-            _c(
-              "a",
-              {
-                staticClass: "button is-primary",
-                attrs: {
-                  href: "https://admin-one-laravel.justboil.me/",
-                  target: "_blank"
-                }
-              },
-              [
-                _c("b-icon", {
-                  attrs: { icon: "credit-card", "custom-size": "default" }
-                }),
-                _vm._v(" "),
-                _c("span", [_vm._v("Premium Demo")])
-              ],
-              1
-            )
-          ])
-        ])
-      ])
+      _c("div", { staticClass: "level-right" })
     ])
   ])
 }
@@ -77465,6 +77463,86 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
     name: 'users.edit',
     component: function component() {
       return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! ./views/Users/UsersForm.vue */ "./resources/js/views/Users/UsersForm.vue"));
+    },
+    props: true
+  }, // Post route
+  {
+    path: '/posts/index',
+    name: 'posts.index',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ 14).then(__webpack_require__.bind(null, /*! ./views/Posts/PostsIndex.vue */ "./resources/js/views/Posts/PostsIndex.vue"));
+    }
+  }, {
+    path: '/posts/new',
+    name: 'posts.new',
+    component: function component() {
+      return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, /*! ./views/Posts/PostsForm.vue */ "./resources/js/views/Posts/PostsForm.vue"));
+    }
+  }, {
+    path: '/posts/:id',
+    name: 'posts.edit',
+    component: function component() {
+      return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, /*! ./views/Posts/PostsForm.vue */ "./resources/js/views/Posts/PostsForm.vue"));
+    },
+    props: true
+  }, // Comments route
+  {
+    path: '/comments/index',
+    name: 'comments.index',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ 13).then(__webpack_require__.bind(null, /*! ./views/Comments/CommentsIndex.vue */ "./resources/js/views/Comments/CommentsIndex.vue"));
+    }
+  }, {
+    path: '/comments/new',
+    name: 'comments.new',
+    component: function component() {
+      return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(9)]).then(__webpack_require__.bind(null, /*! ./views/Comments/CommentsForm.vue */ "./resources/js/views/Comments/CommentsForm.vue"));
+    }
+  }, {
+    path: '/comments/:id',
+    name: 'comments.edit',
+    component: function component() {
+      return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(9)]).then(__webpack_require__.bind(null, /*! ./views/Comments/CommentsForm.vue */ "./resources/js/views/Comments/CommentsForm.vue"));
+    },
+    props: true
+  }, // category route
+  {
+    path: '/categories/index',
+    name: 'categories.index',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ 12).then(__webpack_require__.bind(null, /*! ./views/Categories/CategoriesIndex.vue */ "./resources/js/views/Categories/CategoriesIndex.vue"));
+    }
+  }, {
+    path: '/categories/new',
+    name: 'categories.new',
+    component: function component() {
+      return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(8)]).then(__webpack_require__.bind(null, /*! ./views/Categories/CategoriesForm.vue */ "./resources/js/views/Categories/CategoriesForm.vue"));
+    }
+  }, {
+    path: '/categories/:id',
+    name: 'categories.edit',
+    component: function component() {
+      return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(8)]).then(__webpack_require__.bind(null, /*! ./views/Categories/CategoriesForm.vue */ "./resources/js/views/Categories/CategoriesForm.vue"));
+    },
+    props: true
+  }, // tags route
+  {
+    path: '/tags/index',
+    name: 'tags.index',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ 15).then(__webpack_require__.bind(null, /*! ./views/Tags/TagsIndex.vue */ "./resources/js/views/Tags/TagsIndex.vue"));
+    }
+  }, {
+    path: '/tags/new',
+    name: 'tags.new',
+    component: function component() {
+      return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(11)]).then(__webpack_require__.bind(null, /*! ./views/Tags/TagsForm.vue */ "./resources/js/views/Tags/TagsForm.vue"));
+    }
+  }, {
+    path: '/tags/:id',
+    name: 'tags.edit',
+    component: function component() {
+      return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(11)]).then(__webpack_require__.bind(null, /*! ./views/Tags/TagsForm.vue */ "./resources/js/views/Tags/TagsForm.vue"));
     },
     props: true
   }],
