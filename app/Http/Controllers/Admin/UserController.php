@@ -40,11 +40,12 @@ class UserController extends Controller
      * Store a newly created resource in storage.
      *
      * @param UsersRequest $request
+     * @param User $user
      * @return RedirectResponse
      */
-    public function store(UsersRequest $request): RedirectResponse
+    public function store(UsersRequest $request, User $user): RedirectResponse
     {
-        User::create($request->all());
+        $user->create($request->all());
         return redirect()
             ->back()
             ->with('success', 'New user was saved successfully');
@@ -64,12 +65,11 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
+     * @param User $user
      * @return View
      */
-    public function edit($id): View
+    public function edit(User $user): View
     {
-        $user = User::findOrFail($id);
         return view('admin.users.edit', compact('user'));
     }
 
@@ -77,12 +77,11 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param UsersRequest $request
-     * @param int $id
+     * @param User $user
      * @return RedirectResponse
      */
-    public function update(UsersRequest $request, $id): RedirectResponse
+    public function update(UsersRequest $request, User $user): RedirectResponse
     {
-        $user = User::findOrFail($id);
         $user->update($request->all());
 
         return redirect()
@@ -93,13 +92,12 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param User $user
      * @return RedirectResponse
      * @throws Exception
      */
-    public function destroy($id): RedirectResponse
+    public function destroy(User $user): RedirectResponse
     {
-        $user = User::findOrFail($id);
         $user->delete();
 
         return redirect()

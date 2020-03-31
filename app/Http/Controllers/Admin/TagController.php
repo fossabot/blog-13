@@ -42,17 +42,15 @@ class TagController extends Controller
     }
 
 
-
     /**
      * Update the specified resource in storage.
      *
      * @param TagRequest $request
-     * @param int $id
+     * @param Tag $tag
      * @return RedirectResponse
      */
-    public function update(TagRequest $request, $id): RedirectResponse
+    public function update(TagRequest $request, Tag $tag): RedirectResponse
     {
-        $tag = Tag::findOrFail($id);
         $tag->update($request->all());
 
         return redirect()
@@ -63,13 +61,12 @@ class TagController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param Tag $tag
      * @return RedirectResponse
      * @throws Exception
      */
-    public function destroy($id): RedirectResponse
+    public function destroy(Tag $tag): RedirectResponse
     {
-        $tag = Tag::findOrFail($id);
         $tag->delete();
 
         return redirect()

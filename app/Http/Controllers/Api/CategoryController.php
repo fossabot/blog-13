@@ -21,12 +21,13 @@ class CategoryController extends Controller
      * Return the categories.
      *
      * @param Request $request
+     * @param Category $category
      * @return ResourceCollection
      */
-    public function index(Request $request): ResourceCollection
+    public function index(Request $request, Category $category): ResourceCollection
     {
         return CategoryResource::collection(
-            Category::latest()
+            $category->latest()
                 ->paginate($request->input('limit', 20))
         );
     }
@@ -52,15 +53,16 @@ class CategoryController extends Controller
      * Store a newly created resource in storage.
      *
      * @param CategoryRequest $request
+     * @param Category $category
      * @return CategoryResource
      * @throws AuthorizationException
      */
-    public function store(CategoryRequest $request): CategoryResource
+    public function store(CategoryRequest $request, Category $category): CategoryResource
     {
         $this->authorize('store', Category::class);
 
         return new CategoryResource(
-            Category::create($request->all())
+            $category->create($request->all())
         );
     }
 

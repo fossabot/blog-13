@@ -19,12 +19,13 @@ class CommentController extends Controller
     /**
      * Return the comments.
      * @param Request $request
+     * @param Comment $comment
      * @return ResourceCollection
      */
-    public function index(Request $request): ResourceCollection
+    public function index(Request $request, Comment $comment): ResourceCollection
     {
         return CommentResource::collection(
-            Comment::latest()
+            $comment->latest()
                 ->paginate($request->input('limit', 20))
         );
     }

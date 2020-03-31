@@ -17,12 +17,13 @@ class TagController extends Controller
      * Return the categories.
      *
      * @param Request $request
+     * @param Tag $tag
      * @return ResourceCollection
      */
-    public function index(Request $request): ResourceCollection
+    public function index(Request $request, Tag $tag): ResourceCollection
     {
         return TagResource::collection(
-            Tag::latest()
+            $tag->latest()
                 ->paginate($request->input('limit', 20))
         );
     }
@@ -48,15 +49,16 @@ class TagController extends Controller
      * Store a newly created resource in storage.
      *
      * @param TagRequest $request
+     * @param Tag $tag
      * @return TagResource
      * @throws AuthorizationException
      */
-    public function store(TagRequest $request): TagResource
+    public function store(TagRequest $request, Tag $tag): TagResource
     {
         $this->authorize('store', Tag::class);
 
         return new TagResource(
-            Tag::create($request->all())
+            $tag->create($request->all())
         );
     }
 

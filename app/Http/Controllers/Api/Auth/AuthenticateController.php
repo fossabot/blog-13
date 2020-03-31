@@ -16,7 +16,7 @@ class AuthenticateController extends Controller
      * @param Request $request
      * @return UserResource|JsonResponse
      */
-    public function authenticate(Request $request)
+    public function authenticate(Request $request): JsonResponse
     {
         if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
             $user = User::where('email', $request->input('email'))->first();

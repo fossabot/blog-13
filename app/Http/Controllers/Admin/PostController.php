@@ -3,17 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Admin\PostRequest;
-use App\Jobs\PostFormField;
 use App\Models\Category;
-use App\Models\Media;
 use App\Models\Post;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
-use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 
 /**
  * Class PostController
@@ -53,18 +49,13 @@ class PostController extends Controller
      * Store a newly created resource in storage.
      *
      * @param PostRequest $request
+     * @param Post $post
      * @return RedirectResponse
      * @throws Exception
      */
-    public function store(PostRequest $request): RedirectResponse
+    public function store(PostRequest $request, Post $post): RedirectResponse
     {
-//        dd($request->all());
-        $post = Post::create($request->postFillData());
-        //Store Image
-        if($request->hasFile('image') && $request->file('image')->isValid()){
-            $post->addMediaFromRequest('image')->toMediaCollection('images');
-            dd($post);
-        }
+        $post->create($request->postFillData());
 
         return redirect()->route('admin.posts.edit', $post)->withSuccess(__('posts.created'));
     }
@@ -78,7 +69,6 @@ class PostController extends Controller
      */
     public function edit(Post $post): View
     {
-//        $this->dispatch()
         return view('admin.posts.edit', [
             'post' => $post,
             'users' => User::authors()->pluck('name', 'id'),
@@ -90,20 +80,14 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param PostRequest $request
+     * @param Request $request
      * @param Post $post
      * @return RedirectResponse
-     * @throws FileDoesNotExist
-     * @throws FileIsTooBig
+     * @throws Exception
      */
     public function update(Request $request, Post $post): RedirectResponse
     {
-//        $post->update($request->postFillData());
-        dd($request->hasFile('image'));
-        if($request->hasFile('image') && $request->file('image')->isValid()){
-            $post->addMediaFromRequest('image')->toMediaCollection('images');
-            dd($post);
-        }
+        $post->update($request->postFillData());
 
         return redirect()
             ->route('admin.posts.edit', $post)

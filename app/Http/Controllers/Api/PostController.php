@@ -50,15 +50,16 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      * @param PostRequest $request
-     * @throws AuthorizationException
+     * @param Post $post
      * @return PostResource
+     * @throws AuthorizationException
      */
-    public function store(PostRequest $request): PostResource
+    public function store(PostRequest $request, Post $post): PostResource
     {
         $this->authorize('store', Post::class);
 
         return new PostResource(
-            Post::create($request->only(['title', 'content', 'published_at', 'user_id', 'thumbnail_id']))
+            $post->create($request->all())
         );
     }
 

@@ -36,7 +36,11 @@ Route::prefix('v1')->namespace('Api')->group(function () {
 //        Route::apiResource('media', 'MediaController')->only(['store', 'destroy']);
     });
 
+
+
     Route::post('/authenticate', 'Auth\AuthenticateController@authenticate')->name('authenticate');
+
+
 
     // Comments
 //    Route::apiResource('posts.comments', function (App\Models\Post $post) {
@@ -59,3 +63,5 @@ Route::prefix('v1')->namespace('Api')->group(function () {
     // Media
 //    Route::apiResource('media', 'MediaController')->only('index');
 });
+
+

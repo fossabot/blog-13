@@ -30,11 +30,12 @@ class PermissionController extends Controller
      * Store a newly created resource in storage.
      *
      * @param PermissionRequest $request
-     * @return Response
+     * @param Permission $permission
+     * @return RedirectResponse
      */
-    public function store(PermissionRequest $request): RedirectResponse
+    public function store(PermissionRequest $request, Permission $permission): RedirectResponse
     {
-        Permission::create($request->all());
+        $permission->create($request->all());
         return redirect()
             ->back()
             ->with('success', 'new Permission  was saved successfully');
@@ -45,12 +46,11 @@ class PermissionController extends Controller
      * Update the specified resource in storage.
      *
      * @param PermissionRequest $request
-     * @param int $id
+     * @param Permission $permission
      * @return RedirectResponse
      */
-    public function update(PermissionRequest $request, $id): RedirectResponse
+    public function update(PermissionRequest $request, Permission $permission): RedirectResponse
     {
-        $permission = Permission::findOrFail($id);
         $permission->update($request->all());
 
         return redirect()
@@ -61,13 +61,12 @@ class PermissionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param Permission $permission
      * @return RedirectResponse
      * @throws Exception
      */
-    public function destroy($id): RedirectResponse
+    public function destroy(Permission $permission): RedirectResponse
     {
-        $permission = Permission::findOrFail($id);
         $permission->delete();
 
         return redirect()

@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Admin\RoleRequest;
 use App\Models\Role;
-use Exception;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
 use Illuminate\View\View;
 
 class RoleController extends Controller
@@ -36,11 +34,12 @@ class RoleController extends Controller
      * Store a newly created resource in storage.
      *
      * @param RoleRequest $request
+     * @param Role $role
      * @return RedirectResponse
      */
-    public function store(RoleRequest $request): RedirectResponse
+    public function store(RoleRequest $request, Role $role): RedirectResponse
     {
-        Role::create($request->all());
+        $role->create($request->all());
         return redirect()
             ->back()
             ->with('success', 'New Role successfully');
@@ -50,12 +49,11 @@ class RoleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param Role $role
      * @return View
      */
-    public function edit($id): View
+    public function edit(Role $role): View
     {
-        $role = Role::findOrFail($id);
         return view('admin.roles.edit', compact('role'));
     }
 
@@ -63,12 +61,11 @@ class RoleController extends Controller
      * Update the specified resource in storage.
      *
      * @param RoleRequest $request
-     * @param int $id
+     * @param Role $role
      * @return RedirectResponse
      */
-    public function update(RoleRequest $request, $id): RedirectResponse
+    public function update(RoleRequest $request, Role $role): RedirectResponse
     {
-        $role = Role::findOrFail($id);
         $role->update($request->all());
 
         return redirect()
@@ -79,13 +76,12 @@ class RoleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param Role $role
      * @return RedirectResponse
-     * @throws Exception
+     * @throws \Exception
      */
-    public function destroy($id): RedirectResponse
+    public function destroy(Role $role): RedirectResponse
     {
-        $role = Role::findOrFail($id);
         $role->delete();
 
         return redirect()

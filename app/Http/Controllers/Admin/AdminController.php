@@ -13,11 +13,11 @@ final class AdminController extends Controller
      */
     public function __invoke()
     {
-        return view('admin.home');
-//        return view('admin.dashboard.index', [
-//            'comments' =>  Comment::lastWeek()->get(),
-//            'posts' => Post::lastWeek()->get(),
-//            'users' => User::lastWeek()->get(),
-//        ]);
+//        return view('admin.home');
+        return view('admin.dashboard.index', [
+            'comments' =>  Comment::lastWeek()->get(),
+            'posts' => Post::lastWeek()->get(),
+            'users' => User::lastWeek()->get(),
+        ]);
     }
 }

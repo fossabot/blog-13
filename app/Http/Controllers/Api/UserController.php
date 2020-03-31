@@ -9,7 +9,7 @@ use App\Models\User;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
-use Illuminate\Support\Facades\Hash;
+use Hash;
 
 /**
  * Class UserController
@@ -27,8 +27,7 @@ class UserController extends Controller
         return UserResource::collection(
             User::withCount(['comments', 'posts'])
                 ->with('roles')->latest()
-                ->get()
-//                ->paginate($request->input('limit', 20))
+                ->paginate($request->input('limit', 20))
         );
     }
 
