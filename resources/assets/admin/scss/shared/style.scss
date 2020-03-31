@@ -125,18 +125,18 @@
 
 /* === Import Bootstrap functions and variables === */
 
-@import "~bootstrap/scss/functions";
-@import "~bootstrap/scss/variables";
+
 /*-------------------------------------------------------------------*/
 
 /* === Import template variables === */
 
-@import "variables";
+
 /*-------------------------------------------------------------------*/
 
 /* === Boostrap Main SCSS === */
 
 @import "~bootstrap/scss/bootstrap";
+@import "variables";
 /*-------------------------------------------------------------------*/
 
 /* === Template mixins === */
@@ -158,7 +158,7 @@
 @import "typography";
 @import "misc";
 @import "utilities";
-@import "demo";
+//@import "demo";
 @import "dashboard";
 /*-------------------------------------------------------------------*/
 

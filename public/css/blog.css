@@ -10897,7 +10897,6 @@ VERSION:	Versoin Number
 
 @font-face {
   font-family: "hanskendrick";
-  src: url(/fonts/hanskendrick-regular-webfont.woff?fc7af07128e08845ba9139fa212f7cfa) format("woff");
   font-style: normal;
   font-display: swap;
 }
@@ -11080,7 +11079,7 @@ body {
   border-radius: 50%;
   transform: translateX(0);
   -webkit-animation: dot 2.8s infinite;
-  animation: dot 2.8s infinite;
+          animation: dot 2.8s infinite;
 }
 
 .preloader .loader .dots {
@@ -11088,7 +11087,7 @@ body {
   margin-top: 12px;
   margin-left: 31px;
   -webkit-animation: dots 2.8s infinite;
-  animation: dots 2.8s infinite;
+          animation: dots 2.8s infinite;
 }
 
 .preloader .loader .dots span {

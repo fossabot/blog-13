@@ -13,7 +13,7 @@ VERSION:	Versoin Number
 
 @font-face {
   font-family: 'hanskendrick';
-  src: url("./../assets/fonts/hanskendrick-regular-webfont.woff") format("woff");
+  //src: url("./../assets/fonts/hanskendrick-regular-webfont.woff") format("woff");
   font-style: normal;
   font-display: swap;
 }
@@ -171,18 +171,14 @@ body {
       left: 15px;
       background: #ff6f00;
       border-radius: 50%;
-      -webkit-transform: translateX(0);
       transform: translateX(0);
-      -webkit-animation: dot 2.8s infinite;
       animation: dot 2.8s infinite;
     }
 
     .dots {
-      -webkit-transform: translateX(0);
       transform: translateX(0);
       margin-top: 12px;
       margin-left: 31px;
-      -webkit-animation: dots 2.8s infinite;
       animation: dots 2.8s infinite;
 
       span {
@@ -201,7 +197,6 @@ body {
 
 @keyframes dot {
   50% {
-    -webkit-transform: translateX(96px);
     transform: translateX(96px);
   }
 }
@@ -210,7 +205,6 @@ body {
 
 @keyframes dots {
   50% {
-    -webkit-transform: translateX(-31px);
     transform: translateX(-31px);
   }
 }
@@ -427,7 +421,6 @@ textarea.form-control {
     visibility: hidden;
     transition: .3s ease;
     opacity: 0;
-    -webkit-transform: translateY(-20px);
     transform: translateY(-20px);
     background: #fff;
 
@@ -453,7 +446,6 @@ textarea.form-control {
     display: none;
     opacity: 1;
     visibility: visible;
-    -webkit-transform: translateY(0);
     transform: translateY(0);
     text-align: center;
   }
@@ -472,7 +464,6 @@ textarea.form-control {
   position: absolute;
   right: 0;
   top: 50%;
-  -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
 
@@ -588,7 +579,6 @@ textarea.form-control {
     left: 0;
     right: 0;
     top: 50%;
-    -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
     opacity: 0;
     visibility: hidden;

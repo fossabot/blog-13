@@ -7,14 +7,14 @@ try {
     console.log(e);
 }
 
-import 'slick-carousel';
-import 'masonry-layout';
+// import 'slick-carousel';
+// import 'masonry-layout';
 
-var Masonry = require('masonry-layout');
-new Masonry( '.masonry-container', {
-    itemSelector: '.masonry-container > div',
-    columnWidth: 1
-});
+// var Masonry = require('masonry-layout');
+// new Masonry( '.masonry-container', {
+//     itemSelector: '.masonry-container > div',
+//     columnWidth: 1
+// });
 
 
 export default function () {
@@ -50,34 +50,33 @@ export default function () {
 
     });
 
-    console.log($('.featured-post-slider').slick());
-    $('.featured-post-slider').slick({
-        dots: false,
-        speed: 300,
-        autoplay: true,
-        arrows: false,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        responsive: [{
-            breakpoint: 1024,
-            settings: {
-                slidesToShow: 4
-            }
-        },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 3
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 2
-                }
-            }
-        ]
-    });
+    // $('.featured-post-slider').slick({
+    //     dots: false,
+    //     speed: 300,
+    //     autoplay: true,
+    //     arrows: false,
+    //     slidesToShow: 4,
+    //     slidesToScroll: 1,
+    //     responsive: [{
+    //         breakpoint: 1024,
+    //         settings: {
+    //             slidesToShow: 4
+    //         }
+    //     },
+    //         {
+    //             breakpoint: 600,
+    //             settings: {
+    //                 slidesToShow: 3
+    //             }
+    //         },
+    //         {
+    //             breakpoint: 480,
+    //             settings: {
+    //                 slidesToShow: 2
+    //             }
+    //         }
+    //     ]
+    // });
 
 
     // Masonry
