@@ -6,6 +6,10 @@ use App\Models\Token;
 use App\Models\User;
 use Str;
 
+/**
+ * Class UserObserver
+ * @package App\Observers
+ */
 class UserObserver
 {
     /**

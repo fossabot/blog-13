@@ -34,10 +34,11 @@ class Post extends JsonResource
             'slug' => $this->slug,
             'subtitle' => $this->subtitle,
             'published_at' => $this->published_at,
-//            'time_humanize' => Carbon::parse($this->published_at)->diffForHumans(),
+            'time_humanize' => Carbon::parse($this->published_at)->diffForHumans(),
             'author' => $this->user->name,
             'avatar' => $this->user->avatar,
             'comments_count' => $this->comments_count ?? $this->comments()->count(),
+            'likes_count' => $this->likes_count ?? $this->likes()->count(),
 //            'thumbnail_url' => $this->when($this->hasThumbnail(), url(optional($this->thumbnail)->getUrl())),
 //            'thumb_thumbnail_url' => $this->when($this->hasThumbnail(), url(optional($this->thumbnail)->getUrl('thumb')))
         ];

@@ -9,9 +9,6 @@ use App\Repositories\Slug\HasSlug;
 use App\Repositories\Slug\SlugOptions;
 use App\Scopes\PostedScope;
 use Carbon\Carbon;
-use DateTimeInterface;
-use Eloquent;
-use Exception;
 use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -21,11 +18,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Str;
 use League\CommonMark\CommonMarkConverter;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Permission\Traits\HasRoles;
-use Storage;
 
 /**
  * App\Models\Post
@@ -65,7 +60,7 @@ use Storage;
  * @method static Builder|Post whereType($value)
  * @method static Builder|Post whereUpdatedAt($value)
  * @method static Builder|Post whereUserId($value)
- * @mixin Eloquent
+ * @mixin \Eloquent
  * @property-read Category $category
  * @property-read Collection|Post[] $children
  * @property-read null|int $children_count
@@ -109,6 +104,10 @@ use Storage;
  * @property-read mixed $author
  * @property-read \App\Models\Posts\Rate[]|\Illuminate\Database\Eloquent\Collection $rates
  * @property-read null|int $rates_count
+ * @property string $is_sticky
+ * @property-read \App\Models\Image[]|\Illuminate\Database\Eloquent\Collection $images
+ * @property-read null|int $images_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereIsSticky($value)
  */
 class Post extends Model
 {
@@ -162,10 +161,10 @@ class Post extends Model
     /**
      * Prepare a date for array / JSON serialization.
      *
-     * @param DateTimeInterface $date
+     * @param \DateTimeInterface $date
      * @return string
      */
-    protected function serializeDate(DateTimeInterface $date): string
+    protected function serializeDate(\DateTimeInterface $date): string
     {
         return $date->format('Y-m-d H:i:s');
     }
@@ -182,27 +181,19 @@ class Post extends Model
         return 'slug';
     }
 
-    /**
-     * @param $value
-     * @return string|UrlGenerator
-     */
-    public function getImageAttribute($value): string
-    {
-        $file =  Storage::url("images/{$value}");
-        return url($file);
-    }
 
     /**
-     * @param $value
      * @return string
      */
-    public function getUrlAttribute():string
+    public function getUrlAttribute(): string
     {
-        if ($this->type === 'blog') {
-            return route('blog.show', $this->slug);
+        switch ($this->type) {
+            case 'blog':
+                return route('blog.show', $this->slug);
+                break;
+            default:
+                return route('posts.show', $this->slug);
         }
-
-        return route('posts.show', $this->slug);
     }
 
 
@@ -210,10 +201,10 @@ class Post extends Model
      * @param $value
      * @return string
      */
-    public function getPublishedAtAttribute($value): string
-    {
-        return $this->attributes['published_at'] = Carbon::parse($value)->format('d, M Y');
-    }
+//    public function getPublishedAtAttribute($value): string
+//    {
+//        return $this->attributes['published_at'] = Carbon::parse($value)->format('d, M Y');
+//    }
 
     /**
      * Scope a query to search posts
@@ -225,7 +216,8 @@ class Post extends Model
     public function scopeSearch(Builder $query, ?string $search)
     {
         if ($search) {
-            return $query->where('title', 'LIKE', "%{$search}%");
+            return $query->where('title', 'LIKE', "%{$search}%")
+                ->orWhere('content_raw', 'LIKE', "%{$search}%");
         }
     }
 
@@ -299,7 +291,7 @@ class Post extends Model
      * set content raw markdown to convert to html with Parsedown
      *
      * @param $value
-     * @throws Exception
+     * @throws \Exception
      * @return string
      */
     public function setContentRawAttribute($value)
@@ -321,20 +313,20 @@ class Post extends Model
     /**
      * return the excerpt of the post content
      *
-     * @throws Exception
+     * @throws \Exception
      * @return string
      */
     public function getExcerptAttribute(): string
     {
-        $text = Str::limit($this->content_raw);
+        $text = \Str::limit($this->content_raw);
         return $this->markdown($text);
     }
 
     /**
-     * @throws Exception
+     * @throws \Exception
      * @return ReadTime
      */
-    public function getReadTimeAttribute()
+    public function getReadTimeAttribute(): ReadTime
     {
         $content = $this->content_html;
         $omitSeconds = config('blog.omit_seconds');
@@ -357,7 +349,7 @@ class Post extends Model
      * get publish date attribute
      *
      * @param $value
-     * @throws Exception
+     * @throws \Exception
      * @return mixed
      */
     public function getPublishDateAttribute($value): string
@@ -369,7 +361,7 @@ class Post extends Model
      * get publish time attribute
      *
      * @param $value
-     * @throws Exception
+     * @throws \Exception
      * @return mixed
      */
     public function getPublishTimeAttribute($value): string
@@ -378,6 +370,8 @@ class Post extends Model
     }
 
     /**
+     * get publish date attribute
+     *
      * @param $value
      * @return string
      */
@@ -387,6 +381,8 @@ class Post extends Model
     }
 
     /**
+     * get publish month attribute
+     *
      * @param $value
      * @return string
      */
@@ -396,6 +392,8 @@ class Post extends Model
     }
 
     /**
+     * get publish time elapsed attribute
+     *
      * @param $value
      * @return string
      */
@@ -407,6 +405,8 @@ class Post extends Model
 
 
     /**
+     * Define a one-to-many relationship.
+     *
      * @return HasMany
      */
     public function children(): HasMany
@@ -428,19 +428,21 @@ class Post extends Model
     /**
      * get first element children models
      *
-     * @throws Exception
+     * @throws \Exception
      * @return Post
      */
     public function getFirstChildAttribute(): self
     {
         if (! $this->hasChildren()) {
-            throw new Exception("Article `{$this->title}` doesn't have any children.");
+            throw new \Exception("Article `{$this->title}` doesn't have any children.");
         }
 
         return $this->children->sortBy('order_column')->first();
     }
 
     /**
+     * get sibling attribute
+     *
      * @return Collection|Post[]
      */
     public function getSiblingsAttribute()
@@ -508,6 +510,8 @@ class Post extends Model
 
 
     /**
+     * Define an inverse one-to-one or many relationship.
+     *
      * @return BelongsTo
      */
     public function category(): BelongsTo
@@ -516,6 +520,8 @@ class Post extends Model
     }
 
     /**
+     * Define a one-to-many relationship.
+     *
      * @return HasMany
      */
     public function rates(): HasMany
@@ -525,6 +531,7 @@ class Post extends Model
 
     /**
      * Return the post's comments
+     * Define a polymorphic one-to-many relationship.
      *
      * @return MorphMany
      */
@@ -534,6 +541,9 @@ class Post extends Model
     }
 
     /**
+     * Return the post's images
+     * Define a polymorphic one-to-many relationship.
+     *
      * @return MorphMany
      */
     public function images(): MorphMany
@@ -545,12 +555,16 @@ class Post extends Model
      * Convert markdown to HTML
      *
      * @param string $text
-     * @throws Exception
      * @return string
      */
     private function markdown(string $text): string
     {
-        $markdown = new CommonMarkConverter();
-        return $markdown->convertToHtml($text);
+        try {
+            $markdown = new CommonMarkConverter();
+            return $markdown->convertToHtml($text);
+        } catch (\Exception $exception) {
+            $exception->getMessage();
+        }
+
     }
 }

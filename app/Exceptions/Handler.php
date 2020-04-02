@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
+/**
+ * Class Handler
+ * @package App\Exceptions
+ */
 class Handler extends ExceptionHandler
 {
     /**
@@ -33,9 +37,9 @@ class Handler extends ExceptionHandler
      * Report or log an exception.
      *
      * @param Throwable $exception
+     *@throws Exception
      * @return void
      *
-     *@throws Exception
      */
     public function report(Throwable $exception)
     {
@@ -47,9 +51,9 @@ class Handler extends ExceptionHandler
      *
      * @param  Request  $request
      * @param Throwable $exception
+     *@throws Throwable
      * @return Response
      *
-     *@throws Throwable
      */
     public function render($request, Throwable $exception)
     {

@@ -53,3 +53,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('newsletter-subscriptions', 'NewsletterSubscriptionController')->only('store');
 });
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -27,7 +27,8 @@ class PostController extends Controller
             'posts' => Post::withCount('comments', 'likes')
                 ->with('user')
                 ->latest()
-                ->paginate(10)
+                ->get()
+//                ->paginate(10)
         ]);
     }
 
@@ -37,7 +38,6 @@ class PostController extends Controller
      */
     public function create(): View
     {
-
         return view('admin.posts.create', [
             'users' => User::authors()->pluck('name', 'id'),
             'categories' => Category::pluck('title', 'id'),
@@ -50,8 +50,8 @@ class PostController extends Controller
      *
      * @param PostRequest $request
      * @param Post $post
-     * @return RedirectResponse
      * @throws Exception
+     * @return RedirectResponse
      */
     public function store(PostRequest $request, Post $post): RedirectResponse
     {
@@ -82,8 +82,8 @@ class PostController extends Controller
      *
      * @param Request $request
      * @param Post $post
-     * @return RedirectResponse
      * @throws Exception
+     * @return RedirectResponse
      */
     public function update(Request $request, Post $post): RedirectResponse
     {
@@ -98,8 +98,8 @@ class PostController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Post $post
-     * @return RedirectResponse
      * @throws Exception
+     * @return RedirectResponse
      */
     public function destroy(Post $post): RedirectResponse
     {

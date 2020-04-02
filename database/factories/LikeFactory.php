@@ -16,8 +16,8 @@ use Faker\Generator as Faker;
 */
 $factory->define(\App\Models\Like::class, function (Faker $faker) {
     return [
-//        'likeable_type' => $faker->randomElement(['App\Models\Post', 'App\Models\Media', 'App\Models\Comment']),
-//        'likeable_id' => mt_rand(1, 100),
+//        'like_type' => $faker->randomElement(['App\Models\Post', 'App\Models\Media', 'App\Models\Comment']),
+//        'like_id' => mt_rand(1, 100),
         'user_id' => mt_rand(1, 100)
     ];
 });

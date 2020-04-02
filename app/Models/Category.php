@@ -15,7 +15,48 @@ use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * Class Category
+ *
  * @package App\Models
+ * @property int $id
+ * @property string $slug
+ * @property null|int $parent_id
+ * @property null|int $order_column
+ * @property string $title
+ * @property null|string $subtitle
+ * @property string $description
+ * @property null|\Illuminate\Support\Carbon $deleted_at
+ * @property null|\Illuminate\Support\Carbon $created_at
+ * @property null|\Illuminate\Support\Carbon $updated_at
+ * @property-read \App\Models\Activity[]|\Illuminate\Database\Eloquent\Collection $activities
+ * @property-read null|int $activities_count
+ * @property-read \App\Models\Category[]|\Illuminate\Database\Eloquent\Collection $children
+ * @property-read null|int $children_count
+ * @property-read \Category $first_child
+ * @property-read \Category[]|\Collection $siblings
+ * @property-read string|\UrlGenerator $url
+ * @property-read \App\Models\Image $image
+ * @property-read null|\App\Models\Category $parent
+ * @property-read \App\Models\Post[]|\Illuminate\Database\Eloquent\Collection $posts
+ * @property-read null|int $posts_count
+ * @method static bool|null forceDelete()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category newQuery()
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Category onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category query()
+ * @method static bool|null restore()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereOrderColumn($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereParentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereSubtitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Category withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Category withoutTrashed()
+ * @mixin \Eloquent
  */
 class Category extends Model
 {
@@ -92,8 +133,8 @@ class Category extends Model
     }
 
     /**
-     * @return Category
      * @throws \Exception
+     * @return Category
      */
     public function getFirstChildAttribute(): self
     {

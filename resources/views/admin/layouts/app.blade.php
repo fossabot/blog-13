@@ -1,277 +1,277 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="@stack('html-class')">
+
 <head>
-    <!-- Required meta tags -->
+
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="{{ mix('css/admin.css') }}">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ $title. ' | ' .config('app.name', 'Turahe') }}</title>
+
+
+    <!-- Custom fonts for this template-->
+    <link href="{{ mix('css/admin.css') }}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    @stack('styles')
 </head>
-<body>
-<div class="container-scroller">
-    <!-- partial:../../partials/_navbar.html -->
-    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-        <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-            <a class="navbar-brand brand-logo" href="../../index.html">
-                <img src="../../../assets/images/logo.svg" alt="logo" /> </a>
-            <a class="navbar-brand brand-logo-mini" href="../../index.html">
-                <img src="../../../assets/images/logo-mini.svg" alt="logo" /> </a>
-        </div>
-        <div class="navbar-menu-wrapper d-flex align-items-center">
-            <ul class="navbar-nav">
-                <li class="nav-item font-weight-semibold d-none d-lg-block">Help : +050 2992 709</li>
-                <li class="nav-item dropdown language-dropdown">
-                    <a class="nav-link dropdown-toggle px-2 d-flex align-items-center" id="LanguageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                        <div class="d-inline-flex mr-0 mr-md-3">
-                            <div class="flag-icon-holder">
-                                <i class="flag-icon flag-icon-us"></i>
-                            </div>
+
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+@include('admin.shared.sidebar')
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                <!-- Sidebar Toggle (Topbar) -->
+                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <!-- Topbar Search -->
+                <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <div class="input-group">
+                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="button">
+                                <i class="fas fa-search fa-sm"></i>
+                            </button>
                         </div>
-                        <span class="profile-text font-weight-medium d-none d-md-block">English</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-left navbar-dropdown py-2" aria-labelledby="LanguageDropdown">
-                        <a class="dropdown-item">
-                            <div class="flag-icon-holder">
-                                <i class="flag-icon flag-icon-us"></i>
-                            </div>English
-                        </a>
-                        <a class="dropdown-item">
-                            <div class="flag-icon-holder">
-                                <i class="flag-icon flag-icon-fr"></i>
-                            </div>French
-                        </a>
-                        <a class="dropdown-item">
-                            <div class="flag-icon-holder">
-                                <i class="flag-icon flag-icon-ae"></i>
-                            </div>Arabic
-                        </a>
-                        <a class="dropdown-item">
-                            <div class="flag-icon-holder">
-                                <i class="flag-icon flag-icon-ru"></i>
-                            </div>Russian
-                        </a>
                     </div>
-                </li>
-            </ul>
-            <form class="ml-auto search-form d-none d-md-block" action="#">
-                <div class="form-group">
-                    <input type="search" class="form-control" placeholder="Search Here">
+                </form>
+
+                <!-- Topbar Navbar -->
+                <ul class="navbar-nav ml-auto">
+
+                    <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                    <li class="nav-item dropdown no-arrow d-sm-none">
+                        <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <!-- Dropdown - Messages -->
+                        <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                            <form class="form-inline mr-auto w-100 navbar-search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="button">
+                                            <i class="fas fa-search fa-sm"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </li>
+
+                    <!-- Nav Item - Alerts -->
+                    <li class="nav-item dropdown no-arrow mx-1">
+                        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-bell fa-fw"></i>
+                            <!-- Counter - Alerts -->
+                            <span class="badge badge-danger badge-counter">3+</span>
+                        </a>
+                        <!-- Dropdown - Alerts -->
+                        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                            <h6 class="dropdown-header">
+                                Alerts Center
+                            </h6>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="mr-3">
+                                    <div class="icon-circle bg-primary">
+                                        <i class="fas fa-file-alt text-white"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="small text-gray-500">December 12, 2019</div>
+                                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                                </div>
+                            </a>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="mr-3">
+                                    <div class="icon-circle bg-success">
+                                        <i class="fas fa-donate text-white"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="small text-gray-500">December 7, 2019</div>
+                                    $290.29 has been deposited into your account!
+                                </div>
+                            </a>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="mr-3">
+                                    <div class="icon-circle bg-warning">
+                                        <i class="fas fa-exclamation-triangle text-white"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="small text-gray-500">December 2, 2019</div>
+                                    Spending Alert: We've noticed unusually high spending for your account.
+                                </div>
+                            </a>
+                            <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                        </div>
+                    </li>
+
+                    <!-- Nav Item - Messages -->
+                    <li class="nav-item dropdown no-arrow mx-1">
+                        <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-envelope fa-fw"></i>
+                            <!-- Counter - Messages -->
+                            <span class="badge badge-danger badge-counter">7</span>
+                        </a>
+                        <!-- Dropdown - Messages -->
+                        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+                            <h6 class="dropdown-header">
+                                Message Center
+                            </h6>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="dropdown-list-image mr-3">
+                                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
+                                    <div class="status-indicator bg-success"></div>
+                                </div>
+                                <div class="font-weight-bold">
+                                    <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
+                                    <div class="small text-gray-500">Emily Fowler · 58m</div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="dropdown-list-image mr-3">
+                                    <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="">
+                                    <div class="status-indicator"></div>
+                                </div>
+                                <div>
+                                    <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
+                                    <div class="small text-gray-500">Jae Chun · 1d</div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="dropdown-list-image mr-3">
+                                    <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="">
+                                    <div class="status-indicator bg-warning"></div>
+                                </div>
+                                <div>
+                                    <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
+                                    <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="dropdown-list-image mr-3">
+                                    <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
+                                    <div class="status-indicator bg-success"></div>
+                                </div>
+                                <div>
+                                    <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
+                                    <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                        </div>
+                    </li>
+
+                    <div class="topbar-divider d-none d-sm-block"></div>
+
+                    <!-- Nav Item - User Information -->
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
+                            <img class="img-profile rounded-circle" src="{{ Auth::user()->avatar }}">
+                        </a>
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="#">
+                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Profile
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Settings
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Activity Log
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Logout
+                            </a>
+                        </div>
+                    </li>
+
+                </ul>
+
+            </nav>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+               @yield('content')
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; {{ config('blog.name') }} {{ date('Y') }}</span>
                 </div>
-            </form>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link count-indicator" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                        <i class="mdi mdi-bell-outline"></i>
-                        <span class="count">7</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="messageDropdown">
-                        <a class="dropdown-item py-3">
-                            <p class="mb-0 font-weight-medium float-left">You have 7 unread mails </p>
-                            <span class="badge badge-pill badge-primary float-right">View all</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item preview-item">
-                            <div class="preview-thumbnail">
-                                <img src="../../../assets/images/faces/face10.jpg" alt="image" class="img-sm profile-pic"> </div>
-                            <div class="preview-item-content flex-grow py-2">
-                                <p class="preview-subject ellipsis font-weight-medium text-dark">Marian Garner </p>
-                                <p class="font-weight-light small-text"> The meeting is cancelled </p>
-                            </div>
-                        </a>
-                        <a class="dropdown-item preview-item">
-                            <div class="preview-thumbnail">
-                                <img src="../../../assets/images/faces/face12.jpg" alt="image" class="img-sm profile-pic"> </div>
-                            <div class="preview-item-content flex-grow py-2">
-                                <p class="preview-subject ellipsis font-weight-medium text-dark">David Grey </p>
-                                <p class="font-weight-light small-text"> The meeting is cancelled </p>
-                            </div>
-                        </a>
-                        <a class="dropdown-item preview-item">
-                            <div class="preview-thumbnail">
-                                <img src="../../../assets/images/faces/face1.jpg" alt="image" class="img-sm profile-pic"> </div>
-                            <div class="preview-item-content flex-grow py-2">
-                                <p class="preview-subject ellipsis font-weight-medium text-dark">Travis Jenkins </p>
-                                <p class="font-weight-light small-text"> The meeting is cancelled </p>
-                            </div>
-                        </a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-toggle="dropdown">
-                        <i class="mdi mdi-email-outline"></i>
-                        <span class="count bg-success">3</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="notificationDropdown">
-                        <a class="dropdown-item py-3 border-bottom">
-                            <p class="mb-0 font-weight-medium float-left">You have 4 new notifications </p>
-                            <span class="badge badge-pill badge-primary float-right">View all</span>
-                        </a>
-                        <a class="dropdown-item preview-item py-3">
-                            <div class="preview-thumbnail">
-                                <i class="mdi mdi-alert m-auto text-primary"></i>
-                            </div>
-                            <div class="preview-item-content">
-                                <h6 class="preview-subject font-weight-normal text-dark mb-1">Application Error</h6>
-                                <p class="font-weight-light small-text mb-0"> Just now </p>
-                            </div>
-                        </a>
-                        <a class="dropdown-item preview-item py-3">
-                            <div class="preview-thumbnail">
-                                <i class="mdi mdi-settings m-auto text-primary"></i>
-                            </div>
-                            <div class="preview-item-content">
-                                <h6 class="preview-subject font-weight-normal text-dark mb-1">Settings</h6>
-                                <p class="font-weight-light small-text mb-0"> Private message </p>
-                            </div>
-                        </a>
-                        <a class="dropdown-item preview-item py-3">
-                            <div class="preview-thumbnail">
-                                <i class="mdi mdi-airballoon m-auto text-primary"></i>
-                            </div>
-                            <div class="preview-item-content">
-                                <h6 class="preview-subject font-weight-normal text-dark mb-1">New user registration</h6>
-                                <p class="font-weight-light small-text mb-0"> 2 days ago </p>
-                            </div>
-                        </a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
-                    <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                        <img class="img-xs rounded-circle" src="../../../assets/images/faces/face8.jpg" alt="Profile image"> </a>
-                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-                        <div class="dropdown-header text-center">
-                            <img class="img-md rounded-circle" src="../../../assets/images/faces/face8.jpg" alt="Profile image">
-                            <p class="mb-1 mt-3 font-weight-semibold">Allen Moreno</p>
-                            <p class="font-weight-light text-muted mb-0">allenmoreno@gmail.com</p>
-                        </div>
-                        <a class="dropdown-item">My Profile <span class="badge badge-pill badge-danger">1</span><i class="dropdown-item-icon ti-dashboard"></i></a>
-                        <a class="dropdown-item">Messages<i class="dropdown-item-icon ti-comment-alt"></i></a>
-                        <a class="dropdown-item">Activity<i class="dropdown-item-icon ti-location-arrow"></i></a>
-                        <a class="dropdown-item">FAQ<i class="dropdown-item-icon ti-help-alt"></i></a>
-                        <a class="dropdown-item">Sign Out<i class="dropdown-item-icon ti-power-off"></i></a>
-                    </div>
-                </li>
-            </ul>
-            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-                <span class="mdi mdi-menu"></span>
-            </button>
-        </div>
-    </nav>
-    <!-- partial -->
-    <div class="container-fluid page-body-wrapper">
-        <!-- partial:../../partials/_sidebar.html -->
-        <nav class="sidebar sidebar-offcanvas" id="sidebar">
-            <ul class="nav">
-                <li class="nav-item nav-profile">
-                    <a href="#" class="nav-link">
-                        <div class="profile-image">
-                            <img class="img-xs rounded-circle" src="../../../assets/images/faces/face8.jpg" alt="profile image">
-                            <div class="dot-indicator bg-success"></div>
-                        </div>
-                        <div class="text-wrapper">
-                            <p class="profile-name">Allen Moreno</p>
-                            <p class="designation">Premium user</p>
-                        </div>
-                    </a>
-                </li>
-                <li class="nav-item nav-category">Main Menu</li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../../index.html">
-                        <i class="menu-icon typcn typcn-document-text"></i>
-                        <span class="menu-title">Dashboard</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                        <i class="menu-icon typcn typcn-coffee"></i>
-                        <span class="menu-title">Basic UI Elements</span>
-                        <i class="menu-arrow"></i>
-                    </a>
-                    <div class="collapse" id="ui-basic">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item">
-                                <a class="nav-link" href="../../pages/ui-features/buttons.html">Buttons</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../../pages/ui-features/dropdowns.html">Dropdowns</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../../pages/ui-features/typography.html">Typography</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../../pages/forms/basic_elements.html">
-                        <i class="menu-icon typcn typcn-shopping-bag"></i>
-                        <span class="menu-title">Form elements</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../../pages/charts/chartjs.html">
-                        <i class="menu-icon typcn typcn-th-large-outline"></i>
-                        <span class="menu-title">Charts</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../../pages/tables/basic-table.html">
-                        <i class="menu-icon typcn typcn-bell"></i>
-                        <span class="menu-title">Tables</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../../pages/icons/font-awesome.html">
-                        <i class="menu-icon typcn typcn-user-outline"></i>
-                        <span class="menu-title">Icons</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-                        <i class="menu-icon typcn typcn-document-add"></i>
-                        <span class="menu-title">User Pages</span>
-                        <i class="menu-arrow"></i>
-                    </a>
-                    <div class="collapse" id="auth">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item">
-                                <a class="nav-link" href="../../pages/samples/blank-page.html"> Blank Page </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../../pages/samples/login.html"> Login </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../../pages/samples/register.html"> Register </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../../pages/samples/error-404.html"> 404 </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../../pages/samples/error-500.html"> 500 </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-        <!-- partial -->
-        <div class="main-panel">
-            <div class="content-wrapper"> </div>
-            <!-- content-wrapper ends -->
-            <!-- partial:../../partials/_footer.html -->
-            <footer class="footer">
-                <div class="container-fluid clearfix">
-                    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2019 <a href="http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
-                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i>
-              </span>
-                </div>
-            </footer>
-            <!-- partial -->
-        </div>
-        <!-- main-panel ends -->
+            </div>
+        </footer>
+        <!-- End of Footer -->
+
     </div>
-    <!-- page-body-wrapper ends -->
+    <!-- End of Content Wrapper -->
+
 </div>
-<!-- container-scroller -->
-<!-- plugins:js -->
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="modal-footer">
+                @csrf
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-primary" type="submit">Logout</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="{{ mix('js/manifest.js') }}"></script>
+<script src="{{ mix('js/vendor.js') }}"></script>
 <script src="{{ mix('js/admin.js') }}"></script>
+@stack('scripts')
 </body>
 </html>

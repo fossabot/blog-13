@@ -5,6 +5,10 @@ namespace App\Observers;
 use App\Models\Post;
 use Str;
 
+/**
+ * Class PostObserver
+ * @package App\Observers
+ */
 class PostObserver
 {
     /**

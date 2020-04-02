@@ -65,6 +65,11 @@ use Spatie\Permission\Traits\HasRoles;
  * @property string $content
  * @property-read User $user
  * @method static Builder|Comment whereContent($value)
+ * @property string|null $comment_type
+ * @property int|null $comment_id
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $comment
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment whereCommentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment whereCommentType($value)
  */
 class Comment extends Model
 {
@@ -130,7 +135,7 @@ class Comment extends Model
      *
      * @return MorphTo
      */
-    public function commentable(): MorphTo
+    public function comment(): MorphTo
     {
         return $this->morphTo();
     }

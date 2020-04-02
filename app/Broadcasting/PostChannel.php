@@ -5,6 +5,10 @@ namespace App\Broadcasting;
 use App\Models\Post;
 use App\Models\User;
 
+/**
+ * Class PostChannel
+ * @package App\Broadcasting
+ */
 class PostChannel
 {
     /**

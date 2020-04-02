@@ -27,11 +27,29 @@ use Storage;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Image whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Image whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $file
+ * @property null|string $mime
+ * @property null|int $size
+ * @property string $image_type
+ * @property int $image_id
+ * @property-read null|string $url
+ * @property-read \Eloquent|\Illuminate\Database\Eloquent\Model $image
+ * @property-read \App\Models\Like[]|\Illuminate\Database\Eloquent\Collection $likes
+ * @property-read null|int $likes_count
+ * @property-read \App\Models\Tag[]|\Illuminate\Database\Eloquent\Collection $tags
+ * @property-read null|int $tags_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Image whereFile($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Image whereImageId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Image whereImageType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Image whereMime($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Image whereSize($value)
  */
 class Image extends Model
 {
     use Likeable;
     /**
+     * The accessors to append to the model's array form.
+     *
      * @var array
      */
     protected $appends  = [

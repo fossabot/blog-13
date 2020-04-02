@@ -10,6 +10,10 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
+/**
+ * Class CommentPosted
+ * @package App\Events
+ */
 class CommentPosted implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;

@@ -1,16 +1,17 @@
-<x-card class="bg-success text-light m-2">
-    <div class="row justify-content-between">
-        <i class="fa fa-file-text fa-5x" aria-hidden="true"></i>
-        <div class="text-right">
-            <div class="huge">{{ $posts->count() }}</div>
-            <div>{{ trans_choice('posts.new_posts', $posts->count()) }}</div>
+<div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+            <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                        {{ trans_choice('posts.new_posts', $posts->count()) }}
+                    </div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $posts->count() }}</div>
+                </div>
+                <div class="col-auto">
+                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                </div>
+            </div>
         </div>
     </div>
-
-    <x-slot name="footer">
-        <a href="{{ route('admin.posts.index') }}" class="d-flex justify-content-between text-light">
-            <span>@lang('dashboard.details')</span>
-            <span><i class="fa fa-arrow-circle-right"></i></span>
-        </a>
-    </x-slot>
-</x-card>
+</div>

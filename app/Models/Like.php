@@ -34,6 +34,10 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @mixin Eloquent
  * @property-read Collection|\Spatie\Activitylog\Models\Activity[] $activities
  * @property-read int|null $activities_count
+ * @property string|null $like_type
+ * @property int|null $like_id
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Like whereLikeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Like whereLikeType($value)
  */
 class Like extends Model
 {
@@ -45,8 +49,8 @@ class Like extends Model
      * @var array
      */
     protected $fillable = [
-        'likeable_id',
-        'likeable_type',
+        'like_id',
+        'like_type',
         'user_id',
     ];
 

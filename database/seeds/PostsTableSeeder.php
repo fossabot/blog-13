@@ -31,7 +31,7 @@ class PostsTableSeeder extends Seeder
         if (App::environment(['local', 'staging', 'testing'])) {
             factory(\App\Models\Post::class, 100)->create()->each(function ($post) {
                 $post->images()->saveMany(factory(\App\Models\Image::class, 3)->make()->each(function ($img) {
-                    $img->likes()->saveMany(factory(\App\Models\Like::class, 5)->make());
+                    $img->likes()->saveMany(factory(\App\Models\Like::class, 5)->create());
                 }));
                 $post->likes()->saveMany(factory(\App\Models\Like::class, 5)->make());
                 $post->comments()->saveMany(factory(\App\Models\Comment::class, 3)->make());

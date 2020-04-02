@@ -5,6 +5,10 @@ namespace App\Observers;
 use App\Models\Category;
 use Str;
 
+/**
+ * Class CategoryObserver
+ * @package App\Observers
+ */
 class CategoryObserver
 {
     /**

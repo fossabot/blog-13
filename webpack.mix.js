@@ -14,25 +14,32 @@ require('laravel-mix-alias');
  |
  */
 
-mix
-  .alias({
-    '@': '/resources/js',
-    '@/components': '/resources/js/components',
-  })
-  .js('resources/js/app.js', 'public/js')
-  .sass('resources/sass/app.scss', 'public/css')
-  .styles([
-    'node_modules/@mdi/font/css/materialdesignicons.css',
-  ], 'public/css/vendor.css')
-  .copyDirectory('node_modules/@mdi/font/fonts', 'public/fonts')
-  .copyDirectory('resources/images', 'public/images')
-  .version();
+// mix
+//   .alias({
+//     '@': '/resources/js',
+//     '@/components': '/resources/js/components',
+//   })
+//   .js('resources/js/app.js', 'public/js')
+//   .sass('resources/sass/app.scss', 'public/css')
+//   .styles([
+//     'node_modules/@mdi/font/css/materialdesignicons.css',
+//   ], 'public/css/vendor.css')
+//   .copyDirectory('node_modules/@mdi/font/fonts', 'public/fonts')
+//   .copyDirectory('resources/images', 'public/images')
+//   .version();
 
 mix.js('resources/js/blog.js', 'public/js')
   .sass('resources/sass/blog.scss', 'public/css')
+
+  .js('resources/assets/admin/js/admin.js', 'public/js')
+  .js('resources/assets/admin/js/datatables.js', 'public/js')
+  .sass('resources/assets/admin/sass/admin.scss', 'public/css')
+  .extract(['jquery', 'bootstrap'])
+  .sourceMaps()
   .version();
 
-mix.js('resources/assets/admin/js/admin.js', 'public/js')
-  .sass('resources/assets/admin/scss/admin.scss', 'public/css')
-  .version();
-
+if (! mix.inProduction()) {
+  mix.webpackConfig({
+    devtool: 'source-map'
+  })
+}

@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\File;
 use App\Processors\AvatarProcessor;
 use App\Repositories\Slug\HasSlug;
 use App\Repositories\Slug\SlugOptions;
@@ -22,7 +21,6 @@ use Laravel\Passport\Client;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Permission\Traits\HasRoles;
-use Storage;
 use Str;
 
 /**
@@ -52,14 +50,14 @@ use Str;
  * @mixin Eloquent
  * @property string $slug
  * @property null|string $api_token
- * @property-read Comment[]|Collection $comments
+ * @property-read Collection|Comment[] $comments
  * @property-read null|int $comments_count
  * @property-read string $avatar
  * @property-read string $full_name
  * @property-read mixed|string $url
  * @property-read Collection|\Spatie\Permission\Models\Permission[] $permissions
  * @property-read null|int $permissions_count
- * @property-read Post[]|Collection $posts
+ * @property-read Collection|Post[] $posts
  * @property-read null|int $posts_count
  * @property-read Collection|\Spatie\Permission\Models\Role[] $roles
  * @property-read null|int $roles_count
@@ -72,17 +70,17 @@ use Str;
  * @method static Builder|User whereSlug($value)
  * @property-read Collection|\Spatie\MediaLibrary\Models\Media[] $media
  * @property-read null|int $media_count
- * @property \Illuminate\Support\Carbon|null $registered_at
- * @property string|null $provider
- * @property string|null $provider_id
+ * @property null|\Illuminate\Support\Carbon $registered_at
+ * @property null|string $provider
+ * @property null|string $provider_id
  * @property-read Collection|\Spatie\Activitylog\Models\Activity[] $activities
- * @property-read int|null $activities_count
- * @property-read Collection|Client[] $clients
- * @property-read int|null $clients_count
+ * @property-read null|int $activities_count
+ * @property-read Client[]|Collection $clients
+ * @property-read null|int $clients_count
  * @property-read Collection|Like[] $likes
- * @property-read int|null $likes_count
+ * @property-read null|int $likes_count
  * @property-read Collection|\Laravel\Passport\Token[] $tokens
- * @property-read int|null $tokens_count
+ * @property-read null|int $tokens_count
  * @method static Builder|User whereProvider($value)
  * @method static Builder|User whereProviderId($value)
  * @method static Builder|User whereRegisteredAt($value)
@@ -174,11 +172,22 @@ class User extends Authenticatable implements MustVerifyEmail, HasLocalePreferen
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
     public function getAvatarAttribute()
     {
         return AvatarProcessor::get($this);
+    }
+    /**
+     * Return a unique personal access token.
+     */
+    public static function generate(): string
+    {
+        do {
+            $api_token = \Str::random(60);
+        } while (self::where('api_token', $api_token)->exists());
+
+        return $api_token;
     }
     /**
      * Scope a query to only include users registered last week.
@@ -289,5 +298,4 @@ class User extends Authenticatable implements MustVerifyEmail, HasLocalePreferen
     {
         return $this->hasMany(Like::class, 'user_id');
     }
-
 }
