@@ -21,7 +21,7 @@ class CreateCommentsTable extends Migration
             $table->string('title')->nullable();
 
             $table->text('content');
-            $table->nullableMorphs('commentable');
+            $table->nullableMorphs('comment');
             $table->timestamp('published_at')->nullable();
             $table->boolean('approved')->default(false);
             $table->softDeletes();

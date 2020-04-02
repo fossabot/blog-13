@@ -61,9 +61,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static Builder|Comment whereUpdatedAt($value)
  * @method static Builder|Comment whereUserId($value)
  * @property-read Collection|\Spatie\Activitylog\Models\Activity[] $activities
- * @property-read int|null $activities_count
- * @property-read Collection|\Spatie\MediaLibrary\MediaCollections\Models\Media[] $media
- * @property-read int|null $media_count
+ * @property-read null|int $activities_count
  * @property string $content
  * @property-read User $user
  * @method static Builder|Comment whereContent($value)

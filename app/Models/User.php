@@ -130,6 +130,9 @@ class User extends Authenticatable implements MustVerifyEmail, HasLocalePreferen
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * @var
+     */
     private $photo;
 
     /**
@@ -171,21 +174,8 @@ class User extends Authenticatable implements MustVerifyEmail, HasLocalePreferen
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-//    public function getAvatarAttribute(): string
-//    {
-//        $avatar = Storage::url("users/{$this->photo}");
-//        if (isset($this->avatar)) {
-//            return $avatar;
-//        }
-//        return Storage::url("users/avatar.png");
-//    }
-
-    public function file() {
-        return $this->belongsTo(File::class);
-    }
-
     public function getAvatarAttribute()
     {
         return AvatarProcessor::get($this);
@@ -280,9 +270,12 @@ class User extends Authenticatable implements MustVerifyEmail, HasLocalePreferen
         return $this->hasMany(Comment::class, 'user_id');
     }
 
+    /**
+     * @return MorphOne
+     */
     public function image(): MorphOne
     {
-        return $this->morphOne(Image::class, 'imageable');
+        return $this->morphOne(Image::class, 'image');
     }
 
     /**

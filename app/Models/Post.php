@@ -67,15 +67,15 @@ use Storage;
  * @method static Builder|Post whereUserId($value)
  * @mixin Eloquent
  * @property-read Category $category
- * @property-read Post[]|Collection $children
+ * @property-read Collection|Post[] $children
  * @property-read null|int $children_count
- * @property-read Comment[]|Collection $comments
+ * @property-read Collection|Comment[] $comments
  * @property-read null|int $comments_count
  * @property-read mixed $content
  * @property-read string $date
  * @property-read string $excerpt
  * @property-read \Post $first_child
- * @property-read UrlGenerator|string $image
+ * @property-read string|UrlGenerator $image
  * @property-read string $month
  * @property-read mixed $publish_date
  * @property-read mixed $publish_time
@@ -83,14 +83,14 @@ use Storage;
  * @property-read Collection|\Post[] $siblings
  * @property-read string $time_elapsed
  * @property-read string $url
- * @property-read Like[]|Collection $likes
+ * @property-read Collection|Like[] $likes
  * @property-read null|int $likes_count
  * @property-read null|Post $parent
  * @property-read Collection|\Spatie\Permission\Models\Permission[] $permissions
  * @property-read null|int $permissions_count
  * @property-read Collection|\Spatie\Permission\Models\Role[] $roles
  * @property-read null|int $roles_count
- * @property-read Tag[]|Collection $tags
+ * @property-read Collection|Tag[] $tags
  * @property-read null|int $tags_count
  * @property-read User $user
  * @method static bool|null forceDelete()
@@ -105,10 +105,10 @@ use Storage;
  * @method static \Illuminate\Database\Query\Builder|Post withTrashed()
  * @method static \Illuminate\Database\Query\Builder|Post withoutTrashed()
  * @property-read Collection|\Spatie\Activitylog\Models\Activity[] $activities
- * @property-read int|null $activities_count
+ * @property-read null|int $activities_count
  * @property-read mixed $author
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Posts\Rate[] $rates
- * @property-read int|null $rates_count
+ * @property-read \App\Models\Posts\Rate[]|\Illuminate\Database\Eloquent\Collection $rates
+ * @property-read null|int $rates_count
  */
 class Post extends Model
 {
@@ -184,7 +184,7 @@ class Post extends Model
 
     /**
      * @param $value
-     * @return UrlGenerator|string
+     * @return string|UrlGenerator
      */
     public function getImageAttribute($value): string
     {
@@ -203,7 +203,6 @@ class Post extends Model
         }
 
         return route('posts.show', $this->slug);
-
     }
 
 
@@ -322,8 +321,8 @@ class Post extends Model
     /**
      * return the excerpt of the post content
      *
-     * @return string
      * @throws Exception
+     * @return string
      */
     public function getExcerptAttribute(): string
     {
@@ -332,8 +331,8 @@ class Post extends Model
     }
 
     /**
-     * @return ReadTime
      * @throws Exception
+     * @return ReadTime
      */
     public function getReadTimeAttribute()
     {
@@ -521,7 +520,7 @@ class Post extends Model
      */
     public function rates(): HasMany
     {
-        return $this->hasMany(Rate::class,'post_id');
+        return $this->hasMany(Rate::class, 'post_id');
     }
 
     /**
@@ -531,11 +530,15 @@ class Post extends Model
      */
     public function comments(): MorphMany
     {
-        return $this->morphMany(Comment::class, 'commentable');
+        return $this->morphMany(Comment::class, 'comment');
     }
+
+    /**
+     * @return MorphMany
+     */
     public function images(): MorphMany
     {
-        return $this->morphMany(Image::class, 'imageable');
+        return $this->morphMany(Image::class, 'image');
     }
 
     /**

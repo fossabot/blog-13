@@ -21,18 +21,18 @@ mix
   })
   .js('resources/js/app.js', 'public/js')
   .sass('resources/sass/app.scss', 'public/css')
-  // .styles([
-  //   'node_modules/@mdi/font/css/materialdesignicons.css',
-  // ], 'public/css/vendor.css')
-  // .copyDirectory('node_modules/@mdi/font/fonts', 'public/fonts')
-  // .copyDirectory('resources/images', 'public/images')
+  .styles([
+    'node_modules/@mdi/font/css/materialdesignicons.css',
+  ], 'public/css/vendor.css')
+  .copyDirectory('node_modules/@mdi/font/fonts', 'public/fonts')
+  .copyDirectory('resources/images', 'public/images')
   .version();
 
 mix.js('resources/js/blog.js', 'public/js')
   .sass('resources/sass/blog.scss', 'public/css')
   .version();
 
-// mix.js('resources/assets/admin/js/admin.js', 'public/js')
-//   .sass('resources/assets/admin/scss/admin.scss', 'public/css')
-//   .version();
+mix.js('resources/assets/admin/js/admin.js', 'public/js')
+  .sass('resources/assets/admin/scss/admin.scss', 'public/css')
+  .version();
 

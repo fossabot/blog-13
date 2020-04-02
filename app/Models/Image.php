@@ -14,9 +14,9 @@ use Storage;
  * @property string $name
  * @property string $imageable_type
  * @property int $imageable_id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $imageable
+ * @property null|\Illuminate\Support\Carbon $created_at
+ * @property null|\Illuminate\Support\Carbon $updated_at
+ * @property-read \Eloquent|\Illuminate\Database\Eloquent\Model $imageable
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Image newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Image newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Image query()
@@ -40,21 +40,19 @@ class Image extends Model
     /**
      * Get the owning imageable model.
      */
-    public function imageable()
+    public function image()
     {
         return $this->morphTo();
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
     public function getUrlAttribute()
     {
         if (empty($this->name)) {
             return null;
         }
-
-//        return \Storage::url('images/posts/' .$this->name);
 
         return Storage::url($this->file);
     }
@@ -72,5 +70,4 @@ class Image extends Model
     {
         return $this->morphToMany(Tag::class, 'taggable');
     }
-
 }

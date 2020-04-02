@@ -46,7 +46,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @method static Builder|ContactUs withoutTrashed()
  * @mixin Eloquent
  * @property-read Collection|\Spatie\Activitylog\Models\Activity[] $activities
- * @property-read int|null $activities_count
+ * @property-read null|int $activities_count
  */
 class ContactUs extends Model
 {

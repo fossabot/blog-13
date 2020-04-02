@@ -32,7 +32,7 @@ trait Likeable
      */
     public function likes(): MorphMany
     {
-        return $this->morphMany(Like::class, 'likeable');
+        return $this->morphMany(Like::class, 'like');
     }
 
     /**

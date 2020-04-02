@@ -11,11 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Storage;
 use Spatie\Activitylog\Traits\LogsActivity;
-use function PHPUnit\Framework\isEmpty;
-use function PHPUnit\Framework\isNull;
-
 
 /**
  * Class Category
@@ -67,7 +63,7 @@ class Category extends Model
      * Generate url category by
      * call category->url
      *
-     * @return UrlGenerator|string
+     * @return string|UrlGenerator
      */
     public function getUrlAttribute(): string
     {
@@ -96,13 +92,13 @@ class Category extends Model
     }
 
     /**
-     * @throws Exception
      * @return Category
+     * @throws \Exception
      */
     public function getFirstChildAttribute(): self
     {
         if (! $this->hasChildren()) {
-            throw new Exception("Category `{$this->title}` doesn't have any children.");
+            throw new \Exception("Category `{$this->title}` doesn't have any children.");
         }
 
         return $this->children->sortBy('order_column')->first();
@@ -153,7 +149,6 @@ class Category extends Model
      */
     public function image(): MorphOne
     {
-        return $this->morphOne(Image::class, 'imageable');
+        return $this->morphOne(Image::class, 'image');
     }
-
 }

@@ -13,18 +13,18 @@ use Spatie\Activitylog\Models\Activity as Model;
  * App\Models\Activity
  *
  * @property int $id
- * @property string|null $log_name
+ * @property null|string $log_name
  * @property string $description
- * @property int|null $subject_id
- * @property string|null $subject_type
- * @property int|null $causer_id
- * @property string|null $causer_type
- * @property Collection|null $properties
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Model|Eloquent $causer
+ * @property null|int $subject_id
+ * @property null|string $subject_type
+ * @property null|int $causer_id
+ * @property null|string $causer_type
+ * @property null|Collection $properties
+ * @property null|Carbon $created_at
+ * @property null|Carbon $updated_at
+ * @property-read Eloquent|\Illuminate\Database\Eloquent\Model $causer
  * @property-read mixed $changes
- * @property-read \Illuminate\Database\Eloquent\Model|Eloquent $subject
+ * @property-read Eloquent|\Illuminate\Database\Eloquent\Model $subject
  * @method static Builder|Model causedBy(\Illuminate\Database\Eloquent\Model $causer)
  * @method static Builder|Model forSubject(\Illuminate\Database\Eloquent\Model $subject)
  * @method static Builder|Model inLog($logNames)
@@ -43,7 +43,7 @@ use Spatie\Activitylog\Models\Activity as Model;
  * @method static Builder|Activity whereUpdatedAt($value)
  * @mixin Eloquent
  * @method static Builder|Model forEvent($event)
- * @property string|null $event
+ * @property null|string $event
  * @method static Builder|Activity whereEvent($value)
  */
 class Activity extends Model
