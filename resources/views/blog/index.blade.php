@@ -10,11 +10,11 @@
                     <div class="col-lg-4 col-sm-6 mb-5">
                         <article class="text-center">
                             @if(! is_null($blog->images))
-{{--                            <img class="img-fluid mb-4" src="{{ $blog->images[0]->url }}" alt="{{ $blog->title }}">--}}
+                            <img class="img-fluid mb-4" src="{{ $blog->images[0]->url }}" alt="{{ $blog->title }}">
                             @endif
                             <p class="text-uppercase mb-2">{{ $blog->category->title }}</p>
                             <h4 class="title-border"><a class="text-dark" href="{{ $blog->url }}">{{ $blog->title }}</a></h4>
-                            {!! $blog->excerpt !!}
+                            {!! $blog->meta_description !!}
                             <a href="{{ $blog->url }}" class="btn btn-transparent">read more</a>
                         </article>
                     </div>

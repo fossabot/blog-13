@@ -1,10 +1,12 @@
 (function ($) {
   'use strict';
 
-  // Preloader js    
+  // Preloader js
   $(window).on('load', function () {
     $('.preloader').fadeOut(700);
   });
+
+  $('[data-toggle="tooltip"]').tooltip();
 
   // headroom js
   $('.navigation').headroom();

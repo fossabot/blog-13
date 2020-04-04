@@ -3,9 +3,7 @@
 ])
 
 @section('content')
-    <p>@lang('posts.show') : {{ link_to_route('posts.show', route('posts.show', $post), $post) }}</p>
-
-    {{--    @include('admin/posts/_thumbnail')--}}
+    <p>@lang('posts.show') : <a href="{{ $post->url }}">{{ $post->url }}</a></p>
 
     <form method="POST" action="{{ route('admin.posts.update', $post) }}" enctype="multipart/form-data" accept-charset="UTF-8">
         @csrf

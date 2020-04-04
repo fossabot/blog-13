@@ -22,7 +22,10 @@
             <div class="col-lg-8">
                 <ul class="list-inline d-flex justify-content-between py-3">
                     <li class="list-inline-item"><i class="ti-user mr-2"></i>Post by {{ $blog->user->name }}</li>
-                    <li class="list-inline-item"><i class="ti-calendar mr-2"></i>{{ $blog->published_at  }}</li>
+                    <li class="list-inline-item" data-toggle="tooltip" data-placement="top" title="{{ $blog->published_at }}">
+                        <i class="ti-calendar mr-2"></i>
+                        {{ $blog->time_elapsed }}
+                    </li>
                 </ul>
 {{--                <img src="" alt="" class="w-100 img-fluid mb-4">--}}
                 <div class="content">

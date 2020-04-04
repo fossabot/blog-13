@@ -14,7 +14,7 @@
     <meta property="og:url" content="{{ $link ?? url()->current() }}" />
     <meta property="og:image" content="{{ $image ?? config('blog.image') }}" />
 
-    <link rel="stylesheet" href="{{ asset('/assets/plugins/bootstrap/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('/assets/plugins/slick/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/plugins/themify-icons/themify-icons.css') }}">
     <link href="{{ asset('/assets/css/style.css') }}" rel="stylesheet">
@@ -46,29 +46,67 @@
 
 
 @include('blog._partials.footer')
-<!-- jQuery -->
-<script src="/assets/plugins/jQuery/jquery.min.js"></script>
-<!-- Bootstrap JS -->
-<script src="/assets/plugins/bootstrap/bootstrap.min.js"></script>
-<!-- slick slider -->
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="//stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="/assets/plugins/slick/slick.min.js"></script>
 <!-- masonry -->
 <script src="/assets/plugins/masonry/masonry.js"></script>
-<!-- instafeed -->
-<script src="/assets/plugins/instafeed/instafeed.min.js"></script>
-<!-- smooth scroll -->
 <script src="/assets/plugins/smooth-scroll/smooth-scroll.js"></script>
-<!-- headroom -->
 <script src="/assets/plugins/headroom/headroom.js"></script>
-<!-- reading time -->
-<script src="/assets/plugins/reading-time/readingTime.min.js"></script>
-<!-- lunr.js -->
-<script src="/assets/plugins/search/lunr.min.js"></script>
-<!-- search -->
-<script src="/assets/plugins/search/search.js"></script>
+<script>
+    $(window).on('load', function () {
+        $('.preloader').fadeOut(700);
+    });
 
-<!-- Main Script -->
-<script src="/assets/js/script.js"></script>
+    $('[data-toggle="tooltip"]').tooltip();
+
+    // headroom js
+    $('.navigation').headroom();
+
+    // Background-images
+    $('[data-background]').each(function () {
+        $(this).css({
+            'background-image': 'url(' + $(this).data('background') + ')'
+        });
+    });
+    $('.featured-post-slider').slick({
+        dots: false,
+        speed: 300,
+        autoplay: true,
+        arrows: false,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        responsive: [{
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 4
+            }
+        },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 3
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 2
+                }
+            }
+        ]
+    });
+
+    // Masonry
+    $(document).ready(function () {
+        $('.masonry-container').masonry({
+            itemSelector: '.masonry-container > div',
+            columnWidth: 1
+        });
+    });
+
+</script>
 </body>
 
 </html>

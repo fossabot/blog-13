@@ -26,6 +26,7 @@ class PostsTableSeeder extends Seeder
                 'title' => $content->title,
                 'content_raw' => $content->body(),
                 'meta_description' => $content->meta_description,
+                'is_draft' => $content->draft,
                 'is_sticky' => $content->is_sticky,
                 'published_at' => now(),
                 'type' => $content->type

@@ -508,6 +508,25 @@ class Post extends Model
         return $this->morphToMany(Tag::class, 'taggable');
     }
 
+    /**
+     * Sync tag relation adding new tags as needed
+     *
+     * @param array $tags
+     */
+    public function syncTags(array $tags)
+    {
+        Tag::addNeededTags($tags);
+
+        if (count($tags)) {
+            $this->tags()->sync(
+                Tag::whereIn('tag', $tags)->pluck('id')->all()
+            );
+            return;
+        }
+
+        $this->tags()->detach();
+    }
+
 
     /**
      * Define an inverse one-to-one or many relationship.

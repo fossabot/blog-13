@@ -24,7 +24,7 @@
 
             <div class="form-group">
                 <label for="content">{{  __('posts.attributes.content') }}</label>
-                <textarea class="form-control editor {{ $errors->has('content') ? ' is-invalid' : '' }}" id="content" name="content" required>{{ old('content') ?? isset($post) ? $post->content : null }}</textarea>
+                <textarea class="form-control editor {{ $errors->has('content') ? ' is-invalid' : '' }}" id="content" name="content" rows="5" required>{{ old('content') ?? isset($post) ? $post->content : null }}</textarea>
 
                 @error('content')
                 <span class="invalid-feedback">{{ $message }}</span>
@@ -93,8 +93,17 @@
                 <label for="tags">{{ __('posts.attributes.tags') }}</label>
                 <select id="tags" class="form-control select2 {{ $errors->has('tags') ? ' is-invalid' : '' }}" multiple name="tags[]">
                     @foreach ($tags as $key => $value)
-                        <option value="{{ $key }}" {{ ( isset($post) ? $key == $tag->id: null) ? 'selected' : '' }}>
+                        <option value="{{ $key }}" {{ ( isset($post) ? $key == $post->id: null) ? 'selected' : '' }}>
                             {{ $value }}
+                        </option>
+                    @endforeach
+                </select>
+
+                <select name="tags[]" id="tags" class="form-control  select2 {{ $errors->has('tags') ? ' is-invalid' : '' }}" multiple>
+                    @foreach ($tags as $key => $tag)
+                        <option @if (in_array($key, $tags)) selected @endif
+                        value="{{ $tag }}">
+                            {{ $tag }}
                         </option>
                     @endforeach
                 </select>
@@ -119,14 +128,9 @@
 </div>
 
 @push('styles')
-    <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
 
 @endpush
 @push('scripts')
-    <script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
-    <script>
-        var easyMDE = new EasyMDE({element: document.getElementById('content')});
-    </script>
 @endpush
 
 

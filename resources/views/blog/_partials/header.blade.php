@@ -23,8 +23,8 @@
             </ul>
             <form class="form-inline position-relative ml-lg-4" action="{{ url('/') }}" method="GET">
                 @csrf
-                <label for="search-box" class="sr-only">@lang('posts.search')</label>
-                <input class="form-control px-0 w-100" type="search" id="search-box" name="query" placeholder="Search">
+                <label class="sr-only">@lang('posts.search')</label>
+                <input class="form-control px-0 w-100" type="search" name="query" placeholder="Search">
                 <button class="search-icon" type="submit"><i class="ti-search text-dark"></i></button>
             </form>
         </div>

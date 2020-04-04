@@ -24,7 +24,7 @@ if (! function_exists('set_active')) {
      * @param string $output
      * @return string
      */
-    function set_active($uri, $output = 'active'): string
+    function set_active($uri, $output = 'active')
     {
         if (is_array($uri)) {
             foreach ($uri as $u) {
@@ -68,7 +68,7 @@ if (! function_exists('dirToArray')) {
 
         $cdir = scandir($dir);
         foreach ($cdir as $key => $value) {
-            if (!in_array($value, [".",".."])) {
+            if (!in_array($value, [".", ".."])) {
                 if (is_dir($dir . DIRECTORY_SEPARATOR . $value)) {
                     $result[$value] = dirToArray($dir . DIRECTORY_SEPARATOR . $value);
                 } else {
@@ -79,27 +79,10 @@ if (! function_exists('dirToArray')) {
 
         return $result;
     }
-
-    if (! function_exists('random_unique')) {
-        /**
-         * @param $min
-         * @param $max
-         * @return int
-         */
-        function random_unique($min, $max): int
-        {
-            $uniques = [];
-            for ($i = 0; $i < 500; $i++) {
-                do {
-                    $code = mt_rand($min, $max);
-                } while (in_array($code, $uniques));
-                $uniques[] = $code;
-            }
-        }
-    }
 }
 
-if ( ! function_exists('is_php')) {
+
+if (! function_exists('is_php')) {
     /**
      * is_php
      *
@@ -114,14 +97,14 @@ if ( ! function_exists('is_php')) {
         static $_is_php;
         $version = (string)$version;
 
-        if ( ! isset($_is_php[ $version ])) {
+        if (! isset($_is_php[ $version ])) {
             $_is_php[ $version ] = version_compare(PHP_VERSION, $version, '>=');
         }
 
         return $_is_php[ $version ];
     }
 }
-if ( ! function_exists('is_really_writable')) {
+if (! function_exists('is_really_writable')) {
     /**
      * is_really_writable
      *
@@ -158,7 +141,8 @@ if ( ! function_exists('is_really_writable')) {
             @unlink($file);
 
             return true;
-        } elseif ( ! is_file($file) || ($fp = @fopen($file, 'ab')) === false) {
+        }
+        if (! is_file($file) || ($fp = @fopen($file, 'ab')) === false) {
             return false;
         }
 

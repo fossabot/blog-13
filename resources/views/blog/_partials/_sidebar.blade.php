@@ -3,8 +3,8 @@
         <form action="{{ route('blog') }}" method="GET">
             @csrf
             <i class="ti-search"></i>
-            <label for="search-box" class="sr-only">@lang('posts.search')</label>
-            <input type="search" id="search-box" class="form-control border-0 pl-5" name="query"
+            <label  class="sr-only">@lang('posts.search')</label>
+            <input type="search" class="form-control border-0 pl-5" name="query"
                    placeholder="{{ __('posts.search') }}">
         </form>
     </div>
