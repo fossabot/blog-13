@@ -1,18 +1,20 @@
-@extends('admin.layouts.app')
+@extends('admin.layouts.app', [
+    'title' => __('edit') . $post->title
+])
 
 @section('content')
     <p>@lang('posts.show') : {{ link_to_route('posts.show', route('posts.show', $post), $post) }}</p>
 
-{{--    @include('admin/posts/_thumbnail')--}}
+    {{--    @include('admin/posts/_thumbnail')--}}
 
-    <form method="POST" action="{{ route('admin.posts.update', $post) }}">
-        <form method="POST" action="{{ route('admin.posts.update', $post) }}" enctype="multipart/form-data" accept-charset="UTF-8">
-            <input name="_method" type="hidden" value="PUT">
-            @csrf
+    <form method="POST" action="{{ route('admin.posts.update', $post) }}" enctype="multipart/form-data" accept-charset="UTF-8">
+        @csrf
 
-
-        @include('admin/posts/_form')
-
+        <div class="container-fluid">
+            <div class="row">
+                @include('admin/posts/_form')
+            </div>
+        </div>
         <div class="pull-left">
             <a href="{{ route('admin.posts.index') }}" class="btn btn-secondary">{{  __('forms.actions.back') }}</a>
             <input class="btn btn-primary" type="submit" value="{{ __('forms.actions.update') }}">

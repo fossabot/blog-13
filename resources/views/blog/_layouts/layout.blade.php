@@ -14,9 +14,10 @@
     <meta property="og:url" content="{{ $link ?? url()->current() }}" />
     <meta property="og:image" content="{{ $image ?? config('blog.image') }}" />
 
+    <link rel="stylesheet" href="{{ asset('/assets/plugins/bootstrap/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/plugins/slick/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/plugins/themify-icons/themify-icons.css') }}">
-    <link href="{{ mix('css/blog.css') }}" rel="stylesheet">
+    <link href="{{ asset('/assets/css/style.css') }}" rel="stylesheet">
 
 </head>
 
@@ -43,38 +44,31 @@
 @yield('content')
 
 
-<!-- instagram -->
-{{--<section>--}}
-{{--    <div class="container-fluid px-0">--}}
-{{--        <div class="row no-gutters instagram-slider" id="instafeed" data-userId="4044026246"--}}
-{{--             data-accessToken="4044026246.1677ed0.8896752506ed4402a0519d23b8f50a17"></div>--}}
-{{--    </div>--}}
-{{--</section>--}}
-<!-- /instagram -->
 
 @include('blog._partials.footer')
 <!-- jQuery -->
-<script src="{{ mix('js/blog.js') }}"></script>
+<script src="/assets/plugins/jQuery/jquery.min.js"></script>
 <!-- Bootstrap JS -->
+<script src="/assets/plugins/bootstrap/bootstrap.min.js"></script>
 <!-- slick slider -->
-<script src="{{ asset('/assets/plugins/slick/slick.min.js') }}"></script>
+<script src="/assets/plugins/slick/slick.min.js"></script>
 <!-- masonry -->
-<script src="{{ asset('/assets/plugins/masonry/masonry.js') }}"></script>
+<script src="/assets/plugins/masonry/masonry.js"></script>
 <!-- instafeed -->
-<script src="{{ asset('/assets/plugins/instafeed/instafeed.min.js') }}"></script>
+<script src="/assets/plugins/instafeed/instafeed.min.js"></script>
 <!-- smooth scroll -->
-<script src="{{ asset('/assets/plugins/smooth-scroll/smooth-scroll.js') }}"></script>
+<script src="/assets/plugins/smooth-scroll/smooth-scroll.js"></script>
 <!-- headroom -->
-<script src="{{ asset('/assets/plugins/headroom/headroom.js') }}"></script>
+<script src="/assets/plugins/headroom/headroom.js"></script>
 <!-- reading time -->
-<script src="{{ asset('/assets/plugins/reading-time/readingTime.min.js') }}"></script>
+<script src="/assets/plugins/reading-time/readingTime.min.js"></script>
 <!-- lunr.js -->
-<script src="{{ asset('/assets/plugins/search/lunr.min.js') }}"></script>
+<script src="/assets/plugins/search/lunr.min.js"></script>
 <!-- search -->
-<script src="{{ asset('/assets/plugins/search/search.js') }}"></script>
+<script src="/assets/plugins/search/search.js"></script>
 
 <!-- Main Script -->
-<script src="{{ asset('/assets/js/script.js') }}"></script>
+<script src="/assets/js/script.js"></script>
 </body>
 
 </html>

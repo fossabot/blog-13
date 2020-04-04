@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\Admin\PostRequest;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 /**
@@ -41,7 +41,6 @@ class PostController extends Controller
         return view('admin.posts.create', [
             'users' => User::authors()->pluck('name', 'id'),
             'categories' => Category::pluck('title', 'id'),
-            'media' => Media::pluck('name', 'id')
         ]);
     }
 
@@ -73,19 +72,19 @@ class PostController extends Controller
             'post' => $post,
             'users' => User::authors()->pluck('name', 'id'),
             'categories' => Category::pluck('title', 'id'),
-            'media' => Media::pluck('name', 'id')
+            'tags' => Tag::pluck('tag', 'id')
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param PostRequest $request
      * @param Post $post
-     * @throws Exception
      * @return RedirectResponse
+     * @throws Exception
      */
-    public function update(Request $request, Post $post): RedirectResponse
+    public function update(PostRequest $request, Post $post): RedirectResponse
     {
         $post->update($request->postFillData());
 

@@ -28,12 +28,16 @@ require('laravel-mix-alias');
 //   .copyDirectory('resources/images', 'public/images')
 //   .version();
 
-mix.js('resources/js/blog.js', 'public/js')
-  .sass('resources/sass/blog.scss', 'public/css')
+mix.js('resources/assets/js/blog.js', 'public/js')
+  .sass('resources/assets/sass/blog.scss', 'public/css')
 
   .js('resources/assets/admin/js/admin.js', 'public/js')
   .js('resources/assets/admin/js/datatables.js', 'public/js')
   .sass('resources/assets/admin/sass/admin.scss', 'public/css')
+
+  .js('resources/assets/admin/js/editor.js', 'public/js')
+  .sass('resources/assets/admin/sass/editor.scss', 'public/css')
+
   .extract(['jquery', 'bootstrap'])
   .sourceMaps()
   .version();

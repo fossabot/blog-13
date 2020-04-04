@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
  */
 class PostsTableSeeder extends Seeder
 {
+
     /**
      * Run the database seeds.
      *
@@ -15,44 +16,41 @@ class PostsTableSeeder extends Seeder
     public function run()
     {
         $posts = self::defaultPost();
-        foreach ($posts as $title => $content) {
-            $post = \App\Models\Post::firstOrCreate([
-                'user_id' => 1,
-                'category_id' => 1,
-                'subtitle' => $title,
-                'title' => $title,
-                'content_raw' => $content,
-                'meta_description' => 'Meta' .$title,
-                'published_at' => now(),
-                'type' => 'page'
-            ]);
-        }
 
-        if (App::environment(['local', 'staging', 'testing'])) {
-            factory(\App\Models\Post::class, 100)->create()->each(function ($post) {
-                $post->images()->saveMany(factory(\App\Models\Image::class, 3)->make()->each(function ($img) {
-                    $img->likes()->saveMany(factory(\App\Models\Like::class, 5)->create());
-                }));
-                $post->likes()->saveMany(factory(\App\Models\Like::class, 5)->make());
+        foreach ($posts as  $post) {
+            $content = \App\Repositories\MarkdownParse\YamlFrontMatter::parse($post);
+            $post = \App\Models\Post::updateOrCreate([
+                'user_id' => 1,
+                'category_id' => $content->category,
+                'subtitle' => $content->subtitle,
+                'title' => $content->title,
+                'content_raw' => $content->body(),
+                'meta_description' => $content->meta_description,
+                'is_sticky' => $content->is_sticky,
+                'published_at' => now(),
+                'type' => $content->type
+            ]);
+            if (App::environment(['local', 'staging', 'testing'])) {
+                $post->images()->saveMany(factory(\App\Models\Image::class, 3)->make());
                 $post->comments()->saveMany(factory(\App\Models\Comment::class, 3)->make());
                 $post->rates()->saveMany(factory(\App\Models\Posts\Rate::class, 3)->make());
-            });
+            }
         }
-
     }
 
 
     /**
-     * Seed default users
+     * Seed default Posts
      *
      * @return array
      */
     protected static function defaultPost()
     {
-        return  [
-            'Privacy and Policy'  => file_get_contents(database_path('contents/privacy.md')),
-            'about'  => file_get_contents(database_path('contents/about.md')),
-            'Syarat dan Ketentuan'  => file_get_contents(database_path('contents/terms.md')),
-        ];
+        $contents = dirToArray(storage_path('app/contents/'));
+        $data = [];
+        foreach ($contents as $key => $content) {
+            $data[] = file_get_contents(storage_path('app/contents/' .$content));
+        }
+        return  $data;
     }
 }

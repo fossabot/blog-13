@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Repositories\MarkdownParse\YamlFrontMatter;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -21,7 +22,6 @@ class BlogController extends Controller
      */
     public function index(Request $request): View
     {
-
         $query = Post::search($request->input('query'))
             ->where('published_at', '<=', now())
             ->where('is_draft', 0)
@@ -34,7 +34,7 @@ class BlogController extends Controller
 
         $featured = $query->where('is_sticky', true)->get();
 
-        return view('blog.index',[
+        return view('blog.index', [
             'blogs' => $blogs,
             'featured' => $featured
         ]);
@@ -65,6 +65,4 @@ class BlogController extends Controller
             'posts' => $posts
         ]);
     }
-
-
 }

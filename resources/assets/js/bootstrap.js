@@ -7,9 +7,9 @@ import axios from 'axios'
 import 'bootstrap'
 import Clipboard from 'clipboard'
 import jquery from 'jquery'
-import Echo from 'laravel-echo'
+// import Echo from 'laravel-echo'
 import PopperJs from 'popper.js'
-import 'pusher-js'
+// import 'pusher-js'
 
 window.$ = window.jQuery = jquery
 window.PopperJs = PopperJs.default
@@ -55,9 +55,9 @@ if (apiToken) {
  * allows your team to easily build robust real-time web applications.
  */
 
-window.Echo = new Echo({
-  broadcaster: 'pusher',
-  key: process.env.MIX_PUSHER_APP_KEY,
-  cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-  encrypted: true
-})
+// window.Echo = new Echo({
+//   broadcaster: 'pusher',
+//   key: process.env.MIX_PUSHER_APP_KEY,
+//   cluster: process.env.MIX_PUSHER_APP_CLUSTER,
+//   encrypted: true
+// })

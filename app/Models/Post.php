@@ -354,7 +354,7 @@ class Post extends Model
      */
     public function getPublishDateAttribute($value): string
     {
-        return $this->attributes['published_at'] = Carbon::parse($value)->format('M-J-Y');
+        return $this->attributes['published_at'] = Carbon::parse($value)->format('Y-m-d');
     }
 
     /**
@@ -366,7 +366,7 @@ class Post extends Model
      */
     public function getPublishTimeAttribute($value): string
     {
-        return $this->attributes['published_at'] = Carbon::parse($value)->format('g:i A');
+        return $this->attributes['published_at'] = Carbon::parse($value)->format('H:i:s A');
     }
 
     /**

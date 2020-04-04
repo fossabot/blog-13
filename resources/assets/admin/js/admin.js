@@ -13,7 +13,8 @@ try {
   console.log(e);
 }
 
-export  default  function($) {
+(function($) {
+  "use strict"; // Start of use strict
 
   // Toggle the side navigation
   $("#sidebarToggle, #sidebarToggleTop").on('click', function(e) {
@@ -67,6 +68,4 @@ export  default  function($) {
     e.preventDefault();
   });
 
-  $('[data-toggle="tooltip"]').tooltip();
-
-}
+})(jQuery); // End of use strict

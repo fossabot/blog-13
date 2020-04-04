@@ -51,10 +51,10 @@
                                 </span>
                             </td>
                             <td class="p-1 btn-group" role="group" aria-label="action">
-                                <a class="btn btn-warning btn-sm" href="{{ route('admin.posts.edit', $post->id) }}">
+                                <a class="btn btn-warning btn-sm" href="{{ route('admin.posts.edit', $post) }}">
                                     <i class="fa fa-edit"></i>
                                 </a>
-                                <a class="btn btn-danger btn-sm" href="{{ route('admin.posts.destroy', $post->id) }}">
+                                <a class="btn btn-danger btn-sm" href="{{ route('admin.posts.destroy', $post) }}">
                                     <i class="fa fa-trash"></i>
                                 </a>
                             </td>
