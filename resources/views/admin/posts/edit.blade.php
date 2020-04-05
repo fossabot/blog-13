@@ -3,6 +3,9 @@
 ])
 
 @section('content')
+
+
+
     <p>@lang('posts.show') : <a href="{{ $post->url }}">{{ $post->url }}</a></p>
 
     <form method="POST" action="{{ route('admin.posts.update', $post) }}" enctype="multipart/form-data" accept-charset="UTF-8">

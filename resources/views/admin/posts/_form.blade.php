@@ -90,6 +90,7 @@
             </div>
 
             <div class="form-group">
+
                 <label for="tags">{{ __('posts.attributes.tags') }}</label>
                 <select id="tags" class="form-control select2 {{ $errors->has('tags') ? ' is-invalid' : '' }}" multiple name="tags[]">
                     @foreach ($tags as $key => $value)
@@ -99,12 +100,11 @@
                     @endforeach
                 </select>
 
-                <select name="tags[]" id="tags" class="form-control  select2 {{ $errors->has('tags') ? ' is-invalid' : '' }}" multiple>
-                    @foreach ($tags as $key => $tag)
-                        <option @if (in_array($key, $tags)) selected @endif
-                        value="{{ $tag }}">
-                            {{ $tag }}
-                        </option>
+                <select multiple="multiple" name="sports[]" id="sports">
+                    @foreach($tags as $aKey => $tag)
+                        @foreach($post->tags as $postKey => $postTag)
+                            <option value="{{$aKey}}" @if($aKey == $postKey)selected="selected"@endif>{{$tag}}</option>
+                        @endforeach
                     @endforeach
                 </select>
 

@@ -72,7 +72,7 @@ class PostController extends Controller
             'post' => $post,
             'users' => User::authors()->pluck('name', 'id'),
             'categories' => Category::pluck('title', 'id'),
-            'tags' => Tag::pluck('tag', 'id')
+            'tags' => Tag::pluck('tag', 'id')->toArray()
         ]);
     }
 

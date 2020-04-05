@@ -83,7 +83,7 @@ class Tag extends Model
             return;
         }
 
-        $found = static::whereIn('tag', $tags)->pluck('tag', 'id')->all();
+        $found = static::whereIn('tag', $tags)->pluck('tag', 'id')->toArray();
 
         foreach (array_diff($tags, $found) as $tag) {
             static::create([
