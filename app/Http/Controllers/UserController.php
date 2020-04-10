@@ -32,8 +32,8 @@ final class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @return View
      * @throws AuthorizationException
+     * @return View
      */
     public function edit(): View
     {
@@ -50,8 +50,8 @@ final class UserController extends Controller
     /**
      * Update the specified resource in storage.
      * @param UsersRequest $request
-     * @return RedirectResponse
      * @throws AuthorizationException
+     * @return RedirectResponse
      */
     public function update(UsersRequest $request): RedirectResponse
     {

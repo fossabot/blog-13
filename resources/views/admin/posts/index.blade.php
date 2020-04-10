@@ -1,5 +1,5 @@
 @extends('admin.layouts.app', [
-    'title' => 'Posts'
+    'title' => __('posts.posts')
 ])
 
 @section('content')
@@ -17,13 +17,13 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-hover" id="dataTable">
                     <thead>
                     <tr>
                         <th>No.</th>
                         <th>Name</th>
                         <th>Title</th>
-                        <th>Subtitle</th>
+                        <th>Category</th>
                         <th>Post Likes</th>
                         <th>Comment count</th>
                         <th>Published</th>
@@ -36,14 +36,20 @@
                             <th>{{ ++$index }}</th>
                             <td>{{ $post->user->name }}</td>
                             <td>{{ $post->title }}</td>
-                            <td>{{ $post->subtitle }}</td>
+                            <td>{{ $post->category->title }}</td>
                             <td class="text-center">
-                                {{ $post->likes_count ?? $post->likes()->count() }}
-                                <i class="fa fa-thumbs-up"></i>
+                                <p data-toggle="tooltip" data-placement="top" title="{{ trans_choice('likes.count', ['count' => $post->likes_count ?? $post->likes()->count()]) }}">
+                                    {{ $post->likes_count ?? $post->likes()->count() }}
+                                    <i class="fa fa-thumbs-up"></i>
+                                </p>
+
                             </td>
                             <td class="text-center">
-                                {{ $post->comments_count ?? $post->comments()->count() }}
-                                <i class="fa fa-comment-alt"></i>
+                                <p data-toggle="tooltip" data-placement="top" title="{{ trans_choice('comments.count', ['count' => $post->comments_count ?? $post->comments()->count()]) }}">
+                                    {{ $post->comments_count ?? $post->comments()->count() }}
+                                    <i class="fa fa-comment-alt"></i>
+                                </p>
+
                             </td>
                             <td>
                                 <span data-toggle="tooltip" data-placement="top" title="{{ $post->published_at->toIso8601String() }}">

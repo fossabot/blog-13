@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\TagRequest;
 use App\Models\Tag;
-use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -22,8 +21,9 @@ class TagController extends Controller
      */
     public function index(): View
     {
-        $tags = Tag::all();
-        return view('admin.tags.index', compact('tags'));
+        return view('admin.tags.index', [
+            'tags' => Tag::all()
+        ]);
     }
 
 
@@ -62,8 +62,8 @@ class TagController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Tag $tag
+     * @throws \Exception
      * @return RedirectResponse
-     * @throws Exception
      */
     public function destroy(Tag $tag): RedirectResponse
     {

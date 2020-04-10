@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'count' => ':count comment|:count comments',
+    'count' => '{1} :count comment|[2,*] :count comments',
     'comment' => 'Comment',
     'comments' => 'Comments',
     'delete' => 'Delete',

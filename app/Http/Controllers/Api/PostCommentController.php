@@ -9,7 +9,7 @@ use App\Http\Resources\Comment as CommentResource;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
-use Illuminate\Support\Facades\Auth;
+use Auth;
 
 /**
  * Class PostCommentController
@@ -27,7 +27,7 @@ class PostCommentController extends Controller
     {
         return CommentResource::collection(
             $post->comments()->with('user')
-                ->whereApproved(true)
+                ->where('approved', true)
                 ->latest()
                 ->paginate($request->input('limit', 20))
         );
@@ -39,7 +39,7 @@ class PostCommentController extends Controller
      * @param Post $post
      * @return CommentResource
      */
-    public function store(Request $request, Post $post): CommentResource
+    public function store(CommentsRequest $request, Post $post): CommentResource
     {
         $comment = new CommentResource(
             Auth::user()->comments()->create($request->all())

@@ -13,8 +13,8 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item">
-        <a class="nav-link {{ request()->route()->named('admin.dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">
+    <li class="nav-item {{ set_active('admin.dashboard') }}">
+        <a class="nav-link" href="{{ route('admin.dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>@lang('dashboard.dashboard')</span></a>
     </li>
@@ -28,25 +28,33 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item {{ set_active(['admin.posts.index', 'admin.posts.create', 'admin.posts.edit', 'admin.comments.index', 'admin.comments.create', 'admin.comments.edit',]) }}">
+    <li class="nav-item {{ set_active(['admin.posts.index', 'admin.posts.create', 'admin.posts.edit', 'admin.comments.index', 'admin.comments.create', 'admin.comments.edit', 'admin.users.index', 'admin.users.create', 'admin.users.edit', 'admin.pages.index', 'admin.pages.create', 'admin.pages.edit']) }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
-            <span>Components</span>
+            <span> @lang('dashboard.contents')</span>
         </a>
-        <div id="collapseTwo" class="collapse {{ set_active(['admin.posts.index', 'admin.posts.create', 'admin.posts.edit', 'admin.comments.index', 'admin.comments.create', 'admin.comments.edit'], 'show') }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseTwo" class="collapse {{ set_active(['admin.posts.index', 'admin.posts.create', 'admin.posts.edit', 'admin.comments.index', 'admin.comments.create', 'admin.comments.edit', 'admin.users.index', 'admin.users.create', 'admin.users.edit', 'admin.pages.index', 'admin.pages.create', 'admin.pages.edit'], 'show') }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Components:</h6>
+                <h6 class="collapse-header"> @lang('dashboard.posts')</h6>
                 <a class="collapse-item {{ set_active(['admin.posts.index', 'admin.posts.create', 'admin.posts.edit']) }}" href="{{ route('admin.posts.index') }}">
                     @lang('dashboard.posts')
                 </a>
-                <a class="collapse-item {{ request()->route()->named('admin.comments.*') ? 'active' : '' }}" href="{{ route('admin.comments.index') }}">
+                <a class="collapse-item {{ set_active(['admin.comments.index', 'admin.comments.create', 'admin.comments.edit']) }}" href="{{ route('admin.comments.index') }}">
                     @lang('dashboard.comments')
                 </a>
-                <a class="collapse-item {{ request()->route()->named('admin.users.*') ? 'active' : '' }}" href="{{ route('admin.users.index') }}">
+                <a class="collapse-item {{ set_active(['admin.users.index', 'admin.users.create', 'admin.users.edit']) }}" href="{{ route('admin.users.index') }}">
                     @lang('dashboard.users')
                 </a>
             </div>
+
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Pages</h6>
+                <a class="collapse-item {{ set_active(['admin.pages.index', 'admin.pages.create', 'admin.pages.edit']) }}" href="{{ route('admin.pages.index') }}">
+                    @lang('dashboard.pages')
+                </a>
+            </div>
         </div>
+
     </li>
 
     <!-- Nav Item - Utilities Collapse Menu -->
@@ -66,40 +74,6 @@
         </div>
     </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Addons
-    </div>
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item active">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Pages</span>
-        </a>
-        <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Login Screens:</h6>
-                <a class="collapse-item" href="login.html">Login</a>
-                <a class="collapse-item" href="register.html">Register</a>
-                <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                <div class="collapse-divider"></div>
-                <h6 class="collapse-header">Other Pages:</h6>
-                <a class="collapse-item" href="404.html">404 Page</a>
-                <a class="collapse-item active" href="blank.html">Blank Page</a>
-            </div>
-        </div>
-    </li>
-
-    <!-- Nav Item - Charts -->
-    <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span></a>
-    </li>
 
     <!-- Nav Item - Tables -->
     <li class="nav-item">

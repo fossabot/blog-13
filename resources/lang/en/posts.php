@@ -22,7 +22,6 @@ return [
     'title' => 'Title',
     'content' => 'Content',
     'author' => 'Author',
-    'thumbnail' => 'Post picture',
     'posted_at' => 'Posted at',
     'thumbnail' => "Thumbnail image",
   ],

@@ -43,9 +43,9 @@ class CommentController extends Controller
     /**
      * Remove the specified resource from storage.
      * @param Comment $comment
-     * @return Response
      * @throws \Exception
      * @throws AuthorizationException
+     * @return Response
      */
     public function destroy(Comment $comment): Response
     {

@@ -16,6 +16,10 @@ try {
 (function($) {
   "use strict"; // Start of use strict
 
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+
   // Toggle the side navigation
   $("#sidebarToggle, #sidebarToggleTop").on('click', function(e) {
     $("body").toggleClass("sidebar-toggled");

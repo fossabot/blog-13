@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Str;
 
 /**
- * Trait HasSlug
+ * Traits HasSlug
  * @package App\Repositories\Slug
  */
 trait HasSlug

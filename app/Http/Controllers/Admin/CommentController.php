@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\CommentsRequest;
 use App\Models\Comment;
 use App\Models\User;
-use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -22,7 +21,9 @@ class CommentController extends Controller
     public function index(): View
     {
         return view('admin.comments.index', [
-            'comments' => Comment::with('post', 'author')->latest()->paginate(50)
+            'comments' => Comment::with(['post', 'user'])
+                ->latest()
+                ->get()
         ]);
     }
 
@@ -51,14 +52,14 @@ class CommentController extends Controller
 
         return redirect()
             ->route('admin.comments.edit', $comment)
-            ->withSuccess(__('comments.updated'));
+            ->with('success', __('comments.updated'));
     }
 
     /**
      * Remove the specified resource from storage.
      * @param Comment $comment
+     * @throws \Exception
      * @return RedirectResponse
-     * @throws Exception
      */
     public function destroy(Comment $comment): RedirectResponse
     {
@@ -66,6 +67,6 @@ class CommentController extends Controller
 
         return redirect()
             ->route('admin.comments.index')
-            ->withSuccess(__('comments.deleted'));
+            ->with('success', __('comments.deleted'));
     }
 }

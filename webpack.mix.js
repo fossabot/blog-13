@@ -1,7 +1,6 @@
 const mix = require('laravel-mix');
 
 /* Laravel Mix Alias (allows to use vue-cli style paths in components `@/` */
-require('laravel-mix-alias');
 
 /*
  |--------------------------------------------------------------------------

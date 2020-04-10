@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 /**
- * Trait Likeable
+ * Traits Likeable
  * @package App\Repositories
  */
 trait Likeable

@@ -37,8 +37,8 @@ class CategoryController extends Controller
      *
      * @param CategoryRequest $request
      * @param Category $category
-     * @return CategoryResource
      * @throws AuthorizationException
+     * @return CategoryResource
      */
     public function update(CategoryRequest $request, Category $category): CategoryResource
     {
@@ -54,8 +54,8 @@ class CategoryController extends Controller
      *
      * @param CategoryRequest $request
      * @param Category $category
-     * @return CategoryResource
      * @throws AuthorizationException
+     * @return CategoryResource
      */
     public function store(CategoryRequest $request, Category $category): CategoryResource
     {
@@ -80,9 +80,9 @@ class CategoryController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Category $category
-     * @return Response
      * @throws AuthorizationException
      * @throws \Exception
+     * @return Response
      */
     public function destroy(Category $category): Response
     {

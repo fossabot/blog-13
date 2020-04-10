@@ -1,4 +1,6 @@
-@extends('admin.layouts.app')
+@extends('admin.layouts.app', [
+    'title' => __('comments.comments')
+])
 
 @section('content')
     <div class="page-header">

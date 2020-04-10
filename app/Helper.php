@@ -62,7 +62,7 @@ if (! function_exists('dirToArray')) {
      * @param $dir
      * @return array
      */
-    function dirToArray($dir): array
+    function dirToArray($dir)
     {
         $result = [];
 

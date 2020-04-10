@@ -1,4 +1,6 @@
-@extends('admin.layouts.app')
+@extends('admin.layouts.app', [
+    'title' => __('users.users')
+])
 
 @section('content')
     <div class="page-header">
@@ -7,3 +9,8 @@
 
     @include ('admin/users/_list')
 @endsection
+
+@push('scripts')
+    <script src="{{ mix('js/datatables.js') }}"></script>
+
+@endpush

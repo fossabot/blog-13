@@ -4,12 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Auth;
-use Laravel\Socialite\Facades\Socialite;
+use Auth;
+use Socialite;
 
 
 /**
@@ -39,7 +38,7 @@ class AuthController extends Controller
     {
         try {
             $user = Socialite::driver($provider)->stateless()->user();
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             return redirect()->route('login');
         }
 
@@ -47,8 +46,9 @@ class AuthController extends Controller
 
         Auth::login($authUser, true);
 
-        return redirect()->route('home')
-            ->withSuccess(__('auth.logged_in_provider', ['provider' => $provider]));
+        return redirect()
+            ->route('home')
+            ->with('success', __('auth.logged_in_provider', ['provider' => $provider]));
     }
 
     /**
@@ -58,15 +58,15 @@ class AuthController extends Controller
      * @param $provider
      * @return Builder|Model|object
      */
-    private function findOrCreateUser($user, $provider)
+    private function findOrCreateUser(User $user, $provider)
     {
-        $authUser = User::where('provider_id', $user->id)->first();
+        $authUser = $user->where('provider_id', $user->id)->first();
 
         if ($authUser) {
             return $authUser;
         }
 
-        return User::create([
+        return $user->create([
             'name' => $user->name ?? $user->email,
             'email' => $user->email,
             'provider' => $provider,

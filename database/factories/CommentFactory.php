@@ -2,7 +2,6 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use Carbon\Carbon;
 use Faker\Generator as Faker;
 
 /*
@@ -20,7 +19,7 @@ $factory->define(\App\Models\Comment::class, function (Faker $faker) {
         'user_id' => mt_rand(1, 10), //factory(\App\Models\User::class)->create()->id,
         'title' => $faker->sentence,
         'content' => \Str::limit($faker->sentence(mt_rand(3, 5))),
-        'published_at' => Carbon::now(),
+        'published_at' => $faker->dateTimeBetween('-1 Month', '+3 days'),
         'approved' => $faker->boolean
     ];
 });

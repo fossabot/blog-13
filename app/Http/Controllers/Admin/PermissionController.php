@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Admin\PermissionRequest;
 use App\Models\Permission;
-use Exception;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
 use Illuminate\View\View;
 
 /**
@@ -62,8 +60,8 @@ class PermissionController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Permission $permission
+     * @throws \Exception
      * @return RedirectResponse
-     * @throws Exception
      */
     public function destroy(Permission $permission): RedirectResponse
     {

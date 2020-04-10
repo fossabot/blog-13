@@ -1,10 +1,10 @@
 <?php
 
-Route::get('dashboard', 'ShowDashboard')->name('dashboard');
+//Route::get('dashboard', 'ShowDashboard')->name('dashboard');
 Route::resource('posts', 'PostController');
+Route::resource('pages', 'PageController');
 Route::resource('users', 'UserController')->only(['index', 'edit', 'update']);
 Route::resource('comments', 'CommentController')->only(['index', 'edit', 'update', 'destroy']);
-//Route::resource('media', 'MediaLibraryController');
 
 
 Route::get('/', 'AdminController')->name('dashboard');

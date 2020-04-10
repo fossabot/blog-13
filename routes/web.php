@@ -11,8 +11,7 @@
 |
 */
 
-//Route::get('/', 'PostController@index')->name('home');
-Route::get('/posts/feed', 'PostFeedController@index')->name('posts.feed');
+Route::get('feed', 'PostFeedController@index')->name('posts.feed');
 Route::resource('posts', 'PostController')->only('show');
 Route::resource('users', 'UserController')->only('show');
 
@@ -25,7 +24,7 @@ Route::get('category/{category}', 'CategoryController@show');
 Route::get('contact', 'ContactUsController@contactUs');
 Route::post('contact', 'ContactUsController@store');
 Route::get('/privacy', 'PageController')->defaults('post', 'privacy-and-policy');
-Route::get('/about', 'PageController')->defaults('post', 'about');
+Route::get('/about', 'PageController')->defaults('post', 'about-me');
 
 Route::get('newsletter-subscriptions/unsubscribe', 'NewsletterSubscriptionController@unsubscribe')->name('newsletter-subscriptions.unsubscribe');
 

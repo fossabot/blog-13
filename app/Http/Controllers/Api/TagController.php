@@ -33,8 +33,8 @@ class TagController extends Controller
      *
      * @param TagRequest $request
      * @param Tag $tag
-     * @return TagResource
      * @throws AuthorizationException
+     * @return TagResource
      */
     public function update(TagRequest $request, Tag $tag): TagResource
     {
@@ -50,8 +50,8 @@ class TagController extends Controller
      *
      * @param TagRequest $request
      * @param Tag $tag
-     * @return TagResource
      * @throws AuthorizationException
+     * @return TagResource
      */
     public function store(TagRequest $request, Tag $tag): TagResource
     {
@@ -76,9 +76,9 @@ class TagController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Tag $tag
-     * @return Response
      * @throws AuthorizationException
      * @throws \Exception
+     * @return Response
      */
     public function destroy(Tag $tag): Response
     {

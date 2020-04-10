@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\UsersRequest;
 use App\Models\User;
-use Exception;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
 use Illuminate\View\View;
 
 /**
@@ -54,10 +52,10 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return Response
+     * @param User $user
+     * @return void
      */
-    public function show($id)
+    public function show(User $user)
     {
         //
     }
@@ -93,8 +91,8 @@ class UserController extends Controller
      * Remove the specified resource from storage.
      *
      * @param User $user
+     * @throws \Exception
      * @return RedirectResponse
-     * @throws Exception
      */
     public function destroy(User $user): RedirectResponse
     {

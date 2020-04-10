@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
+use App\Concern\Traits\HasDateAttributes;
 use App\Models\Posts\Rate;
 use App\Repositories\Likeable;
 use App\Repositories\ReadTime;
 use App\Repositories\Slug\HasSlug;
 use App\Repositories\Slug\SlugOptions;
 use App\Scopes\PostedScope;
-use Carbon\Carbon;
 use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -111,7 +111,7 @@ use Spatie\Permission\Traits\HasRoles;
  */
 class Post extends Model
 {
-    use HasRoles, SoftDeletes, Likeable, LogsActivity, HasSlug;
+    use HasRoles, SoftDeletes, Likeable, LogsActivity, HasSlug, HasDateAttributes;
     /**
      * @var array
      */
@@ -191,20 +191,13 @@ class Post extends Model
             case 'blog':
                 return route('blog.show', $this->slug);
                 break;
+            case 'page':
+                return url($this->slug);
+                break;
             default:
-                return route('posts.show', $this->slug);
+                return false;
         }
     }
-
-
-    /**
-     * @param $value
-     * @return string
-     */
-//    public function getPublishedAtAttribute($value): string
-//    {
-//        return $this->attributes['published_at'] = Carbon::parse($value)->format('d, M Y');
-//    }
 
     /**
      * Scope a query to search posts
@@ -250,42 +243,7 @@ class Post extends Model
         })->take($limit);
     }
 
-    /**
-     * Scope a query to order posts by latest posted
-     *
-     * @param Builder $query
-     * @return Builder
-     */
-    public function scopeLatest(Builder $query): Builder
-    {
-        return $query->orderBy('published_at', 'desc');
-    }
 
-    /**
-     * Scope a query to only include posts posted last month.
-     *
-     * @param Builder $query
-     * @param int $limit
-     * @return Builder
-     */
-    public function scopeLastMonth(Builder $query, int $limit = 5): Builder
-    {
-        return $query->whereBetween('published_at', [Carbon::now()->subMonth(), Carbon::now()])
-            ->latest()
-            ->limit($limit);
-    }
-
-    /**
-     * Scope a query to only include posts posted last week.
-     *
-     * @param Builder $query
-     * @return Builder
-     */
-    public function scopeLastWeek(Builder $query): Builder
-    {
-        return $query->whereBetween('published_at', [Carbon::now()->subWeeks(1), now()])
-            ->latest();
-    }
 
     /**
      * set content raw markdown to convert to html with Parsedown
@@ -345,62 +303,6 @@ class Post extends Model
             ->setTranslation($translation);
     }
 
-    /**
-     * get publish date attribute
-     *
-     * @param $value
-     * @throws \Exception
-     * @return mixed
-     */
-    public function getPublishDateAttribute($value): string
-    {
-        return $this->attributes['published_at'] = Carbon::parse($value)->format('Y-m-d');
-    }
-
-    /**
-     * get publish time attribute
-     *
-     * @param $value
-     * @throws \Exception
-     * @return mixed
-     */
-    public function getPublishTimeAttribute($value): string
-    {
-        return $this->attributes['published_at'] = Carbon::parse($value)->format('H:i:s A');
-    }
-
-    /**
-     * get publish date attribute
-     *
-     * @param $value
-     * @return string
-     */
-    public function getDateAttribute($value): string
-    {
-        return $this->attributes['published_at'] = Carbon::parse($value)->format('d');
-    }
-
-    /**
-     * get publish month attribute
-     *
-     * @param $value
-     * @return string
-     */
-    public function getMonthAttribute($value): string
-    {
-        return $this->attributes['published_at'] = Carbon::parse($value)->format('M');
-    }
-
-    /**
-     * get publish time elapsed attribute
-     *
-     * @param $value
-     * @return string
-     */
-    public function getTimeElapsedAttribute($value): string
-    {
-        return $this->attributes['published_at'] = Carbon::parse($value)->diffForHumans();
-    }
 
 
 

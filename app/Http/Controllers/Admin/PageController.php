@@ -2,49 +2,63 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use App\Http\Requests\Admin\PageRequest;
+use App\Models\Post as Page;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
+/**
+ * Class PageController
+ * @package App\Http\Controllers\Admin
+ */
 class PageController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return View
      */
-    public function index()
+    public function index(): View
     {
-        //
+        return view('admin.pages.index', [
+            'pages' => Page::whereType('page')
+                ->get()
+        ]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return View
      */
-    public function create()
+    public function create(): View
     {
-        //
+        return view('admin.posts.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
-     * @return Response
+     * @param PageRequest $request
+     * @param Page $page
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(PageRequest $request, Page $page): RedirectResponse
     {
-        //
+        $page->create($request->pageFillData());
+
+        return redirect()
+            ->route('admin.posts.edit', $page)
+            ->with('success', __('posts.created'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return Response
+     * @param Page $page
+     * @return void
      */
-    public function show($id)
+    public function show(Page $page)
     {
         //
     }
@@ -52,34 +66,45 @@ class PageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return Response
+     * @param Page $page
+     * @return View
      */
-    public function edit($id)
+    public function edit(Page $page): View
     {
-        //
+        return view('admin.pages.edit', [
+            'page' => $page,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param  int  $id
-     * @return Response
+     * @param PageRequest $request
+     * @param Page $page
+     * @return RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(PageRequest $request, Page $page): RedirectResponse
     {
-        //
+        $page->update($request->pageFillData());
+
+        return redirect()
+            ->route('admin.pages.edit', $page)
+            ->with('success', __('pages.updated'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return Response
+     * @param Page $page
+     * @throws \Exception
+     * @return RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(Page $page): RedirectResponse
     {
-        //
+        $page->delete();
+
+        return redirect()
+            ->route('admin.pages.index')
+            ->with('success', __('pages.deleted'));
     }
 }

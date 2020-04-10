@@ -24,11 +24,11 @@ class PostController extends Controller
     public function index(): View
     {
         return view('admin.posts.index', [
-            'posts' => Post::withCount('comments', 'likes')
-                ->with('user')
+            'posts' => Post::withCount(['comments', 'likes'])
+                ->with(['category', 'user'])
+                ->where('type', '!=', 'page')
                 ->latest()
                 ->get()
-//                ->paginate(10)
         ]);
     }
 
@@ -56,7 +56,9 @@ class PostController extends Controller
     {
         $post->create($request->postFillData());
 
-        return redirect()->route('admin.posts.edit', $post)->withSuccess(__('posts.created'));
+        return redirect()
+            ->route('admin.posts.edit', $post)
+            ->with('success', __('posts.created'));
     }
 
 
@@ -81,8 +83,8 @@ class PostController extends Controller
      *
      * @param PostRequest $request
      * @param Post $post
-     * @return RedirectResponse
      * @throws Exception
+     * @return RedirectResponse
      */
     public function update(PostRequest $request, Post $post): RedirectResponse
     {
@@ -90,7 +92,7 @@ class PostController extends Controller
 
         return redirect()
             ->route('admin.posts.edit', $post)
-            ->withSuccess(__('posts.updated'));
+            ->with('success', __('posts.updated'));
     }
 
     /**
@@ -106,6 +108,6 @@ class PostController extends Controller
 
         return redirect()
             ->route('admin.posts.index')
-            ->withSuccess(__('posts.deleted'));
+            ->with('success', __('posts.deleted'));
     }
 }
