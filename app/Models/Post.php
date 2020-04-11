@@ -10,6 +10,7 @@ use App\Repositories\Slug\HasSlug;
 use App\Repositories\Slug\SlugOptions;
 use App\Scopes\PostedScope;
 use Illuminate\Contracts\Routing\UrlGenerator;
+use Illuminate\Contracts\Routing\UrlRoutable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -109,7 +110,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @property-read null|int $images_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereIsSticky($value)
  */
-class Post extends Model
+class Post extends Model implements UrlRoutable
 {
     use HasRoles, SoftDeletes, Likeable, LogsActivity, HasSlug, HasDateAttributes;
     /**

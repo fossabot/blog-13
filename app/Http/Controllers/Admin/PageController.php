@@ -33,7 +33,7 @@ class PageController extends Controller
      */
     public function create(): View
     {
-        return view('admin.posts.create');
+        return view('admin.pages.create');
     }
 
     /**
@@ -48,8 +48,8 @@ class PageController extends Controller
         $page->create($request->pageFillData());
 
         return redirect()
-            ->route('admin.posts.edit', $page)
-            ->with('success', __('posts.created'));
+            ->route('admin.pages.edit', $page)
+            ->with('success', __('pages.created'));
     }
 
     /**
@@ -87,8 +87,15 @@ class PageController extends Controller
     {
         $page->update($request->pageFillData());
 
+        if ($request->action === 'continue') {
+            return redirect()
+                ->back()
+                ->with('success', 'Post saved.');
+        }
+
+
         return redirect()
-            ->route('admin.pages.edit', $page)
+            ->route('admin.pages.index')
             ->with('success', __('pages.updated'));
     }
 

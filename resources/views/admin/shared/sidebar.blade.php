@@ -28,23 +28,30 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item {{ set_active(['admin.posts.index', 'admin.posts.create', 'admin.posts.edit', 'admin.comments.index', 'admin.comments.create', 'admin.comments.edit', 'admin.users.index', 'admin.users.create', 'admin.users.edit', 'admin.pages.index', 'admin.pages.create', 'admin.pages.edit']) }}">
+    <li class="nav-item {{ set_active(['admin.posts.index', 'admin.posts.create', 'admin.posts.edit', 'admin.comments.index', 'admin.comments.edit', 'admin.users.index', 'admin.users.edit', 'admin.pages.index', 'admin.pages.create', 'admin.pages.edit']) }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
             <span> @lang('dashboard.contents')</span>
         </a>
-        <div id="collapseTwo" class="collapse {{ set_active(['admin.posts.index', 'admin.posts.create', 'admin.posts.edit', 'admin.comments.index', 'admin.comments.create', 'admin.comments.edit', 'admin.users.index', 'admin.users.create', 'admin.users.edit', 'admin.pages.index', 'admin.pages.create', 'admin.pages.edit'], 'show') }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseTwo" class="collapse {{ set_active(['admin.posts.index', 'admin.posts.create', 'admin.posts.edit', 'admin.comments.index', 'admin.comments.edit', 'admin.users.index', 'admin.users.edit', 'admin.pages.index', 'admin.pages.create', 'admin.pages.edit'], 'show') }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header"> @lang('dashboard.posts')</h6>
                 <a class="collapse-item {{ set_active(['admin.posts.index', 'admin.posts.create', 'admin.posts.edit']) }}" href="{{ route('admin.posts.index') }}">
                     @lang('dashboard.posts')
                 </a>
-                <a class="collapse-item {{ set_active(['admin.comments.index', 'admin.comments.create', 'admin.comments.edit']) }}" href="{{ route('admin.comments.index') }}">
+                <a class="collapse-item {{ set_active(['admin.categories.index', 'admin.categories.create', 'admin.categories.edit']) }}" href="{{ route('admin.categories.index') }}">
+                    @lang('dashboard.categories')
+                </a>
+                <a class="collapse-item {{ set_active(['admin.tags.index', 'admin.tags.create', 'admin.tags.edit']) }}" href="{{ route('admin.tags.index') }}">
+                    @lang('dashboard.tags')
+                </a>
+                <a class="collapse-item {{ set_active(['admin.comments.index', 'admin.comments.edit']) }}" href="{{ route('admin.comments.index') }}">
                     @lang('dashboard.comments')
                 </a>
-                <a class="collapse-item {{ set_active(['admin.users.index', 'admin.users.create', 'admin.users.edit']) }}" href="{{ route('admin.users.index') }}">
+                <a class="collapse-item {{ set_active(['admin.users.index', 'admin.users.edit']) }}" href="{{ route('admin.users.index') }}">
                     @lang('dashboard.users')
                 </a>
+
             </div>
 
             <div class="bg-white py-2 collapse-inner rounded">

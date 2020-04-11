@@ -18,6 +18,9 @@
     <!-- Custom fonts for this template-->
     <link href="{{ mix('css/admin.css') }}" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    @if (Session::has('success'))
+        <link href="{{ asset('assets/plugins/toastr/toastr.min.js') }}" rel="stylesheet" type="text/css">
+    @endif
     @stack('styles')
 </head>
 
@@ -28,7 +31,7 @@
 
 @include('admin.shared.sidebar')
 
-    <!-- Content Wrapper -->
+<!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
         <!-- Main Content -->
@@ -221,7 +224,7 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-               @yield('content')
+                @yield('content')
 
             </div>
             <!-- /.container-fluid -->
@@ -273,5 +276,30 @@
 <script src="{{ mix('js/vendor.js') }}"></script>
 <script src="{{ mix('js/admin.js') }}"></script>
 @stack('scripts')
+
+@if (count($errors) > 0)
+    <script>
+        toastr.info('Are you the 6 fingered man?')
+    </script>
+
+    {{--    <div class="alert alert-danger">--}}
+    {{--        <strong>Whoops!</strong>--}}
+    {{--        There were some problems with your input.<br><br>--}}
+    {{--        <ul>--}}
+    {{--            @foreach ($errors->all() as $error)--}}
+    {{--                <li>{{ $error }}</li>--}}
+    {{--            @endforeach--}}
+    {{--        </ul>--}}
+    {{--    </div>--}}
+@endif
+
+@if (Session::has('success'))
+        <script src="{{ asset('assets/plugins/toastr/toastr.min.js') }}"></script>
+        <script>
+            toastr.info("{{ Session::get('success') }}")
+        </script>
+
+
+@endif
 </body>
 </html>

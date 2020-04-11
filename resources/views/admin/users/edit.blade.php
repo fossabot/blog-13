@@ -1,4 +1,6 @@
-@extends('admin.layouts.app')
+@extends('admin.layouts.app', [
+    'title' => __('users.edit')
+])
 
 @section('content')
     <p>@lang('users.show') : {{ link_to_route('users.show', route('users.show', $user), $user) }}</p>

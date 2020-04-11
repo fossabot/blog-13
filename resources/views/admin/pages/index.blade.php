@@ -42,9 +42,12 @@
                                 <a class="btn btn-warning btn-sm" href="{{ route('admin.pages.edit', $page) }}">
                                     <i class="fa fa-edit"></i>
                                 </a>
-                                <a class="btn btn-danger btn-sm" href="{{ route('admin.pages.destroy', $page) }}">
-                                    <i class="fa fa-trash"></i>
-                                </a>
+{{--                                <a class="btn btn-danger btn-sm" href="{{ route('admin.pages.destroy', $page) }}">--}}
+{{--                                    <i class="fa fa-trash"></i>--}}
+{{--                                </a>--}}
+                                {!! Form::model($page, ['method' => 'DELETE', 'route' => ['admin.pages.destroy', $page], 'class' => 'form-inline', 'data-confirm' => __('forms.pages.delete')]) !!}
+                                {!! Form::button('<i class="fa fa-trash" aria-hidden="true"></i>', ['class' => 'btn btn-danger btn-sm', 'name' => 'submit', 'type' => 'submit']) !!}
+                                {!! Form::close() !!}
                             </td>
                         </tr>
                     @endforeach

@@ -3,32 +3,65 @@
 ])
 
 @section('content')
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <p>@lang('pages.show') : <a href="{{ $page->url }}">{{ $page->url }}</a></p>
 
+                <form method="POST" action="{{ route('admin.pages.update', $page) }}">
+                    {{ method_field('PATCH') }}
+                    {{ csrf_field() }}
 
+                    @include('admin.shared.errors')
+                    @include('admin.shared.success')
 
-    <p>@lang('pages.show') : <a href="{{ $page->url }}">{{ $page->url }}</a></p>
+                    <div class="container">
+                        <div class="row">
+                            @include('admin.pages._form')
+                        </div>
+                    </div>
 
-    <form method="POST" action="{{ route('admin.pages.update', $page) }}" enctype="multipart/form-data" accept-charset="UTF-8">
-        @csrf
+                    <div class="pull-left">
+                        <a href="{{ route('admin.pages.index') }}" class="btn btn-secondary">{{  __('forms.actions.back') }}</a>
 
-        <div class="container-fluid">
-            <div class="row">
-                @include('admin.pages._form')
+                        <button type="submit" class="btn btn-primary" name="action" value="continue">
+                            <i class="fa fa-floppy-o"></i>
+                            @lang('forms.actions.save_continue')
+                        </button>
+                        <button type="submit" class="btn btn-success" name="action" value="finished">
+                            <i class="fa fa-floppy-o"></i>
+                            @lang('forms.actions.save_finished')
+                        </button>
+
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-delete">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                            @lang('forms.actions.delete')
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
-        <div class="pull-left">
-            <a href="{{ route('admin.pages.index') }}" class="btn btn-secondary">{{  __('forms.actions.back') }}</a>
-            <input class="btn btn-primary" type="submit" value="{{ __('forms.actions.update') }}">
+    </div>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete this post?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <form method="POST" action="{{ route('admin.pages.destroy', $page) }}">
+                    {{ method_field('DELETE') }}
+                    {{ csrf_field() }}
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fa fa-times-circle"></i> Yes
+                    </button>
+                </form>
+            </div>
         </div>
-    </form>
-
-
-    <form method="POST" action="{{ route('admin.pages.destroy', $page) }}" accept-charset="UTF-8" class="form-inline pull-right" data-confirm="{{ __('forms.pages.delete') }}">
-        <input name="_method" type="hidden" value="DELETE">
-        @csrf
-        <button class="btn btn-danger" name="submit" type="submit">
-            <i class="fa fa-trash" aria-hidden="true"></i>
-            {{  __('pages.delete') }}
-        </button>
-    </form>
+    </div>
 @endsection
