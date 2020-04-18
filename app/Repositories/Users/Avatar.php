@@ -11,7 +11,7 @@ class Avatar
 {
     /**
      * @param $model
-     * @return string|null
+     * @return null|string
      */
     public static function get($model)
     {

@@ -5,8 +5,16 @@ namespace App\Repositories\MarkdownParse;
 
 use Symfony\Component\Yaml\Yaml;
 
+/**
+ * Class YamlFrontMatter
+ * @package App\Repositories\MarkdownParse
+ */
 class YamlFrontMatter
 {
+    /**
+     * @param string $content
+     * @return Document
+     */
     public static function parse(string $content): Document
     {
         $pattern = '/^[\s\r\n]?---[\s\r\n]?$/sm';
@@ -24,6 +32,10 @@ class YamlFrontMatter
         return new Document($matter, $body);
     }
 
+    /**
+     * @param string $path
+     * @return Document
+     */
     public static function parseFile(string $path): Document
     {
         return static::parse(
