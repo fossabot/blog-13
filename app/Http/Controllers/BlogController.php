@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use App\Repositories\MarkdownParse\YamlFrontMatter;
-use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -18,7 +16,7 @@ class BlogController extends Controller
      * Show all blog
      *
      * @param Request $request
-     * @return Factory|View
+     * @return View
      */
     public function index(Request $request): View
     {
@@ -44,7 +42,7 @@ class BlogController extends Controller
      * Show blog by slug
      *
      * @param $slug
-     * @return Factory|View
+     * @return View
      */
     public function show($slug): View
     {

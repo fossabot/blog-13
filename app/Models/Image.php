@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Repositories\Likeable;
+use App\Repositories\Like\Likeable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Storage;

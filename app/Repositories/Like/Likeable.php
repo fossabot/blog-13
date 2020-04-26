@@ -1,15 +1,16 @@
 <?php
 
 
-namespace App\Repositories;
+namespace App\Repositories\Like;
 
 use App\Models\Like;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
+
 /**
- * Traits Likeable
- * @package App\Repositories
+ * Trait Likeable
+ * @package App\Repositories\Like
  */
 trait Likeable
 {

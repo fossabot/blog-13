@@ -1,13 +1,14 @@
 <?php
 
 
-namespace App\Repositories\MarkdownParse;
+namespace App\Repositories\Post\MarkdownParse;
 
 use Symfony\Component\Yaml\Yaml;
 
+
 /**
  * Class YamlFrontMatter
- * @package App\Repositories\MarkdownParse
+ * @package App\Repositories\Post\MarkdownParse
  */
 class YamlFrontMatter
 {

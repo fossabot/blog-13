@@ -1,11 +1,12 @@
 <?php
 
 
-namespace App\Repositories\MarkdownParse;
+namespace App\Repositories\Post\MarkdownParse;
+
 
 /**
  * Class Document
- * @package App\Repositories\MarkdownParse
+ * @package App\Repositories\Post\MarkdownParse
  */
 class Document
 {

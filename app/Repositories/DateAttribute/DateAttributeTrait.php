@@ -1,13 +1,17 @@
 <?php
 
 
-namespace App\Concern\Traits;
+namespace App\Repositories\DateAttribute;
 
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 
-trait HasDateAttributes
+/**
+ * Trait DateAttributeTrait
+ * @package App\Repositories\DateAttribute
+ */
+trait DateAttributeTrait
 {
     /**
      * Scope a query to order posts by latest posted

@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
-use App\Concern\Traits\HasDateAttributes;
 use App\Models\Posts\Rate;
-use App\Repositories\Likeable;
-use App\Repositories\ReadTime;
+use App\Repositories\DateAttribute\DateAttributeInterface;
+use App\Repositories\DateAttribute\DateAttributeTrait;
+use App\Repositories\Like\Likeable;
+use App\Repositories\Post\ReadTime\ReadTime;
 use App\Repositories\Slug\HasSlug;
 use App\Repositories\Slug\SlugOptions;
 use App\Scopes\PostedScope;
@@ -110,9 +111,9 @@ use Spatie\Permission\Traits\HasRoles;
  * @property-read null|int $images_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereIsSticky($value)
  */
-class Post extends Model implements UrlRoutable
+class Post extends Model implements UrlRoutable, DateAttributeInterface
 {
-    use HasRoles, SoftDeletes, Likeable, LogsActivity, HasSlug, HasDateAttributes;
+    use HasRoles, SoftDeletes, Likeable, LogsActivity, HasSlug, DateAttributeTrait;
     /**
      * @var array
      */

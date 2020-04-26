@@ -9,13 +9,14 @@
  *  *  @copyright      Copyright (c) wachid 2017-8/10/19, 10:25 AM.
  */
 
-namespace App\Repositories;
+namespace App\Repositories\Post\ReadTime;
 
 use Exception;
 
+
 /**
  * Class ReadTime
- * @package App\Repositories
+ * @package App\Repositories\Post\ReadTime
  */
 class ReadTime
 {

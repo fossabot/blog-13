@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Hash;
 use Illuminate\Validation\Validator;
 
@@ -10,17 +9,8 @@ use Illuminate\Validation\Validator;
  * @property mixed password
  * @property mixed password_current
  */
-class PasswordUpdateRequest extends FormRequest
+class PasswordUpdateRequest extends BaseRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return true;
-    }
 
     /**
      * Get the validation rules that apply to the request.
@@ -41,15 +31,14 @@ class PasswordUpdateRequest extends FormRequest
      * @param Validator $validator
      * @return void
      */
-    public function withValidator( Validator $validator)
+    public function withValidator(Validator $validator)
     {
         // checks user's current password
         // before making password update
         $validator->after(function ($validator) {
-            if ( ! Hash::check($this->password_current, $this->user()->password) ) {
+            if (! Hash::check($this->password_current, $this->user()->password)) {
                 $validator->errors()->add('password_current', 'Your current password is incorrect.');
             }
         });
-        return;
     }
 }

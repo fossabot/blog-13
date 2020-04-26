@@ -1,12 +1,16 @@
 <?php
 
 
-namespace App\Repositories;
+namespace App\Repositories\Activity;
 
 use App\Models\Activity;
 use Auth;
 use Carbon\Carbon;
 
+/**
+ * Class ActivityTraits
+ * @package App\Repositories\Activity
+ */
 class ActivityTraits
 {
     /**

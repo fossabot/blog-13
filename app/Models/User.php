@@ -128,10 +128,6 @@ class User extends Authenticatable implements MustVerifyEmail, HasLocalePreferen
         'email_verified_at' => 'datetime',
     ];
 
-    /**
-     * @var
-     */
-    private $photo;
 
     /**
      * @return SlugOptions

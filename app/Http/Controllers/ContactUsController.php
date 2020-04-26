@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactRequest;
 use App\Models\ContactUs;
-use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -15,7 +14,7 @@ use Illuminate\View\View;
 final class ContactUsController extends Controller
 {
     /**
-     * @return Factory|View
+     * @return View
      */
     public function contactUs(): View
     {

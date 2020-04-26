@@ -1,16 +1,16 @@
 <?php
 
 
-namespace App\Concern\Interfaces;
+namespace App\Repositories\DateAttribute;
 
 
 use Illuminate\Database\Eloquent\Builder;
 
 /**
- * Interface HasDateAttributes
- * @package App\Concern\Interfaces
+ * Interface DateAttributeInterface
+ * @package App\Repositories\DateAttribute
  */
-interface HasDateAttributes
+interface DateAttributeInterface
 {
     /**
      * @param Builder $query

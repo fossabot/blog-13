@@ -16,7 +16,7 @@ use Spatie\Permission\Models\Role as Model;
  * @package App\Models
  * @property-read Collection|\Spatie\Permission\Models\Permission[] $permissions
  * @property-read null|int $permissions_count
- * @property-read User[]|Collection $users
+ * @property-read Collection|User[] $users
  * @property-read null|int $users_count
  * @method static bool|null forceDelete()
  * @method static Builder|Role newModelQuery()
@@ -43,7 +43,7 @@ use Spatie\Permission\Models\Role as Model;
  * @method static Builder|Role whereName($value)
  * @method static Builder|Role whereUpdatedAt($value)
  * @property-read Collection|\Spatie\Activitylog\Models\Activity[] $activities
- * @property-read int|null $activities_count
+ * @property-read null|int $activities_count
  */
 class Role extends Model
 {

@@ -6,7 +6,6 @@ use App\Http\Requests\NewsletterSubscriptionRequest;
 use App\Jobs\UnsubscribeNewsletter;
 use App\Models\NewsletterSubscription;
 use Auth;
-use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -33,7 +32,7 @@ final class NewsletterSubscriptionController extends Controller
 
     /**
      * @param Request $request
-     * @return Factory|RedirectResponse|View
+     * @return RedirectResponse|View
      */
     public function unsubscribe(Request $request)
     {

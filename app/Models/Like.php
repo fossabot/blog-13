@@ -33,9 +33,9 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @method static Builder|Like whereUserId($value)
  * @mixin Eloquent
  * @property-read Collection|\Spatie\Activitylog\Models\Activity[] $activities
- * @property-read int|null $activities_count
- * @property string|null $like_type
- * @property int|null $like_id
+ * @property-read null|int $activities_count
+ * @property null|string $like_type
+ * @property null|int $like_id
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Like whereLikeId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Like whereLikeType($value)
  */
