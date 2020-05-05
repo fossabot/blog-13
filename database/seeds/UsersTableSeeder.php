@@ -1,5 +1,14 @@
 <?php
+/**
+ * For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
+ *
+ *  @author         Nur Wachid
+ *  @copyright      Copyright (c) Turahe 2020.
+ */
 
+use App\Models\Image;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
@@ -18,7 +27,7 @@ class UsersTableSeeder extends Seeder
         $users = self::defaultUser();
 
         foreach ($users as $name => $email) {
-            $user = \App\Models\User::firstOrCreate([
+            $user = User::firstOrCreate([
                 'name' => strtolower($name),
                 'email' => $email,
                 'email_verified_at' => Carbon::now(),
@@ -32,8 +41,8 @@ class UsersTableSeeder extends Seeder
 
         if (App::environment(['local', 'staging', 'testing'])) {
             // return local database settings array
-            factory(\App\Models\User::class, 100)->create()->each(function ($user) {
-                $user->image()->save(factory(\App\Models\Image::class)->make());
+            factory(User::class, 100)->create()->each(function ($user) {
+                $user->image()->save(factory(Image::class)->make());
             });
         }
     }

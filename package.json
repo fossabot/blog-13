@@ -8,11 +8,15 @@
         "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
         "prod": "npm run production",
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "watch-production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --watch --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+        "watch-production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --watch --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "f-dev": "cross-env process.env.section=blog NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "f-watch": "npm run f-dev -- --watch",
+        "f-prod": "cross-env process.env.section=blog NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.13.0",
         "@toast-ui/editor": "^2.0.1",
+        "animate.css": "^3.7.2",
         "axios": "^0.19.2",
         "bootstrap": "4.4.1",
         "clipboard": "^2.0.6",
@@ -21,7 +25,10 @@
         "gijgo": "^1.9.13",
         "highlight.js": "^9.18.1",
         "jquery": "3.4.1",
+        "jquery.easing": "^1.4.1",
+        "jquery.smoothscroll": "^3.0.0",
         "lodash": "^4.17.13",
+        "owl.carousel": "^2.3.4",
         "popper.js": "1.16.1",
         "select2": "^4.0.13",
         "vue": "2.6.11"

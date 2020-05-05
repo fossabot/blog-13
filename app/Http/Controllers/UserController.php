@@ -1,4 +1,11 @@
 <?php
+/**
+ * For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
+ *
+ *  @author         Nur Wachid
+ *  @copyright      Copyright (c) Turahe 2020.
+ */
 
 namespace App\Http\Controllers;
 
@@ -6,16 +13,19 @@ use App\Http\Requests\UsersRequest;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Auth\Access\AuthorizationException;
-use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
+/**
+ * Class UserController
+ * @package App\Http\Controllers
+ */
 final class UserController extends Controller
 {
     /**
      * Display the specified resource.
      * @param User $user
-     * @return Factory|View
+     * @return View
      */
     public function show(User $user): View
     {

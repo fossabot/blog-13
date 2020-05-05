@@ -1,7 +1,15 @@
 <?php
+/**
+ * For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
+ *
+ *  @author         Nur Wachid
+ *  @copyright      Copyright (c) Turahe 2020.
+ */
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -24,17 +32,20 @@ class BlogController extends Controller
             ->where('published_at', '<=', now())
             ->where('is_draft', 0)
             ->orderBy('published_at', 'desc')
-            ->with(['images', 'category']);
+            ->with(['image', 'category', 'user']);
 
         $blogs = $query
             ->where('type', 'blog')
-            ->paginate(9);
+            ->paginate(10);
+        $latest = $query->latest()->get();
 
         $featured = $query->where('is_sticky', true)->get();
 
-        return view('blog.index', [
+        return view('blogxer.index', [
             'blogs' => $blogs,
-            'featured' => $featured
+            'featured' => $featured,
+            'latest'=> $latest,
+            'categories' => Category::with('posts')->get()
         ]);
     }
 
@@ -46,15 +57,16 @@ class BlogController extends Controller
      */
     public function show($slug): View
     {
-        $query = Post::with(['images', 'tags', 'category', 'user'])->get();
+        $query = Post::with(['tags', 'image', 'category'])->get();
         $blog = $query->where('slug', $slug)->first();
-        $blog->likes()->count();
+//        $blog->likes()->count();
         $posts =  $query->where('category_id', $blog->category->id)
             ->except($blog->id);
 
-        return view('blog.show', [
+        return view('blogxer.show', [
             'blog' => $blog,
-            'posts' => $posts
+            'posts' => $posts,
+            'categories' => Category::with('posts')->get()
         ]);
     }
 }

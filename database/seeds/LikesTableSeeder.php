@@ -1,5 +1,13 @@
 <?php
+/**
+ * For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
+ *
+ *  @author         Nur Wachid
+ *  @copyright      Copyright (c) Turahe 2020.
+ */
 
+use App\Models\Like;
 use Illuminate\Database\Seeder;
 
 /**
@@ -15,7 +23,7 @@ class LikesTableSeeder extends Seeder
     public function run()
     {
         if (App::environment(['local', 'staging', 'testing'])) {
-            factory(\App\Models\Like::class, 100)->create();
+            factory(Like::class, 100)->create();
         }
     }
 }

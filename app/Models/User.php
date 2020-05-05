@@ -1,12 +1,18 @@
 <?php
+/**
+ * For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
+ *
+ *  @author         Nur Wachid
+ *  @copyright      Copyright (c) Turahe 2020.
+ */
 
 namespace App\Models;
 
-use App\Processors\AvatarProcessor;
 use App\Repositories\Slug\HasSlug;
 use App\Repositories\Slug\SlugOptions;
+use App\Repositories\Users\Avatar;
 use Carbon\Carbon;
-use Eloquent;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Contracts\Translation\HasLocalePreference;
 use Illuminate\Database\Eloquent\Builder;
@@ -17,11 +23,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 use Laravel\Passport\Client;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Permission\Traits\HasRoles;
-use Str;
 
 /**
  * App\Models\User
@@ -47,7 +53,7 @@ use Str;
  * @method static Builder|User wherePassword($value)
  * @method static Builder|User whereRememberToken($value)
  * @method static Builder|User whereUpdatedAt($value)
- * @mixin Eloquent
+ * @mixin \Eloquent
  * @property string $slug
  * @property null|string $api_token
  * @property-read Collection|Comment[] $comments
@@ -172,7 +178,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasLocalePreferen
      */
     public function getAvatarAttribute()
     {
-        return AvatarProcessor::get($this);
+        return Avatar::get($this);
     }
     /**
      * Return a unique personal access token.

@@ -1,5 +1,14 @@
 <?php
+/**
+ * For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
+ *
+ *  @author         Nur Wachid
+ *  @copyright      Copyright (c) Turahe 2020.
+ */
 
+use App\Models\Category;
+use App\Models\Image;
 use Illuminate\Database\Seeder;
 
 /**
@@ -16,7 +25,7 @@ class CategoriesTableSeeder extends Seeder
     {
         $categories = self::defaultCategories();
         foreach ($categories as $index => $category) {
-            $category =  \App\Models\Category::updateOrCreate([
+            $category =  Category::updateOrCreate([
                 'parent_id' => 1,
                 'order_column' => $index,
                 'title' => $category['title'],
@@ -27,8 +36,8 @@ class CategoriesTableSeeder extends Seeder
         }
 
         if (App::environment(['local', 'staging', 'testing'])) {
-            factory(\App\Models\Category::class, 30)->create()->each(function ($cat) {
-                $cat->image()->save(factory(\App\Models\Image::class)->make());
+            factory(Category::class, 30)->create()->each(function ($cat) {
+                $cat->image()->save(factory(Image::class)->make());
             });
         }
     }

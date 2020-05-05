@@ -1,5 +1,15 @@
 <?php
+/**
+ * For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
+ *
+ *  @author         Nur Wachid
+ *  @copyright      Copyright (c) Turahe 2020.
+ */
 
+use App\Models\Image;
+use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Database\Seeder;
 
 /**
@@ -15,11 +25,11 @@ class TagsTableSeeder extends Seeder
     public function run()
     {
         if (App::environment(['local', 'staging', 'testing'])) {
-            factory(\App\Models\Tag::class, 10)->create();
+            factory(Tag::class, 10)->create();
 
-            $tags = \App\Models\Tag::all();
-            $post = \App\Models\Post::all();
-            $image = \App\Models\Image::all();
+            $tags = Tag::all();
+            $post = Post::all();
+            $image = Image::all();
 
 
             self::taggable($post, $tags);

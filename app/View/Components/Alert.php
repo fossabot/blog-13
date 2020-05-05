@@ -21,7 +21,7 @@ class Alert extends Component
      * Create a new component instance.
      *
      * @param string $type
-     * @param string|null $dismissible
+     * @param null|string $dismissible
      */
     public function __construct(string $type, string $dismissible = null)
     {

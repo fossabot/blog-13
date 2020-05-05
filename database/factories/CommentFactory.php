@@ -1,8 +1,17 @@
 <?php
+/**
+ * For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
+ *
+ *  @author         Nur Wachid
+ *  @copyright      Copyright (c) Turahe 2020.
+ */
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+/** @var Factory $factory */
 
+use App\Models\Comment;
 use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factory;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +23,11 @@ use Faker\Generator as Faker;
 | model instances for testing / seeding your application's database.
 |
 */
-$factory->define(\App\Models\Comment::class, function (Faker $faker) {
+$factory->define(Comment::class, function (Faker $faker) {
     return [
         'user_id' => mt_rand(1, 10), //factory(\App\Models\User::class)->create()->id,
         'title' => $faker->sentence,
-        'content' => \Str::limit($faker->sentence(mt_rand(3, 5))),
+        'content' => Str::limit($faker->sentence(mt_rand(3, 5))),
         'published_at' => $faker->dateTimeBetween('-1 Month', '+3 days'),
         'approved' => $faker->boolean
     ];

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Composers\BreadcrumbComposer;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,5 +27,16 @@ class AppServiceProvider extends ServiceProvider
     {
         // Push the breadcrumbs to the view
         \View::composer('blog.*', BreadcrumbComposer::class);
+    }
+    /**
+     * Register directive.
+     *
+     * @return void
+     */
+    public function registerDirective()
+    {
+        Blade::directive('laravelPWA', function () {
+            return (new \LaravelPWA\Services\MetaService)->render();
+        });
     }
 }

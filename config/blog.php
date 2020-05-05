@@ -11,6 +11,9 @@ return [
     ],
     'socials' => [
         'facebook' => 'https://facebook.com/' .env('SOCIAL_FACEBOOK', 'turahe'),
+        'instagram' => 'https://instagram.com/' .env('SOCIAL_TWITTER', 'turahe'),
+        'linkedin' => 'https://instagram.com/' .env('SOCIAL_TWITTER', 'turahe'),
+        'behance' => 'https://instagram.com/' .env('SOCIAL_TWITTER', 'turahe'),
         'twitter' => 'https://twitter.com/' .env('SOCIAL_TWITTER', 'turahe'),
         'github' => 'https://github.com/' .env('SOCIAL_GITHUB', 'turahe')
     ],

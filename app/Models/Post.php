@@ -1,4 +1,11 @@
 <?php
+/**
+ * For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
+ *
+ *  @author         Nur Wachid
+ *  @copyright      Copyright (c) Turahe 2020.
+ */
 
 namespace App\Models;
 
@@ -219,16 +226,16 @@ class Post extends Model implements UrlRoutable, DateAttributeInterface
     /**
      * Creating new query databases with relations
      *
+     * @param Builder $query
      * @param array $relation
-     * @return Builder[]|Collection|Post[]
+     * @return Builder
      */
-    public function queryAll(array $relation = [])
+    public function queryAll(Builder $query, array $relation = []): Builder
     {
-        return static::where('published_at', '<=', now())
+        return $query->where('published_at', '<=', now())
             ->where('is_draft', 0)
             ->orderBy('published_at', 'desc')
-            ->with($relation)
-            ->get();
+            ->with($relation);
     }
 
     /**
@@ -474,6 +481,11 @@ class Post extends Model implements UrlRoutable, DateAttributeInterface
         return $this->morphMany(Image::class, 'image');
     }
 
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'image');
+    }
+
     /**
      * Convert markdown to HTML
      *
@@ -488,6 +500,5 @@ class Post extends Model implements UrlRoutable, DateAttributeInterface
         } catch (\Exception $exception) {
             $exception->getMessage();
         }
-
     }
 }

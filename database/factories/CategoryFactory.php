@@ -1,8 +1,17 @@
 <?php
+/**
+ * For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
+ *
+ *  @author         Nur Wachid
+ *  @copyright      Copyright (c) Turahe 2020.
+ */
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+/** @var Factory $factory */
 
+use App\Models\Category;
 use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factory;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +23,10 @@ use Faker\Generator as Faker;
 | model instances for testing / seeding your application's database.
 |
 */
-$factory->define(\App\Models\Category::class, function (Faker $faker) {
+$factory->define(Category::class, function (Faker $faker) {
     return [
         'title' => $faker->unique()->word,
-        'subtitle' => \Str::limit($faker->sentence(mt_rand(10, 20)), 252),
+        'subtitle' => Str::limit($faker->sentence(mt_rand(10, 20)), 252),
         'description' => $faker->sentence(mt_rand(10, 20)),
     ];
 });

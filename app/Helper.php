@@ -11,7 +11,6 @@
  */
 
 
-use Dingo\Api\Routing\UrlGenerator;
 
 if (! function_exists('set_active')) {
 

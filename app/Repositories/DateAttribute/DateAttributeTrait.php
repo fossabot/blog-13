@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
+ *
+ *  @author         Nur Wachid
+ *  @copyright      Copyright (c) Turahe 2020.
+ */
 
 namespace App\Repositories\DateAttribute;
 
@@ -48,6 +54,18 @@ trait DateAttributeTrait
     {
         return $query->whereBetween('published_at', [Carbon::now()->subWeeks(1), now()])
             ->latest();
+    }
+
+    /**
+     * get publish attribute
+     *
+     * @param $value
+     * @throws \Exception
+     * @return mixed
+     */
+    public function getPublishAttribute($value): string
+    {
+        return $this->attributes['published_at'] = Carbon::parse($value)->format('D, M Y');
     }
 
     /**

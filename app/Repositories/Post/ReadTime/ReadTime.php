@@ -1,12 +1,10 @@
 <?php
 /**
- * This file is part of the com.maddyhome.idea.copyright.pattern.ProjectInfo@20d1cc6a package.
- *  *
- *  *  For the full copyright and license information, please view the LICENSE
- *  *  file that was distributed with this source code.
- *  *
- *  *  @author         wachid
- *  *  @copyright      Copyright (c) wachid 2017-8/10/19, 10:25 AM.
+ * For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
+ *
+ *  @author         Nur Wachid
+ *  @copyright      Copyright (c) Turahe 2020.
  */
 
 namespace App\Repositories\Post\ReadTime;

@@ -1,12 +1,10 @@
 <?php
 /**
- * This file is part of the com.maddyhome.idea.copyright.pattern.ProjectInfo@6e3640cb package.
- *  *
- *  *  For the full copyright and license information, please view the LICENSE
- *  *  file that was distributed with this source code.
- *  *
- *  *  @author         wachid
- *  *  @copyright      Copyright (c) wachid 2017-8/10/19, 12:46 PM.
+ * For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
+ *
+ *  @author         Nur Wachid
+ *  @copyright      Copyright (c) Turahe 2020.
  */
 
 namespace App\Repositories;
@@ -15,6 +13,7 @@ use App\Models\Visit;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Lcobucci\JWT\Builder;
 use ReflectionClass;
 use ReflectionException;
 
@@ -114,7 +113,7 @@ trait Popular
      * @param $query
      * @return mixed
      */
-    public function scopePopularMonth($query)
+    public function scopePopularMonth(Builder $query): Builder
     {
         return $this->queryPopularLast($query, 30);
     }
@@ -123,7 +122,7 @@ trait Popular
      * @param $query
      * @return mixed
      */
-    public function scopePopularYear($query)
+    public function scopePopularYear(Builder $query): Builder
     {
         return $this->queryPopularLast($query, 365);
     }
@@ -132,12 +131,14 @@ trait Popular
      * @param $query
      * @return mixed
      */
-    public function scopePopularAllTime($query)
+    public function scopePopularAllTime(Builder $query): Builder
     {
         return $query->withCount('visits')->orderBy('visits_count', 'desc');
     }
+
     /**
      * Return the visits of the model in the last ($days) days
+     * @param $days
      * @return mixed
      */
     public function visitsLast($days)
@@ -152,7 +153,7 @@ trait Popular
      * @param $days
      * @return mixed
      */
-    public function queryPopularLast($query, $days)
+    public function queryPopularLast(Builder $query, $days): Builder
     {
         return $query->withCount(['visits' => function ($query) use ($days) {
             $query->where('date', '>=', Carbon::now()->subDays($days)->toDateString());

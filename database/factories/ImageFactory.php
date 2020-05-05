@@ -1,7 +1,15 @@
 <?php
+/**
+ * For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
+ *
+ *  @author         Nur Wachid
+ *  @copyright      Copyright (c) Turahe 2020.
+ */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
+use App\Models\Image;
 use Faker\Generator as Faker;
 
 /*
@@ -14,12 +22,12 @@ use Faker\Generator as Faker;
 | model instances for testing / seeding your application's database.
 |
 */
-$factory->define(\App\Models\Image::class, function (Faker $faker) {
+$factory->define(Image::class, function (Faker $faker) {
     $images = dirToArray(storage_path('app/public/images/posts'));
     return [
         'file' => 'images/posts/' .$faker->randomElement($images),
         'name' => $faker->word,
-        'mime' => $faker->mimeType,
+        'mime' => 'image/jpg',
         'size' => mt_rand(1000, 10000)
     ];
 });

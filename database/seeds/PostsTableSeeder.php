@@ -1,5 +1,17 @@
 <?php
+/**
+ * For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
+ *
+ *  @author         Nur Wachid
+ *  @copyright      Copyright (c) Turahe 2020.
+ */
 
+use App\Models\Comment;
+use App\Models\Image;
+use App\Models\Post;
+use App\Models\Posts\Rate;
+use App\Repositories\Post\MarkdownParse\YamlFrontMatter;
 use Illuminate\Database\Seeder;
 
 /**
@@ -18,8 +30,8 @@ class PostsTableSeeder extends Seeder
         $posts = self::defaultPost();
 
         foreach ($posts as  $post) {
-            $content = \App\Repositories\MarkdownParse\YamlFrontMatter::parse($post);
-            $post = \App\Models\Post::updateOrCreate([
+            $content = YamlFrontMatter::parse($post);
+            $post = Post::updateOrCreate([
                 'user_id' => 1,
                 'category_id' => $content->category,
                 'subtitle' => $content->subtitle,
@@ -32,9 +44,9 @@ class PostsTableSeeder extends Seeder
                 'type' => $content->type
             ]);
             if (App::environment(['local', 'staging', 'testing'])) {
-                $post->images()->saveMany(factory(\App\Models\Image::class, 3)->make());
-                $post->comments()->saveMany(factory(\App\Models\Comment::class, 3)->make());
-                $post->rates()->saveMany(factory(\App\Models\Posts\Rate::class, 3)->make());
+                $post->images()->saveMany(factory(Image::class, 3)->make());
+                $post->comments()->saveMany(factory(Comment::class, 3)->make());
+                $post->rates()->saveMany(factory(Rate::class, 3)->make());
             }
         }
     }
