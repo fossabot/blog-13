@@ -5,10 +5,6 @@
 /public/storage
 /storage/*.key
 /public/assets
-/public/css
-public/js
-public/fonts
-public/images
 public/themes
 /vendor
 .idea/
