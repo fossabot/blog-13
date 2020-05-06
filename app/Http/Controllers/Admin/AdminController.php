@@ -14,6 +14,10 @@ use App\Models\Comment;
 use App\Models\Post;
 use App\Models\User;
 
+/**
+ * Class AdminController
+ * @package App\Http\Controllers\Admin
+ */
 final class AdminController extends Controller
 {
     /**

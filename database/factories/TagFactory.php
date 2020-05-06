@@ -25,7 +25,7 @@ $factory->define(\App\Models\Tag::class, function (Faker $faker) {
     $title = $faker->unique()->word;
     return [
         'tag' => $title,
-        'meta_description' => " Meta for {$title}",
+        'title' => " Meta for {$title}",
         'description' => join("\n\n", $faker->sentences(mt_rand(3, 7))),
     ];
 });

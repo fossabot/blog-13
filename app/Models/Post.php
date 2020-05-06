@@ -117,6 +117,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @property-read \App\Models\Image[]|\Illuminate\Database\Eloquent\Collection $images
  * @property-read null|int $images_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereIsSticky($value)
+ * @property-read mixed $publish
  */
 class Post extends Model implements UrlRoutable, DateAttributeInterface
 {

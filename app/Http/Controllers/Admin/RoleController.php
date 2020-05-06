@@ -15,6 +15,10 @@ use App\Models\Role;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
+/**
+ * Class RoleController
+ * @package App\Http\Controllers\Admin
+ */
 final class RoleController extends Controller
 {
     /**

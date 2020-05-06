@@ -42,7 +42,8 @@ final class ShowDashboard extends Controller
         $contents = ob_get_contents();
         ob_end_clean();
 
-        // the name attribute "module_Zend Optimizer" of an anker-tag is not xhtml valide, so replace it with "module_Zend_Optimizer"
+        // the name attribute "module_Zend Optimizer" of an anker-tag is not xhtml valide,
+        // so replace it with "module_Zend_Optimizer"
         $phpinfo = (str_replace(
             'module_Zend Optimizer',
             'module_Zend_Optimizer',

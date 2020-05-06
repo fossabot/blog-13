@@ -13,6 +13,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\TagRequest;
 use App\Models\Tag;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Arr;
 use Illuminate\View\View;
 
 /**
@@ -21,6 +22,11 @@ use Illuminate\View\View;
  */
 final class TagController extends Controller
 {
+    protected array $fields = [
+        'tag' => '',
+        'title' => '',
+        'description' => ''
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -32,20 +38,53 @@ final class TagController extends Controller
             'tags' => Tag::all()
         ]);
     }
+    /**
+     * Show form for creating new tag
+     */
+    public function create()
+    {
+        $data = [];
+        foreach ($this->fields as $field => $default) {
+            $data[$field] = old($field, $default);
+        }
 
+        return view('admin.tag.create', $data);
+    }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param TagRequest $request
+     * @param Tag $tag
      * @return RedirectResponse
      */
-    public function store(TagRequest $request): RedirectResponse
+    public function store(TagRequest $request, Tag $tag): RedirectResponse
     {
-        Tag::create($request->all());
+//        $tag = new Tag();
+        foreach (array_keys($this->fields) as $field) {
+            $tag->$field = $request->get($field);
+        }
+        $tag->save();
         return redirect()
             ->back()
             ->with('success', 'Tag was saved successfully');
+    }
+
+    /**
+     * Show the form for editing a tag
+     *
+     * @param Tag $tag
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|View
+     */
+    public function edit(Tag $tag): View
+    {
+//        $tag = Tag::findOrFail($id);
+        $data = [];
+        foreach (array_keys($this->fields) as $field) {
+            $data[$field] = old($field, $tag->$field);
+        }
+
+        return view('admin.tag.edit', $data);
     }
 
 
@@ -58,7 +97,10 @@ final class TagController extends Controller
      */
     public function update(TagRequest $request, Tag $tag): RedirectResponse
     {
-        $tag->update($request->all());
+        foreach (array_keys(Arr::except($this->fields, ['tag'])) as $field) {
+            $tag->$field = $request->get($field);
+        }
+        $tag->save();
 
         return redirect()
             ->back()

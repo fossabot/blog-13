@@ -16,6 +16,10 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
+/**
+ * Class CategoryController
+ * @package App\Http\Controllers\Admin
+ */
 final class CategoryController extends Controller
 {
     /**
