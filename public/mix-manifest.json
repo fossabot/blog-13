@@ -1,14 +1,12 @@
 {
-    "/js/carousel.js": "/js/carousel.js?id=551cffcd36bcc9071809",
-    "/js/carousel.js.map": "/js/carousel.js.map?id=55b35a3f8ad3baf724c3",
-    "/js/manifest.js": "/js/manifest.js?id=63f1446de3087ae5ec49",
-    "/js/manifest.js.map": "/js/manifest.js.map?id=a341678c1d772f08d1a2",
-    "/js/script.js": "/js/script.js?id=ea1bac85d96866b79593",
-    "/css/style.css": "/css/style.css?id=0dae07dd503396e7e768",
-    "/css/carousel.css": "/css/carousel.css?id=0b954646293c0b283612",
-    "/js/script.js.map": "/js/script.js.map?id=34d1339cece1c27e9647",
-    "/css/style.css.map": "/css/style.css.map?id=a5262914cfb56b75fc3d",
-    "/css/carousel.css.map": "/css/carousel.css.map?id=188206065ecb659e9f2d",
-    "/js/vendor.js": "/js/vendor.js?id=16f1710572dc87f22d66",
-    "/js/vendor.js.map": "/js/vendor.js.map?id=f682d5e0ba552e280a62"
+    "/js/manifest.js": "/js/manifest.js?id=d91051ea7d0c9bd1981e",
+    "/js/manifest.js.map": "/js/manifest.js.map?id=a07956f82042cc418451",
+    "/js/vendor.js": "/js/vendor.js?id=af13e9c4db52e0ae9432",
+    "/js/vendor.js.map": "/js/vendor.js.map?id=0b4fcc16530e02ec24e3",
+    "/js/carousel.js": "/js/carousel.js?id=4d5a15bf6bda26dc1b86",
+    "/js/carousel.js.map": "/js/carousel.js.map?id=fd19b63e63badbf5c18a",
+    "/js/script.js": "/js/script.js?id=595545a5e0baca92507b",
+    "/css/style.css": "/css/style.css?id=3c545e9734712bf918dd",
+    "/css/carousel.css": "/css/carousel.css?id=b34dd0e49102f6535ef7",
+    "/js/script.js.map": "/js/script.js.map?id=0ee1da1daee8a27508be"
 }
