@@ -1,23 +1,25 @@
-@import "variables";
+/* Theme style (colors & sizes) */
+@import "theme-default";
 
-// Bootstrap
-@import "~bootstrap/scss/bootstrap";
+/* Core Libs & Lib configs */
+@import "libs/all";
 
-// Base
-@import "base/base";
+/* Mixins */
+@import "mixins";
 
-// Font-awesome
-@import "~font-awesome/scss/font-awesome";
+/* Theme components */
+@import "nav-bar";
+@import "aside";
+@import "title-bar";
+@import "hero-bar";
+@import "card";
+@import "table";
+@import "tiles";
+@import "form";
+@import "main-section";
+@import "modal";
+@import "footer";
+@import "misc";
 
-// Modules
-@import "modules/form";
-@import "modules/panels";
-@import "modules/buttons";
-
-// Shared
-@import "shared/sidebar";
-@import "shared/footer";
-
-// Layouts
-@import "layouts/posts";
-@import "layouts/administration";
+/* Animate.css custom build (just selected animations to minimize bundle size) */
+//@import "../css/animate.min.css";

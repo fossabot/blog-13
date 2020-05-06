@@ -1,20 +1,24 @@
+/*
+* Lodash
+*
+* We use only a couple of  functions by importing them directly inside components
+* So, no need to import full package
+*
+* */
+// window._ = require('lodash');
+
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
  * code may be modified to fit the specific needs of your application.
  */
-import axios from 'axios'
-import 'bootstrap'
-import Clipboard from 'clipboard'
-import jquery from 'jquery'
-// import Echo from 'laravel-echo'
-import PopperJs from 'popper.js'
-// import 'pusher-js'
 
-window.$ = window.jQuery = jquery
-window.PopperJs = PopperJs.default
-
-new Clipboard('[data-clipboard-target]')
+// try {
+//     window.Popper = require('popper.js').default;
+//     window.$ = window.jQuery = require('jquery');
+//
+//     require('bootstrap');
+// } catch (e) {}
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -22,8 +26,9 @@ new Clipboard('[data-clipboard-target]')
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = axios
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
+window.axios = require('axios');
+
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
@@ -31,23 +36,27 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
  * a simple convenience so we don't have to attach every token manually.
  */
 
-const token = document.head.querySelector('meta[name="csrf-token"]')
+let token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
-  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content
+    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 } else {
-  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token')
+    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
 /**
- * API Token as common header
- */
+* We'll add interceptors to redirect user to login once we get 401 response
+* */
 
-const apiToken = document.head.querySelector('meta[name="api-token"]')
+window.axios.interceptors.response.use(function (response) {
+  return response;
+}, function (error) {
+  if (error.response.status === 401) {
+    window.location.href = '/login'
+  }
 
-if (apiToken) {
-  window.axios.defaults.headers.common.Authorization = 'Bearer ' + apiToken.content
-}
+  return Promise.reject(error);
+});
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
@@ -55,9 +64,13 @@ if (apiToken) {
  * allows your team to easily build robust real-time web applications.
  */
 
+// import Echo from 'laravel-echo'
+
+// window.Pusher = require('pusher-js');
+
 // window.Echo = new Echo({
-//   broadcaster: 'pusher',
-//   key: process.env.MIX_PUSHER_APP_KEY,
-//   cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//   encrypted: true
-// })
+//     broadcaster: 'pusher',
+//     key: process.env.MIX_PUSHER_APP_KEY,
+//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
+//     encrypted: true
+// });

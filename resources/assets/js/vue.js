@@ -1,6 +1,6 @@
-import CommentForm from '../../js/components/comments/CommentForm'
-import CommentList from '../../js/components/comments/CommentList'
-import Like from '../../js/components/Like'
+import CommentForm from './components/comments/CommentForm'
+import CommentList from './components/comments/CommentList'
+import Like from './components/Like'
 import Vue from 'vue'
 
 Vue.config.productionTip = false
