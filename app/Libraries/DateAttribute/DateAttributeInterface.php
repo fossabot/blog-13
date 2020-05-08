@@ -7,14 +7,14 @@
  *  @copyright      Copyright (c) Turahe 2020.
  */
 
-namespace App\Packages\DateAttribute;
+namespace App\Libraries\DateAttribute;
 
 
 use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Interface DateAttributeInterface
- * @package App\Packages\DateAttribute
+ * @package App\Libraries\DateAttribute
  */
 interface DateAttributeInterface
 {

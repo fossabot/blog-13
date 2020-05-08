@@ -7,7 +7,7 @@
  *  @copyright      Copyright (c) Turahe 2020.
  */
 
-namespace App\Packages\Activity;
+namespace App\Libraries\Activity;
 
 use App\Models\Activity;
 use Auth;
@@ -15,7 +15,7 @@ use Carbon\Carbon;
 
 /**
  * Class ActivityTraits
- * @package App\Packages\Activity
+ * @package App\Libraries\Activity
  */
 class ActivityTraits
 {

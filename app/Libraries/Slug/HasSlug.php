@@ -7,14 +7,14 @@
  *  @copyright      Copyright (c) Turahe 2020.
  */
 
-namespace App\Packages\Slug;
+namespace App\Libraries\Slug;
 
 use Illuminate\Database\Eloquent\Model;
 use Str;
 
 /**
  * Traits HasSlug
- * @package App\Packages\Slug
+ * @package App\Libraries\Slug
  */
 trait HasSlug
 {

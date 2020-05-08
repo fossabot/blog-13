@@ -7,7 +7,7 @@
  *  @copyright      Copyright (c) Turahe 2020.
  */
 
-namespace App\Packages\Manifest;
+namespace App\Libraries\Manifest;
 
 
 class MetaService

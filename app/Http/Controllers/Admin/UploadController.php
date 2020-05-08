@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Admin\UploadFileRequest;
 use App\Http\Requests\Admin\UploadNewFolderRequest;
-use App\Packages\Storage\UploadsManager;
+use App\Libraries\Storage\UploadsManager;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;

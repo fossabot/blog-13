@@ -7,12 +7,12 @@
  *  @copyright      Copyright (c) Turahe 2020.
  */
 
-namespace App\Packages\Post\MarkdownParse;
+namespace App\Libraries\Post\MarkdownParse;
 
 
 /**
  * Class Document
- * @package App\Packages\Post\MarkdownParse
+ * @package App\Libraries\Post\MarkdownParse
  */
 class Document
 {

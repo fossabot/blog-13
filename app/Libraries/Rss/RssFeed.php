@@ -10,7 +10,7 @@
  *
  */
 
-namespace App\Packages\Rss;
+namespace App\Libraries\Rss;
 
 
 use App\Models\Post;

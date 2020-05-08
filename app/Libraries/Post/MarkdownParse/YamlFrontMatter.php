@@ -7,14 +7,14 @@
  *  @copyright      Copyright (c) Turahe 2020.
  */
 
-namespace App\Packages\Post\MarkdownParse;
+namespace App\Libraries\Post\MarkdownParse;
 
 use Symfony\Component\Yaml\Yaml;
 
 
 /**
  * Class YamlFrontMatter
- * @package App\Packages\Post\MarkdownParse
+ * @package App\Libraries\Post\MarkdownParse
  */
 class YamlFrontMatter
 {

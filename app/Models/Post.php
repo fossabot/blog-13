@@ -10,12 +10,12 @@
 namespace App\Models;
 
 use App\Models\Posts\Rate;
-use App\Packages\DateAttribute\DateAttributeInterface;
-use App\Packages\DateAttribute\DateAttributeTrait;
-use App\Packages\Like\Likeable;
-use App\Packages\Post\ReadTime\ReadTime;
-use App\Packages\Slug\HasSlug;
-use App\Packages\Slug\SlugOptions;
+use App\Libraries\DateAttribute\DateAttributeInterface;
+use App\Libraries\DateAttribute\DateAttributeTrait;
+use App\Libraries\Like\Likeable;
+use App\Libraries\Post\ReadTime\ReadTime;
+use App\Libraries\Slug\HasSlug;
+use App\Libraries\Slug\SlugOptions;
 use App\Scopes\PostedScope;
 use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Contracts\Routing\UrlRoutable;

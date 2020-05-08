@@ -7,14 +7,14 @@
  *  @copyright      Copyright (c) Turahe 2020.
  */
 
-namespace App\Packages\Post\ReadTime;
+namespace App\Libraries\Post\ReadTime;
 
 use Exception;
 
 
 /**
  * Class ReadTime
- * @package App\Packages\Post\ReadTime
+ * @package App\Libraries\Post\ReadTime
  */
 class ReadTime
 {

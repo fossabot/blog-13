@@ -7,11 +7,11 @@
  *  @copyright      Copyright (c) Turahe 2020.
  */
 
-namespace App\Packages\Users;
+namespace App\Libraries\Users;
 
 /**
  * Class Avatar
- * @package App\Packages\Users
+ * @package App\Libraries\Users
  */
 class Avatar
 {

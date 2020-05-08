@@ -7,7 +7,7 @@
  *  @copyright      Copyright (c) Turahe 2020.
  */
 
-namespace App\Packages;
+namespace App\Libraries;
 
 use App\Models\Visit;
 use Carbon\Carbon;

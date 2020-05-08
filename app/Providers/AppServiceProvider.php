@@ -40,7 +40,7 @@ class AppServiceProvider extends ServiceProvider
     public function registerDirective()
     {
         Blade::directive('pwa', function () {
-            return (new \App\Packages\Manifest\MetaService())->render();
+            return (new \App\Libraries\Manifest\MetaService())->render();
         });
     }
 }

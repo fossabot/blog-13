@@ -10,7 +10,7 @@
  *
  */
 
-namespace App\Packages\Helper;
+namespace App\Libraries\Helper;
 
 abstract class BaseAction
 {

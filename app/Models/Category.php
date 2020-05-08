@@ -9,8 +9,8 @@
 
 namespace App\Models;
 
-use App\Packages\Slug\HasSlug;
-use App\Packages\Slug\SlugOptions;
+use App\Libraries\Slug\HasSlug;
+use App\Libraries\Slug\SlugOptions;
 use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;

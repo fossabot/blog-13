@@ -7,11 +7,11 @@
  *  @copyright      Copyright (c) Turahe 2020.
  */
 
-namespace App\Packages\Slug;
+namespace App\Libraries\Slug;
 
 /**
  * Class SlugOptions
- * @package App\Packages\Slug
+ * @package App\Libraries\Slug
  */
 class SlugOptions
 {

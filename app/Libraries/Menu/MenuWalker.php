@@ -10,11 +10,11 @@
  *
  */
 
-namespace App\Packages\Menu;
+namespace App\Libraries\Menu;
 
 /**
  * Class MenuWalker
- * @package App\Packages\Menu
+ * @package App\Libraries\Menu
  */
 class MenuWalker
 {

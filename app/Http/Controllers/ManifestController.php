@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Packages\Manifest\ManifestService;
+use App\Libraries\Manifest\ManifestService;
 
 /**
  * Class ManifestController

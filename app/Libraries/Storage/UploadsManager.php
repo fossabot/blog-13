@@ -10,7 +10,7 @@
  *
  */
 
-namespace App\Packages\Storage;
+namespace App\Libraries\Storage;
 
 
 use Carbon\Carbon;

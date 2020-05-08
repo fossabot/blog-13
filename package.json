@@ -8,18 +8,18 @@
         "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
         "prod": "npm run production",
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "watch-production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --watch --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "f-dev": "cross-env process.env.section=blog NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "f-watch": "npm run f-dev -- --watch",
-        "f-prod": "cross-env process.env.section=blog NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+        "watch-production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --watch --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.13.0",
+        "@tinymce/tinymce-vue": "^3.2.1",
         "@toast-ui/editor": "^2.0.1",
         "animate.css": "^3.7.2",
         "axios": "^0.19.2",
+        "bootbox": "^5.4.0",
         "bootstrap": "4.4.1",
         "clipboard": "^2.0.6",
+        "core-js": "^3.6.5",
         "datatables.net-bs4": "^1.10.20",
         "dropify": "^0.2.2",
         "gijgo": "^1.9.13",
@@ -44,10 +44,12 @@
         "eslint-plugin-vue": "6.2.1",
         "laravel-mix": "5.0.1",
         "laravel-mix-alias": "^1.0.2",
+        "laravel-mix-purgecss": "^5.0.0",
         "node-sass": "^4.14.1",
         "resolve-url-loader": "^2.3.1",
         "sass": "^1.20.1",
         "sass-loader": "^8.0.0",
+        "terser-webpack-plugin": "^3.0.0",
         "vue-template-compiler": "^2.6.10"
     },
     "lint-staged": {

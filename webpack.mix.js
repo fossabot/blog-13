@@ -1,4 +1,5 @@
-
+const mix = require('laravel-mix');
+require('laravel-mix-purgecss');
 
 /*
  |--------------------------------------------------------------------------
@@ -10,9 +11,29 @@
  | file for the application as well as bundling up all the JS files.
  |
  */
-if (process.env.section) {
-  require(`${__dirname}/webpack.${process.env.section}.mix.js`);
-}else{
-  require(`${__dirname}/webpack.admin.mix.js`);
 
+mix.js('resources/assets/blogxer/js/script.js', 'public/js')
+  .sass('resources/assets/blogxer/sass/style.scss', 'public/css')
+
+  .js('resources/assets/blogxer/js/scripts/carousel.js', 'public/js')
+  .sass('resources/assets/blogxer/sass/carousel.scss', 'public/css')
+
+
+  .js('resources/assets/admin/js/admin.js', 'public/js')
+  .sass('resources/assets/admin/sass/admin.scss', 'public/css')
+
+  .js('resources/assets/admin/js/editor.js', 'public/js')
+  .sass('resources/assets/admin/sass/editor.scss', 'public/css')
+
+  .js('resources/assets/admin/js/datatables.js', 'public/js')
+
+  .extract(['jquery', 'bootstrap', 'popper.js'])
+  .sourceMaps()
+  // .purgeCss()
+  .version();
+
+if (! mix.inProduction()) {
+  mix.webpackConfig({
+    devtool: 'source-map'
+  })
 }

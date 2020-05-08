@@ -10,7 +10,7 @@
  *
  */
 
-namespace App\Packages\SiteMap;
+namespace App\Libraries\SiteMap;
 
 
 use App\Models\Post;

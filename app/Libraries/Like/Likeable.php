@@ -7,7 +7,7 @@
  *  @copyright      Copyright (c) Turahe 2020.
  */
 
-namespace App\Packages\Like;
+namespace App\Libraries\Like;
 
 use App\Models\Like;
 use Illuminate\Database\Eloquent\Model;
@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 /**
  * Trait Likeable
- * @package App\Packages\Like
+ * @package App\Libraries\Like
  */
 trait Likeable
 {

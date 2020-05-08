@@ -7,7 +7,7 @@
  *  @copyright      Copyright (c) Turahe 2020.
  */
 
-namespace App\Packages\DateAttribute;
+namespace App\Libraries\DateAttribute;
 
 
 use Carbon\Carbon;
@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Trait DateAttributeTrait
- * @package App\Packages\DateAttribute
+ * @package App\Libraries\DateAttribute
  */
 trait DateAttributeTrait
 {
