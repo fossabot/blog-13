@@ -9,8 +9,8 @@
 
 namespace App\Models;
 
-use App\Repositories\DateAttribute\DateAttributeInterface;
-use App\Repositories\DateAttribute\DateAttributeTrait;
+use App\Packages\DateAttribute\DateAttributeInterface;
+use App\Packages\DateAttribute\DateAttributeTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;

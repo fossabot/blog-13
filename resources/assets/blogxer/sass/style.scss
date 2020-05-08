@@ -15,3 +15,11 @@
 @import "~animate.css/animate.css";
 
 @import "meanmenu";
+
+.svg-icon svg {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  fill: currentColor;
+  vertical-align: text-bottom;
+}

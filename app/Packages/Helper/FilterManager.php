@@ -1,0 +1,44 @@
+<?php
+/**
+ * For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
+ *
+ *  @modified    5/7/20, 8:34 PM
+ *  @name          FilterManager.php
+ *  @author         Nur Wachid
+ *  @copyright      Copyright (c) Turahe 2020.
+ *
+ */
+
+namespace App\Packages\Helper;
+
+
+class FilterManager extends BaseAction
+{
+    protected $value = '';
+    /**
+     * Filters a value.
+     *
+     * @param string $action Name of filter
+     * @param array $args Arguments passed to the filter
+     *
+     * @return string Always returns the value
+     */
+    public function fire($action, $args)
+    {
+        $this->value = isset($args[0]) ? $args[0] : ''; // get the value, the first argument is always the value
+        if ($this->getListeners()) {
+            $this->getListeners()->where('hook', $action)->each(function ($listener) use ($action, $args) {
+                $parameters = [];
+                $args[0] = $this->value;
+                for ($i = 0; $i < $listener['arguments']; $i++) {
+                    $value = $args[$i] ?? null;
+                    $parameters[] = $value;
+                }
+                $this->value = call_user_func_array($this->getFunction($listener['callback']), $parameters);
+            });
+        }
+        return $this->value;
+    }
+
+}

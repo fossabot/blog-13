@@ -15,7 +15,7 @@
 
 <body class="bg-pearl box-layout sticky-header">
 <!--[if lte IE 9]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="{{ url('/') }}">upgrade your browser</a> to improve your experience and security.</p>
 <![endif]-->
 <!-- ScrollUp Start Here -->
 <a href="#wrapper" data-type="section-switch" class="scrollup">
@@ -52,11 +52,11 @@
     <div class="offcanvas-menu-wrap" id="offcanvas-wrap" data-position="left">
         <div class="offcanvas-content">
             <div class="offcanvas-logo">
-                <a href="index.html"><img src="/themes/blogxer/img/logo-dark2.png" alt="logo"></a>
+                <a href="{{ url('/') }}"><img src="/themes/blogxer/img/logo-dark2.png" alt="logo"></a>
             </div>
             <ul class="offcanvas-menu">
                 <li class="nav-item">
-                    <a href="index.html">HOME</a>
+                    <a href="{{ url('/') }}">HOME</a>
                 </li>
                 <li class="nav-item">
                     <a href="about.html">ABOUT</a>
@@ -71,14 +71,17 @@
                     <a href="archives1.html">ARCHIVE</a>
                 </li>
                 <li class="nav-item">
-                    <a href="contact.html">CONTACT</a>
+                    <a href="{{ url('contact') }}">CONTACT</a>
                 </li>
             </ul>
             <div class="offcanvas-footer">
                 <div class="item-title">Follow Me</div>
                 <ul class="offcanvas-social">
-                    @foreach(config('blog.socials') as $name => $url)
-                        <li><a href="{{ $url }}"><i class="fab fa-{{ $name }}"></i></a></li>
+                    @foreach(config('blog.socials') as $social)
+                        <li><a class="svg-icon" href="{{ $social['url'] }}" rel="me" title="{{ $social['name'] }}">
+                                {!! svg("icons/{$social['name']}") !!}
+                            </a>
+                        </li>
                     @endforeach
                 </ul>
             </div>

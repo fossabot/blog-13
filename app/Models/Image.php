@@ -9,7 +9,7 @@
 
 namespace App\Models;
 
-use App\Repositories\Like\Likeable;
+use App\Packages\Like\Likeable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Storage;

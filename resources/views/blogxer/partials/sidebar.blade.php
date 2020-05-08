@@ -17,8 +17,10 @@
         </div>
         <div class="widget-follow-us">
             <ul>
-                @foreach(config('blog.socials') as $name => $url)
-                    <li class="single-item"><a href="{{ $url }}"><i class="fab fa-{{ $name }}"></i></a></li>
+                @foreach(config('blog.socials') as $social)
+                    <li><a class="svg-icon" href="{{ $social['url'] }}">
+                        {!! svg("icons/{$social['name']}") !!}
+                    </li>
                 @endforeach
             </ul>
         </div>

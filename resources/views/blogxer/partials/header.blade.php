@@ -6,7 +6,7 @@
                 <div class="col-lg-3 d-flex justify-content-start">
                     <div class="header-action-items">
                         <ul>
-                            <li class="item-subscribe"><i class="flaticon-envelope"></i>SUBSCRIBE!</li>
+                            <li class="item-subscribe"><i class="fa fa-envelope"></i>SUBSCRIBE!</li>
                         </ul>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
                                                 </span>
                                     </button>
                                 </li>
-                                <li class="user-icon"><a href="#"><i class="flaticon-profile"></i></a></li>
+                                <li class="user-icon"><a href="#"><i class="fa fa-user"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -59,12 +59,12 @@
                             <ul>
                                 <li class="header-search-box divider-style-border">
                                     <a href="#header-search" title="Search">
-                                        <i class="flaticon-magnifying-glass"></i>
+                                        <i class="fa fa-glass"></i>
                                     </a>
                                 </li>
                                 <li class="cart-wrap divider-style-border">
                                     <div class="cart-info">
-                                        <i class="flaticon-shopping-bag"></i>
+                                        <i class="fa fa-shopping-cart"></i>
                                         <div class="cart-amount">0</div>
                                     </div>
                                     <div class="cart-items">

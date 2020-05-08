@@ -9,9 +9,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Category;
-use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -104,7 +102,7 @@ final class CategoryController extends Controller
      *
      * @param int $id
      * @return RedirectResponse
-     *@throws Exception
+     *@throws \Exception
      */
     public function destroy($id): RedirectResponse
     {

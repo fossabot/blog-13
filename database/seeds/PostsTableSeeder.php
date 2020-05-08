@@ -11,7 +11,7 @@ use App\Models\Comment;
 use App\Models\Image;
 use App\Models\Post;
 use App\Models\Posts\Rate;
-use App\Repositories\Post\MarkdownParse\YamlFrontMatter;
+use App\Packages\Post\MarkdownParse\YamlFrontMatter;
 use Illuminate\Database\Seeder;
 
 /**

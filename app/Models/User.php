@@ -9,9 +9,9 @@
 
 namespace App\Models;
 
-use App\Repositories\Slug\HasSlug;
-use App\Repositories\Slug\SlugOptions;
-use App\Repositories\Users\Avatar;
+use App\Packages\Slug\HasSlug;
+use App\Packages\Slug\SlugOptions;
+use App\Packages\Users\Avatar;
 use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Contracts\Translation\HasLocalePreference;

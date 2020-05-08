@@ -262,12 +262,25 @@
                         </div>
                         <div class="widget-follow-us-2">
                             <ul>
-                                <li class="single-item"><a href="#"><i class="fab fa-facebook-f"></i>LIKE ME ON</a></li>
-                                <li class="single-item"><a href="#"><i class="fab fa-twitter"></i>FOLLOWE ME</a></li>
-                                <li class="single-item"><a href="#"><i class="fab fa-instagram"></i>FOLLOW ME</a></li>
-                                <li class="single-item"><a href="#"><i class="fab fa-linkedin-in"></i>FOLLOW ME</a></li>
-                                <li class="single-item"><a href="#"><i class="fab fa-pinterest-p"></i>FOLLOW ME</a></li>
-                                <li class="single-item"><a href="#"><i class="fab fa-youtube"></i>SUBSCRIBE</a></li>
+                                @foreach(config('blog.socials') as $name => $url)
+                                <li class="single-item">
+                                    <a href="#">
+                                        <i class="fab fa-facebook-f"></i>
+                                        LIKE ME ON
+                                    </a>
+                                </li>
+                                @endforeach
+
+{{--                                <li class="single-item"><a href="#">--}}
+{{--                                        <i class="fab fa-twitter"></i>FOLLOWE ME</a></li>--}}
+{{--                                <li class="single-item"><a href="#">--}}
+{{--                                        <i class="fab fa-instagram"></i>FOLLOW ME</a></li>--}}
+{{--                                <li class="single-item"><a href="#">--}}
+{{--                                        <i class="fab fa-linkedin-in"></i>FOLLOW ME</a></li>--}}
+{{--                                <li class="single-item"><a href="#">--}}
+{{--                                        <i class="fab fa-pinterest-p"></i>FOLLOW ME</a></li>--}}
+{{--                                <li class="single-item"><a href="#">--}}
+{{--                                        <i class="fab fa-youtube"></i>SUBSCRIBE</a></li>--}}
                             </ul>
                         </div>
                     </div>
@@ -317,13 +330,21 @@
     <!-- Single Blog Banner End Here -->
     <!-- Instagram Start Here -->
     <section class="instagram-feed-wrap-1">
-        <div class="instagram-feed-title-1"><a href="#"><i class="fab fa-instagram"></i>FOLLOW US ON INSTAGRAM</a></div>
+        <div class="instagram-feed-title-1">
+            <a href="#">
+                <i class="fab fa-instagram"></i>
+                FOLLOW US ON INSTAGRAM
+            </a>
+        </div>
         <ul class="instagram-feed-figure-1">
             <li>
-                <a href="#"><img src="/themes/blogxer/img/social-figure/social-figure22.jpg" alt="Social"></a>
+                <a href="#">
+                    <img src="/themes/blogxer/img/social-figure/social-figure22.jpg" alt="Social">
+                </a>
             </li>
             <li>
-                <a href="#"><img src="/themes/blogxer/img/social-figure/social-figure23.jpg" alt="Social"></a>
+                <a href="#">
+                    <img src="/themes/blogxer/img/social-figure/social-figure23.jpg" alt="Social"></a>
             </li>
             <li>
                 <a href="#"><img src="/themes/blogxer/img/social-figure/social-figure24.jpg" alt="Social"></a>

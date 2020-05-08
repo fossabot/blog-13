@@ -17,8 +17,10 @@
             <div class="col-lg-4">
                 <div class="footer-box-layout1">
                     <ul class="footer-social">
-                        @foreach(config('blog.socials') as $name => $url)
-                            <li><a href="{{ $url }}"><i class="fab fa-{{ $name }}"></i></a></li>
+                        @foreach(config('blog.socials') as $social)
+                            <li><a class="svg-icon" href="{{ $social['url'] }}">
+                                    {!! svg("icons/{$social['name']}") !!}
+                                </a></li>
                         @endforeach
                     </ul>
                 </div>

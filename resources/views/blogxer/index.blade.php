@@ -28,7 +28,7 @@
                         </div>
                         <div class="item-content">
                             <ul class="entry-meta meta-color-dark">
-                                <li><i class="fas fa-tag"></i>Food</li>
+                                <li class="svg-icon">{!! svg('icons/tag') !!} Food</li>
                                 <li><i class="fas fa-calendar-alt"></i>Jan 19, 2019</li>
                                 <li><i class="far fa-clock"></i>5 Mins Read</li>
                             </ul>
@@ -132,8 +132,12 @@
                         </div>
                         <div class="widget-follow-us">
                             <ul>
-                                @foreach(config('blog.socials') as $name => $url)
-                                    <li class="single-item"><a href="{{ $url }}"><i class="fab fa-{{ $name }}"></i></a></li>
+                                @foreach(config('blog.socials') as $social)
+                                    <li class="single-item">
+                                        <a class="svg-icon" href="{{ $social['url'] }}">
+                                            {!! svg("icons/{$social['name']}") !!}
+                                        </a>
+                                    </li>
                                 @endforeach
                             </ul>
                         </div>
