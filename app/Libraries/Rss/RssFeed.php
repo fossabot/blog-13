@@ -4,7 +4,6 @@
  *  file that was distributed with this source code.
  *
  *  @modified    5/6/20, 1:28 AM
- *  @name          RssFeed.php
  *  @author         Nur Wachid
  *  @copyright      Copyright (c) Turahe 2020.
  *
@@ -12,11 +11,17 @@
 
 namespace App\Libraries\Rss;
 
-
 use App\Models\Post;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
+use Suin\RSSWriter\Channel;
+use Suin\RSSWriter\Feed;
+use Suin\RSSWriter\Item;
 
+/**
+ * Class RssFeed
+ * @package App\Libraries\Rss
+ */
 class RssFeed
 {
     /**
@@ -46,9 +51,9 @@ class RssFeed
         $channel
             ->title(config('blog.title'))
             ->description(config('blog.description'))
-            ->url(url())
-            ->language('en')
-            ->copyright('Copyright (c) '.config('blog.author'))
+            ->url(url('/'))
+            ->language(config('app.locale'))
+            ->copyright('Copyright (c) '.config('blog.author.name'))
             ->lastBuildDate($now->timestamp)
             ->appendTo($feed);
 
@@ -62,13 +67,14 @@ class RssFeed
             $item
                 ->title($post->title)
                 ->description($post->subtitle)
-                ->url($post->url())
+                ->url($post->url)
                 ->pubDate($post->published_at->timestamp)
-                ->guid($post->url(), true)
+                ->guid($post->url, true)
                 ->appendTo($channel);
         }
 
         $feed = (string)$feed;
+//        dd($feed);
 
         // Replace a couple items to make the feed more compliant
         $feed = str_replace(
@@ -85,5 +91,4 @@ class RssFeed
 
         return $feed;
     }
-
 }

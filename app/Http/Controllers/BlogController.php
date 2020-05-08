@@ -9,6 +9,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Libraries\Rss\RssFeed;
+use App\Libraries\SiteMap\SiteMap;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -68,5 +70,29 @@ class BlogController extends Controller
             'posts' => $posts,
             'categories' => Category::with('posts')->get()
         ]);
+    }
+
+    /**
+     * @param RssFeed $feed
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
+    public function rss(RssFeed $feed)
+    {
+        $rss = $feed->getRSS();
+
+        return response($rss)
+            ->header('Content-type', 'application/rss+xml');
+    }
+
+    /**
+     * @param SiteMap $siteMap
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
+    public function siteMap(SiteMap $siteMap)
+    {
+        $map = $siteMap->getSiteMap();
+
+        return response($map)
+            ->header('Content-type', 'text/xml');
     }
 }

@@ -14,6 +14,8 @@ return [
     */
     'title' => env('APP_TITLE', 'turahe'),
     'name' => env('APP_NAME', 'turahe'),
+    'subtitle' => 'A clean blog written in Laravel 5.1',
+    'description' => 'This is my meta description',
 
     /*
     |--------------------------------------------------------------------------
@@ -28,6 +30,8 @@ return [
     'author' =>[
         'name' => env('APP_AUTHOR', 'turahe'),
     ],
+    'posts_per_page' => 10,
+    'rss_size' => 25,
 
     /*
     |--------------------------------------------------------------------------

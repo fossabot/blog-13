@@ -4,7 +4,6 @@
  *  file that was distributed with this source code.
  *
  *  @modified    5/7/20, 8:34 PM
- *  @name          FilterManager.php
  *  @author         Nur Wachid
  *  @copyright      Copyright (c) Turahe 2020.
  *

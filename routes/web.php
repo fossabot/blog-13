@@ -17,7 +17,9 @@ Route::group(['as' => 'manifest.'], function () {
     Route::get('/offline/', 'ManifestController@offline');
 });
 
-Route::get('feed', 'PostFeedController@index')->name('posts.feed');
+Route::get('rss', 'BlogController@rss');
+Route::get('sitemap.xml', 'BlogController@siteMap');
+Route::get('feed', 'PostFeedController@index');
 //static pages
 Route::get('contact', 'ContactUsController@contactUs');
 Route::post('contact', 'ContactUsController@store');

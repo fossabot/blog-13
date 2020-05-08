@@ -10,8 +10,15 @@
 namespace App\Libraries\Manifest;
 
 
+/**
+ * Class MetaService
+ * @package App\Libraries\Manifest
+ */
 class MetaService
 {
+    /**
+     * @return string
+     */
     public function render()
     {
         return "<?php \$config = (new ManifestService)->generate();

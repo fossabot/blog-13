@@ -10,6 +10,8 @@
 namespace App\Libraries\Post\MarkdownParse;
 
 
+use Illuminate\Support\Arr;
+
 /**
  * Class Document
  * @package App\Libraries\Post\MarkdownParse
@@ -44,7 +46,7 @@ class Document
     public function matter(string $key = null, $default = null)
     {
         if ($key) {
-            return \Arr::get($this->matter, $key, $default);
+            return Arr::get($this->matter, $key, $default);
         }
 
         return $this->matter;

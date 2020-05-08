@@ -11,6 +11,8 @@ namespace App\Models;
 
 use App\Libraries\DateAttribute\DateAttributeInterface;
 use App\Libraries\DateAttribute\DateAttributeTrait;
+use App\Libraries\Like\Likeable;
+use App\Libraries\Like\LikeInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
@@ -74,9 +76,9 @@ use Spatie\Permission\Traits\HasRoles;
  * @mixin \Eloquent
  * @property-read mixed $publish
  */
-class Comment extends Model implements DateAttributeInterface
+class Comment extends Model implements DateAttributeInterface, LikeInterface
 {
-    use SoftDeletes, LogsActivity, HasRoles, DateAttributeTrait;
+    use SoftDeletes, Likeable, LogsActivity, HasRoles, DateAttributeTrait;
 
     /**
      * The attributes that are mass assignable.

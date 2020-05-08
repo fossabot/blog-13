@@ -39,10 +39,10 @@ class SiteMap
     protected function buildSiteMap()
     {
         $postsInfo = $this->getPostsInfo();
-        $dates = array_values($postsInfo);
-        sort($dates);
-        $lastmod = last($dates);
-        $url = trim(url(), '/') . '/';
+        $lastPost = $postsInfo->last();
+        $lastmod = $lastPost->published_at->toIso8601String();
+        $url = trim(url('/'), '/') . '/';
+
 
         $xml = [];
         $xml[] = '<?xml version="1.0" encoding="UTF-8"?'.'>';
@@ -54,10 +54,12 @@ class SiteMap
         $xml[] = '    <priority>0.8</priority>';
         $xml[] = '  </url>';
 
-        foreach ($postsInfo as $slug => $lastmod) {
+//        dd($postsInfo);
+
+        foreach ($postsInfo as $post) {
             $xml[] = '  <url>';
-            $xml[] = "    <loc>{$url}blog/$slug</loc>";
-            $xml[] = "    <lastmod>$lastmod</lastmod>";
+            $xml[] = "    <loc>$post->url</loc>";
+            $xml[] = "    <lastmod>$post->published_at</lastmod>";
             $xml[] = "  </url>";
         }
 
@@ -67,15 +69,14 @@ class SiteMap
     }
 
     /**
-     * Return all the posts as $url => $date
+     * Return all the posts
      */
     protected function getPostsInfo()
     {
         return Post::where('published_at', '<=', Carbon::now())
             ->where('is_draft', 0)
             ->orderBy('published_at', 'desc')
-            ->pluck('updated_at', 'slug')
-            ->all();
+            ->get();
     }
 
 }

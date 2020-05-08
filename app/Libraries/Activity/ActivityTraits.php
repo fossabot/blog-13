@@ -14,10 +14,10 @@ use Auth;
 use Carbon\Carbon;
 
 /**
- * Class ActivityTraits
+ * Trait ActivityTraits
  * @package App\Libraries\Activity
  */
-class ActivityTraits
+trait ActivityTraits
 {
     /**
      * @param $logModel

@@ -10,8 +10,15 @@
 namespace App\Libraries\Manifest;
 
 
+/**
+ * Class ManifestService
+ * @package App\Libraries\Manifest
+ */
 class ManifestService
 {
+    /**
+     * @return array
+     */
     public function generate()
     {
         $basicManifest =  [
