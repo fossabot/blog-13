@@ -11,7 +11,6 @@
 
 'use strict';
 
-import $ from 'jquery';
 import 'jquery.smoothscroll';
 import './jquery.meanmenu';
 import 'jquery.easing';
@@ -98,6 +97,20 @@ import 'jquery.easing';
   -------------------------------------*/
   $('#wrapper').on('click', '.offcanvas-menu-btn', e => {
     e.preventDefault();
+    const removeOffcanvas = () => {
+      wrapper.removeClass('open').find('> .offcanvas-mask').remove();
+      $this.removeClass('menu-status-close').addClass('menu-status-open');
+      if (position === 'left') {
+        offCancas.css({
+          'transform': 'translateX(-100%)'
+        });
+      } else {
+        offCancas.css({
+          'transform': 'translateX(100%)'
+        });
+      }
+    }
+
     let $this = $(this),
       wrapper = $(this).parents('body').find('>#wrapper'),
       wrapMask = $('<div />').addClass('offcanvas-mask'),
@@ -114,19 +127,6 @@ import 'jquery.easing';
       removeOffcanvas();
     }
 
-    const removeOffcanvas = () => {
-      wrapper.removeClass('open').find('> .offcanvas-mask').remove();
-      $this.removeClass('menu-status-close').addClass('menu-status-open');
-      if (position === 'left') {
-        offCancas.css({
-          'transform': 'translateX(-100%)'
-        });
-      } else {
-        offCancas.css({
-          'transform': 'translateX(100%)'
-        });
-      }
-    }
     $(".offcanvas-mask, .offcanvas-close").on('click', () => {
       removeOffcanvas();
     });

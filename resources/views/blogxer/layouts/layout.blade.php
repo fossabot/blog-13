@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="{{ mix('css/style.css') }}">
-    <link rel="stylesheet" type="text/css" href="/themes/blogxer/style.css">
+{{--    <link rel="stylesheet" type="text/css" href="/themes/blogxer/style.css">--}}
     @stack('styles')
 </head>
 
@@ -93,9 +93,8 @@
 <!-- jquery-->
 <script src="{{ mix('js/manifest.js') }}"></script>
 <script src="{{ mix('js/vendor.js') }}"></script>
-@stack('scripts')
 <script src="{{ mix('js/script.js') }}"></script>
-
+@stack('scripts')
 
 </body>
 

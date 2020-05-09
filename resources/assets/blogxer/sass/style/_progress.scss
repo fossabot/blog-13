@@ -1,0 +1,56 @@
+
+/*------------------- 5.8 Progress Style -------------------*/
+
+.progress-wrap-layout1 {
+  background-color: #f2f2f2;
+  padding: 10rem 0 7.4rem;
+}
+
+.progress-box-layout1 {
+  text-align: center;
+  margin-bottom: 5rem;
+
+  .item-icon {
+    margin-bottom: 3.5rem;
+    font-size: 5.5rem;
+    color: #444444;
+    height: 21rem;
+    width: 21rem;
+    border-radius: 50%;
+    background-color: $white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .counter-text {
+    font-size: 50px;
+    color: #111111;
+    font-weight: $font-weight-bold;
+    margin-bottom: 20px;
+  }
+
+  .item-title {
+    font-size: 20px;
+    color: #646464;
+    font-weight: $font-weight-light;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .progress-box-layout1 .counter-text {
+    font-size: 42px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .progress-box-layout1 .counter-text {
+    font-size: 36px;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .progress-box-layout1 .counter-text {
+    font-size: 32px;
+  }
+}

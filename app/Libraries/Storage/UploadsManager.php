@@ -14,6 +14,7 @@ namespace App\Libraries\Storage;
 
 
 use Carbon\Carbon;
+use Dflydev\ApacheMimeTypes\PhpRepository;
 use Illuminate\Support\Facades\Storage;
 
 class UploadsManager

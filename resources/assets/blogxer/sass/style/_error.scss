@@ -1,0 +1,119 @@
+
+
+/*------------------- 5.5 Error Page Style -------------------*/
+
+.error-page-wrap {
+  padding: 12rem 0 10rem;
+}
+
+.error-page-box {
+  text-align: center;
+
+  .error-logo {
+    margin-bottom: 6rem;
+  }
+
+  .error-title {
+    font-size: 48px;
+    font-weight: $font-weight-light;
+    color: #111111;
+    margin-bottom: 26px;
+    line-height: 1.2;
+  }
+
+  p {
+    width: 70%;
+    margin: 0 auto 55px;
+  }
+
+  .error-newsletter .stylish-input-group {
+    border: 1px solid #d7d7d7;
+    height: 60px;
+    border-radius: 4px;
+    padding: 0 1rem;
+    max-width: 540px;
+    margin: 50px auto;
+
+    .form-control {
+      border: none;
+      box-shadow: none;
+      border-radius: 0;
+      background: transparent;
+      color: #111111;
+      font-size: $font-size-sm;
+      height: 60px;
+    }
+
+    .input-group-addon {
+      display: flex;
+      padding: 0;
+      border: none;
+      border-radius: 0;
+      background: transparent !important;
+
+      button {
+        cursor: pointer;
+        background: transparent;
+        border: 0;
+        transition: all 0.5s ease-out;
+
+        span:before {
+          color: #646464;
+          font-size: 20px;
+          font-weight: $font-weight-bold;
+          margin-left: 0;
+          transition: all 0.5s ease-out;
+        }
+
+        &:hover span {
+          color: #111111;
+
+          &:before {
+            color: #111111;
+          }
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    input.form-control::-webkit-input-placeholder,
+    textarea.form-control::-webkit-input-placeholder,
+    input.form-control::-moz-placeholder,
+    textarea.form-control::-moz-placeholder,
+    input.form-control:-ms-input-placeholder,
+    textarea.form-control:-ms-input-placeholder {
+      color: #646464;
+      font-size: $font-size-sm;
+    }
+  }
+
+  .item-btn {
+    display: inline-block;
+    font-size: $font-size-sm;
+    font-weight: 500;
+    color: $white;
+    background-color: #111111;
+    border-radius: 4px;
+    padding: 14px 35px;
+    transition: all 0.3s ease-out;
+
+    &:hover {
+      box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .error-page-box .error-title {
+    font-size: 30px;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .error-page-box p {
+    width: 100%;
+  }
+}

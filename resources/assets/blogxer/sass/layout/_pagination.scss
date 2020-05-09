@@ -1,0 +1,46 @@
+/*!
+ * For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
+ *
+ *  @modified    5/9/20, 2:50 AM
+ *  @name          _pagination.scss
+ *  @author         Nur Wachid
+ *  @copyright      Copyright (c) Turahe 2020.
+ *
+ */
+
+
+/*------------------- 4.6 Pagination -------------------*/
+
+.pagination-layout1 {
+  text-align: center;
+  padding: 3rem 0 5rem;
+
+  ul li {
+    margin-right: 5px;
+    display: inline-block;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    a {
+      display: block;
+      font-size: 18px;
+      color: #111111;
+      background-color: #f2f2f2;
+      padding: 8px 18px;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        background-color: #111111;
+        color: $white;
+      }
+    }
+
+    &.active a {
+      background-color: #111111;
+      color: $white;
+    }
+  }
+}

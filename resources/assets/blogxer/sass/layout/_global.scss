@@ -1,0 +1,64 @@
+/*!
+ * For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
+ *
+ *  @modified    5/9/20, 2:48 AM
+ *  @name          _global.scss
+ *  @author         Nur Wachid
+ *  @copyright      Copyright (c) Turahe 2020.
+ *
+ */
+
+
+/*------------------- 4.3 Global -------------------*/
+
+a {
+  text-decoration: none;
+
+  @include hover-focus-active(){
+    text-decoration: none;
+    outline: 0 none;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+ul {
+  list-style: outside none none;
+  margin: 0;
+  padding: 0;
+}
+
+[class^="flaticon-"]:before,
+[class*=" flaticon-"]:before,
+[class^="flaticon-"]:after,
+[class*=" flaticon-"]:after {
+  margin-left: 0;
+}
+
+.form-response {
+  .alert-danger {
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+
+  .alert {
+    &.alert-info, &.alert-success {
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+  }
+
+  .alert-danger p {
+    margin-bottom: 0;
+  }
+
+  .alert {
+    &.alert-info p, &.alert-success p {
+      margin-bottom: 0;
+    }
+  }
+}

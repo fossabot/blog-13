@@ -1,12 +1,15 @@
-/*!
+/*
  * For the full copyright and license information, please view the LICENSE
  *  file that was distributed with this source code.
  *
- *  @modified    5/1/20, 4:09 AM
- *  @name          carousel.scss
+ *  @modified    5/9/20, 12:26 PM
+ *  @name          _variables.js
  *  @author         Nur Wachid
  *  @copyright      Copyright (c) Turahe 2020.
  *
  */
-@import '~owl.carousel/src/scss/owl.carousel';
-@import '~owl.carousel/src/scss/owl.theme.default';
+
+$light: $white !default;
+$dark1: #111 !default;
+$dark2: #222 !default;
+$pearl: #f8f8f8 !default;

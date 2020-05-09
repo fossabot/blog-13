@@ -1,0 +1,320 @@
+
+/*------------------- 5.3 Coming Soon Page -------------------*/
+
+.comingsoon-page {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+
+  .comingsoon-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -100;
+  }
+
+  .comingsoon-back-img img {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: fixed;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    animation: fadeIn 12s linear infinite;
+  }
+
+  .comingsoon-content-wrap {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 25px 0;
+  }
+
+  .comingsoon-content {
+    position: relative;
+    z-index: 1;
+    padding: 0 15px;
+    width: 100%;
+
+    .comingsoon-logo {
+      margin-bottom: 9rem;
+    }
+
+    h1 {
+      margin-bottom: 5rem;
+      font-weight: $font-weight-bold;
+      font-size: 6rem;
+      text-transform: capitalize;
+      color: $white;
+    }
+
+    .comingsoon-newsletter {
+      margin-bottom: 10rem;
+
+      .stylish-input-group {
+        background-color: transparent;
+        height: 60px;
+
+        .form-control {
+          border: 2px solid $white;
+          border-radius: 45px 0 0 45px;
+          color: $white;
+          background-color: transparent;
+          width: 520px;
+          flex: inherit;
+          font-size: $font-size-base;
+          padding: 3px 30px 5px;
+          height: 60px;
+        }
+
+        .input-group-addon {
+          padding: 0;
+          height: 60px;
+          background-color: $white;
+          border-radius: 0 45px 45px 0;
+          transition: 0.5s ease-in-out;
+
+          button {
+            border-radius: 0 45px 45px 0;
+            color: #111111;
+            background-color: $white;
+            border: 0;
+            height: 60px;
+            line-height: 60px;
+            padding: 0 35px;
+            font-size: 18px;
+            text-transform: capitalize;
+            font-weight: 500;
+            letter-spacing: 2px;
+            display: inline-block;
+            cursor: pointer;
+            transition: 0.5s ease-in-out;
+
+            &:focus {
+              outline: none;
+              outline-width: 0;
+            }
+          }
+        }
+
+        input {
+          &.search-input:focus {
+            outline: none 0;
+          }
+
+          &::-webkit-input-placeholder,
+          &::-moz-placeholder,
+          &:-moz-placeholder,
+          &:-ms-input-placeholder {
+            color: $white;
+          }
+        }
+      }
+    }
+
+    .comingsoon-bottom {
+      margin-bottom: 10px;
+
+      .comingsoon-social {
+        text-align: left;
+
+        ul li {
+          display: inline-block;
+          margin-right: 5px;
+
+          &:last-child {
+            margin-right: 0;
+          }
+
+          a {
+            color: $white;
+            padding: 5px;
+            display: inline-block;
+            transition: 0.5s ease-in-out;
+
+            &:hover {
+              color: #cccccc;
+            }
+          }
+        }
+      }
+
+      .comingsoon-copy-right {
+        text-align: right;
+
+        p {
+          color: $white;
+          font-size: $font-size-base;
+          font-weight: $font-weight-light;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .comingsoon-page {
+    overflow-y: scroll;
+  }
+}
+
+@keyframes fadeIn {
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .comingsoon-page .comingsoon-content-wrap {
+    margin: 50px 0 100px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .comingsoon-page .comingsoon-content h1 {
+    margin-bottom: 3rem;
+    font-size: 5rem;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .comingsoon-page .comingsoon-content h1 {
+    font-size: 4rem;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .comingsoon-page .comingsoon-content .comingsoon-newsletter .stylish-input-group {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 15px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .comingsoon-page .comingsoon-content .comingsoon-newsletter .stylish-input-group .form-control {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .comingsoon-page .comingsoon-content .comingsoon-newsletter .stylish-input-group .input-group-addon {
+    display: inline-block;
+  }
+}
+
+@media only screen and (max-width: 479px) {
+  .comingsoon-page .comingsoon-content .comingsoon-newsletter .stylish-input-group .input-group-addon button {
+    padding: 0 15px;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .comingsoon-page .comingsoon-content .comingsoon-bottom .comingsoon-social {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .comingsoon-page .comingsoon-content .comingsoon-bottom .comingsoon-copy-right {
+    text-align: center;
+  }
+}
+
+.countdown-layout1 {
+  text-align: center;
+  margin-bottom: 5rem;
+
+  .countdown-section {
+    text-align: center;
+    height: 120px;
+    background: transparent;
+    display: inline-block;
+    position: relative;
+    margin-bottom: 30px;
+
+    &:after {
+      content: "";
+      position: absolute;
+      transform: translateY(-50%);
+      top: 50%;
+      right: 0;
+      background-color: $white;
+      height: 75%;
+      width: 1px;
+      margin: 0 auto;
+      z-index: 7;
+    }
+
+    &:last-child:after {
+      display: none;
+    }
+
+    .countdown-number {
+      padding: 0 5rem;
+      font-size: 7.2rem;
+      line-height: 1.1;
+      font-weight: 500;
+      color: $white;
+    }
+
+    .countdown-unit {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+      color: $white;
+      text-transform: capitalize;
+      font-size: 15px;
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .countdown-layout1 .countdown-section {
+    padding: 10px 0;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .countdown-layout1 .countdown-section {
+    padding: 15px 0;
+  }
+}
+
+@media only screen and (max-width: 479px) {
+  .countdown-layout1 .countdown-section {
+    width: 11rem;
+    height: 100px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .countdown-layout1 .countdown-section .countdown-number {
+    padding: 0 4rem;
+    font-size: 5rem;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .countdown-layout1 .countdown-section .countdown-number {
+    padding: 0 3rem;
+    font-size: 4rem;
+  }
+}
+
+@media only screen and (max-width: 479px) {
+  .countdown-layout1 .countdown-section .countdown-number {
+    padding: 0 2rem;
+    font-size: 3rem;
+  }
+}

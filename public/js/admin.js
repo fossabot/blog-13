@@ -13931,7 +13931,7 @@ module.exports = g;
  * code may be modified to fit the specific needs of your application.
  */
 try {
-  window.Popper = __webpack_require__(/*! popper.js */ "./node_modules/popper.js/dist/esm/popper.js")["default"];
+  window.Popper = __webpack_require__(/*! popper.js */ "./node_modules/popper.js/dist/esm/popper.js").default;
   window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
   window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 
@@ -13953,7 +13953,7 @@ $(document).on('hidden.bs.modal', '.modal', function () {
 
 /***/ }),
 
-/***/ 2:
+/***/ 1:
 /*!**************************************************!*\
   !*** multi ./resources/assets/admin/js/admin.js ***!
   \**************************************************/
@@ -13965,5 +13965,5 @@ module.exports = __webpack_require__(/*! C:\laragon\www\blog\resources\assets\ad
 
 /***/ })
 
-},[[2,"/js/manifest","/js/vendor"]]]);
+},[[1,"/js/manifest","/js/vendor"]]]);
 //# sourceMappingURL=admin.js.map

@@ -1,0 +1,145 @@
+/*!
+ * For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
+ *
+ *  @modified    5/9/20, 2:50 AM
+ *  @name          _heading_title.scss
+ *  @author         Nur Wachid
+ *  @copyright      Copyright (c) Turahe 2020.
+ *
+ */
+
+
+/*------------------- 4.5 Heading Title -------------------*/
+
+.section-heading {
+  margin-bottom: 30px;
+  padding-bottom: 22px;
+  position: relative;
+
+  &:before {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    left: 0;
+    background-color: #444444;
+    height: 2px;
+    width: 50px;
+  }
+
+  .item-heading {
+    margin-bottom: 0;
+    font-size: 20px;
+    font-weight: 500;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .section-heading .item-heading {
+    font-size: 18px;
+  }
+}
+
+.section-heading-2 {
+  margin-bottom: 30px;
+  padding-bottom: 22px;
+  position: relative;
+
+  .item-heading {
+    margin-bottom: 0;
+    font-size: 20px;
+    font-weight: 500;
+  }
+}
+
+.section-heading-3 {
+  text-align: center;
+  margin-bottom: 50px;
+
+  h2 {
+    font-size: 40px;
+    color: #111111;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  p {
+    width: 80%;
+    margin: 20px auto;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .section-heading-3 h2 {
+    font-size: 36px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .section-heading-3 h2 {
+    font-size: 32px;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .section-heading-3 h2 {
+    font-size: 30px;
+  }
+}
+
+.section-heading-4 {
+  border-bottom: 1px solid #d7d7d7;
+  margin-bottom: 40px;
+  padding-bottom: 22px;
+  position: relative;
+
+  &:before {
+    position: absolute;
+    content: "";
+    bottom: -2px;
+    left: 0;
+    background-color: #444444;
+    height: 3px;
+    width: 50px;
+  }
+
+  .item-heading {
+    margin-bottom: 0;
+    font-size: 20px;
+    font-weight: 500;
+  }
+}
+
+.section-heading-5 {
+  border-bottom: 1px solid #d7d7d7;
+  margin-bottom: 40px;
+  padding-bottom: 22px;
+  position: relative;
+  text-align: center;
+
+  &:before {
+    position: absolute;
+    content: "";
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    background-color: #444444;
+    height: 3px;
+    width: 50px;
+    margin: 0 auto;
+  }
+
+  .item-heading {
+    margin-bottom: 0;
+    font-size: 20px;
+    font-weight: 500;
+  }
+}
+
+.heading-dark .item-heading {
+  color: #111111;
+}
+
+.heading-light .item-heading {
+  color: $white;
+}

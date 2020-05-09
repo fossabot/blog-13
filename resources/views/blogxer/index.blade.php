@@ -1,6 +1,6 @@
 @extends('blogxer.layouts.layout')
 @section('content')
-{{--    @includeIf('blogxer.partials.slider')--}}
+    @includeIf('blogxer.partials.slider')
     <!-- Blog Area Start Here -->
     <section class="blog-wrap-layout1">
         <div class="container">

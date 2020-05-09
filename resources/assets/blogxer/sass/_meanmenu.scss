@@ -29,7 +29,7 @@ a.meanmenu-reveal {
     font-size: 1px;
     display: block;
     font-family: Arial, Helvetica, sans-serif;
-    font-weight: 700;
+    font-weight: $font-weight-bold;
 
     span {
       display: block;
@@ -106,7 +106,7 @@ a.meanmenu-reveal {
         }
 
         a {
-          &:hover {
+          @include hover() {
             background: #252525;
             background: rgba($white, 0.1);
           }
@@ -121,13 +121,13 @@ a.meanmenu-reveal {
             right: 0;
             top: 0;
             z-index: 2;
-            font-weight: 700;
+            font-weight: $font-weight-bold;
             background: rgba($white, 0.1);
             border: none !important;
             border-left: 1px solid rgba($white, 0.4) !important;
             border-bottom: 1px solid rgba($white, 0.2) !important;
 
-            &:hover {
+            @include hover(){
               background: rgba($black, 0.9);
             }
           }

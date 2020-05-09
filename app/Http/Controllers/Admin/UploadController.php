@@ -19,7 +19,7 @@ class UploadController extends Controller
     /**
      * @var UploadsManager
      */
-    protected UploadsManager $manager;
+    protected $manager;
 
     /**
      * UploadController constructor.
@@ -28,6 +28,7 @@ class UploadController extends Controller
     public function __construct(UploadsManager $manager)
     {
         $this->manager = $manager;
+        parent::__construct();
     }
 
     /**

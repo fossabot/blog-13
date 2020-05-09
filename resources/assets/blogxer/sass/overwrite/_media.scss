@@ -1,0 +1,351 @@
+/*!
+ * For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
+ *
+ *  @modified    5/9/20, 2:25 AM
+ *  @name          _media.scss
+ *  @author         Nur Wachid
+ *  @copyright      Copyright (c) Turahe 2020.
+ *
+ */
+
+/*------------------- 2.2 Media Object -------------------*/
+
+.media-body {
+  margin-left: 3rem;
+
+  &.space-xl {
+    margin-left: 50px;
+  }
+
+  &.space-lg {
+    margin-left: 40px;
+  }
+
+  &.space-md {
+    margin-left: 20px;
+  }
+
+  &.space-sm {
+    margin-left: 15px;
+  }
+
+  &.space-xs {
+    margin-left: 10px;
+  }
+
+  &.media-body-box {
+    padding: 20px 20px 20px 3rem;
+    margin-left: 0;
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 1199px) {
+  .media-none--lg {
+    display: block;
+
+    > div {
+      width: 100%;
+    }
+
+    img {
+      width: 100%;
+
+      &.media-img-auto {
+        width: auto;
+      }
+    }
+
+    .media-body {
+      margin-top: 20px;
+      margin-left: 0;
+
+      &.space-xl, &.space-lg, &.space-md, &.space-sm, &.space-xs {
+        margin-top: 20px;
+        margin-left: 0;
+      }
+
+      &.media-body-box {
+        margin-top: 0;
+        margin-left: 0;
+        padding: 3rem;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .media-none--md {
+    display: block;
+
+    > div {
+      width: 100%;
+    }
+
+    img {
+      width: 100%;
+
+      &.media-img-auto {
+        width: auto;
+      }
+    }
+
+    .media-body {
+      margin-top: 20px;
+      margin-left: 0;
+
+      &.space-xl, &.space-lg, &.space-md, &.space-sm, &.space-xs {
+        margin-top: 20px;
+        margin-left: 0;
+      }
+
+      &.media-body-box {
+        margin-top: 0;
+        margin-left: 0;
+        padding: 3rem;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .media-none--sm {
+    display: block;
+
+    > div {
+      width: 100%;
+    }
+
+    img {
+      width: 100%;
+
+      &.media-img-auto {
+        width: auto;
+      }
+    }
+
+    .media-body {
+      margin-top: 20px;
+      margin-left: 0;
+
+      &.space-xl, &.space-lg, &.space-md, &.space-sm, &.space-xs {
+        margin-top: 20px;
+        margin-left: 0;
+      }
+
+      &.media-body-box {
+        margin-top: 0;
+        margin-left: 0;
+        padding: 3rem;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .media-none--xs {
+    display: block;
+
+    > div {
+      width: 100%;
+    }
+
+    img {
+      width: 100%;
+
+      &.media-img-auto {
+        width: auto;
+      }
+    }
+
+    .media-body {
+      margin-top: 20px;
+      margin-left: 0;
+
+      &.space-xl, &.space-lg, &.space-md, &.space-sm, &.space-xs {
+        margin-top: 20px;
+        margin-left: 0;
+      }
+
+      &.media-body-box {
+        margin-top: 0;
+        margin-left: 0;
+        padding: 3rem;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 479px) {
+  .media-none-mb {
+    display: block;
+
+    > div {
+      width: 100%;
+    }
+
+    img {
+      width: 100%;
+
+      &.media-img-auto {
+        width: auto;
+      }
+    }
+
+    .media-body {
+      margin-top: 20px;
+      margin-left: 0;
+
+      &.space-xl, &.space-lg, &.space-md, &.space-sm, &.space-xs {
+        margin-top: 20px;
+        margin-left: 0;
+      }
+
+      &.media-body-box {
+        margin-top: 0;
+        margin-left: 0;
+        padding: 3rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .media-none-lg {
+    display: block;
+
+    > div {
+      width: 100%;
+    }
+
+    img {
+      width: 100%;
+
+      &.media-img-auto {
+        width: auto;
+      }
+    }
+
+    .media-body {
+      margin-top: 20px;
+      margin-left: 0;
+
+      &.space-xl, &.space-lg, &.space-md, &.space-sm, &.space-xs {
+        margin-top: 20px;
+        margin-left: 0;
+      }
+
+      &.media-body-box {
+        margin-top: 0;
+        margin-left: 0;
+        padding: 3rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .media-none-md {
+    display: block;
+
+    > div {
+      width: 100%;
+    }
+
+    img {
+      width: 100%;
+
+      &.media-img-auto {
+        width: auto;
+      }
+    }
+
+    .media-body {
+      margin-top: 20px;
+      margin-left: 0;
+
+      &.space-xl, &.space-lg, &.space-md, &.space-sm, &.space-xs {
+        margin-top: 20px;
+        margin-left: 0;
+      }
+
+      &.media-body-box {
+        margin-top: 0;
+        margin-left: 0;
+        padding: 3rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .media-none-sm {
+    display: block;
+
+    > div {
+      width: 100%;
+    }
+
+    img {
+      width: 100%;
+
+      &.media-img-auto {
+        width: auto;
+      }
+    }
+
+    .media-body {
+      margin-top: 20px;
+      margin-left: 0;
+
+      &.space-xl, &.space-lg, &.space-md, &.space-sm, &.space-xs {
+        margin-top: 20px;
+        margin-left: 0;
+      }
+
+      &.media-body-box {
+        margin-top: 0;
+        margin-left: 0;
+        padding: 3rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 480px) and (max-width: 575px) {
+  .media-none-xs {
+    display: block;
+
+    > div {
+      width: 100%;
+    }
+
+    img {
+      width: 100%;
+
+      &.media-img-auto {
+        width: auto;
+      }
+    }
+
+    .media-body {
+      margin-top: 20px;
+      margin-left: 0;
+
+      &.space-xl, &.space-lg, &.space-md, &.space-sm, &.space-xs {
+        margin-top: 20px;
+        margin-left: 0;
+      }
+
+      &.media-body-box {
+        margin-top: 0;
+        margin-left: 0;
+        padding: 3rem;
+      }
+    }
+  }
+}

@@ -23719,7 +23719,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('#publish_time').timepicker();
 
 /***/ }),
 
-/***/ 3:
+/***/ 2:
 /*!***************************************************!*\
   !*** multi ./resources/assets/admin/js/editor.js ***!
   \***************************************************/
@@ -23731,5 +23731,5 @@ module.exports = __webpack_require__(/*! C:\laragon\www\blog\resources\assets\ad
 
 /***/ })
 
-},[[3,"/js/manifest","/js/vendor"]]]);
+},[[2,"/js/manifest","/js/vendor"]]]);
 //# sourceMappingURL=editor.js.map

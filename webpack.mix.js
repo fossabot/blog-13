@@ -1,5 +1,6 @@
 const mix = require('laravel-mix');
 require('laravel-mix-purgecss');
+require('laravel-mix-polyfill');
 
 /*
  |--------------------------------------------------------------------------
@@ -15,8 +16,8 @@ require('laravel-mix-purgecss');
 mix.js('resources/assets/blogxer/js/script.js', 'public/js')
   .sass('resources/assets/blogxer/sass/style.scss', 'public/css')
 
-  .js('resources/assets/blogxer/js/scripts/carousel.js', 'public/js')
-  .sass('resources/assets/blogxer/sass/carousel.scss', 'public/css')
+  // .js('resources/assets/blogxer/js/scripts/carousel.js', 'public/js')
+  // .sass('resources/assets/blogxer/sass/carousel.scss', 'public/css')
 
 
   .js('resources/assets/admin/js/admin.js', 'public/js')
@@ -30,6 +31,21 @@ mix.js('resources/assets/blogxer/js/script.js', 'public/js')
   .extract(['jquery', 'bootstrap', 'popper.js'])
   .sourceMaps()
   // .purgeCss()
+  .options({
+    purifyCss: true,
+    autoprefixer: {
+      options: {
+        browsers: [
+          'last 6 versions',
+        ]
+      }
+    }
+  })
+  .polyfill({
+    enabled: true,
+    useBuiltIns: "usage",
+    targets: {"firefox": "50", "ie": 11}
+  })
   .version();
 
 if (! mix.inProduction()) {
