@@ -76,7 +76,7 @@ class Image extends Model
     public function getUrlAttribute()
     {
         if (empty($this->name)) {
-            return null;
+            return Storage::url('images/posts/blog208.jpg');
         }
 
         return Storage::url($this->file);

@@ -17,6 +17,8 @@ return [
     'subtitle' => 'A clean blog written in Laravel 5.1',
     'description' => 'This is my meta description',
 
+    'theme' => 'blogxer',
+
     /*
     |--------------------------------------------------------------------------
     | Blog Author

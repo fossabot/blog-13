@@ -10,9 +10,8 @@
 namespace App\Libraries\DateAttribute;
 
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
-
+use Illuminate\Support\Carbon;
 /**
  * Trait DateAttributeTrait
  * @package App\Libraries\DateAttribute

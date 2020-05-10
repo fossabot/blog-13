@@ -38,6 +38,7 @@ class CreatePostsTable extends Migration
             $table->string('type');
 
             $table->timestamp('published_at');
+            $table->string('layout')->default('blog.layouts.index');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -22,10 +22,11 @@ use Faker\Generator as Faker;
 |
 */
 $factory->define(\App\Models\Tag::class, function (Faker $faker) {
-    $title = $faker->unique()->word;
+    $word = $faker->unique()->word;
     return [
-        'tag' => $title,
-        'title' => " Meta for {$title}",
-        'description' => join("\n\n", $faker->sentences(mt_rand(3, 7))),
+        'tag' => $word,
+        'title' => ucfirst($word),
+        'subtitle' => $faker->sentence,
+        'meta_description' => "Meta for $word",
     ];
 });

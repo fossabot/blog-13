@@ -65,8 +65,18 @@ class Tag extends Model
      * @var array
      */
     protected $fillable = [
-        'tag', 'description'
+        'tag', 'title', 'subtitle', 'meta_description',
     ];
+
+    /**
+     * Return URL to post
+     *
+     * @return string
+     */
+    public function getUrlAttribute(): string
+    {
+        return '?tag='.urlencode($this->tag);
+    }
 
 
     /**

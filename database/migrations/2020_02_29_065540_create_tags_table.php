@@ -24,7 +24,9 @@ class CreateTagsTable extends Migration
             $table->bigIncrements('id');
             $table->string('tag')->unique();
             $table->string('title');
-            $table->text('description');
+            $table->string('subtitle');
+            $table->string('meta_description');
+            $table->string('layout')->default('blog.tags.index');
             $table->softDeletes();
             $table->timestamps();
         });

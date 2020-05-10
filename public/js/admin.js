@@ -13953,7 +13953,7 @@ $(document).on('hidden.bs.modal', '.modal', function () {
 
 /***/ }),
 
-/***/ 1:
+/***/ 2:
 /*!**************************************************!*\
   !*** multi ./resources/assets/admin/js/admin.js ***!
   \**************************************************/
@@ -13965,5 +13965,5 @@ module.exports = __webpack_require__(/*! C:\laragon\www\blog\resources\assets\ad
 
 /***/ })
 
-},[[1,"/js/manifest","/js/vendor"]]]);
+},[[2,"/js/manifest","/js/vendor"]]]);
 //# sourceMappingURL=admin.js.map

@@ -14,6 +14,7 @@ use App\Libraries\SiteMap\SiteMap;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\View\View;
 
 /**
@@ -47,7 +48,7 @@ class BlogController extends Controller
             'blogs' => $blogs,
             'featured' => $featured,
             'latest'=> $latest,
-            'categories' => Category::with('posts')->get()
+            'categories' => Category::with('posts.user')->get()
         ]);
     }
 
@@ -59,16 +60,18 @@ class BlogController extends Controller
      */
     public function show($slug): View
     {
-        $query = Post::with(['tags', 'image', 'category'])->get();
+        $query = Post::with(['tags', 'image', 'category', 'comments.user'])->get();
         $blog = $query->where('slug', $slug)->first();
-//        $blog->likes()->count();
         $posts =  $query->where('category_id', $blog->category->id)
             ->except($blog->id);
+
+
+
 
         return view('blogxer.show', [
             'blog' => $blog,
             'posts' => $posts,
-            'categories' => Category::with('posts')->get()
+            'categories' => Category::with('posts.user')->get()
         ]);
     }
 
@@ -76,7 +79,7 @@ class BlogController extends Controller
      * @param RssFeed $feed
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
-    public function rss(RssFeed $feed)
+    public function rss(RssFeed $feed): Response
     {
         $rss = $feed->getRSS();
 
@@ -88,7 +91,7 @@ class BlogController extends Controller
      * @param SiteMap $siteMap
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
-    public function siteMap(SiteMap $siteMap)
+    public function siteMap(SiteMap $siteMap): Response
     {
         $map = $siteMap->getSiteMap();
 

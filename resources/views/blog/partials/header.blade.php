@@ -149,9 +149,9 @@
                                 <ul class="dropdown-menu-col-2">
                                     <li>
                                         <a href="{{ url('/') }}">Home 1</a>
-                                        <a href="index2.html">Home 2</a>
-                                        <a href="index3.html">Home 3</a>
-                                        <a href="index4.html">Home 4</a>
+                                        <a href="{{ url('/') }}">Home 2</a>
+                                        <a href="{{ url('/') }}">Home 3</a>
+                                        <a href="{{ url('/') }}">Home 4</a>
                                         <a href="index5.html">Home 5</a>
                                         <a href="index6.html">Home 6</a>
                                         <a href="index7.html">Home 7</a>
@@ -189,19 +189,10 @@
                                 <a href="about.html">ABOUT</a>
                             </li>
                             <li>
-                                <a href="#">CATEGORIES</a>
+                                <a href="{{ url('categories') }}">@lang('blog.topics')</a>
                                 <ul class="dropdown-menu-col-1">
                                     <li>
-                                        <a href="blog-category1.html">Blog Category 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="blog-category2.html">Blog Category 2</a>
-                                    </li>
-                                    <li>
-                                        <a href="blog-category3.html">Blog Category 3</a>
-                                    </li>
-                                    <li>
-                                        <a href="blog-category4.html">Blog Category 4</a>
+                                        <a href="{{ url('/') }}">Blog</a>
                                     </li>
                                 </ul>
                             </li>
@@ -329,27 +320,27 @@
                                 <a href="#">Pages</a>
                                 <ul>
                                     <li>
-                                        <a href="about.html">About 1</a>
+                                        <a href="{{ url('/') }}">About 1</a>
                                     </li>
                                     <li>
-                                        <a href="blog-category1.html">Blog Category 1</a>
+                                        <a href="{{ url('/') }}">Blog Category 1</a>
                                     </li>
                                     <li>
-                                        <a href="single-blog.html">Blog Details 1</a>
+                                        <a href="{{ url('/') }}">Blog Details 1</a>
                                     </li>
                                     <li>
-                                        <a href="archives1.html">Archives 1</a>
+                                        <a href="{{ url('/') }}">Archives 1</a>
                                     </li>
                                     <li>
-                                        <a href="404.html">404 Error</a>
+                                        <a href="{{ url('/') }}">404 Error</a>
                                     </li>
                                     <li>
-                                        <a href="contact.html">Contact</a>
+                                        <a href="{{ url('/') }}">Contact</a>
                                     </li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="contact.html">CONTACT</a>
+                                <a href="{{ url('contact') }}">CONTACT</a>
                             </li>
                         </ul>
                     </nav>

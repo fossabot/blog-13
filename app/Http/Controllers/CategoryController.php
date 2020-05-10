@@ -10,6 +10,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Post;
 use Illuminate\View\View;
 
 /**
@@ -22,31 +23,21 @@ class CategoryController extends Controller
      * @param Category $category
      * @return View
      */
-    public function index(Category $category): View
+    public function __invoke(Category $category): View
     {
-        $categories = $category->with('image')->get();
+        $query = Post::with(['tags', 'image', 'category', 'comments', 'likes']);
 
-        $cats = $categories->reject(function ($cat) {
-            return $cat->id ===1;
-        });
+        $posts =  $query->where('category_id', $category->id)
+            ->paginate(10);
 
-        return view('blog.categories.index', [
-            'categories' => $cats
-        ]);
-    }
+        $populars = $query->take(10)->get();
 
-    /**
-     * @param $slug
-     * @return View
-     */
-    public function show($slug): View
-    {
-        $category = Category::with('posts.images')
-            ->where('slug', $slug)
-            ->firstOrFail();
+        $layout = $category->layout ? $category->layout : 'blog.categories.index';
 
-        return view('blog.categories.show', [
-            'category' => $category
+        return view($layout, [
+            'category' => $category,
+            'posts' => $posts,
+            'populars' => $populars
         ]);
     }
 }

@@ -16,7 +16,7 @@ require('laravel-mix-polyfill');
 mix.js('resources/assets/blogxer/js/script.js', 'public/js')
   .sass('resources/assets/blogxer/sass/style.scss', 'public/css')
 
-  // .js('resources/assets/blogxer/js/scripts/carousel.js', 'public/js')
+  .js('resources/assets/blogxer/js/scripts/map.js', 'public/js')
   // .sass('resources/assets/blogxer/sass/carousel.scss', 'public/css')
 
 
@@ -32,7 +32,7 @@ mix.js('resources/assets/blogxer/js/script.js', 'public/js')
   .sourceMaps()
   // .purgeCss()
   .options({
-    purifyCss: true,
+    // purifyCss: true,
     autoprefixer: {
       options: {
         browsers: [

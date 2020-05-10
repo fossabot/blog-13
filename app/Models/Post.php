@@ -9,13 +9,13 @@
 
 namespace App\Models;
 
-use App\Models\Posts\Rate;
 use App\Libraries\DateAttribute\DateAttributeInterface;
 use App\Libraries\DateAttribute\DateAttributeTrait;
 use App\Libraries\Like\Likeable;
 use App\Libraries\Post\ReadTime\ReadTime;
 use App\Libraries\Slug\HasSlug;
 use App\Libraries\Slug\SlugOptions;
+use App\Models\Posts\Rate;
 use App\Scopes\PostedScope;
 use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Contracts\Routing\UrlRoutable;
@@ -181,6 +181,8 @@ class Post extends Model implements UrlRoutable, DateAttributeInterface
 
     /**
      * Get the route key for the model.
+     *
+     * @return string
      */
     public function getRouteKeyName(): string
     {
@@ -191,15 +193,16 @@ class Post extends Model implements UrlRoutable, DateAttributeInterface
         return 'slug';
     }
 
-
     /**
+     * Return URL to post
+     *
      * @return string
      */
     public function getUrlAttribute(): string
     {
         switch ($this->type) {
             case 'blog':
-                return route('blog.show', $this->slug);
+                return url('blog/', $this->slug);
                 break;
             case 'page':
                 return url($this->slug);

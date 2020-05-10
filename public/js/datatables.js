@@ -16168,7 +16168,7 @@ $(document).ready(function () {
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!*******************************************************!*\
   !*** multi ./resources/assets/admin/js/datatables.js ***!
   \*******************************************************/
@@ -16180,5 +16180,5 @@ module.exports = __webpack_require__(/*! C:\laragon\www\blog\resources\assets\ad
 
 /***/ })
 
-},[[3,"/js/manifest","/js/vendor"]]]);
+},[[4,"/js/manifest","/js/vendor"]]]);
 //# sourceMappingURL=datatables.js.map

@@ -28,6 +28,7 @@ class CreateCategoriesTable extends Migration
             $table->string('title');
             $table->string('subtitle', 255)->nullable();
             $table->text('description');
+            $table->string('layout')->default('blog.categories.index');
             $table->softDeletes();
             $table->timestamps();
         });
