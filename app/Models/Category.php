@@ -41,7 +41,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @property-read \Category $first_child
  * @property-read \Category[]|\Collection $siblings
  * @property-read string|\UrlGenerator $url
- * @property-read \App\Models\Image $image
+ * @property-read \App\Models\Media $image
  * @property-read null|\App\Models\Category $parent
  * @property-read \App\Models\Post[]|\Illuminate\Database\Eloquent\Collection $posts
  * @property-read null|int $posts_count
@@ -197,6 +197,6 @@ class Category extends Model
      */
     public function image(): MorphOne
     {
-        return $this->morphOne(Image::class, 'image');
+        return $this->morphOne(Media::class, 'media');
     }
 }

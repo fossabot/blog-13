@@ -1,43 +1,32 @@
-// Axios & Echo global
+/**
+ * First we will load all of this project's JavaScript dependencies which
+ * includes Vue and other libraries. It is a great starting point when
+ * building robust, powerful web applications using Vue and Laravel.
+ */
+
 require('./bootstrap');
 
-/* Core */
-import Vue from 'vue'
-import Buefy from 'buefy'
+window.Vue = require('vue');
 
-/* Router & Store */
-import router from './router'
-import store from './store'
+/**
+ * The following block of code may be used to automatically register your
+ * Vue components. It will recursively scan this directory for the Vue
+ * components and automatically register them with their "basename".
+ *
+ * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
+ */
 
-/* Vue. Main component */
-import App from './App.vue'
+// const files = require.context('./', true, /\.vue$/i)
+// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-/* Vue. Component in recursion */
-import AsideMenuList from './components/AsideMenuList'
+Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
-/* Collapse mobile aside menu on route change */
-router.afterEach(() => {
-  store.commit('asideMobileStateToggle', false)
-})
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
 
-Vue.config.productionTip = false
-
-/* These components are used in recursion algorithm */
-Vue.component('AsideMenuList', AsideMenuList)
-
-/* Main component */
-Vue.component('App', App)
-
-/* Buefy */
-Vue.use(Buefy)
-
-/* This is main entry point */
-
-new Vue({
-  store,
-  router,
-  render: h => h(App),
-  mounted() {
-    document.documentElement.classList.remove('has-spinner-active')
-  }
-}).$mount('#app')
+const app = new Vue({
+    el: '#app',
+});

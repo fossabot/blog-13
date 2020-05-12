@@ -7,7 +7,7 @@
  *  @copyright      Copyright (c) Turahe 2020.
  */
 
-use App\Models\Image;
+use App\Models\Media;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Database\Seeder;
@@ -29,7 +29,7 @@ class TagsTableSeeder extends Seeder
 
             $tags = Tag::all();
             $post = Post::all();
-            $image = Image::all();
+            $image = Media::all();
 
 
             self::taggable($post, $tags);

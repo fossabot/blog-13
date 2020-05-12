@@ -22,7 +22,7 @@ return [
     'title' => 'Titre',
     'content' => 'Contenu',
     'author' => 'Auteur',
-    'thumbnail' => 'Image à la une',
+    'thumbnail' => 'Media à la une',
     'posted_at' => 'Posté le',
     'thumbnail' => "L'image de couverture",
   ],

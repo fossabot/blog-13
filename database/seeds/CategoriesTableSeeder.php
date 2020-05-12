@@ -8,7 +8,7 @@
  */
 
 use App\Models\Category;
-use App\Models\Image;
+use App\Models\Media;
 use Illuminate\Database\Seeder;
 
 /**
@@ -32,12 +32,12 @@ class CategoriesTableSeeder extends Seeder
                 'subtitle' => isset($category['subtitle']) ? $category['subtitle'] : $category['title'],
                 'description' => $category['description']
             ]);
-//            $category->image()->save(factory(\App\Models\Image::class)->make());
+            $category->image()->save(factory(\App\Models\Media::class)->make());
         }
 
         if (App::environment(['local', 'staging', 'testing'])) {
             factory(Category::class, 30)->create()->each(function ($cat) {
-                $cat->image()->save(factory(Image::class)->make());
+                $cat->image()->save(factory(Media::class)->make());
             });
         }
     }

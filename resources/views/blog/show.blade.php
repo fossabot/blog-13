@@ -9,7 +9,7 @@
     <section class="single-blog-wrap-layout1">
         <div class="single-blog-banner-layout1">
             <div class="banner-img">
-                <img src="{{ $blog->image->url }}" alt="{{ $blog->title }}">
+                <img src="{{ $blog->cover->url }}" alt="{{ $blog->title }}">
             </div>
             <div class="banner-content">
                 <div class="container">
@@ -100,7 +100,7 @@
                                     <div class="blog-box-layout1 text-left">
                                         <div class="item-img">
                                             <a href="{{ $post->url }}">
-                                                <img src="{{ $post->image->url }}" alt="{{ $post->title }}">
+                                                <img src="{{ $post->cover->url }}" alt="{{ $post->title }}">
                                             </a>
                                         </div>
                                         <div class="item-content">

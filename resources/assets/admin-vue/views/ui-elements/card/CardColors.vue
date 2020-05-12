@@ -229,7 +229,7 @@
       </vx-card>
     </div>
 
-    <!-- Gradient Background Image -->
+    <!-- Gradient Background Media -->
     <div class="vx-col w-full sm:w-1/2 md:w-1/2 lg:w-1/2 xl:w-1/2 mb-base">
       <vx-card
         title="Gradient Background Image"
@@ -272,7 +272,7 @@
       </vx-card>
     </div>
 
-    <!-- Gradient Background Image -->
+    <!-- Gradient Background Media -->
     <div class="vx-col w-full sm:w-1/2 md:w-1/2 lg:w-1/2 xl:w-1/2 mb-base">
       <vx-card
         title="Gradient Background Image"

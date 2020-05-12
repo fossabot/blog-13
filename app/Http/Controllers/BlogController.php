@@ -35,17 +35,22 @@ class BlogController extends Controller
             ->where('published_at', '<=', now())
             ->where('is_draft', 0)
             ->orderBy('published_at', 'desc')
-            ->with(['image', 'category', 'user']);
+            ->with(['cover', 'category', 'user']);
 
         $blogs = $query
             ->where('type', 'blog')
             ->paginate(10);
         $latest = $query->latest()->get();
+        $posts = $query->get();
 
         $featured = $query->where('is_sticky', true)->get();
 
-        return view('blogxer.index', [
+        $layout = 'blog.index';
+
+
+        return view($layout, [
             'blogs' => $blogs,
+            'posts' => $posts,
             'featured' => $featured,
             'latest'=> $latest,
             'categories' => Category::with('posts.user')->get()
@@ -60,15 +65,12 @@ class BlogController extends Controller
      */
     public function show($slug): View
     {
-        $query = Post::with(['tags', 'image', 'category', 'comments.user'])->get();
+        $query = Post::with(['tags', 'cover', 'category', 'comments.user'])->get();
         $blog = $query->where('slug', $slug)->first();
         $posts =  $query->where('category_id', $blog->category->id)
             ->except($blog->id);
 
-
-
-
-        return view('blogxer.show', [
+        return view('blog.show', [
             'blog' => $blog,
             'posts' => $posts,
             'categories' => Category::with('posts.user')->get()

@@ -5,54 +5,24 @@
     <section class="blog-wrap-layout1">
         <div class="container">
             <div class="row">
+                @foreach($posts->take(3) as $post)
                 <div class="col-lg-4">
                     <div class="blog-box-layout1">
                         <div class="item-img">
-                            <a href="single-blog.html"><img src="/themes/blogxer/img/blog/blog.jpg" alt="blog"></a>
+                            <a href="{{ $post->url }}"><img src="/themes/blogxer/img/blog/blog.jpg" alt="blog"></a>
                         </div>
                         <div class="item-content">
                             <ul class="entry-meta meta-color-dark">
-                                <li><i class="fas fa-tag"></i>Coffe</li>
-                                <li><i class="fas fa-calendar-alt"></i>Jan 19, 2019</li>
+                                <li><i class="fas fa-tag"></i>{{ $post->category->title }}</li>
+                                <li><i class="fas fa-calendar-alt"></i>{{ $post->publish }}</li>
                                 <li><i class="far fa-clock"></i>5 Mins Read</li>
                             </ul>
-                            <h3 class="item-title"><a href="single-blog.html">7 Dreamy Places You will Never
-                                    Get to Visit Dreamy Places.</a></h3>
+                            <h3 class="item-title"><a href="{{ $post->url }}">{{ $post->title }}</a></h3>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="blog-box-layout1">
-                        <div class="item-img">
-                            <a href="single-blog.html"><img src="/themes/blogxer/img/blog/blog1.jpg" alt="blog"></a>
-                        </div>
-                        <div class="item-content">
-                            <ul class="entry-meta meta-color-dark">
-                                <li class="svg-icon">{!! svg('icons/tag') !!} Food</li>
-                                <li><i class="fas fa-calendar-alt"></i>Jan 19, 2019</li>
-                                <li><i class="far fa-clock"></i>5 Mins Read</li>
-                            </ul>
-                            <h3 class="item-title"><a href="single-blog.html">This Is How Fashion Will Look
-                                    Like In 10 Years Time.</a></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="blog-box-layout1">
-                        <div class="item-img">
-                            <a href="single-blog.html"><img src="/themes/blogxer/img/blog/blog2.jpg" alt="blog"></a>
-                        </div>
-                        <div class="item-content">
-                            <ul class="entry-meta meta-color-dark">
-                                <li><i class="fas fa-tag"></i>Travel</li>
-                                <li><i class="fas fa-calendar-alt"></i>Jan 19, 2019</li>
-                                <li><i class="far fa-clock"></i>5 Mins Read</li>
-                            </ul>
-                            <h3 class="item-title"><a href="single-blog.html">To travel is worth any cost or
-                                    sacrifice.</a></h3>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+
             </div>
         </div>
     </section>
@@ -88,7 +58,7 @@
                             <div class="col-sm-6 col-12">
                                 <div class="blog-box-layout1">
                                     <div class="item-img">
-                                        <a href="{{ $blog->url }}"><img src="{{ $blog->image->url }}" alt="{{ $blog->title }}"></a>
+                                        <a href="{{ $blog->url }}"><img src="{{ $blog->cover->url }}" alt="{{ $blog->title }}"></a>
                                     </div>
                                     <div class="item-content">
                                         <ul class="entry-meta meta-color-dark">
@@ -105,13 +75,9 @@
                         @endforeach
 
                     </div>
-                    <div class="pagination-layout1">
-                        <ul>
-                            <li class="active"><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                        </ul>
-                    </div>
+
+                    {{ $blogs->links('blog.vendor.pagination') }}
+
                 </div>
                 <div class="col-xl-3 col-lg-4 sidebar-widget-area sidebar-break-md">
                     <div class="widget">
@@ -329,5 +295,5 @@
     </section>
     <!-- Blog Area End Here -->
     <!-- Instagram Start Here -->
-    @include('blogxer.partials.instagram')
+    @include('blog.partials.instagram')
 @endsection

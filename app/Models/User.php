@@ -90,7 +90,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static Builder|User whereProvider($value)
  * @method static Builder|User whereProviderId($value)
  * @method static Builder|User whereRegisteredAt($value)
- * @property-read \App\Models\Image $image
+ * @property-read \App\Models\Media $image
  */
 class User extends Authenticatable implements MustVerifyEmail, HasLocalePreference
 {
@@ -284,9 +284,9 @@ class User extends Authenticatable implements MustVerifyEmail, HasLocalePreferen
     /**
      * @return MorphOne
      */
-    public function image(): MorphOne
+    public function avatar(): MorphOne
     {
-        return $this->morphOne(Image::class, 'image');
+        return $this->morphOne(Media::class, 'media');
     }
 
     /**

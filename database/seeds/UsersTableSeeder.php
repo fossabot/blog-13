@@ -7,7 +7,7 @@
  *  @copyright      Copyright (c) Turahe 2020.
  */
 
-use App\Models\Image;
+use App\Models\Media;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
@@ -42,7 +42,7 @@ class UsersTableSeeder extends Seeder
         if (App::environment(['local', 'staging', 'testing'])) {
             // return local database settings array
             factory(User::class, 100)->create()->each(function ($user) {
-                $user->image()->save(factory(Image::class)->make());
+                $user->avatar()->save(factory(Media::class)->make());
             });
         }
     }

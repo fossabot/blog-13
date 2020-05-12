@@ -8,7 +8,7 @@
  */
 
 use App\Models\Comment;
-use App\Models\Image;
+use App\Models\Media;
 use App\Models\Post;
 use App\Models\Posts\Rate;
 use App\Libraries\Post\MarkdownParse\YamlFrontMatter;
@@ -44,7 +44,7 @@ class PostsTableSeeder extends Seeder
                 'type' => $content->type
             ]);
             if (App::environment(['local', 'staging', 'testing'])) {
-                $post->images()->saveMany(factory(Image::class, 3)->make());
+                $post->images()->saveMany(factory(Media::class, 3)->make());
                 $post->comments()->saveMany(factory(Comment::class, 3)->make());
                 $post->rates()->saveMany(factory(Rate::class, 3)->make());
             }

@@ -25,6 +25,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use League\CommonMark\CommonMarkConverter;
@@ -114,7 +115,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @property-read \App\Models\Posts\Rate[]|\Illuminate\Database\Eloquent\Collection $rates
  * @property-read null|int $rates_count
  * @property string $is_sticky
- * @property-read \App\Models\Image[]|\Illuminate\Database\Eloquent\Collection $images
+ * @property-read \App\Models\Media[]|\Illuminate\Database\Eloquent\Collection $images
  * @property-read null|int $images_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereIsSticky($value)
  * @property-read mixed $publish
@@ -482,12 +483,18 @@ class Post extends Model implements UrlRoutable, DateAttributeInterface
      */
     public function images(): MorphMany
     {
-        return $this->morphMany(Image::class, 'image');
+        return $this->morphMany(Media::class, 'media');
     }
 
-    public function image()
+    /**
+     * Return the post's cover
+     * Define a polymorphic one-to-one relationship.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphOne
+     */
+    public function cover(): MorphOne
     {
-        return $this->morphOne(Image::class, 'image');
+        return $this->morphOne(Media::class, 'media');
     }
 
     /**

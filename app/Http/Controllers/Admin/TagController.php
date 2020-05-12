@@ -24,7 +24,9 @@ final class TagController extends Controller
     protected array $fields = [
         'tag' => '',
         'title' => '',
-        'description' => ''
+        'subtitle' => '',
+        'meta_description' => '',
+        'layout' => 'blog.layouts.index',
     ];
     /**
      * Display a listing of the resource.
@@ -33,9 +35,13 @@ final class TagController extends Controller
      */
     public function index(): View
     {
-        return view('admin.tags.index', [
+        $data = [
             'tags' => Tag::all()
-        ]);
+        ];
+        foreach ($this->fields as $field => $default) {
+            $data[$field] = old($field, $default);
+        }
+        return view('admin.tags.index', $data);
     }
     /**
      * Show form for creating new tag

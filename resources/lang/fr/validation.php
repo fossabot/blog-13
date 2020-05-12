@@ -154,7 +154,7 @@ return [
         'posted_at'             => 'Posté le',
         'author_id'             => 'Auteur',
         'post_id'               => 'Article',
-        'thumbnail_id'          => 'Image de couverture',
+        'thumbnail_id'          => 'Media de couverture',
     ],
 
     'errors' => ":count erreur :|:count erreurs : "

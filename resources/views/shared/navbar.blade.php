@@ -1,6 +1,6 @@
 <nav class="navbar navbar-dark bg-dark fixed-top navbar-expand-md">
     <div class="container">
-        <!-- Branding Image -->
+        <!-- Branding Media -->
         <a href="{{ url('/') }}" class="navbar-brand">{{ config('blog.title') }}</a>
 
         <!-- Collapsed Hamburger -->

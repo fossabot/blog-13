@@ -17,14 +17,14 @@
 
     <VuePerfectScrollbar class="scroll-area--data-list-add-new" :settings="settings">
       <div class="p-6">
-        <!-- Product Image -->
+        <!-- Product Media -->
         <template v-if="dataImg">
-          <!-- Image Container -->
+          <!-- Media Container -->
           <div class="img-container w-64 mx-auto flex items-center justify-center">
             <img :src="dataImg" alt="img" class="responsive" />
           </div>
 
-          <!-- Image upload Buttons -->
+          <!-- Media upload Buttons -->
           <div class="modify-img flex justify-between mt-5">
             <input
               type="file"
@@ -97,7 +97,7 @@
         >{{ errors.first('item-price') }}</span>
 
         <!-- Upload -->
-        <!-- <vs-upload text="Upload Image" class="img-upload" ref="fileUpload" /> -->
+        <!-- <vs-upload text="Upload Media" class="img-upload" ref="fileUpload" /> -->
 
         <div class="upload-img mt-5" v-if="!dataImg">
           <input

@@ -1,25 +1,8 @@
-/* Theme style (colors & sizes) */
-@import "theme-default";
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
 
-/* Core Libs & Lib configs */
-@import "libs/all";
+// Variables
+@import 'variables';
 
-/* Mixins */
-@import "mixins";
-
-/* Theme components */
-@import "nav-bar";
-@import "aside";
-@import "title-bar";
-@import "hero-bar";
-@import "card";
-@import "table";
-@import "tiles";
-@import "form";
-@import "main-section";
-@import "modal";
-@import "footer";
-@import "misc";
-
-/* Animate.css custom build (just selected animations to minimize bundle size) */
-//@import "../css/animate.min.css";
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
