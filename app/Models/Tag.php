@@ -55,6 +55,13 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static Builder|Tag withoutTrashed()
  * @property-read Collection|\Spatie\Activitylog\Models\Activity[] $activities
  * @property-read int|null $activities_count
+ * @property string $title
+ * @property string $subtitle
+ * @property string $layout
+ * @property-read string $url
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag whereLayout($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag whereSubtitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag whereTitle($value)
  */
 class Tag extends Model
 {

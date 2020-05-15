@@ -64,6 +64,8 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Category withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Category withoutTrashed()
  * @mixin \Eloquent
+ * @property string $layout
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereLayout($value)
  */
 class Category extends Model
 {

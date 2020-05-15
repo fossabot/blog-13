@@ -26,13 +26,15 @@ before_script:
   - yarn install
   - sudo mysql -e 'CREATE DATABASE homestead;'
   - composer install --no-progress --no-interaction --prefer-dist --no-suggest --ignore-platform-reqs
-  - cp .env.travis .env.testing
+  - cp .env.travis .env
+  - php artisan key:generate
+  - php artisan migrate
 
 script:
   - yarn production
   - yarn lint
   - vendor/bin/php-cs-fixer fix --config=.php_cs --verbose --dry-run --diff
-  - vendor/bin/phpunit --testdox
+#  - vendor/bin/phpunit --testdox
 
 notifications:
   email: false

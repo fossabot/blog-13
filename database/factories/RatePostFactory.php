@@ -21,9 +21,9 @@ use Faker\Generator as Faker;
 | model instances for testing / seeding your application's database.
 |
 */
-$factory->define(\App\Models\Posts\Rate::class, function (Faker $faker) {
+$factory->define(\App\Models\Rate::class, function (Faker $faker) {
     return [
-        'user_id' => mt_rand(1, 100),
+        'user_id' => mt_rand(1, 10),
         'post_id' => mt_rand(1, 100),
         'rate' => mt_rand(1, 5)
     ];

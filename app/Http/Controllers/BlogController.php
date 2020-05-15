@@ -43,6 +43,8 @@ class BlogController extends Controller
         $latest = $query->latest()->get();
         $posts = $query->get();
 
+        $getPost = $query->inRandomOrder()->first();
+
         $featured = $query->where('is_sticky', true)->get();
 
         $layout = 'blog.index';
@@ -53,6 +55,7 @@ class BlogController extends Controller
             'posts' => $posts,
             'featured' => $featured,
             'latest'=> $latest,
+            'getPost' => $getPost,
             'categories' => Category::with('posts.user')->get()
         ]);
     }

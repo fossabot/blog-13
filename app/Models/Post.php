@@ -15,7 +15,6 @@ use App\Libraries\Like\Likeable;
 use App\Libraries\Post\ReadTime\ReadTime;
 use App\Libraries\Slug\HasSlug;
 use App\Libraries\Slug\SlugOptions;
-use App\Models\Posts\Rate;
 use App\Scopes\PostedScope;
 use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Contracts\Routing\UrlRoutable;
@@ -119,6 +118,9 @@ use Spatie\Permission\Traits\HasRoles;
  * @property-read null|int $images_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereIsSticky($value)
  * @property-read mixed $publish
+ * @property string $layout
+ * @property-read \App\Models\Media|null $cover
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereLayout($value)
  */
 class Post extends Model implements UrlRoutable, DateAttributeInterface
 {

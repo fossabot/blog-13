@@ -20,7 +20,7 @@ class CreateRatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts_rates', function (Blueprint $table) {
+        Schema::create('rates', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('post_id');
             $table->unsignedBigInteger('user_id');
@@ -28,7 +28,7 @@ class CreateRatesTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('posts_rates', function (Blueprint $table) {
+        Schema::table('rates', function (Blueprint $table) {
             $table->foreign('user_id')
                 ->references('id')->on('users')
                 ->onDelete('cascade');
@@ -48,6 +48,6 @@ class CreateRatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts_rates');
+        Schema::dropIfExists('rates');
     }
 }

@@ -13,11 +13,11 @@ require('laravel-mix-polyfill');
  |
  */
 
-mix.js('resources/assets/blogxer/js/script.js', 'public/js')
-  .sass('resources/assets/blogxer/sass/style.scss', 'public/css')
+mix.js('resources/assets/blog/js/script.js', 'public/js')
+  .sass('resources/assets/blog/sass/style.scss', 'public/css')
 
-  .js('resources/assets/blogxer/js/scripts/map.js', 'public/js')
-  // .sass('resources/assets/blogxer/sass/carousel.scss', 'public/css')
+  .js('resources/assets/blog/js/scripts/map.js', 'public/js')
+  // .sass('resources/assets/blog/sass/carousel.scss', 'public/css')
 
 
   .js('resources/assets/admin/js/admin.js', 'public/js')

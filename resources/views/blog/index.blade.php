@@ -9,7 +9,7 @@
                 <div class="col-lg-4">
                     <div class="blog-box-layout1">
                         <div class="item-img">
-                            <a href="{{ $post->url }}"><img src="/themes/blogxer/img/blog/blog.jpg" alt="blog"></a>
+                            <a href="{{ $post->url }}"><img src="{{ $post->cover->url }}" alt="{{ $post->title }}"></a>
                         </div>
                         <div class="item-content">
                             <ul class="entry-meta meta-color-dark">
@@ -34,23 +34,18 @@
                 <div class="col-xl-9 col-lg-8">
                     <div class="blog-box-layout1">
                         <div class="item-img">
-                            <a href="single-blog.html"><img src="/themes/blogxer/img/blog/blog3.jpg" alt="blog"></a>
+                            <a href="{{ $getPost->url }}"><img src="{{ $getPost->cover->url }}" alt="{{ $getPost->title }}"></a>
                         </div>
                         <div class="item-content">
                             <ul class="entry-meta meta-color-dark">
-                                <li><i class="fas fa-tag"></i>Fashion</li>
-                                <li><i class="fas fa-calendar-alt"></i>Jan 19, 2019</li>
-                                <li><i class="fas fa-user"></i>BY <a href="#">Mark Willy</a></li>
+                                <li><i class="fas fa-tag"></i>{{ $getPost->category->title }}</li>
+                                <li><i class="fas fa-calendar-alt"></i>{{ $getPost->publish }}</li>
+                                <li><i class="fas fa-user"></i>BY <a href="#">{{ $getPost->user->name }}</a></li>
                                 <li><i class="far fa-clock"></i>5 Mins Read</li>
                             </ul>
-                            <h2 class="item-title"> <a href="single-blog.html">What Your Holiday Capsule
-                                    Wardrobe Contain</a></h2>
-                            <p>Aliquam erat volutpat. Curabitur venenatis massa sed lacus tristique, non auctor
-                                nisl sodales Sed ultricies lacus ut libero faucibus fringilla. In risus magna
-                                vel.
-                                Aliquam erat volutpat Curabitur venenatis massa tiquenon auctor nisl sodales.
-                                nisl sodales Sed ultricies lacus ut libero faucibus fringilla.</p>
-                            <a href="single-blog.html" class="item-btn">READ MORE<i class="fas fa-arrow-right"></i></a>
+                            <h2 class="item-title"> <a href="{{ $getPost->url }}">{{ $getPost->title }}</a></h2>
+                            {{ $getPost->subtitle }}
+                            <a href="{{ $getPost->url }}" class="item-btn">READ MORE<i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="row gutters-40">

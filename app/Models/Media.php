@@ -50,6 +50,11 @@ use Storage;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Media whereImageType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Media whereMime($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Media whereSize($value)
+ * @property string $media_type
+ * @property int $media_id
+ * @property-read \Eloquent|\Illuminate\Database\Eloquent\Model $media
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Media whereMediaId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Media whereMediaType($value)
  */
 class Media extends Model
 {
@@ -79,6 +84,19 @@ class Media extends Model
             return Storage::url('images/posts/blog208.jpg');
         }
 
+        return Storage::url('images/posts/'.$this->file);
+    }
+
+    /**
+     * @return string
+     */
+    public function getImageThumbnailAttribute()
+    {
+        $file = storage_path('app/public/images/posts/thumbnail/'.$this->file);
+//
+        if (is_file($file)) {
+            return Storage::url('images/posts/thumbnail' .$this->file);
+        }
         return Storage::url('images/posts/'.$this->file);
     }
     /**

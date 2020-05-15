@@ -12,9 +12,9 @@ class PageRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
-        return true;
+        return Auth::check();
     }
 
     /**
@@ -34,9 +34,8 @@ class PageRequest extends FormRequest
     /**
      * @return array
      */
-    public function pageFillData()
+    public function pageFillData(): array
     {
-
         return [
             'title' => $this->title,
             'subtitle' => $this->subtitle,

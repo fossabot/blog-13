@@ -3,35 +3,26 @@
  * For the full copyright and license information, please view the LICENSE
  *  file that was distributed with this source code.
  *
+ *  @modified    5/6/20, 1:56 AM
+ *  @name          Rate.php
  *  @author         Nur Wachid
  *  @copyright      Copyright (c) Turahe 2020.
+ *
  */
 
-namespace App\Models\Posts;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Models\Posts\Rate
+ * App\Models\Rate
  *
- * @property int $id
- * @property int $post_id
- * @property int $user_id
- * @property int $rate
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Posts\Rate newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Posts\Rate newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Posts\Rate query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Posts\Rate whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Posts\Rate whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Posts\Rate wherePostId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Posts\Rate whereRate($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Posts\Rate whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Posts\Rate whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Rate newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Rate newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Rate query()
  * @mixin \Eloquent
  */
 class Rate extends Model
 {
-    protected $table = 'posts_rates';
+    protected $table = 'rates';
 }

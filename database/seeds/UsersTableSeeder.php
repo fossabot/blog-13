@@ -37,14 +37,20 @@ class UsersTableSeeder extends Seeder
                 'registered_at' => now(),
             ]);
             $user->assignRole('admin');
+            $user->avatar()->firstOrCreate([
+                'file' => $name,
+                'name' => Str::slug($name). '.jpg',
+                'mime' => 'image/jpg',
+                'size' => mt_rand(1000, 10000)
+            ]);
         }
 
-        if (App::environment(['local', 'staging', 'testing'])) {
-            // return local database settings array
-            factory(User::class, 100)->create()->each(function ($user) {
-                $user->avatar()->save(factory(Media::class)->make());
-            });
-        }
+//        if (App::environment(['local', 'staging', 'testing'])) {
+//            // return local database settings array
+//            factory(User::class, 100)->create()->each(function ($user) {
+//                $user->avatar()->save(factory(Media::class)->make());
+//            });
+//        }
     }
 
     /**

@@ -75,6 +75,8 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Comment withoutTrashed()
  * @mixin \Eloquent
  * @property-read mixed $publish
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Like[] $likes
+ * @property-read int|null $likes_count
  */
 class Comment extends Model implements DateAttributeInterface, LikeInterface
 {
