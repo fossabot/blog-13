@@ -19,7 +19,7 @@
                     <ul class="footer-social">
                         @foreach(config('blog.socials') as $social)
                             <li><a class="svg-icon" href="{{ $social['url'] }}">
-                                    {!! svg("icons/{$social['name']}") !!}
+                                    <i class="fab fa-{{ $social['name'] }}"></i>
                                 </a></li>
                         @endforeach
                     </ul>
