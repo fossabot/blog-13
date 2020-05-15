@@ -9,7 +9,9 @@
                 <div class="col-lg-4">
                     <div class="blog-box-layout1">
                         <div class="item-img">
-                            <a href="{{ $post->url }}"><img src="{{ $post->cover->url }}" alt="{{ $post->title }}"></a>
+                            <a href="{{ $post->url }}">
+                                <img src="/themes/blogxer/img/blog/blog.jpg" alt="{{ $post->title }}">
+                            </a>
                         </div>
                         <div class="item-content">
                             <ul class="entry-meta meta-color-dark">
@@ -34,14 +36,27 @@
                 <div class="col-xl-9 col-lg-8">
                     <div class="blog-box-layout1">
                         <div class="item-img">
-                            <a href="{{ $getPost->url }}"><img src="{{ $getPost->cover->url }}" alt="{{ $getPost->title }}"></a>
+                            <a href="{{ $getPost->url }}">
+                                <img src="/themes/blogxer/img/blog/blog3.jpg" alt="{{ $getPost->title }}">
+                            </a>
                         </div>
                         <div class="item-content">
                             <ul class="entry-meta meta-color-dark">
-                                <li><i class="fas fa-tag"></i>{{ $getPost->category->title }}</li>
-                                <li><i class="fas fa-calendar-alt"></i>{{ $getPost->publish }}</li>
-                                <li><i class="fas fa-user"></i>BY <a href="#">{{ $getPost->user->name }}</a></li>
-                                <li><i class="far fa-clock"></i>5 Mins Read</li>
+                                <li>
+                                    <i class="fas fa-tag"></i>
+                                    {{ $getPost->category->title }}
+                                </li>
+                                <li>
+                                    <i class="fas fa-calendar-alt"></i>
+                                    {{ $getPost->publish }}
+                                </li>
+                                <li>
+                                    <i class="fas fa-user"></i>BY
+                                    <a href="#">{{ $getPost->user->name }}
+                                    </a>
+                                </li>
+                                <li>
+                                    <i class="far fa-clock"></i>5 Mins Read</li>
                             </ul>
                             <h2 class="item-title"> <a href="{{ $getPost->url }}">{{ $getPost->title }}</a></h2>
                             {{ $getPost->subtitle }}
@@ -53,17 +68,36 @@
                             <div class="col-sm-6 col-12">
                                 <div class="blog-box-layout1">
                                     <div class="item-img">
-                                        <a href="{{ $blog->url }}"><img src="{{ $blog->cover->url }}" alt="{{ $blog->title }}"></a>
+                                        <a href="{{ $blog->url }}">
+                                            <img src="/themes/blogxer/img/blog/blog7.jpg" alt="{{ $blog->title }}">
+                                        </a>
                                     </div>
                                     <div class="item-content">
                                         <ul class="entry-meta meta-color-dark">
-                                            <li><i class="fas fa-tag"></i>{{ $blog->category->title }}</li>
-                                            <li><i class="fas fa-calendar-alt"></i>{{ $blog->publish }}</li>
-                                            <li><i class="far fa-clock"></i>5 Mins Read</li>
+                                            <li>
+                                                <i class="fas fa-tag"></i>
+                                                {{ $blog->category->title }}
+                                            </li>
+                                            <li>
+                                                <i class="fas fa-calendar-alt"></i
+                                                >
+                                                {{ $blog->publish }}
+                                            </li>
+                                            <li>
+                                                <i class="far fa-clock"></i>
+                                                5 Mins Read
+                                            </li>
                                         </ul>
-                                        <h3 class="item-title"> <a href="{{ $blog->url }}">{{ $blog->title }}</a></h3>
+                                        <h3 class="item-title">
+                                            <a href="{{ $blog->url }}">
+                                                {{ $blog->title }}
+                                            </a>
+                                        </h3>
                                         <p>{{ $blog->subtitle }}</p>
-                                        <a href="{{ $blog->url }}" class="item-btn">READ MORE<i class="fas fa-arrow-right"></i></a>
+                                        <a href="{{ $blog->url }}" class="item-btn">
+                                            READ MORE
+                                            <i class="fas fa-arrow-right"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -80,11 +114,13 @@
                             <h3 class="item-heading">ABOUT ME</h3>
                         </div>
                         <div class="widget-about">
-                            <figure class="author-figure"><img src="/themes/blogxer/img/figure/figure.jpg" alt="about"></figure>
-                            <figure class="author-signature"><img src="/themes/blogxer/img/figure/signature.png" alt="about"></figure>
-                            <p>Fusce mauris auctor ollicituder teary iner hendrerit risusey aeenean rauctor
-                                pibus
-                                doloer.</p>
+                            <figure class="author-figure">
+                                <img src="{{ $instagram->profilePicture }}" alt="{{ $instagram->fullName }}">
+                            </figure>
+{{--                            <figure class="author-signature">--}}
+{{--                                <img src="/themes/blogxer/img/figure/signature.png" alt="about">--}}
+{{--                            </figure>--}}
+                            <p>{{ $instagram->biography }}</p>
                         </div>
                     </div>
                     <div class="widget">
@@ -112,12 +148,17 @@
                                 @foreach($latest as $post)
                                     <li class="single-item">
                                         <div class="item-img">
-                                            <a href="#"><img src="/themes/blogxer/img/blog/blog12.jpg" alt="Post"></a>
-                                            <div class="count-number">1</div>
+                                            <a href="#">
+                                                <img src="/themes/blogxer/img/blog/blog12.jpg" alt="Post">
+                                            </a>
+                                            <div class="count-number">{{ $post->likes->count() }}</div>
                                         </div>
                                         <div class="item-content">
                                             <ul class="entry-meta meta-color-dark">
-                                                <li><i class="fas fa-calendar-alt"></i>{{ $post->publish }}</li>
+                                                <li>
+                                                    <i class="fas fa-calendar-alt"></i>
+                                                    {{ $post->publish }}
+                                                </li>
                                             </ul>
                                             <h4 class="item-title"><a href="#">{{ $post->title }}</a></h4>
                                         </div>
@@ -128,81 +169,12 @@
                     </div>
                     <div class="widget">
                         <div class="widget-ad">
-                            <a href="#"><img src="/themes/blogxer/img/figure/figure1.jpg" alt="Ad" class="img-fluid"></a>
+                            <a href="#">
+                                <img src="/themes/blogxer/img/figure/figure1.jpg" alt="Ad" class="img-fluid">
+                            </a>
                         </div>
                     </div>
-                    <div class="widget">
-                        <div class="section-heading heading-dark">
-                            <h3 class="item-heading">INSTAGRAM</h3>
-                        </div>
-                        <div class="widget-instagram">
-                            <ul>
-                                <li>
-                                    <div class="item-box">
-                                        <img src="/themes/blogxer/img/social-figure/social-figure1.jpg" alt="Social Figure"
-                                             class="img-fluid">
-                                        <a href="#" class="item-icon"><i class="fab fa-instagram"></i></a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="item-box">
-                                        <img src="/themes/blogxer/img/social-figure/social-figure2.jpg" alt="Social Figure"
-                                             class="img-fluid">
-                                        <a href="#" class="item-icon"><i class="fab fa-instagram"></i></a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="item-box">
-                                        <img src="/themes/blogxer/img/social-figure/social-figure3.jpg" alt="Social Figure"
-                                             class="img-fluid">
-                                        <a href="#" class="item-icon"><i class="fab fa-instagram"></i></a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="item-box">
-                                        <img src="/themes/blogxer/img/social-figure/social-figure4.jpg" alt="Social Figure"
-                                             class="img-fluid">
-                                        <a href="#" class="item-icon"><i class="fab fa-instagram"></i></a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="item-box">
-                                        <img src="/themes/blogxer/img/social-figure/social-figure5.jpg" alt="Social Figure"
-                                             class="img-fluid">
-                                        <a href="#" class="item-icon"><i class="fab fa-instagram"></i></a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="item-box">
-                                        <img src="/themes/blogxer/img/social-figure/social-figure6.jpg" alt="Social Figure"
-                                             class="img-fluid">
-                                        <a href="#" class="item-icon"><i class="fab fa-instagram"></i></a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="item-box">
-                                        <img src="/themes/blogxer/img/social-figure/social-figure7.jpg" alt="Social Figure"
-                                             class="img-fluid">
-                                        <a href="#" class="item-icon"><i class="fab fa-instagram"></i></a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="item-box">
-                                        <img src="/themes/blogxer/img/social-figure/social-figure8.jpg" alt="Social Figure"
-                                             class="img-fluid">
-                                        <a href="#" class="item-icon"><i class="fab fa-instagram"></i></a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="item-box">
-                                        <img src="/themes/blogxer/img/social-figure/social-figure9.jpg" alt="Social Figure"
-                                             class="img-fluid">
-                                        <a href="#" class="item-icon"><i class="fab fa-instagram"></i></a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+{{--                    @include('blog.partials.widget.instagram')--}}
                     <div class="widget">
                         <div class="section-heading heading-dark">
                             <h3 class="item-heading">CATEGORIES</h3>

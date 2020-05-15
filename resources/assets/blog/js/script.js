@@ -19,6 +19,7 @@ try {
   require('bootstrap');
   require('./scripts/main');
   require('./scripts/map');
+  require('./scripts/socials');
   $.ajaxSetup({
     headers: {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

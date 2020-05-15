@@ -19,11 +19,13 @@
     color: #111111;
     margin-bottom: 26px;
     line-height: 1.2;
+    @include media-breakpoint-down(sm) { font-size: 30px; }
   }
 
   p {
     width: 70%;
     margin: 0 auto 55px;
+    @include media-breakpoint-down(sm) { width: 100%; }
   }
 
   .error-newsletter .stylish-input-group {
@@ -101,19 +103,7 @@
     transition: all 0.3s ease-out;
 
     &:hover {
-      box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 10px 30px 0 rgba($black, 0.5);
     }
-  }
-}
-
-@media only screen and (max-width: 575px) {
-  .error-page-box .error-title {
-    font-size: 30px;
-  }
-}
-
-@media only screen and (max-width: 575px) {
-  .error-page-box p {
-    width: 100%;
   }
 }

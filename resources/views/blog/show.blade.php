@@ -9,7 +9,7 @@
     <section class="single-blog-wrap-layout1">
         <div class="single-blog-banner-layout1">
             <div class="banner-img">
-                <img src="{{ $blog->cover->url }}" alt="{{ $blog->title }}">
+                <img src="/themes/blogxer/img/blog/blog208.jpg" alt="{{ $blog->title }}">
             </div>
             <div class="banner-content">
                 <div class="container">
@@ -32,15 +32,52 @@
                         </li>
                     </ul>
                     <h2 class="item-title">{{ $blog->title }}</h2>
-                    <ul class="item-social">
-                        <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i>SHARE</a></li>
-                        <li><a href="#" class="twitter"><i class="fab fa-twitter"></i>SHARE</a></li>
-                        <li><a href="#" class="g-plus"><i class="fab fa-google-plus-g"></i>SHARE</a></li>
-                        <li><a href="#" class="pinterst"><i class="fab fa-pinterest"></i>PIN IT</a></li>
-                        <li><a href="#" class="load-more"><i class="fas fa-plus"></i>MORE</a></li>
-                    </ul>
+
+                    <div class="item-social">
+                        <button class="btn btn-default facebook social_share" data-type="fb">
+                            <i class="fab fa-facebook-f"></i>
+                            SHARE
+                        </button>
+                        <button class="btn btn-default twitter social_share" data-type="twitter">
+                            <i class="fab fa-twitter"></i>
+                            SHARE
+                        </button>
+                        <button class="btn btn-default g-plus social_share" data-type="gplus">
+                            <i class="fab fa-google-plus-g"></i>
+                            SHARE
+                        </button>
+                        <button class="btn btn-default pinterest social_share" data-type="pinterest">
+                            <i class="fab fa-pinterest"></i>
+                            PIN IT
+                        </button>
+                        <div class="dropdown">
+                            <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-plus"></i>
+                                MORE
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <button class="btn btn-default vk social_share" data-type="vk">VK.com</button>
+                                <button class="btn btn-default ok social_share" data-type="ok">OK.ru</button>
+                                <button class="btn btn-default mailru social_share" data-type="mailru">Mail.Ru</button>
+                                <button class="btn btn-default googlebookmarks social_share" data-type="googlebookmarks">Google Bookmarks</button>
+                                <button class="btn btn-default livejournal social_share" data-type="livejournal">LiveJournal</button>
+                                <button class="btn btn-default tumblr social_share" data-type="tumblr">Tumblr</button>
+                                <button class="btn btn-default linkedin social_share" data-type="linkedin">LinkedIn</button>
+                                <button class="btn btn-default redit social_share" data-type="reddit">Reddit</button>
+                                <button class="btn btn-default mailru social_share" data-type="mailru">Mail.ru</button>
+                                <button class="btn btn-default weibo social_share" data-type="weibo">Weibo</button>
+                                <button class="btn btn-default line social_share" data-type="line">Line.me</button>
+                                <button class="btn btn-default skype social_share" data-type="skype">Skype</button>
+                                <button class="btn btn-default telegram social_share" data-type="telegram">Telegram</button>
+                                <button class="btn btn-default whatsapp social_share" data-type="whatsapp">Whatsapp</button>
+                                <button class="btn btn-default viber social_share" data-type="viber">Viber</button>
+                                <button class="btn btn-default email social_share" data-type="email">Email</button>
+                            </div>
+                        </div>
+                    </div>
+
                     <ul class="response-area">
-                        <li><a href="#"><i class="far fa-comment"></i>02</a></li>
+                        <li><a href="#"><i class="far fa-comment"></i>{{ $blog->comments->count() }}</a></li>
                         <li><a href="#"><i class="far fa-eye"></i>105</a></li>
                         <li><a href="#"><i class="far fa-heart"></i>{{ $blog->likes->count() }}</a></li>
                         <li><a href="#"><i class="fas fa-share"></i>302</a></li>
@@ -57,7 +94,8 @@
                         </div>
                         <div class="blog-entry-meta">
                             <ul>
-                                <li class="item-tag"><i class="fas fa-bookmark"></i>
+                                <li class="item-tag">
+                                    <i class="fas fa-bookmark"></i>
                                     @foreach($blog->tags as $tag)
                                         <a href="{{ $tag->url }}">{{ $tag->tag }},</a>
                                     @endforeach
@@ -100,7 +138,7 @@
                                     <div class="blog-box-layout1 text-left">
                                         <div class="item-img">
                                             <a href="{{ $post->url }}">
-                                                <img src="{{ $post->cover->url }}" alt="{{ $post->title }}">
+                                                <img src="/themes/blogxer/img/blog/blog213.jpg" alt="{{ $post->title }}">
                                             </a>
                                         </div>
                                         <div class="item-content">
@@ -114,7 +152,11 @@
                                                     {{ $post->publish }}
                                                 </li>
                                             </ul>
-                                            <h5 class="item-title"><a href="{{ $post->url }}">{{ $post->title }}</a></h5>
+                                            <h5 class="item-title">
+                                                <a href="{{ $post->url }}">
+                                                    {{ $post->title }}
+                                                </a>
+                                            </h5>
                                         </div>
                                     </div>
                                 </div>
@@ -258,7 +300,9 @@
                     </div>
                     <div class="widget">
                         <div class="widget-ad">
-                            <a href="#"><img src="/themes/blogxer/img/figure/figure5.jpg" alt="Ad" class="img-fluid"></a>
+                            <a href="#">
+                                <img src="/themes/blogxer/img/figure/figure5.jpg" alt="Ad" class="img-fluid">
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -266,43 +310,6 @@
         </div>
     </section>
     <!-- Single Blog Banner End Here -->
-    <!-- Instagram Start Here -->
-    <section class="instagram-feed-wrap-1">
-        <div class="instagram-feed-title-1">
-            <a href="#">
-                <i class="fab fa-instagram"></i>
-                FOLLOW US ON INSTAGRAM
-            </a>
-        </div>
-        <ul class="instagram-feed-figure-1">
-            <li>
-                <a href="#">
-                    <img src="/themes/blogxer/img/social-figure/social-figure22.jpg" alt="Social">
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="/themes/blogxer/img/social-figure/social-figure23.jpg" alt="Social"></a>
-            </li>
-            <li>
-                <a href="#"><img src="/themes/blogxer/img/social-figure/social-figure24.jpg" alt="Social"></a>
-            </li>
-            <li>
-                <a href="#"><img src="/themes/blogxer/img/social-figure/social-figure25.jpg" alt="Social"></a>
-            </li>
-            <li>
-                <a href="#"><img src="/themes/blogxer/img/social-figure/social-figure26.jpg" alt="Social"></a>
-            </li>
-            <li>
-                <a href="#"><img src="/themes/blogxer/img/social-figure/social-figure27.jpg" alt="Social"></a>
-            </li>
-            <li>
-                <a href="#"><img src="/themes/blogxer/img/social-figure/social-figure28.jpg" alt="Social"></a>
-            </li>
-            <li>
-                <a href="#"><img src="/themes/blogxer/img/social-figure/social-figure29.jpg" alt="Social"></a>
-            </li>
-        </ul>
-    </section>
-    <!-- Instagram End Here -->
+        @include('blog.partials.instagram')
 @endsection
+

@@ -74,32 +74,28 @@
     letter-spacing: 2px;
     transition: all 0.3s ease-in-out;
 
+    @include media-breakpoint-down(sm) {
+      padding: 40px 20px 12px;
+      font-size: 13px;
+    }
+
     i {
       margin-right: 8px;
       font-size: 20px;
       margin-bottom: 1px;
+
+      @include media-breakpoint-down(sm) {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 15px;
+      }
     }
 
     &:hover {
       background-color: #111111;
       color: $white;
     }
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  .instagram-feed-title-1 a {
-    padding: 40px 20px 12px;
-    font-size: 13px;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  .instagram-feed-title-1 a i {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 15px;
   }
 }
 

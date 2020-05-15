@@ -1,4 +1,24 @@
 
+@mixin item-btn() {
+  display: inline-block;
+  border: 1px solid #111111;
+  background-color: #111111;
+  color: $white;
+  font-weight: 500;
+  letter-spacing: 1px;
+  font-size: $font-size-base;
+  border-radius: 4px;
+  padding: 12px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+
+  &:hover {
+    color: #111111;
+    background-color: transparent;
+    border: 1px solid #111111;
+  }
+}
 /*------------------- 5.2 Blog -------------------*/
 
 .blog-wrap-layout1 {
@@ -120,7 +140,6 @@
       font-weight: 600;
       margin-bottom: 12px;
       overflow: hidden;
-      -o-text-overflow: ellipsis;
       text-overflow: ellipsis;
       display: -webkit-box;
       -webkit-line-clamp: 2;
@@ -146,6 +165,10 @@
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
+
+      @include media-breakpoint-down(md) { font-size: 26px; }
+      @include media-breakpoint-down(sm) { font-size: 24px; }
+      @include media-breakpoint-down(xs) { font-size: 22px; }
 
       a {
         color: #111111;
@@ -201,23 +224,6 @@
   }
 }
 
-@media only screen and (max-width: 991px) {
-  .blog-box-layout1 .item-content .item-title-lg {
-    font-size: 26px;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  .blog-box-layout1 .item-content .item-title-lg {
-    font-size: 24px;
-  }
-}
-
-@media only screen and (max-width: 575px) {
-  .blog-box-layout1 .item-content .item-title-lg {
-    font-size: 22px;
-  }
-}
 
 .blog-box-layout2 {
   margin-bottom: 32px;
@@ -409,6 +415,12 @@
   display: flex;
   align-items: start;
 
+  //@include media-breakpoint-down(xs) { ... }
+  //@include media-breakpoint-down(sm) { ... }
+  @include media-breakpoint-down(md) { display: block; }
+  //@include media-breakpoint-down(lg) { ... }
+  //@include media-breakpoint-down(xl) { ... }
+
   .item-img {
     width: 50%;
     margin-right: 40px;
@@ -565,7 +577,7 @@
 
 .blog-box-layout5 {
   margin-bottom: 40px;
-  box-shadow: 0px 1px 0px 0px rgba(224, 224, 224, 0.75);
+  box-shadow: 0 1px 0 0 rgba(224, 224, 224, 0.75);
   border-radius: 4px;
   transition: all 0.3s ease-in-out;
 
@@ -649,7 +661,7 @@
   }
 
   &:hover {
-    box-shadow: 0px 15px 21px 0px #e5e5e5;
+    box-shadow: 0 15px 21px 0 #e5e5e5;
 
     .item-img {
       &:after {
@@ -1578,6 +1590,23 @@
     .item-social {
       margin-bottom: 16px;
 
+      .dropdown-menu {
+        background-color: transparent;
+        border: none;
+      }
+
+      button {
+        display: inline-block;
+        margin-right: 6px;
+        margin-bottom: 10px;
+
+        @each $social, $icon in $icons {
+          &.#{$social} {
+            background-color: map-get($icon, color);
+          }
+        }
+      }
+
       li {
         display: inline-block;
         margin-right: 6px;
@@ -1608,20 +1637,10 @@
           }
         }
 
-        .facebook {
-          background-color: #3b5997;
-        }
-
-        .twitter {
-          background-color: #56acec;
-        }
-
-        .g-plus {
-          background-color: #dc4a39;
-        }
-
-        .pinterst {
-          background-color: #c80909;
+        @each $social, $icon in $icons {
+          .#{$social} {
+            background-color: map-get($icon, color);
+          }
         }
 
         .load-more {
@@ -1987,7 +2006,6 @@
     .form-control {
       font-size: $font-size-sm;
       padding: 15px 20px;
-      border: none;
       border: 1px solid #e0d9d9;
       color: #444444;
       border-radius: 4px;
@@ -2144,6 +2162,23 @@
     .item-social {
       margin-bottom: 18px;
 
+      .dropdown-menu {
+        background-color: transparent;
+        border: none;
+      }
+
+      button {
+        display: inline-block;
+        margin-right: 6px;
+        margin-bottom: 10px;
+
+        @each $social, $icon in $icons {
+          &.#{$social} {
+            background-color: map-get($icon, color);
+          }
+        }
+      }
+
       li {
         display: inline-block;
         margin-right: 6px;
@@ -2174,20 +2209,10 @@
           }
         }
 
-        .facebook {
-          background-color: #3b5997;
-        }
-
-        .twitter {
-          background-color: #56acec;
-        }
-
-        .g-plus {
-          background-color: #dc4a39;
-        }
-
-        .pinterst {
-          background-color: #c80909;
+        @each $social, $icon in $icons {
+          .#{$social} {
+            background-color: map-get($icon, color);
+          }
         }
 
         .load-more {
@@ -2454,7 +2479,6 @@
     .form-control {
       font-size: $font-size-sm;
       padding: 15px 20px;
-      border: none;
       border: 1px solid #e0d9d9;
       color: #444444;
       border-radius: 4px;
@@ -2471,27 +2495,13 @@
 
     .item-btn {
       margin-top: 1.5rem;
-      display: inline-block;
-      border: 1px solid #111111;
-      background-color: #111111;
-      color: $white;
-      font-weight: 500;
-      letter-spacing: 1px;
-      font-size: $font-size-base;
-      border-radius: 4px;
-      padding: 12px 20px;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.3s ease-out;
-
-      &:hover {
-        color: #111111;
-        background-color: transparent;
-        border: 1px solid #111111;
-      }
+      @include item-btn();
     }
   }
 }
+
+
+
 
 @media only screen and (max-width: 991px) {
   .single-blog-box-layout2 .single-blog-content {
@@ -2608,6 +2618,23 @@
       .item-social {
         margin-bottom: 14px;
 
+        .dropdown-menu {
+          background-color: transparent;
+          border: none;
+        }
+
+        button {
+          display: inline-block;
+          margin-right: 6px;
+          margin-bottom: 10px;
+
+          @each $social, $icon in $icons {
+            &.#{$social} {
+              background-color: map-get($icon, color);
+            }
+          }
+        }
+
         li {
           display: inline-block;
           margin-right: 6px;
@@ -2638,20 +2665,10 @@
             }
           }
 
-          .facebook {
-            background-color: #3b5997;
-          }
-
-          .twitter {
-            background-color: #56acec;
-          }
-
-          .g-plus {
-            background-color: #dc4a39;
-          }
-
-          .pinterst {
-            background-color: #c80909;
+          @each $social, $icon in $icons {
+            .#{$social} {
+              background-color: map-get($icon, color);
+            }
           }
 
           .load-more {
@@ -2976,24 +2993,7 @@
       }
 
       .item-btn {
-        display: inline-block;
-        border: 1px solid #111111;
-        background-color: #111111;
-        color: $white;
-        font-weight: 500;
-        letter-spacing: 1px;
-        font-size: $font-size-base;
-        border-radius: 4px;
-        padding: 12px 20px;
-        text-align: center;
-        cursor: pointer;
-        transition: all 0.3s ease-out;
-
-        &:hover {
-          color: #111111;
-          background-color: transparent;
-          border: 1px solid #111111;
-        }
+        @include item-btn();
       }
     }
   }

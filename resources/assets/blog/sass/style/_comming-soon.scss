@@ -99,8 +99,7 @@
             transition: 0.5s ease-in-out;
 
             &:focus {
-              outline: none;
-              outline-width: 0;
+              outline: none 0;
             }
           }
         }

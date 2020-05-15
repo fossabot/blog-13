@@ -205,7 +205,7 @@ class Post extends Model implements UrlRoutable, DateAttributeInterface
     {
         switch ($this->type) {
             case 'blog':
-                return url('blog/', $this->slug);
+                return url($this->type. '/' .$this->slug);
                 break;
             case 'page':
                 return url($this->slug);

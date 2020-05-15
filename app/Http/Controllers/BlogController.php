@@ -16,6 +16,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
+use Instagram;
 
 /**
  * Class BlogController
@@ -47,6 +48,8 @@ class BlogController extends Controller
 
         $featured = $query->where('is_sticky', true)->get();
 
+//        dd($this->instagram());
+
         $layout = 'blog.index';
 
 
@@ -56,7 +59,8 @@ class BlogController extends Controller
             'featured' => $featured,
             'latest'=> $latest,
             'getPost' => $getPost,
-            'categories' => Category::with('posts.user')->get()
+            'categories' => Category::with('posts.user')->get(),
+            'instagram' => $this->instagram()
         ]);
     }
 
@@ -73,10 +77,13 @@ class BlogController extends Controller
         $posts =  $query->where('category_id', $blog->category->id)
             ->except($blog->id);
 
+
+
         return view('blog.show', [
             'blog' => $blog,
             'posts' => $posts,
-            'categories' => Category::with('posts.user')->get()
+            'categories' => Category::with('posts.user')->get(),
+            'instagram' => $this->instagram()
         ]);
     }
 
@@ -102,5 +109,21 @@ class BlogController extends Controller
 
         return response($map)
             ->header('Content-type', 'text/xml');
+    }
+
+    /**
+     * @throws Instagram\Exception\InstagramCacheException
+     * @throws Instagram\Exception\InstagramException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @return Instagram\Hydrator\Component\Feed
+     */
+    private function instagram(): Instagram\Hydrator\Component\Feed
+    {
+        $cache = new Instagram\Storage\CacheManager(storage_path('app/public/instagram/'));
+        $api = new Instagram\Api($cache);
+        $api->setUserName('wach_1');
+
+        $feed = $api->getFeed();
+        return $feed;
     }
 }
