@@ -29,6 +29,8 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use League\CommonMark\CommonMarkConverter;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Permission\Traits\HasRoles;
 
 /**
@@ -121,10 +123,18 @@ use Spatie\Permission\Traits\HasRoles;
  * @property string $layout
  * @property-read null|\App\Models\Media $cover
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereLayout($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\MediaLibrary\MediaCollections\Models\Media[] $media
+ * @property-read null|int $media_count
  */
-class Post extends Model implements UrlRoutable, DateAttributeInterface
+class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterface
 {
-    use HasRoles, SoftDeletes, Likeable, LogsActivity, HasSlug, DateAttributeTrait;
+    use HasRoles,
+        InteractsWithMedia,
+        SoftDeletes,
+        Likeable,
+        LogsActivity,
+        HasSlug,
+        DateAttributeTrait;
     /**
      * @var array
      */

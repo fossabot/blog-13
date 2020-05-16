@@ -7,6 +7,10 @@ use Closure;
 use Illuminate\Http\Request;
 use Session;
 
+/**
+ * Class Localization
+ * @package App\Http\Middleware
+ */
 class Localization
 {
     /**

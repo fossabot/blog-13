@@ -22,7 +22,7 @@ use Instagram;
  * Class PostController
  * @package App\Http\Controllers
  */
-class PostController extends Controller
+final class PostController extends Controller
 {
     /**
      * @var Post
