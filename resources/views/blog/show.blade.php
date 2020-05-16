@@ -226,96 +226,16 @@
                     </div>
                 </div>
                 <div class="col-lg-4 sidebar-widget-area sidebar-break-md">
-                    <div class="widget">
-                        <div class="section-heading heading-dark">
-                            <h3 class="item-heading">POPULAR POSTS</h3>
-                        </div>
-                        <div class="widget-latest">
-                            <ul class="block-list">
-                                @foreach($posts->take(10) as $post)
-                                <li class="single-item">
-                                    <div class="item-img">
-                                        <a href="{{ $post->url }}">
-                                            <img height="100px" src="{{ $post->getMedia('images')[0]->getUrl('small') }}" alt="{{ $post->title }}">
-                                        </a>
-                                    </div>
-                                    <div class="item-content">
-                                        <ul class="entry-meta meta-color-dark">
-                                            <li><i class="fas fa-tag"></i>{{ $post->category->title }}</li>
-                                            <li  data-toggle="tooltip" title="{{ $post->published_at->toIso8601String() }}">
-                                                <i class="fas fa-calendar-alt"></i>
-                                                {{ $post->publish }}
-                                            </li>
-                                        </ul>
-                                        <h4 class="item-title">
-                                            <a href="{{ $post->url }}">
-                                                {{ $post->title }}
-                                            </a>
-                                        </h4>
-                                    </div>
-                                </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="widget">
-                        <div class="section-heading heading-dark">
-                            <h3 class="item-heading">FOLLOW ME ON</h3>
-                        </div>
-                        <div class="widget-follow-us-2">
-                            <ul>
-                                @foreach(config('blog.socials') as $social)
-                                <li class="single-item">
-                                    <a href="{{ $social['url'] }}">
-                                        <i class="fab fa-{{ $social['name'] }}"></i>
-                                        {{ $social['text'] }}
-                                    </a>
-                                </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="widget">
-                        <div class="widget-newsletter-subscribe-dark">
-                            <h3>GET LATEST UPDATES</h3>
-                            <p>NEWSLETTER SUBSCRIBE</p>
-                            <form class="newsletter-subscribe-form">
-                                <div class="form-group">
-                                    <input type="text" placeholder="your e-mail address" class="form-control" name="email"
-                                           data-error="E-mail field is required" required>
-                                    <div class="help-block with-errors"></div>
-                                </div>
-                                <div class="form-group mb-none">
-                                    <button type="submit" class="item-btn">SUBSCRIBE</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="widget">
-                        <div class="section-heading heading-dark">
-                            <h3 class="item-heading">CATEGORIES</h3>
-                        </div>
-                        <div class="widget-categories">
-                            <ul>
-                                @foreach($categories as $category)
-                                    @if(!empty($category->posts->count()))
-                                        <li>
-                                            <a href="{{ $category->url }}">{{ $category->title }}
-                                                <span>({{ $category->posts->count() }})</span>
-                                            </a>
-                                        </li>
-                                    @endif
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="widget">
-                        <div class="widget-ad">
-                            <a href="#">
-                                <img src="/themes/blogxer/img/figure/figure5.jpg" alt="Ad" class="img-fluid">
-                            </a>
-                        </div>
-                    </div>
+
+                    @include('blog.partials.widget.latest')
+
+                    @include('blog.partials.widget.follow')
+
+                    @include('blog.partials.widget.newsletter')
+
+                    @include('blog.partials.widget.categories')
+
+                    @include('blog.partials.widget.adsense')
                 </div>
             </div>
         </div>

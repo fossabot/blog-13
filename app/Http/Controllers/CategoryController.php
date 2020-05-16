@@ -22,22 +22,26 @@ class CategoryController extends Controller
     /**
      * @param Category $category
      * @return View
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Instagram\Exception\InstagramCacheException
+     * @throws \Instagram\Exception\InstagramException
      */
     public function __invoke(Category $category): View
     {
-        $query = Post::with(['tags', 'image', 'category', 'comments', 'likes']);
+        $query = Post::with(['tags', 'media', 'category', 'comments', 'likes'])->get();
 
         $posts =  $query->where('category_id', $category->id)
-            ->paginate(10);
+            ->take(10);
 
-        $populars = $query->take(10)->get();
+        $latest = $query->take(10);
 
         $layout = $category->layout ? $category->layout : 'blog.categories.index';
 
         return view($layout, [
             'category' => $category,
             'posts' => $posts,
-            'populars' => $populars
+            'latest' => $latest,
+            'instagram' => $this->instagram()
         ]);
     }
 }

@@ -120,153 +120,23 @@
 
                 </div>
                 <div class="col-xl-3 col-lg-4 sidebar-widget-area sidebar-break-md">
-                    <div class="widget">
-                        <div class="section-heading heading-dark">
-                            <h3 class="item-heading">ABOUT ME</h3>
-                        </div>
-                        <div class="widget-about">
-                            <figure class="author-figure">
-                                <img src="{{ $instagram->profilePicture }}" alt="{{ $instagram->fullName }}">
-                            </figure>
-{{--                            <figure class="author-signature">--}}
-{{--                                <img src="/themes/blogxer/img/figure/signature.png" alt="about">--}}
-{{--                            </figure>--}}
-                            <p>{{ $instagram->biography }}</p>
-                        </div>
-                    </div>
-                    <div class="widget">
-                        <div class="section-heading heading-dark">
-                            <h3 class="item-heading">SUBSCRIBE &amp; FOLLOW</h3>
-                        </div>
-                        <div class="widget-follow-us">
-                            <ul>
-                                @foreach(config('blog.socials') as $social)
-                                    <li class="single-item">
-                                        <a class="svg-icon" href="{{ $social['url'] }}">
-                                            <i class="fab fa-{{ $social['name'] }}"></i>
-                                        </a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="widget">
-                        <div class="section-heading heading-dark">
-                            <h3 class="item-heading">POPULAR POSTS</h3>
-                        </div>
-                        <div class="widget-latest">
-                            <ul class="block-list">
-                                @foreach($latest as $post)
-                                    <li class="single-item">
-                                        <div class="item-img">
-                                            <a href="#">
-                                                <img src="{{ $post->getMedia('images')[0]->getUrl('small') }}" alt="Post">
-                                            </a>
-                                            <div class="count-number">{{ $post->likes->count() }}</div>
-                                        </div>
-                                        <div class="item-content">
-                                            <ul class="entry-meta meta-color-dark">
-                                                <li>
-                                                    <i class="fas fa-calendar-alt"></i>
-                                                    {{ $post->publish }}
-                                                </li>
-                                            </ul>
-                                            <h4 class="item-title"><a href="#">{{ $post->title }}</a></h4>
-                                        </div>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="widget">
-                        <div class="widget-ad">
-                            <a href="#">
-                                <img src="/themes/blogxer/img/figure/figure1.jpg" alt="Ad" class="img-fluid">
-                            </a>
-                        </div>
-                    </div>
-{{--                    @include('blog.partials.widget.instagram')--}}
-                    <div class="widget">
-                        <div class="section-heading heading-dark">
-                            <h3 class="item-heading">CATEGORIES</h3>
-                        </div>
-                        <div class="widget-categories">
-                            <ul>
-                                @foreach($categories as $category)
-                                    @if(!empty($category->posts->count()))
-                                        <li>
-                                            <a href="#">{{ $category->title }}
-                                                <span>({{ $category->posts->count() }})</span>
-                                            </a>
-                                        </li>
-                                    @endif
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="widget">
-                        <div class="widget-newsletter-subscribe">
-                            <h3>Get Latest Updates</h3>
-                            <p>Newsletter Subscribe</p>
-                            <form class="newsletter-subscribe-form">
-                                <div class="form-group">
-                                    <input type="text" placeholder="your e-mail address" class="form-control"
-                                           name="email" data-error="E-mail field is required" required>
-                                    <div class="help-block with-errors"></div>
-                                </div>
-                                <div class="form-group mb-none">
-                                    <button type="submit" class="item-btn">SUBSCRIBE</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="widget">
-                        <div class="section-heading heading-dark">
-                            <h3 class="item-heading">FEATURED ARTICLE</h3>
-                        </div>
-                        <div class="widget-featured-feed">
-                            <div class="rc-carousel dot-control-layout1" data-loop="true" data-items="3"
-                                 data-margin="5" data-autoplay="false" data-autoplay-timeout="5000"
-                                 data-smart-speed="1000" data-dots="true" data-nav="false" data-nav-speed="false"
-                                 data-r-x-small="1" data-r-x-small-nav="false" data-r-x-small-dots="true"
-                                 data-r-x-medium="1" data-r-x-medium-nav="false" data-r-x-medium-dots="true"
-                                 data-r-small="1" data-r-small-nav="false" data-r-small-dots="true"
-                                 data-r-medium="1" data-r-medium-nav="false" data-r-medium-dots="true"
-                                 data-r-large="1" data-r-large-nav="false" data-r-large-dots="true"
-                                 data-r-extra-large="1" data-r-extra-large-nav="false" data-r-extra-large-dots="true">
-                                <div class="featured-box-layout1">
-                                    <div class="item-img">
-                                        <img src="/themes/blogxer/img/blog/blog16.jpg" alt="Brand" class="img-fluid">
-                                    </div>
-                                    <div class="item-content">
-                                        <span class="post-date">OCTOBER 19, 2018</span>
-                                        <h5 class="item-title"><a href="single-blog.html">Dreamy Places will
-                                                Never Get to Visit</a></h5>
-                                    </div>
-                                </div>
-                                <div class="featured-box-layout1">
-                                    <div class="item-img">
-                                        <img src="/themes/blogxer/img/blog/blog17.jpg" alt="Brand" class="img-fluid">
-                                    </div>
-                                    <div class="item-content">
-                                        <span class="post-date">OCTOBER 19, 2018</span>
-                                        <h5 class="item-title"><a href="single-blog.html">Dreamy Places will
-                                                Never Get to Visit</a></h5>
-                                    </div>
-                                </div>
-                                <div class="featured-box-layout1">
-                                    <div class="item-img">
-                                        <img src="/themes/blogxer/img/blog/blog16.jpg" alt="Brand" class="img-fluid">
-                                    </div>
-                                    <div class="item-content">
-                                        <span class="post-date">OCTOBER 19, 2018</span>
-                                        <h5 class="item-title"><a href="single-blog.html">Dreamy Places will
-                                                Never Get to Visit</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+                    @include('blog.partials.widget.about')
+
+
+                    @include('blog.partials.widget.subscribe')
+
+                    @include('blog.partials.widget.latest')
+
+                    @include('blog.partials.widget.adsense')
+
+                    @include('blog.partials.widget.instagram')
+
+                    @include('blog.partials.widget.categories')
+
+                    @include('blog.partials.widget.newsletter')
+
+                    @include('blog.partials.widget.feature-feed')
                 </div>
             </div>
         </div>

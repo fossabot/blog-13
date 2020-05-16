@@ -13,11 +13,9 @@ use App\Libraries\Rss\RssFeed;
 use App\Libraries\SiteMap\SiteMap;
 use App\Models\Category;
 use App\Models\Post;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
-use Instagram;
 
 /**
  * Class PostController
@@ -43,10 +41,10 @@ final class PostController extends Controller
      * Show all blog
      *
      * @param Request $request
-     * @throws Instagram\Exception\InstagramCacheException
-     * @throws Instagram\Exception\InstagramException
-     * @throws \GuzzleHttp\Exception\GuzzleException
      * @return View
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Instagram\Exception\InstagramCacheException
+     * @throws \Instagram\Exception\InstagramException
      */
     public function index(Request $request): View
     {
@@ -89,11 +87,11 @@ final class PostController extends Controller
     /**
      * Show blog by slug
      *
-     * @param $slug
-     * @throws Instagram\Exception\InstagramCacheException
-     * @throws Instagram\Exception\InstagramException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @param string $slug
      * @return View
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Instagram\Exception\InstagramCacheException
+     * @throws \Instagram\Exception\InstagramException
      */
     public function show(string $slug): View
     {
@@ -158,19 +156,5 @@ final class PostController extends Controller
             ->header('Content-type', 'text/xml');
     }
 
-    /**
-     * @throws Instagram\Exception\InstagramCacheException
-     * @throws Instagram\Exception\InstagramException
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     * @return Instagram\Hydrator\Component\Feed
-     */
-    private function instagram(): Instagram\Hydrator\Component\Feed
-    {
-        $cache = new Instagram\Storage\CacheManager(storage_path('app/public/instagram/'));
-        $api = new Instagram\Api($cache);
-        $api->setUserName('wach_1');
 
-        $feed = $api->getFeed();
-        return $feed;
-    }
 }
