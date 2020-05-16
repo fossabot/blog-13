@@ -13,6 +13,7 @@ use App\Libraries\Rss\RssFeed;
 use App\Libraries\SiteMap\SiteMap;
 use App\Models\Category;
 use App\Models\Post;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
@@ -52,7 +53,7 @@ final class PostController extends Controller
         $query = $this->post->where('published_at', '<=', now())
             ->where('is_draft', 0)
             ->orderBy('published_at', 'desc')
-            ->with(['cover', 'category', 'user', 'likes']);
+            ->with(['category', 'user', 'likes']);
 
         if ($request->has('query')  && $request->input('query')  != '') {
             $query = $this->post->search($request->input('query'));
@@ -94,8 +95,18 @@ final class PostController extends Controller
      */
     public function show(string $slug): View
     {
-        $query = $this->post->with(['tags', 'cover', 'category', 'comments.user'])->get();
+        $query = $this->post->with(['tags', 'category', 'comments.user'])->get();
         $blog = $query->where('slug', $slug)->first();
+
+        $mediaItems = $blog->getMedia();
+        $publicUrl = $mediaItems[0]->getUrl();
+        $publicFullUrl = $mediaItems[0]->getFullUrl(); //url including domain
+        $fullPathOnDisk = $mediaItems[0]->getPath();
+        $temporaryS3Url = $mediaItems[0]->getTemporaryUrl(Carbon::now()->addMinutes(5));
+        $media = $blog->getFirstMedia();
+        $url = $blog->getFirstMediaUrl();
+        dd($url);
+
         $posts =  $query->where('category_id', $blog->category->id)
             ->except($blog->id);
 

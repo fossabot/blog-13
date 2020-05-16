@@ -27,6 +27,8 @@ use Illuminate\Support\Str;
 use Laravel\Passport\Client;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Permission\Traits\HasRoles;
 
 /**
@@ -92,9 +94,9 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static Builder|User whereRegisteredAt($value)
  * @property-read \App\Models\Media $image
  */
-class User extends Authenticatable implements MustVerifyEmail, HasLocalePreference
+class User extends Authenticatable implements HasMedia, MustVerifyEmail, HasLocalePreference
 {
-    use Notifiable, HasRoles, HasApiTokens, LogsActivity, HasSlug;
+    use Notifiable, InteractsWithMedia, HasRoles, HasApiTokens, LogsActivity, HasSlug;
 
     /**
      * The attributes that are mass assignable.

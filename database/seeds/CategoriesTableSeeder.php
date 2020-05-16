@@ -32,13 +32,10 @@ class CategoriesTableSeeder extends Seeder
                 'subtitle' => isset($category['subtitle']) ? $category['subtitle'] : $category['title'],
                 'description' => $category['description']
             ]);
-            $category->image()->save(factory(\App\Models\Media::class)->make());
-        }
-
-        if (App::environment(['local', 'staging', 'testing'])) {
-            factory(Category::class, 30)->create()->each(function ($cat) {
-                $cat->image()->save(factory(Media::class)->make());
-            });
+            $category->addMedia(storage_path('app/public/img/' .$index. '.jpg'))
+                ->usingName($category['title'])
+                ->preservingOriginal()
+                ->toMediaCollection();
         }
     }
 

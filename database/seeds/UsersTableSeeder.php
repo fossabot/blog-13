@@ -26,10 +26,10 @@ class UsersTableSeeder extends Seeder
     {
         $users = self::defaultUser();
 
-        foreach ($users as $name => $email) {
+        foreach ($users as $index => $user) {
             $user = User::firstOrCreate([
-                'name' => strtolower($name),
-                'email' => $email,
+                'name' => strtolower($user['name']),
+                'email' => $user['email'],
                 'email_verified_at' => Carbon::now(),
                 'password' => bcrypt('secret'),
                 'remember_token' => Str::random(10),
@@ -37,17 +37,10 @@ class UsersTableSeeder extends Seeder
                 'registered_at' => now(),
             ]);
             $user->assignRole('admin');
-            $user->avatar()->firstOrCreate([
-                'file_name' => $name,
-                'name' => Str::slug($name). '.jpg',
-                'mime_type' => 'image/jpg',
-                'size' => mt_rand(1000, 10000),
-                'collection_name' => '[]',
-                'disk' => '[]',
-                'manipulations' => '[]',
-                'custom_properties' => '[]',
-                'responsive_images' => '[]'
-            ]);
+            $user->addMedia(storage_path('app/public/img/' .$index. '.jpg'))
+                ->preservingOriginal()
+                ->usingName($user['name'])
+                ->toMediaCollection();
         }
 
 //        if (App::environment(['local', 'staging', 'testing'])) {
@@ -66,23 +59,75 @@ class UsersTableSeeder extends Seeder
     protected static function defaultUser()
     {
         return [
-            "Nur Wachid" => 'wachid@outlook.com',
-            "Admin" => 'admin@example.com',
-            "User" => "user@example.com",
-            'Costumer Service' => 'costumer-service@example.com',
-            'manager' => 'manager@example.com',
-            'Master' => 'master@example.com',
-            'Administrator' => 'administrator@example.com',
-            'Agent' => 'agent@example.com',
-            'no replay' => 'noreplay@example.com',
-            'Dev' => 'dev@example.com',
-            'Developer' => 'developer@example.com',
-            'Guest' => 'guest@example.com',
-            'User Manager' => 'user.manager@example.com',
-            'Media' => 'media@example.com',
-            'Role' => 'role@example.com',
-            'Permission' => 'permission@example.com',
-            'Email' => 'email@example.com'
+
+            [
+                'name' => "Nur Wachid",
+                'email' => 'wachid@outlook.com'
+            ],
+            [
+                'name' => "Admin",
+                'email' => 'admin@example.com'
+            ],
+            [
+                'name' => "User",
+                'email' => "user@example.com"
+            ],
+            [
+                'name' => 'Costumer Service',
+                'email' => 'costumer-service@example.com'
+            ],
+            [
+                'name' => 'manager',
+                'email' => 'manager@example.com'
+            ],
+            [
+                'name' => 'Master',
+                'email' => 'master@example.com'
+            ],
+            [
+                'name' => 'Administrator',
+                'email' => 'administrator@example.com'
+            ],
+            [
+                'name' => 'Agent',
+                'email' => 'agent@example.com'
+            ],
+            [
+                'name' => 'no replay',
+                'email' => 'noreplay@example.com'
+            ],
+            [
+                'name' => 'Dev',
+                'email' => 'dev@example.com'
+            ],
+            [
+                'name' => 'Developer',
+                'email' => 'developer@example.com'
+            ],
+            [
+                'name' => 'Guest',
+                'email' => 'guest@example.com'
+            ],
+            [
+                'name' => 'User Manager',
+                'email' => 'user.manager@example.com'
+            ],
+            [
+                'name' => 'Media',
+                'email' => 'media@example.com'
+            ],
+            [
+                'name' => 'Role',
+                'email' => 'role@example.com'
+            ],
+            [
+                'name' => 'Permission',
+                'email' => 'permission@example.com'
+            ],
+            [
+                'name' => 'Email',
+                'email' => 'email@example.com'
+            ]
         ];
     }
 }

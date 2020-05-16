@@ -506,7 +506,8 @@ class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterfac
      */
     public function cover(): MorphOne
     {
-        return $this->morphOne(Media::class, 'media');
+//        $cover = self::getMedia();
+//        dd($cover);
     }
 
     /**

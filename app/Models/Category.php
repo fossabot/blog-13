@@ -19,6 +19,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
 /**
  * Class Category
@@ -67,9 +69,9 @@ use Spatie\Activitylog\Traits\LogsActivity;
  * @property string $layout
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereLayout($value)
  */
-class Category extends Model
+class Category extends Model implements HasMedia
 {
-    use SoftDeletes, HasSlug, LogsActivity;
+    use SoftDeletes, HasSlug, LogsActivity, InteractsWithMedia;
 
     /**
      * The attributes that are mass assignable.
