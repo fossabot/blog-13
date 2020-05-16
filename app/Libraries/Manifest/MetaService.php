@@ -9,7 +9,6 @@
 
 namespace App\Libraries\Manifest;
 
-
 /**
  * Class MetaService
  * @package App\Libraries\Manifest
@@ -24,5 +23,4 @@ class MetaService
         return "<?php \$config = (new ManifestService)->generate();
         echo \$__env->make( 'pwa::meta' , ['config' => \$config])->render(); ?>";
     }
-
 }

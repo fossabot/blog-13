@@ -2,35 +2,28 @@
 
 namespace App\Events;
 
-use Illuminate\Broadcasting\Channel;
-use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-use Illuminate\Foundation\Events\Dispatchable;
+use App\Models\Media;
 use Illuminate\Queue\SerializesModels;
 
+/**
+ * Class MediaHasBeenAdded
+ * @package App\Events
+ */
 class MediaHasBeenAdded
 {
-    use Dispatchable, InteractsWithSockets, SerializesModels;
+    use SerializesModels;
 
     /**
-     * Create a new event instance.
-     *
-     * @return void
+     * @var Media
      */
-    public function __construct()
-    {
-        //
-    }
+    public Media $media;
 
     /**
-     * Get the channels the event should broadcast on.
-     *
-     * @return \Illuminate\Broadcasting\Channel|array
+     * MediaHasBeenAdded constructor.
+     * @param Media $media
      */
-    public function broadcastOn()
+    public function __construct(Media $media)
     {
-        return new PrivateChannel('channel-name');
+        $this->media = $media;
     }
 }

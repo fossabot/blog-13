@@ -25,28 +25,28 @@ use Spatie\Permission\Traits\HasRoles;
  *
  * @property int $id
  * @property int $user_id
- * @property int|null $parent_id
- * @property string|null $title
+ * @property null|int $parent_id
+ * @property null|string $title
  * @property string $content
- * @property string|null $comment_type
- * @property int|null $comment_id
- * @property \Illuminate\Support\Carbon|null $published_at
+ * @property null|string $comment_type
+ * @property null|int $comment_id
+ * @property null|\Illuminate\Support\Carbon $published_at
  * @property int $approved
- * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Activity[] $activities
- * @property-read int|null $activities_count
+ * @property null|\Illuminate\Support\Carbon $deleted_at
+ * @property null|\Illuminate\Support\Carbon $created_at
+ * @property null|\Illuminate\Support\Carbon $updated_at
+ * @property-read \App\Models\Activity[]|\Illuminate\Database\Eloquent\Collection $activities
+ * @property-read null|int $activities_count
  * @property-read string $date
  * @property-read string $month
  * @property-read mixed $publish_date
  * @property-read mixed $publish_time
  * @property-read string $time_elapsed
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Permission[] $permissions
- * @property-read int|null $permissions_count
- * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $post
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Role[] $roles
- * @property-read int|null $roles_count
+ * @property-read \App\Models\Permission[]|\Illuminate\Database\Eloquent\Collection $permissions
+ * @property-read null|int $permissions_count
+ * @property-read \Eloquent|\Illuminate\Database\Eloquent\Model $post
+ * @property-read \App\Models\Role[]|\Illuminate\Database\Eloquent\Collection $roles
+ * @property-read null|int $roles_count
  * @property-read \App\Models\User $user
  * @method static bool|null forceDelete()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment lastMonth($limit = 5)
@@ -75,8 +75,8 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Comment withoutTrashed()
  * @mixin \Eloquent
  * @property-read mixed $publish
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Like[] $likes
- * @property-read int|null $likes_count
+ * @property-read \App\Models\Like[]|\Illuminate\Database\Eloquent\Collection $likes
+ * @property-read null|int $likes_count
  */
 class Comment extends Model implements DateAttributeInterface, LikeInterface
 {

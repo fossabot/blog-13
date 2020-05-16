@@ -1,23 +1,23 @@
 <?php
 
-namespace Spatie\MediaLibrary\MediaCollections;
+namespace App\Libraries\Media\MediaCollections;
 
+use App\Libraries\Media\Conversions\ImageGenerators\Image as ImageGenerator;
+use App\Libraries\Media\HasMedia;
+use App\Libraries\Media\MediaCollections\Exceptions\DiskDoesNotExist;
+use App\Libraries\Media\MediaCollections\Exceptions\FileDoesNotExist;
+use App\Libraries\Media\MediaCollections\Exceptions\FileIsTooBig;
+use App\Libraries\Media\MediaCollections\Exceptions\FileUnacceptableForCollection;
+use App\Libraries\Media\MediaCollections\Exceptions\UnknownType;
+use App\Libraries\Media\MediaCollections\File as PendingFile;
+use App\Libraries\Media\MediaCollections\Models\Media;
+use App\Libraries\Media\ResponsiveImages\Jobs\GenerateResponsiveImagesJob;
+use App\Libraries\Media\Support\File;
+use App\Libraries\Media\Support\RemoteFile;
 use Closure;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Traits\Macroable;
-use Spatie\MediaLibrary\Conversions\ImageGenerators\Image as ImageGenerator;
-use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\MediaCollections\Exceptions\DiskDoesNotExist;
-use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
-use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
-use Spatie\MediaLibrary\MediaCollections\Exceptions\FileUnacceptableForCollection;
-use Spatie\MediaLibrary\MediaCollections\Exceptions\UnknownType;
-use Spatie\MediaLibrary\MediaCollections\File as PendingFile;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Spatie\MediaLibrary\ResponsiveImages\Jobs\GenerateResponsiveImagesJob;
-use Spatie\MediaLibrary\Support\File;
-use Spatie\MediaLibrary\Support\RemoteFile;
 use Symfony\Component\HttpFoundation\File\File as SymfonyFile;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -31,7 +31,7 @@ class FileAdder
 
     protected bool $preserveOriginal = false;
 
-    /** @var \Symfony\Component\HttpFoundation\File\UploadedFile|string */
+    /** @var string|\Symfony\Component\HttpFoundation\File\UploadedFile */
     protected $file;
 
     protected array $properties = [];
@@ -214,7 +214,7 @@ class FileAdder
         }
 
         $mediaClass = config('media-library.media_model');
-        /** @var \Spatie\MediaLibrary\MediaCollections\Models\Media $media */
+        /** @var \App\Libraries\Media\MediaCollections\Models\Media $media */
         $media = new $mediaClass();
 
         $media->name = $this->mediaName;
@@ -264,7 +264,7 @@ class FileAdder
         }
 
         $mediaClass = config('media-library.media_model');
-        /** @var \Spatie\MediaLibrary\MediaCollections\Models\Media $media */
+        /** @var \App\Libraries\Media\MediaCollections\Models\Media $media */
         $media = new $mediaClass();
 
         $media->name = $this->mediaName;

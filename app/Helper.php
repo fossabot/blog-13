@@ -152,4 +152,3 @@ if (! function_exists('is_really_writable')) {
         return true;
     }
 }
-

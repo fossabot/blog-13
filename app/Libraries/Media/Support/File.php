@@ -1,11 +1,19 @@
 <?php
 
-namespace Spatie\MediaLibrary\Support;
+namespace App\Libraries\Media\Support;
 
 use Finfo;
 
+/**
+ * Class File
+ * @package App\Libraries\Media\Support
+ */
 class File
 {
+    /**
+     * @param int $sizeInBytes
+     * @return string
+     */
     public static function getHumanReadableSize(int $sizeInBytes): string
     {
         $units = ['B', 'KB', 'MB', 'GB', 'TB'];
@@ -21,6 +29,10 @@ class File
         return round($sizeInBytes, 2).' '.$units[$i];
     }
 
+    /**
+     * @param string $path
+     * @return string
+     */
     public static function getMimeType(string $path): string
     {
         $finfo = new Finfo(FILEINFO_MIME_TYPE);

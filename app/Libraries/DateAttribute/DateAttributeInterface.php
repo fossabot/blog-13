@@ -9,7 +9,6 @@
 
 namespace App\Libraries\DateAttribute;
 
-
 use Illuminate\Database\Eloquent\Builder;
 
 /**
@@ -36,5 +35,4 @@ interface DateAttributeInterface
      * @return Builder
      */
     public function scopeLastWeek(Builder $query): Builder;
-
 }

@@ -1,18 +1,18 @@
 <?php
 
-namespace Spatie\MediaLibrary\ResponsiveImages;
+namespace App\Libraries\Media\ResponsiveImages;
 
+use App\Libraries\Media\Conversions\Conversion;
+use App\Libraries\Media\MediaCollections\Filesystem;
+use App\Libraries\Media\MediaCollections\Models\Media;
+use App\Libraries\Media\ResponsiveImages\Events\ResponsiveImagesGenerated;
+use App\Libraries\Media\ResponsiveImages\Exceptions\InvalidTinyJpg;
+use App\Libraries\Media\ResponsiveImages\TinyPlaceholderGenerator\TinyPlaceholderGenerator;
+use App\Libraries\Media\ResponsiveImages\WidthCalculator\WidthCalculator;
+use App\Libraries\Media\Support\File;
+use App\Libraries\Media\Support\ImageFactory;
+use App\Libraries\Media\Support\TemporaryDirectory;
 use Illuminate\Support\Str;
-use Spatie\MediaLibrary\Conversions\Conversion;
-use Spatie\MediaLibrary\MediaCollections\Filesystem;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Spatie\MediaLibrary\ResponsiveImages\Events\ResponsiveImagesGenerated;
-use Spatie\MediaLibrary\ResponsiveImages\Exceptions\InvalidTinyJpg;
-use Spatie\MediaLibrary\ResponsiveImages\TinyPlaceholderGenerator\TinyPlaceholderGenerator;
-use Spatie\MediaLibrary\ResponsiveImages\WidthCalculator\WidthCalculator;
-use Spatie\MediaLibrary\Support\File;
-use Spatie\MediaLibrary\Support\ImageFactory;
-use Spatie\MediaLibrary\Support\TemporaryDirectory;
 use Spatie\TemporaryDirectory\TemporaryDirectory as BaseTemporaryDirectory;
 
 class ResponsiveImageGenerator

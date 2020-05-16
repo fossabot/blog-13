@@ -11,7 +11,6 @@ namespace App\Libraries\Post\ReadTime;
 
 use Exception;
 
-
 /**
  * Class ReadTime
  * @package App\Libraries\Post\ReadTime

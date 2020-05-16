@@ -38,7 +38,6 @@ class PostRequest extends FormRequest
      */
     protected function prepareForValidation(): void
     {
-
         $this->merge([
             'published_at' => Carbon::parse($this->input('published_at'))
         ]);

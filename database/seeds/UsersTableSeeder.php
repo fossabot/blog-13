@@ -38,10 +38,15 @@ class UsersTableSeeder extends Seeder
             ]);
             $user->assignRole('admin');
             $user->avatar()->firstOrCreate([
-                'file' => $name,
+                'file_name' => $name,
                 'name' => Str::slug($name). '.jpg',
-                'mime' => 'image/jpg',
-                'size' => mt_rand(1000, 10000)
+                'mime_type' => 'image/jpg',
+                'size' => mt_rand(1000, 10000),
+                'collection_name' => '[]',
+                'disk' => '[]',
+                'manipulations' => '[]',
+                'custom_properties' => '[]',
+                'responsive_images' => '[]'
             ]);
         }
 

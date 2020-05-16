@@ -59,8 +59,8 @@ class PostController extends Controller
      * Store a newly created resource in storage.
      * @param PostRequest $request
      * @param Post $post
-     * @return PostResource
      * @throws AuthorizationException
+     * @return PostResource
      */
     public function store(PostRequest $request, Post $post): PostResource
     {

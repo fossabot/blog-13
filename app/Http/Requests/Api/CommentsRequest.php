@@ -23,7 +23,6 @@ class CommentsRequest extends FormRequest
      */
     public function rules()
     {
-
         $polymorphExistsRule = '';
         if ($this->has('commentable_type')) {
             $polymorphExistsRule .= '|model_exists:' . $this->commentable_type . ',id';

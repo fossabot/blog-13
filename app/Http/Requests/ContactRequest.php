@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-
 class ContactRequest extends BaseRequest
 {
     /**

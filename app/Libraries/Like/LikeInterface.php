@@ -11,7 +11,6 @@
 
 namespace App\Libraries\Like;
 
-
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
@@ -45,5 +44,4 @@ interface LikeInterface
      * @return mixed
      */
     public function dislike();
-
 }

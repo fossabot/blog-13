@@ -12,6 +12,9 @@
 
 namespace App\Libraries\Media;
 
+use App\Libraries\Media\MediaCollections\FileAdder;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 interface HasMedia
 {
@@ -22,7 +25,7 @@ interface HasMedia
      *
      * @param string|\Symfony\Component\HttpFoundation\File\UploadedFile $file
      *
-     * @return \Spatie\MediaLibrary\MediaCollections\FileAdder
+     * @return \App\Libraries\Media\MediaCollections\FileAdder
      */
     public function addMedia($file): FileAdder;
 
@@ -31,7 +34,7 @@ interface HasMedia
      *
      * @param string|\Symfony\Component\HttpFoundation\File\UploadedFile $file
      *
-     * @return \Spatie\MediaLibrary\MediaCollections\FileAdder
+     * @return \App\Libraries\Media\MediaCollections\FileAdder
      */
     public function copyMedia($file): FileAdder;
 
@@ -53,7 +56,7 @@ interface HasMedia
      * Remove all media in the given collection except some.
      *
      * @param string $collectionName
-     * @param \Spatie\MediaLibrary\Media[]|\Illuminate\Support\Collection $excludedMedia
+     * @param \Illuminate\Support\Collection|Media[] $excludedMedia
      *
      * @return $this
      */
@@ -82,5 +85,4 @@ interface HasMedia
     public function registerMediaCollections(): void;
 
     public function registerAllMediaConversions(): void;
-
 }

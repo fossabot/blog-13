@@ -11,7 +11,6 @@ namespace App\Libraries\Post\MarkdownParse;
 
 use Symfony\Component\Yaml\Yaml;
 
-
 /**
  * Class YamlFrontMatter
  * @package App\Libraries\Post\MarkdownParse
@@ -49,5 +48,4 @@ class YamlFrontMatter
             file_get_contents($path)
         );
     }
-
 }

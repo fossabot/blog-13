@@ -1,11 +1,11 @@
 <?php
 
-namespace Spatie\MediaLibrary\ResponsiveImages;
+namespace App\Libraries\Media\ResponsiveImages;
 
-use Spatie\MediaLibrary\MediaCollections\Filesystem;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Spatie\MediaLibrary\Support\PathGenerator\PathGeneratorFactory;
-use Spatie\MediaLibrary\Support\UrlGenerator\UrlGeneratorFactory;
+use App\Libraries\Media\MediaCollections\Filesystem;
+use App\Libraries\Media\MediaCollections\Models\Media;
+use App\Libraries\Media\Support\PathGenerator\PathGeneratorFactory;
+use App\Libraries\Media\Support\UrlGenerator\UrlGeneratorFactory;
 
 class ResponsiveImage
 {

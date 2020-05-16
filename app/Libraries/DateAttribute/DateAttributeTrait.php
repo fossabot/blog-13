@@ -9,9 +9,9 @@
 
 namespace App\Libraries\DateAttribute;
 
-
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
+
 /**
  * Trait DateAttributeTrait
  * @package App\Libraries\DateAttribute
@@ -122,5 +122,4 @@ trait DateAttributeTrait
     {
         return  Carbon::parse($this->attributes['published_at'])->diffForHumans();
     }
-
 }

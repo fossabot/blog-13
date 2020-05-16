@@ -1,17 +1,17 @@
 <?php
 
-namespace Spatie\MediaLibrary\MediaCollections;
+namespace App\Libraries\Media\MediaCollections;
 
+use App\Libraries\Media\Conversions\ConversionCollection;
+use App\Libraries\Media\Conversions\FileManipulator;
+use App\Libraries\Media\MediaCollections\Events\MediaHasBeenAdded;
+use App\Libraries\Media\MediaCollections\Models\Media;
+use App\Libraries\Media\Support\File;
+use App\Libraries\Media\Support\PathGenerator\PathGeneratorFactory;
+use App\Libraries\Media\Support\RemoteFile;
 use Illuminate\Contracts\Filesystem\Factory;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Spatie\MediaLibrary\Conversions\ConversionCollection;
-use Spatie\MediaLibrary\Conversions\FileManipulator;
-use Spatie\MediaLibrary\MediaCollections\Events\MediaHasBeenAdded;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Spatie\MediaLibrary\Support\File;
-use Spatie\MediaLibrary\Support\PathGenerator\PathGeneratorFactory;
-use Spatie\MediaLibrary\Support\RemoteFile;
 
 class Filesystem
 {

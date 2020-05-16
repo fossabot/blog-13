@@ -119,7 +119,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereIsSticky($value)
  * @property-read mixed $publish
  * @property string $layout
- * @property-read \App\Models\Media|null $cover
+ * @property-read null|\App\Models\Media $cover
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereLayout($value)
  */
 class Post extends Model implements UrlRoutable, DateAttributeInterface

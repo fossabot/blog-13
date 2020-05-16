@@ -9,10 +9,10 @@
 
 namespace App\Scopes;
 
+use Auth;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
-use Auth;
 
 class PostedScope implements Scope
 {

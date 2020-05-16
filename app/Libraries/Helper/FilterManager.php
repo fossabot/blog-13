@@ -11,7 +11,6 @@
 
 namespace App\Libraries\Helper;
 
-
 class FilterManager extends BaseAction
 {
     protected $value = '';
@@ -39,5 +38,4 @@ class FilterManager extends BaseAction
         }
         return $this->value;
     }
-
 }

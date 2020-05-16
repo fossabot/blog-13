@@ -42,7 +42,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @mixin Eloquent
  * @property-read Collection|\Spatie\Permission\Models\Permission[] $permissions
  * @property-read null|int $permissions_count
- * @property-read Post[]|Collection $post
+ * @property-read Collection|Post[] $post
  * @property-read null|int $post_count
  * @property-read Collection|\Spatie\Permission\Models\Role[] $roles
  * @property-read null|int $roles_count
@@ -54,7 +54,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static Builder|Tag withTrashed()
  * @method static Builder|Tag withoutTrashed()
  * @property-read Collection|\Spatie\Activitylog\Models\Activity[] $activities
- * @property-read int|null $activities_count
+ * @property-read null|int $activities_count
  * @property string $title
  * @property string $subtitle
  * @property string $layout
@@ -118,5 +118,4 @@ class Tag extends Model
             ]);
         }
     }
-
 }

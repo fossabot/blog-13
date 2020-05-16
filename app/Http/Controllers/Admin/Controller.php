@@ -49,5 +49,4 @@ abstract class Controller extends \App\Http\Controllers\Controller
     {
         return Auth::user()->hasPermissionTo($permission);
     }
-
 }

@@ -11,8 +11,6 @@
 
 namespace App\Libraries\Helper;
 
-
 class ActionManager
 {
-
 }

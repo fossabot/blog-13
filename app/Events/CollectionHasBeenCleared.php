@@ -2,35 +2,36 @@
 
 namespace App\Events;
 
-use Illuminate\Broadcasting\Channel;
-use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-use Illuminate\Foundation\Events\Dispatchable;
+use App\Libraries\Media\HasMedia;
 use Illuminate\Queue\SerializesModels;
 
+/**
+ * Class CollectionHasBeenCleared
+ * @package App\Events
+ */
 class CollectionHasBeenCleared
 {
-    use Dispatchable, InteractsWithSockets, SerializesModels;
+    use SerializesModels;
 
     /**
-     * Create a new event instance.
-     *
-     * @return void
+     * @var HasMedia
      */
-    public function __construct()
-    {
-        //
-    }
+    public HasMedia $model;
 
     /**
-     * Get the channels the event should broadcast on.
-     *
-     * @return \Illuminate\Broadcasting\Channel|array
+     * @var string
      */
-    public function broadcastOn()
+    public string $collectionName;
+
+    /**
+     * CollectionHasBeenCleared constructor.
+     * @param HasMedia $model
+     * @param string $collectionName
+     */
+    public function __construct(HasMedia $model, string $collectionName)
     {
-        return new PrivateChannel('channel-name');
+        $this->model = $model;
+
+        $this->collectionName = $collectionName;
     }
 }

@@ -21,6 +21,18 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Rate newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Rate query()
  * @mixin \Eloquent
+ * @property int $id
+ * @property int $post_id
+ * @property int $user_id
+ * @property int $rate
+ * @property null|\Illuminate\Support\Carbon $created_at
+ * @property null|\Illuminate\Support\Carbon $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Rate whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Rate whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Rate wherePostId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Rate whereRate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Rate whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Rate whereUserId($value)
  */
 class Rate extends Model
 {

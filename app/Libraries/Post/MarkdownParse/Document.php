@@ -9,7 +9,6 @@
 
 namespace App\Libraries\Post\MarkdownParse;
 
-
 use Illuminate\Support\Arr;
 
 /**

@@ -12,7 +12,6 @@
 
 namespace App\Libraries\SiteMap;
 
-
 use App\Models\Post;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
@@ -78,5 +77,4 @@ class SiteMap
             ->orderBy('published_at', 'desc')
             ->get();
     }
-
 }

@@ -25,7 +25,7 @@ use Spatie\Permission\Models\Permission as Model;
  * @property-read null|int $permissions_count
  * @property-read Collection|\Spatie\Permission\Models\Role[] $roles
  * @property-read null|int $roles_count
- * @property-read User[]|Collection $users
+ * @property-read Collection|User[] $users
  * @property-read null|int $users_count
  * @method static bool|null forceDelete()
  * @method static Builder|Permission newModelQuery()
@@ -53,7 +53,7 @@ use Spatie\Permission\Models\Permission as Model;
  * @method static Builder|Permission whereName($value)
  * @method static Builder|Permission whereUpdatedAt($value)
  * @property-read Collection|\Spatie\Activitylog\Models\Activity[] $activities
- * @property-read int|null $activities_count
+ * @property-read null|int $activities_count
  */
 class Permission extends Model
 {
@@ -64,5 +64,4 @@ class Permission extends Model
      * @var array
      */
     protected $fillable = ['name', 'description', 'guard_name'];
-
 }

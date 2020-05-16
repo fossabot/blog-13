@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\MediaLibrary\Support;
+namespace App\Libraries\Media\Support;
 
 use Spatie\Image\Image;
 

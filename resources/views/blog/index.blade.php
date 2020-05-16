@@ -34,6 +34,8 @@
         <div class="container">
             <div class="row gutters-40">
                 <div class="col-xl-9 col-lg-8">
+
+                    @if(! is_null($getPost))
                     <div class="blog-box-layout1">
                         <div class="item-img">
                             <a href="{{ $getPost->url }}">
@@ -63,6 +65,8 @@
                             <a href="{{ $getPost->url }}" class="item-btn">READ MORE<i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
+                    @endif
+
                     <div class="row gutters-40">
                         @foreach($blogs as $blog)
                             <div class="col-sm-6 col-12">

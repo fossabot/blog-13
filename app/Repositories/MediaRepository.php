@@ -1,18 +1,39 @@
 <?php
+/**
+ * For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
+ *
+ *  @modified    5/16/20, 12:52 AM
+ *  @name          MediaRepository.php
+ *  @author         Nur Wachid
+ *  @copyright      Copyright (c) Turahe 2020.
+ *
+ */
 
-namespace App\Libraries\Media\MediaCollections;
+namespace App\MediaCollections;
 
+use App\Libraries\Media\HasMedia;
+use App\Models\Media;
 use Closure;
 use Illuminate\Database\Eloquent\Collection as DbCollection;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
-use App\Libraries\Media\HasMedia;
-use App\Libraries\Media\MediaCollections\Models\Media;
 
+/**
+ * Class MediaRepository
+ * @package App\MediaCollections
+ */
 class MediaRepository
 {
+    /**
+     * @var Media
+     */
     protected Media $model;
 
+    /**
+     * MediaRepository constructor.
+     * @param Media $model
+     */
     public function __construct(Media $model)
     {
         $this->model = $model;
@@ -49,21 +70,37 @@ class MediaRepository
         return $media->filter($filter);
     }
 
+    /**
+     * @return DbCollection
+     */
     public function all(): DbCollection
     {
         return $this->model->all();
     }
 
+    /**
+     * @param string $modelType
+     * @return DbCollection
+     */
     public function getByModelType(string $modelType): DbCollection
     {
         return $this->model->where('model_type', $modelType)->get();
     }
 
-    public function getByIds(array $ids): DbCollection
+    /**
+     * @param array $ids
+     * @return Collection
+     */
+    public function getByIds(array $ids): Collection
     {
         return $this->model->whereIn($this->model->getKeyName(), $ids)->get();
     }
 
+    /**
+     * @param string $modelType
+     * @param string $collectionName
+     * @return DbCollection
+     */
     public function getByModelTypeAndCollectionName(string $modelType, string $collectionName): DbCollection
     {
         return $this->model
@@ -72,6 +109,10 @@ class MediaRepository
             ->get();
     }
 
+    /**
+     * @param string $collectionName
+     * @return DbCollection
+     */
     public function getByCollectionName(string $collectionName): DbCollection
     {
         return $this->model
@@ -79,6 +120,10 @@ class MediaRepository
             ->get();
     }
 
+    /**
+     * @param array $filters
+     * @return Closure
+     */
     protected function getDefaultFilterFunction(array $filters): Closure
     {
         return function (Media $media) use ($filters) {

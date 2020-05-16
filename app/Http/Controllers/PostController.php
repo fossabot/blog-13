@@ -19,11 +19,25 @@ use Illuminate\View\View;
 use Instagram;
 
 /**
- * Class BlogController
+ * Class PostController
  * @package App\Http\Controllers
  */
-class BlogController extends Controller
+class PostController extends Controller
 {
+    /**
+     * @var Post
+     */
+    protected ?Post $post;
+
+    /**
+     * PostController constructor.
+     * @param Post $post
+     */
+    public function __construct(Post $post)
+    {
+        $this->post = $post;
+    }
+
     /**
      * Show all blog
      *
@@ -35,11 +49,14 @@ class BlogController extends Controller
      */
     public function index(Request $request): View
     {
-        $query = Post::search($request->input('query'))
-            ->where('published_at', '<=', now())
+        $query = $this->post->where('published_at', '<=', now())
             ->where('is_draft', 0)
             ->orderBy('published_at', 'desc')
             ->with(['cover', 'category', 'user', 'likes']);
+
+        if ($request->has('query')  && $request->input('query')  != '') {
+            $query = $this->post->search($request->input('query'));
+        }
 
         $blogs = $query
             ->where('type', 'blog')
@@ -75,9 +92,9 @@ class BlogController extends Controller
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @return View
      */
-    public function show($slug): View
+    public function show(string $slug): View
     {
-        $query = Post::with(['tags', 'cover', 'category', 'comments.user'])->get();
+        $query = $this->post->with(['tags', 'cover', 'category', 'comments.user'])->get();
         $blog = $query->where('slug', $slug)->first();
         $posts =  $query->where('category_id', $blog->category->id)
             ->except($blog->id);

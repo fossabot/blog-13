@@ -43,6 +43,4 @@ class RolesTableSeeder extends Seeder
             'description' => 'Pengguna biasa'
         ])->syncPermissions(['view_user','edit_user']);
     }
-
-
 }

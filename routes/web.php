@@ -14,21 +14,21 @@
 Route::get('/manifest.json', 'ManifestController@manifestJson');
 Route::get('/offline', 'ManifestController@offline');
 
-Route::get('rss', 'BlogController@rss');
-Route::get('sitemap.xml', 'BlogController@siteMap');
+Route::get('rss', 'PostController@rss');
+Route::get('sitemap.xml', 'PostController@siteMap');
 Route::get('feed', 'PostFeedController@index');
 //static pages
 Route::get('contact', 'ContactUsController@contactUs');
 Route::post('contact', 'ContactUsController@store');
-Route::get('/privacy', 'PageController')->defaults('post', 'privacy-and-policy');
-Route::get('/about', 'PageController')->defaults('post', 'about-me');
+Route::get('/privacy', 'PostController@page')->defaults('post', 'privacy-and-policy');
+Route::get('/about', 'PostController@page')->defaults('post', 'about-me');
 
 
 //Route::get('posts', 'PostController@show');
 //Route::get('users', 'UserController@show');
 
-Route::get('/', 'BlogController@index');
-Route::get('blog/{post}', 'BlogController@show');
+Route::get('/', 'PostController@index');
+Route::get('blog/{post}', 'PostController@show');
 Route::get('category/{category}', 'CategoryController');
 
 

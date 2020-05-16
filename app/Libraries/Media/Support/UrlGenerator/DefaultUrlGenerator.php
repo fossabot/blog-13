@@ -1,12 +1,19 @@
 <?php
 
-namespace Spatie\MediaLibrary\Support\UrlGenerator;
+namespace App\Libraries\Media\Support\UrlGenerator;
 
 use DateTimeInterface;
 use Illuminate\Support\Str;
 
+/**
+ * Class DefaultUrlGenerator
+ * @package App\Libraries\Media\Support\UrlGenerator
+ */
 class DefaultUrlGenerator extends BaseUrlGenerator
 {
+    /**
+     * @return string
+     */
     public function getUrl(): string
     {
         $url = $this->getDisk()->url($this->getPathRelativeToRoot());
@@ -16,16 +23,27 @@ class DefaultUrlGenerator extends BaseUrlGenerator
         return $url;
     }
 
+    /**
+     * @param DateTimeInterface $expiration
+     * @param array $options
+     * @return string
+     */
     public function getTemporaryUrl(DateTimeInterface $expiration, array $options = []): string
     {
         return $this->getDisk()->temporaryUrl($this->getPathRelativeToRoot(), $expiration, $options);
     }
 
+    /**
+     * @return mixed
+     */
     public function getBaseMediaDirectoryUrl()
     {
         return $this->getDisk()->url('/');
     }
 
+    /**
+     * @return string
+     */
     public function getPath(): string
     {
         $adapter = $this->getDisk()->getAdapter();
@@ -41,6 +59,9 @@ class DefaultUrlGenerator extends BaseUrlGenerator
         return $pathPrefix.$this->getPathRelativeToRoot();
     }
 
+    /**
+     * @return string
+     */
     public function getResponsiveImagesDirectoryUrl(): string
     {
         $base = Str::finish($this->getBaseMediaDirectoryUrl(), '/');

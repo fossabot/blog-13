@@ -88,8 +88,8 @@ final class RoleController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Role $role
-     * @return RedirectResponse
      * @throws \Exception
+     * @return RedirectResponse
      */
     public function destroy(Role $role): RedirectResponse
     {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Spatie\MediaLibrary\Conversions;
+namespace App\Libraries\Media\Conversions;
 
+use App\Libraries\Media\MediaCollections\Models\Media;
 use BadMethodCallException;
 use Spatie\Image\Manipulations;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 /** @mixin \Spatie\Image\Manipulations */
 class Conversion

@@ -10,7 +10,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactRequest;
-use App\Models\Category;
 use App\Models\ContactUs;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;

@@ -97,6 +97,5 @@ class CategoriesTableSeeder extends Seeder
 
         ];
 //        return ['book', 'video', 'blog', 'test', 'docker', 'git', 'code', 'deploy', 'monitor', 'plan', 'release', 'Continuous Integration', 'Continuous Delivery', 'Continuous Deployment', 'server', 'Internet Of Think', 'Mobile Apps', 'Development', 'Production', 'Design', 'Business', 'testing', 'seeding', 'PHP', 'Javascript', 'CSS', 'SCSS', 'LESS', 'HTML', 'Unit Testing', 'Gitlab', 'Github'];
-
     }
 }

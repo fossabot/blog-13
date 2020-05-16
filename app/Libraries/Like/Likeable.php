@@ -13,7 +13,6 @@ use App\Models\Like;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
-
 /**
  * Trait Likeable
  * @package App\Libraries\Like

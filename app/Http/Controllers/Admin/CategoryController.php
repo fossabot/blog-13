@@ -101,8 +101,8 @@ final class CategoryController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return RedirectResponse
      *@throws \Exception
+     * @return RedirectResponse
      */
     public function destroy($id): RedirectResponse
     {

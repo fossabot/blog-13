@@ -12,7 +12,6 @@
 
 namespace App\Libraries\Activity;
 
-
 interface ActivityInterface
 {
     /**
@@ -49,5 +48,4 @@ interface ActivityInterface
      * @return mixed
      */
     public function unsetAttributes($model);
-
 }

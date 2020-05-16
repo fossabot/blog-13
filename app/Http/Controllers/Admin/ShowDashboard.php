@@ -9,7 +9,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-
 /**
  * Class ShowDashboard
  * @package App\Http\Controllers\Admin

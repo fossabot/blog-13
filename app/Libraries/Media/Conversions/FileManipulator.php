@@ -1,22 +1,31 @@
 <?php
 
-namespace Spatie\MediaLibrary\Conversions;
+namespace App\Libraries\Media\Conversions;
 
+use App\Libraries\Media\Conversions\Events\ConversionHasBeenCompleted;
+use App\Libraries\Media\Conversions\Events\ConversionWillStart;
+use App\Libraries\Media\Conversions\ImageGenerators\ImageGeneratorFactory;
+use App\Libraries\Media\Conversions\Jobs\PerformConversionsJob;
+use App\Libraries\Media\MediaCollections\Filesystem;
+use App\Libraries\Media\ResponsiveImages\ResponsiveImageGenerator;
+use App\Libraries\Media\Support\ImageFactory;
+use App\Libraries\Media\Support\TemporaryDirectory;
+use App\Models\Media;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Spatie\MediaLibrary\Conversions\Events\ConversionHasBeenCompleted;
-use Spatie\MediaLibrary\Conversions\Events\ConversionWillStart;
-use Spatie\MediaLibrary\Conversions\ImageGenerators\ImageGeneratorFactory;
-use Spatie\MediaLibrary\Conversions\Jobs\PerformConversionsJob;
-use Spatie\MediaLibrary\MediaCollections\Filesystem;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Spatie\MediaLibrary\ResponsiveImages\ResponsiveImageGenerator;
-use Spatie\MediaLibrary\Support\ImageFactory;
-use Spatie\MediaLibrary\Support\TemporaryDirectory;
 
+/**
+ * Class FileManipulator
+ * @package App\Libraries\Media\Conversions
+ */
 class FileManipulator
 {
+    /**
+     * @param Media $media
+     * @param array $only
+     * @param bool $onlyMissing
+     */
     public function createDerivedFiles(Media $media, array $only = [], bool $onlyMissing = false): void
     {
         $profileCollection = ConversionCollection::createForMedia($media);
@@ -40,6 +49,11 @@ class FileManipulator
         }
     }
 
+    /**
+     * @param ConversionCollection $conversions
+     * @param Media $media
+     * @param bool $onlyMissing
+     */
     public function performConversions(ConversionCollection $conversions, Media $media, bool $onlyMissing = false)
     {
         if ($conversions->isEmpty()) {
@@ -103,6 +117,12 @@ class FileManipulator
         $temporaryDirectory->delete();
     }
 
+    /**
+     * @param Media $media
+     * @param Conversion $conversion
+     * @param string $imageFile
+     * @return string
+     */
     public function performManipulations(Media $media, Conversion $conversion, string $imageFile): string
     {
         if ($conversion->getManipulations()->isEmpty()) {
@@ -125,6 +145,11 @@ class FileManipulator
         return $conversionTempFile;
     }
 
+    /**
+     * @param Media $media
+     * @param ConversionCollection $queuedConversions
+     * @param bool $onlyMissing
+     */
     protected function dispatchQueuedConversions(Media $media, ConversionCollection $queuedConversions, bool $onlyMissing = false)
     {
         $performConversionsJobClass = config('media-library.jobs.perform_conversions', PerformConversionsJob::class);
@@ -138,6 +163,11 @@ class FileManipulator
         dispatch($job);
     }
 
+    /**
+     * @param string $fileNameWithDirectory
+     * @param string $newFileNameWithoutDirectory
+     * @return string
+     */
     protected function renameInLocalDirectory(
         string $fileNameWithDirectory,
         string $newFileNameWithoutDirectory
@@ -149,11 +179,20 @@ class FileManipulator
         return $targetFile;
     }
 
+    /**
+     * @return Filesystem
+     */
     protected function filesystem(): Filesystem
     {
         return app(Filesystem::class);
     }
 
+    /**
+     * @param Media $media
+     * @param Conversion $conversion
+     * @param string $imageFile
+     * @return string
+     */
     protected function getConversionTempFileName(Media $media, Conversion $conversion, string $imageFile): string
     {
         $directory = pathinfo($imageFile, PATHINFO_DIRNAME);

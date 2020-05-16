@@ -9,8 +9,8 @@
 
 namespace App\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
 use Hash;
+use Illuminate\Contracts\Validation\Rule;
 
 /**
  * Class CurrentPassword

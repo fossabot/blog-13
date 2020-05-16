@@ -1,16 +1,16 @@
 <?php
 
-namespace Spatie\MediaLibrary\Conversions\Commands;
+namespace App\Libraries\Media\Conversions\Commands;
 
+use App\Libraries\Media\Conversions\FileManipulator;
+use App\MediaCollections\MediaRepository;
+use App\Models\Media;
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Console\ConfirmableTrait;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use Spatie\MediaLibrary\Conversions\FileManipulator;
-use Spatie\MediaLibrary\MediaCollections\MediaRepository;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class RegenerateCommand extends Command
 {

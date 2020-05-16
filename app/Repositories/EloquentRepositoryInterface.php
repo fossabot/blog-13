@@ -12,8 +12,6 @@
 
 namespace App\Repositories;
 
-
 interface EloquentRepositoryInterface
 {
-
 }

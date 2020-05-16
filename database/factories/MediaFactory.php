@@ -25,9 +25,14 @@ use Faker\Generator as Faker;
 $factory->define(Media::class, function (Faker $faker) {
     $images = dirToArray(storage_path('app/public/images/posts'));
     return [
-        'file' => $faker->randomElement($images),
-        'name' => $faker->word,
-        'mime' => 'image/jpg',
-        'size' => mt_rand(1000, 10000)
+        'file_name' => $faker->randomElement($images),
+        'name' => basename($faker->randomElement($images), 'jpg'),
+        'mime_type' => 'image/jpg',
+        'size' => mt_rand(1000, 10000),
+        'collection_name' => '[]',
+        'disk' => '[]',
+        'manipulations' => '[]',
+        'custom_properties' => '[]',
+        'responsive_images' => '[]'
     ];
 });

@@ -1,20 +1,20 @@
 <?php
 
-namespace Spatie\MediaLibrary\MediaCollections\Commands;
+namespace App\Libraries\Media\MediaCollections\Commands;
 
+use App\Exceptions\FileCannotBeAdded;
+use App\Libraries\Media\Conversions\Conversion;
+use App\Libraries\Media\Conversions\ConversionCollection;
+use App\Libraries\Media\Conversions\FileManipulator;
+use App\Libraries\Media\ResponsiveImages\RegisteredResponsiveImages;
+use App\Libraries\Media\Support\PathGenerator\DefaultPathGenerator;
+use App\MediaCollections\MediaRepository;
+use App\Models\Media;
 use Illuminate\Console\Command;
 use Illuminate\Console\ConfirmableTrait;
 use Illuminate\Contracts\Filesystem\Factory;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Str;
-use Spatie\MediaLibrary\Conversions\Conversion;
-use Spatie\MediaLibrary\Conversions\ConversionCollection;
-use Spatie\MediaLibrary\Conversions\FileManipulator;
-use Spatie\MediaLibrary\MediaCollections\Exceptions\FileCannotBeAdded;
-use Spatie\MediaLibrary\MediaCollections\MediaRepository;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Spatie\MediaLibrary\ResponsiveImages\RegisteredResponsiveImages;
-use Spatie\MediaLibrary\Support\PathGenerator\DefaultPathGenerator;
 
 class CleanCommand extends Command
 {

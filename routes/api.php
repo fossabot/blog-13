@@ -63,5 +63,3 @@ Route::prefix('v1')->namespace('Api')->group(function () {
     // Media
 //    Route::apiResource('media', 'MediaController')->only('index');
 });
-
-

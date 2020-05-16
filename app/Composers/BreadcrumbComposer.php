@@ -3,7 +3,6 @@
 
 namespace App\Composers;
 
-
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -51,5 +50,4 @@ class BreadcrumbComposer
             ];
         });
     }
-
 }

@@ -21,7 +21,7 @@ class AuthenticateController extends Controller
     /**
      * Return the user's access token.
      * @param Request $request
-     * @return UserResource|JsonResponse
+     * @return JsonResponse|UserResource
      */
     public function authenticate(Request $request): JsonResponse
     {

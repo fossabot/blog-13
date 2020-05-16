@@ -1,10 +1,9 @@
 <?php
 
-namespace Spatie\MediaLibrary\Support;
+namespace App\Libraries\Media\Support;
 
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Support\Collection;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use ZipStream\ZipStream;
 
