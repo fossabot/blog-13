@@ -35,8 +35,6 @@ class PostsTableSeeder extends Seeder
         Model::unguard();
         $posts = self::defaultPost();
         $images = dirToArray(storage_path('app/public/img/posts'));
-        $slider = dirToArray(storage_path('app/public/img/slider'));
-        $thumb = dirToArray(storage_path('app/public/img/thumb'));
 
         foreach ($posts as  $post) {
             $content = YamlFrontMatter::parse($post);
