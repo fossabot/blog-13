@@ -32,7 +32,7 @@ class CategoriesTableSeeder extends Seeder
                 'subtitle' => isset($category['subtitle']) ? $category['subtitle'] : $category['title'],
                 'description' => $category['description']
             ]);
-            $category->addMedia(storage_path('app/public/img/' .$index. '.jpg'))
+            $category->addMedia(storage_path('app/public/img/categories/' .$index. '.jpg'))
                 ->usingName($category['title'])
                 ->preservingOriginal()
                 ->toMediaCollection('images');

@@ -50,10 +50,10 @@ final class PostController extends Controller
      */
     public function index(Request $request): View
     {
-        $query = $this->post->where('published_at', '<=', now())
+        $query = Post::where('published_at', '<=', now())
             ->where('is_draft', 0)
             ->orderBy('published_at', 'desc')
-            ->with(['category', 'user', 'likes']);
+            ->with(['category', 'user', 'likes', 'media'])->get();
 
         if ($request->has('query')  && $request->input('query')  != '') {
             $query = $this->post->search($request->input('query'));
@@ -61,14 +61,16 @@ final class PostController extends Controller
 
         $blogs = $query
             ->where('type', 'blog')
-            ->paginate(10);
+            ->all();
 
-        $latest = $query->latest()->get();
-        $posts = $query->get();
+        $latest = $query->take(10);
+        $posts = $query;
 
-        $getPost = $query->inRandomOrder()->first();
 
-        $featured = $query->where('is_sticky', true)->get();
+        $featured = $query->where('is_sticky', true);
+
+        $getPost = $query->random();
+
 
         $layout = 'blog.index';
 
@@ -79,7 +81,7 @@ final class PostController extends Controller
             'featured' => $featured,
             'latest'=> $latest,
             'getPost' => $getPost,
-            'categories' => Category::with('posts.user')->get(),
+            'categories' => Category::with('posts')->get(),
             'instagram' => $this->instagram()
         ]);
     }
@@ -95,27 +97,28 @@ final class PostController extends Controller
      */
     public function show(string $slug): View
     {
-        $query = $this->post->with(['tags', 'category', 'comments.user'])->get();
+        $query = $this->post->with(['media', 'tags', 'category', 'comments.user.media'])->get();
         $blog = $query->where('slug', $slug)->first();
+        $blog->getMedia('sliders');
 
-//        $mediaItems = $blog->getFirstMediaUrl();
+//        $mediaItems = $blog->getMedia('posts');
 //        $publicUrl = $mediaItems[0]->getUrl();
 //        $publicFullUrl = $mediaItems[0]->getFullUrl(); //url including domain
 //        $fullPathOnDisk = $mediaItems[0]->getPath();
 //        $temporaryS3Url = $mediaItems[0]->getTemporaryUrl(Carbon::now()->addMinutes(5));
 //        $media = $blog->getFirstMedia();
 //        $url = $blog->getFirstMediaUrl();
-//        dd($mediaItems);
+//        dd($media('large'));
 
         $posts =  $query->where('category_id', $blog->category->id)
             ->except($blog->id);
 
+        $layout = 'blog.show';
 
-
-        return view('blog.show', [
+        return view($layout, [
             'blog' => $blog,
             'posts' => $posts,
-            'categories' => Category::with('posts.user')->get(),
+            'categories' => Category::with('posts')->get(),
             'instagram' => $this->instagram()
         ]);
     }

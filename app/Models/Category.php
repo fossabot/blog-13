@@ -21,6 +21,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 /**
  * Class Category
@@ -87,6 +88,15 @@ class Category extends Model implements HasMedia
         'subtitle',
         'description'
     ];
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('slider')
+            ->width(1920)
+            ->height(700)
+            ->sharpen(10)
+            ->withResponsiveImages();
+    }
 
 
     /**

@@ -28,6 +28,7 @@ use Laravel\Passport\HasApiTokens;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Permission\Traits\HasRoles;
 
 /**
@@ -135,11 +136,13 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail, HasLoca
         'email_verified_at' => 'datetime',
     ];
 
-    public function registerMediaCollections(): void
+    public function registerMediaConversions(Media $media = null): void
     {
-        $this
-            ->addMediaCollection('avatar')
-            ->singleFile();
+        $this->addMediaConversion('avatar')
+            ->width(90)
+            ->height(100)
+            ->sharpen(10)
+            ->withResponsiveImages();
     }
 
 

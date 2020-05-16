@@ -10,14 +10,14 @@
                     <div class="blog-box-layout1">
                         <div class="item-img">
                             <a href="{{ $post->url }}">
-                                <img src="/themes/blogxer/img/blog/blog.jpg" alt="{{ $post->title }}">
+                                <img src="{{ $post->getMedia('images')[0]->getUrl('medium') }}" alt="{{ $post->title }}">
                             </a>
                         </div>
                         <div class="item-content">
                             <ul class="entry-meta meta-color-dark">
                                 <li><i class="fas fa-tag"></i>{{ $post->category->title }}</li>
                                 <li><i class="fas fa-calendar-alt"></i>{{ $post->publish }}</li>
-                                <li><i class="far fa-clock"></i>5 Mins Read</li>
+                                <li><i class="far fa-clock"></i>{{ $post->read_time }}</li>
                             </ul>
                             <h3 class="item-title"><a href="{{ $post->url }}">{{ $post->title }}</a></h3>
                         </div>
@@ -39,7 +39,7 @@
                     <div class="blog-box-layout1">
                         <div class="item-img">
                             <a href="{{ $getPost->url }}">
-                                <img src="/themes/blogxer/img/blog/blog3.jpg" alt="{{ $getPost->title }}">
+                                <img src="{{ $getPost->getMedia('images')[0]->getUrl('large') }}" alt="{{ $getPost->title }}">
                             </a>
                         </div>
                         <div class="item-content">
@@ -58,11 +58,18 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <i class="far fa-clock"></i>5 Mins Read</li>
+                                    <i class="far fa-clock"></i>{{ $getPost->read_time }}</li>
                             </ul>
-                            <h2 class="item-title"> <a href="{{ $getPost->url }}">{{ $getPost->title }}</a></h2>
+                            <h2 class="item-title">
+                                <a href="{{ $getPost->url }}">
+                                    {{ $getPost->title }}
+                                </a>
+                            </h2>
                             {{ $getPost->subtitle }}
-                            <a href="{{ $getPost->url }}" class="item-btn">READ MORE<i class="fas fa-arrow-right"></i></a>
+                            <a href="{{ $getPost->url }}" class="item-btn">
+                                READ MORE
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
                         </div>
                     </div>
                     @endif
@@ -73,7 +80,7 @@
                                 <div class="blog-box-layout1">
                                     <div class="item-img">
                                         <a href="{{ $blog->url }}">
-                                            <img src="/themes/blogxer/img/blog/blog7.jpg" alt="{{ $blog->title }}">
+                                            <img src="{{ $blog->getMedia('images')[0]->getUrl('medium') }}" alt="{{ $blog->title }}">
                                         </a>
                                     </div>
                                     <div class="item-content">
@@ -89,7 +96,7 @@
                                             </li>
                                             <li>
                                                 <i class="far fa-clock"></i>
-                                                5 Mins Read
+                                                {{ $blog->read_time }}
                                             </li>
                                         </ul>
                                         <h3 class="item-title">
@@ -109,7 +116,7 @@
 
                     </div>
 
-                    {{ $blogs->links('blog.vendor.pagination') }}
+{{--                    {{ $blogs->links('blog.vendor.pagination') }}--}}
 
                 </div>
                 <div class="col-xl-3 col-lg-4 sidebar-widget-area sidebar-break-md">
@@ -153,7 +160,7 @@
                                     <li class="single-item">
                                         <div class="item-img">
                                             <a href="#">
-                                                <img src="/themes/blogxer/img/blog/blog12.jpg" alt="Post">
+                                                <img src="{{ $post->getMedia('images')[0]->getUrl('small') }}" alt="Post">
                                             </a>
                                             <div class="count-number">{{ $post->likes->count() }}</div>
                                         </div>

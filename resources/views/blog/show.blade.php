@@ -9,7 +9,7 @@
     <section class="single-blog-wrap-layout1">
         <div class="single-blog-banner-layout1">
             <div class="banner-img">
-                <img src="/themes/blogxer/img/blog/blog208.jpg" alt="{{ $blog->title }}">
+                <img src="{{ $blog->getMedia('images')[0]->getUrl('slider') }}" alt="{{ $blog->title }}">
             </div>
             <div class="banner-content">
                 <div class="container">
@@ -28,7 +28,7 @@
                         </li>
                         <li>
                             <i class="far fa-clock"></i>
-                            5 Mins Read
+                            {{ $blog->read_time }}
                         </li>
                     </ul>
                     <h2 class="item-title">{{ $blog->title }}</h2>
@@ -101,11 +101,18 @@
                                     @endforeach
                                 </li>
                                 <li class="item-social">
-                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ $blog->url }}"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="https://twitter.com/share?url={{ $blog->url }}&text={{ $blog->title }}via=<USERNAME>"><i class="fab fa-twitter"></i></a>
-                                    <a href="https://www.linkedin.com/shareArticle?url={{ $blog->url }}&title={{ $blog->title }}&summary={{ $blog->subtitle }}&source={{ $blog->url }}"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="#"><i class="fab fa-google-plus-g"></i></a>
-                                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                                    <button class="btn btn-sm btn-default facebook social_share" data-type="fb">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-default twitter social_share" data-type="twitter">
+                                        <i class="fab fa-twitter"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-default g-plus social_share" data-type="gplus">
+                                        <i class="fab fa-google-plus-g"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-default pinterest social_share" data-type="pinterest">
+                                        <i class="fab fa-pinterest"></i>
+                                    </button>
                                 </li>
                                 <li class="item-respons"><i class="fas fa-heart"></i>{{ $blog->likes->count() }}</li>
                             </ul>
@@ -138,7 +145,7 @@
                                     <div class="blog-box-layout1 text-left">
                                         <div class="item-img">
                                             <a href="{{ $post->url }}">
-                                                <img src="/themes/blogxer/img/blog/blog213.jpg" alt="{{ $post->title }}">
+                                                <img src="{{ $post->getMedia('images')[0]->getUrl('medium') }}" alt="{{ $post->title }}">
                                             </a>
                                         </div>
                                         <div class="item-content">
@@ -170,7 +177,7 @@
                             </div>
                             @foreach($blog->comments as $comment)
                             <div class="media media-none--xs">
-                                <img src="/themes/blogxer/img/blog/blog216.jpg" alt="Blog Comments" class="img-fluid media-img-auto">
+                                <img src="{{ $comment->user->getMedia('images')[0]->getUrl('avatar') }}" alt="Blog Comments" class="img-fluid media-img-auto">
                                 <div class="media-body">
                                     <h4 class="item-title">{{ $comment->user->name }}</h4>
                                     <div class="item-subtitle" data-toggle="tooltip" title="{{ $comment->published_at->toIso8601String() }}">
@@ -229,7 +236,7 @@
                                 <li class="single-item">
                                     <div class="item-img">
                                         <a href="{{ $post->url }}">
-                                            <img height="100px" src="/themes/blogxer/img/blog/blog86.jpg" alt="{{ $post->title }}">
+                                            <img height="100px" src="{{ $post->getMedia('images')[0]->getUrl('small') }}" alt="{{ $post->title }}">
                                         </a>
                                     </div>
                                     <div class="item-content">
@@ -240,7 +247,11 @@
                                                 {{ $post->publish }}
                                             </li>
                                         </ul>
-                                        <h4 class="item-title"><a href="{{ $post->url }}">{{ $post->title }}</a></h4>
+                                        <h4 class="item-title">
+                                            <a href="{{ $post->url }}">
+                                                {{ $post->title }}
+                                            </a>
+                                        </h4>
                                     </div>
                                 </li>
                                 @endforeach

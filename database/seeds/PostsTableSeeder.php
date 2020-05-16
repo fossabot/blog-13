@@ -35,6 +35,8 @@ class PostsTableSeeder extends Seeder
         Model::unguard();
         $posts = self::defaultPost();
         $images = dirToArray(storage_path('app/public/img/posts'));
+        $slider = dirToArray(storage_path('app/public/img/slider'));
+        $thumb = dirToArray(storage_path('app/public/img/thumb'));
 
         foreach ($posts as  $post) {
             $content = YamlFrontMatter::parse($post);
@@ -51,10 +53,13 @@ class PostsTableSeeder extends Seeder
                 'type' => $content->type
             ]);
 
-            $post->addMedia(storage_path('app/public/img/posts/' .$faker->randomElement($images)))
-                ->preservingOriginal()
-                ->usingName($content->title)
-                ->toMediaCollection('images');
+            if (!empty($images)) {
+                $post->addMedia(storage_path('app/public/img/posts/' .$faker->randomElement($images)))
+                    ->preservingOriginal()
+                    ->usingName($content->title)
+                    ->toMediaCollection('images');
+            }
+
 
             if (App::environment(['local', 'staging', 'testing'])) {
 //                $post->images()->saveMany(factory(Media::class, 3)->make());

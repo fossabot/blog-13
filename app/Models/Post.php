@@ -31,6 +31,7 @@ use League\CommonMark\CommonMarkConverter;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Permission\Traits\HasRoles;
 
 /**
@@ -135,6 +136,7 @@ class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterfac
         LogsActivity,
         HasSlug,
         DateAttributeTrait;
+
     /**
      * @var array
      */
@@ -159,6 +161,33 @@ class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterfac
         'status',
         'published_at',
     ];
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('small')
+            ->width(90)
+            ->height(80)
+            ->sharpen(10)
+            ->withResponsiveImages();
+
+        $this->addMediaConversion('medium')
+            ->width(510)
+            ->height(407)
+            ->sharpen(10)
+            ->withResponsiveImages();
+
+        $this->addMediaConversion('large')
+            ->width(658)
+            ->height(339)
+            ->sharpen(10)
+            ->withResponsiveImages();
+
+        $this->addMediaConversion('slider')
+            ->width(1920)
+            ->height(700)
+            ->sharpen(10)
+            ->withResponsiveImages();
+    }
 
 
     /**
@@ -319,6 +348,7 @@ class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterfac
         $wordsPerMinute = config('blog.words_per_minute');
         $ltr =  __('read-time.reads_left_to_right');
         $translation =  __('read-time');
+//        dd($omitSeconds);
 
         return (new ReadTime($content))
             ->omitSeconds($omitSeconds)
