@@ -18,7 +18,6 @@ use Illuminate\Contracts\Translation\HasLocalePreference;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\DatabaseNotificationCollection;
@@ -135,6 +134,13 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail, HasLoca
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function registerMediaCollections(): void
+    {
+        $this
+            ->addMediaCollection('avatar')
+            ->singleFile();
+    }
 
 
     /**
@@ -283,13 +289,6 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail, HasLoca
         return $this->hasMany(Comment::class, 'user_id');
     }
 
-    /**
-     * @return MorphOne
-     */
-    public function avatar(): MorphOne
-    {
-        return $this->morphOne(Media::class, 'media');
-    }
 
     /**
      * Return the user's likes

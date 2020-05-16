@@ -488,29 +488,6 @@ class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterfac
     }
 
     /**
-     * Return the post's images
-     * Define a polymorphic one-to-many relationship.
-     *
-     * @return MorphMany
-     */
-    public function images(): MorphMany
-    {
-        return $this->morphMany(Media::class, 'media');
-    }
-
-    /**
-     * Return the post's cover
-     * Define a polymorphic one-to-one relationship.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphOne
-     */
-    public function cover(): MorphOne
-    {
-//        $cover = self::getMedia();
-//        dd($cover);
-    }
-
-    /**
      * Convert markdown to HTML
      *
      * @param string $text

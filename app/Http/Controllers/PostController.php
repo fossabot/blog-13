@@ -98,14 +98,14 @@ final class PostController extends Controller
         $query = $this->post->with(['tags', 'category', 'comments.user'])->get();
         $blog = $query->where('slug', $slug)->first();
 
-        $mediaItems = $blog->getMedia();
-        $publicUrl = $mediaItems[0]->getUrl();
-        $publicFullUrl = $mediaItems[0]->getFullUrl(); //url including domain
-        $fullPathOnDisk = $mediaItems[0]->getPath();
-        $temporaryS3Url = $mediaItems[0]->getTemporaryUrl(Carbon::now()->addMinutes(5));
-        $media = $blog->getFirstMedia();
-        $url = $blog->getFirstMediaUrl();
-        dd($url);
+//        $mediaItems = $blog->getFirstMediaUrl();
+//        $publicUrl = $mediaItems[0]->getUrl();
+//        $publicFullUrl = $mediaItems[0]->getFullUrl(); //url including domain
+//        $fullPathOnDisk = $mediaItems[0]->getPath();
+//        $temporaryS3Url = $mediaItems[0]->getTemporaryUrl(Carbon::now()->addMinutes(5));
+//        $media = $blog->getFirstMedia();
+//        $url = $blog->getFirstMediaUrl();
+//        dd($mediaItems);
 
         $posts =  $query->where('category_id', $blog->category->id)
             ->except($blog->id);

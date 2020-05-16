@@ -35,7 +35,7 @@ class CategoriesTableSeeder extends Seeder
             $category->addMedia(storage_path('app/public/img/' .$index. '.jpg'))
                 ->usingName($category['title'])
                 ->preservingOriginal()
-                ->toMediaCollection();
+                ->toMediaCollection('images');
         }
     }
 

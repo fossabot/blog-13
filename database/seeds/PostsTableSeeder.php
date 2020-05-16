@@ -54,7 +54,7 @@ class PostsTableSeeder extends Seeder
             $post->addMedia(storage_path('app/public/img/posts/' .$faker->randomElement($images)))
                 ->preservingOriginal()
                 ->usingName($content->title)
-                ->toMediaCollection();
+                ->toMediaCollection('images');
 
             if (App::environment(['local', 'staging', 'testing'])) {
 //                $post->images()->saveMany(factory(Media::class, 3)->make());

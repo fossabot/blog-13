@@ -68,6 +68,8 @@ use Spatie\MediaLibrary\InteractsWithMedia;
  * @mixin \Eloquent
  * @property string $layout
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereLayout($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\MediaLibrary\MediaCollections\Models\Media[] $media
+ * @property-read int|null $media_count
  */
 class Category extends Model implements HasMedia
 {
@@ -194,13 +196,5 @@ class Category extends Model implements HasMedia
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class, 'category_id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\MorphOne
-     */
-    public function image(): MorphOne
-    {
-        return $this->morphOne(Media::class, 'media');
     }
 }

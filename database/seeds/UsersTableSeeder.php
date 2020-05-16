@@ -40,7 +40,7 @@ class UsersTableSeeder extends Seeder
             $user->addMedia(storage_path('app/public/img/' .$index. '.jpg'))
                 ->preservingOriginal()
                 ->usingName($user['name'])
-                ->toMediaCollection();
+                ->toMediaCollection('images');
         }
 
 //        if (App::environment(['local', 'staging', 'testing'])) {

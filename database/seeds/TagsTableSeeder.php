@@ -7,10 +7,10 @@
  *  @copyright      Copyright (c) Turahe 2020.
  */
 
-use App\Models\Media;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Database\Seeder;
+use App\Models\Media;
 
 /**
  * Class TagsTableSeeder
