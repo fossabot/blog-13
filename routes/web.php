@@ -33,7 +33,9 @@ Route::get('category/{category}', 'CategoryController');
 
 
 
-Route::get('newsletter-subscriptions/unsubscribe', 'NewsletterSubscriptionController@unsubscribe')->name('newsletter-subscriptions.unsubscribe');
+Route::get('newsletter-subscriptions/unsubscribe', 'NewsletterSubscriptionController@unsubscribe')
+    ->name('newsletter-subscriptions.unsubscribe');
+Route::post('newsletter-subscriptions', 'NewsletterSubscriptionController@store');
 
 Route::redirect('/.well-known/change-password', '/settings/password');
 
@@ -56,7 +58,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 //        Route::match(['put', 'patch'], 'token', 'UserTokenController@update')->name('users.token.update');
     });
 
-    Route::resource('newsletter-subscriptions', 'NewsletterSubscriptionController')->only('store');
+
 });
 
 

@@ -96,7 +96,7 @@
             <div class="row gutters-50">
                 <div class="col-lg-8">
                     <div class="single-blog-box-layout1">
-                        <div class="blog-details" itemprop="articleBody">
+                        <div class="blog-details" id="articleBody" itemprop="articleBody">
                             {!! $blog->content_html !!}
                         </div>
                         <div class="blog-entry-meta">
@@ -127,20 +127,17 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="blog-author" itemscope itemtype="http://schema.org/Blog">>
+                        <div class="blog-author" itemscope itemtype="http://schema.org/Blog">
                             <div class="media media-none--xs">
                                 <img src="{{ $blog->user->avatar }}" alt="{{ $blog->user->name }}" class="media-img-auto">
                                 <div class="media-body">
                                     <h4 class="item-title" itemprop="name">{{ $blog->user->name }}</h4>
                                     <div class="item-subtitle">Author</div>
-                                    <p>Dorem ipsum dolor sit amet, consectetuer adipiscing
-                                        elit,sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.</p>
+                                    <p>{{ config('blog.author.description') }}</p>
                                     <ul class="item-social">
-                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                        @foreach(config('blog.socials') as $social)
+                                            <li><a href="{{ $social['url'] }}"><i class="fab fa-{{ $social['name'] }}"></i></a></li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
@@ -174,3 +171,7 @@
     <x-instagram-feed></x-instagram-feed>
 @endsection
 
+
+@push('scripts')
+    <script src="{{ mix('js/show.js') }}"></script>
+@endpush

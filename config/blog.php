@@ -49,6 +49,7 @@ return [
     */
     'author' =>[
         'name' => env('APP_AUTHOR', 'turahe'),
+        'description' => 'This is my meta description',
     ],
     'posts_per_page' => 10,
     'rss_size' => 25,

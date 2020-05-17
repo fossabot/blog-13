@@ -37,7 +37,7 @@ class UsersTableSeeder extends Seeder
                 'registered_at' => now(),
             ]);
             $user->assignRole('admin');
-            $user->addMedia(storage_path('app/public/img/users/' .$index. '.jpg'))
+            $user->addMedia(storage_path('app/public/img/users/user-' .$index. '.jpg'))
                 ->preservingOriginal()
                 ->usingName($user['name'])
                 ->toMediaCollection('images');

@@ -3,15 +3,16 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    @if(Auth::check())
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+    @endif
     <title>{{ isset($title) ? $title . ' | ' .config('blog.title') : config('blog.name', 'Turahe.id') }}</title>
     <link rel="alternate" type="application/rss+xml" href="{{ url('rss') }}" title="RSS Feed {{ config('blog.title') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="robots" content="index, follow">
-        <meta name="author" content="{{ $author ?? config('blog.author.name') }}" />
+    <meta name="author" content="{{ $author ?? config('blog.author.name') }}" />
     <meta name="description" content="{{ $description ?? config('blog.description') }}" />
     <meta property="og:site_name" content="turahe.id">
     <meta property="og:locale" content="{{ config('app.locale') }}">
@@ -69,13 +70,13 @@
 
     <div class="box-layout-child bg-white">
 
-    <!-- Blog Area Start Here -->
-        @yield('content')
-        <!-- Blog Area End Here -->
+        <!-- Blog Area Start Here -->
+    @yield('content')
+    <!-- Blog Area End Here -->
 
     </div>
 @include('blog.partials.footer')
-    <!-- Search Box Start Here -->
+<!-- Search Box Start Here -->
     <div id="header-search" class="header-search">
         <button type="button" class="close">×</button>
         <form class="header-search-form">

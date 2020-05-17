@@ -16,6 +16,7 @@ require('laravel-mix-polyfill');
 mix.js('resources/assets/blog/js/script.js', 'public/js')
   .sass('resources/assets/blog/sass/style.scss', 'public/css')
 
+  .js('resources/assets/blog/js/show.js', 'public/js')
   .js('resources/assets/blog/js/scripts/map.js', 'public/js')
   // .sass('resources/assets/blog/sass/carousel.scss', 'public/css')
 
@@ -53,3 +54,25 @@ if (! mix.inProduction()) {
     devtool: 'source-map'
   })
 }
+mix.options({
+  hmrOptions: {
+    host: 'blog.test',  // site's host name
+    port: 8080,
+  }
+});
+
+// // fix css files 404 issue
+mix.webpackConfig({
+  // add any webpack dev server config here
+  devServer: {
+    proxy: {
+      host: '0.0.0.0',  // host machine ip
+      port: 8080,
+    },
+    watchOptions:{
+      aggregateTimeout:200,
+      poll:5000
+    },
+
+  }
+});

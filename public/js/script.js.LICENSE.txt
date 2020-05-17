@@ -1,15 +1,4 @@
 /*!
- * For the full copyright and license information, please view the LICENSE
- *  file that was distributed with this source code.
- *
- *  @modified    5/9/20, 3:48 PM
- *  @name          googleMap.js
- *  @author         Nur Wachid
- *  @copyright      Copyright (c) Turahe 2020.
- *
- */
-
-/*!
 * jQuery meanMenu v2.0.8
 * @Copyright (C) 2012-2014 Chris Wharton @ MeanThemes (https://github.com/meanthemes/meanMenu)
 *

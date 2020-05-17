@@ -18,8 +18,11 @@ try {
 
   require('bootstrap');
   require('./scripts/main');
-  require('./scripts/map');
-  require('./scripts/socials');
+  // require('./scripts/map');
+  // require('./scripts/socials');
+  // require('./scripts/lozad');
+  // require('./show');
+
   $.ajaxSetup({
     headers: {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

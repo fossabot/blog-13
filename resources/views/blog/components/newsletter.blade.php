@@ -2,10 +2,11 @@
     <div class="widget-newsletter-subscribe-dark">
         <h3>GET LATEST UPDATES</h3>
         <p>NEWSLETTER SUBSCRIBE</p>
-        <form class="newsletter-subscribe-form">
+        <form class="newsletter-subscribe-form" method="POST" action="{{ url('newsletter-subscriptions') }}">
+            @csrf
             <div class="form-group">
-                <input type="text" placeholder="your e-mail address" class="form-control" name="email"
-                       data-error="E-mail field is required" required>
+                <label for="newsletter_email" class="sr-only"></label>
+                <input id="newsletter_email" type="text" placeholder="@lang('newsletter.placeholder')" class="form-control" name="email" required>
                 <div class="help-block with-errors"></div>
             </div>
             <div class="form-group mb-none">
