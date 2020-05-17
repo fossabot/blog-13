@@ -8,7 +8,6 @@
  */
 
 use App\Models\Category;
-use App\Models\Media;
 use Illuminate\Database\Seeder;
 
 /**

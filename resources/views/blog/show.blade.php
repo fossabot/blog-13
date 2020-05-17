@@ -9,7 +9,10 @@
     <section class="single-blog-wrap-layout1">
         <div class="single-blog-banner-layout1">
             <div class="banner-img">
-                <img src="{{ $blog->getMedia('images')[0]->getUrl('slider') }}" alt="{{ $blog->title }}">
+                <figure itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+                    <img itemprop="url contentUrl" src="{{ $blog->getMedia('images')[0]->getUrl('slider') }}" alt="{{ $blog->title }}">
+                    <figcaption itemprop="caption">{{ $blog->title }}</figcaption>
+                </figure>
             </div>
             <div class="banner-content">
                 <div class="container">
@@ -20,7 +23,9 @@
                         </li>
                         <li data-toggle="tooltip" title="{{ $blog->published_at->toIso8601String() }}">
                             <i class="fas fa-calendar-alt"></i>
-                            {{ $blog->publish }}
+                            <time datetime="{{ $blog->published_at->toIso8601String() }}" title="{{ $blog->published_at->format('M d, Y g:i:s a') }}" itemprop="datePublished">
+                                {{ $blog->publish }}
+                            </time>
                         </li>
                         <li>
                             <i class="fas fa-user"></i>
@@ -28,10 +33,12 @@
                         </li>
                         <li>
                             <i class="far fa-clock"></i>
-                            {{ $blog->read_time }}
+                            <time itemprop="readTime">
+                                {{ $blog->read_time }}
+                            </time>
                         </li>
                     </ul>
-                    <h2 class="item-title">{{ $blog->title }}</h2>
+                    <h1 class="item-title" itemprop="name headline">{{ $blog->title }}</h1>
 
                     <div class="item-social">
                         <button class="btn btn-default facebook social_share" data-type="fb">
@@ -89,7 +96,7 @@
             <div class="row gutters-50">
                 <div class="col-lg-8">
                     <div class="single-blog-box-layout1">
-                        <div class="blog-details">
+                        <div class="blog-details" itemprop="articleBody">
                             {!! $blog->content_html !!}
                         </div>
                         <div class="blog-entry-meta">
@@ -114,14 +121,17 @@
                                         <i class="fab fa-pinterest"></i>
                                     </button>
                                 </li>
-                                <li class="item-respons"><i class="fas fa-heart"></i>{{ $blog->likes->count() }}</li>
+                                <li class="item-respons">
+                                    <i class="fas fa-heart"></i>
+                                    {{ $blog->likes->count() }}
+                                </li>
                             </ul>
                         </div>
-                        <div class="blog-author">
+                        <div class="blog-author" itemscope itemtype="http://schema.org/Blog">>
                             <div class="media media-none--xs">
-                                <img src="/themes/blogxer/img/blog/blog212.jpg" alt="{{ $blog->user->name }}" class="media-img-auto">
+                                <img src="{{ $blog->user->avatar }}" alt="{{ $blog->user->name }}" class="media-img-auto">
                                 <div class="media-body">
-                                    <h4 class="item-title">{{ $blog->user->name }}</h4>
+                                    <h4 class="item-title" itemprop="name">{{ $blog->user->name }}</h4>
                                     <div class="item-subtitle">Author</div>
                                     <p>Dorem ipsum dolor sit amet, consectetuer adipiscing
                                         elit,sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.</p>
@@ -135,94 +145,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="related-item">
-                            <div class="section-heading-4 heading-dark">
-                                <h3 class="item-heading">YOU MAY ALSO LIKE</h3>
-                            </div>
-                            <div class="row">
-                                @foreach($posts->take(3) as $post)
-                                <div class="col-sm-4 col-12">
-                                    <div class="blog-box-layout1 text-left">
-                                        <div class="item-img">
-                                            <a href="{{ $post->url }}">
-                                                <img src="{{ $post->getMedia('images')[0]->getUrl('medium') }}" alt="{{ $post->title }}">
-                                            </a>
-                                        </div>
-                                        <div class="item-content">
-                                            <ul class="entry-meta meta-color-dark">
-                                                <li>
-                                                    <i class="fas fa-tag"></i>
-                                                    {{ $post->category->title }}
-                                                </li>
-                                                <li data-toggle="tooltip" title="{{ $blog->published_at->toIso8601String() }}">
-                                                    <i class="fas fa-calendar-alt"></i>
-                                                    {{ $post->publish }}
-                                                </li>
-                                            </ul>
-                                            <h5 class="item-title">
-                                                <a href="{{ $post->url }}">
-                                                    {{ $post->title }}
-                                                </a>
-                                            </h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endforeach
 
-                            </div>
-                        </div>
-                        <div class="blog-comment">
-                            <div class="section-heading-4 heading-dark">
-                                <h3 class="item-heading">{{ $blog->comments->count() }} COMMENTS</h3>
-                            </div>
-                            @foreach($blog->comments as $comment)
-                            <div class="media media-none--xs">
-                                <img src="{{ $comment->user->getMedia('images')[0]->getUrl('avatar') }}" alt="Blog Comments" class="img-fluid media-img-auto">
-                                <div class="media-body">
-                                    <h4 class="item-title">{{ $comment->user->name }}</h4>
-                                    <div class="item-subtitle" data-toggle="tooltip" title="{{ $comment->published_at->toIso8601String() }}">
-                                        {{ $comment->time_elapsed }}
-                                    </div>
-                                    {{ $comment->content }}
-                                    <a href="#" class="item-btn">Reply</a>
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
-                        <div class="blog-form">
-                            <div class="section-heading-4 heading-dark">
-                                <h3 class="item-heading">WRITE A COMMENT</h3>
-                            </div>
-                            <form class="contact-form-box">
-                                <div class="row gutters-15">
-                                    <div class="col-md-4 form-group">
-                                        <input type="text" placeholder="Name*" class="form-control" name="first_name"
-                                               data-error="Name field is required" required>
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                    <div class="col-md-4 form-group">
-                                        <input type="email" placeholder="E-mail*" class="form-control" name="email"
-                                               data-error="E-mail field is required" required>
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                    <div class="col-md-4 form-group">
-                                        <input type="text" placeholder="Website*" class="form-control" name="website"
-                                               data-error="website field is required" required>
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                    <div class="col-12 form-group">
-                                            <textarea placeholder="Write your comments ..." class="textarea form-control"
-                                                      name="message" rows="8" cols="20" data-error="Message field is required"
-                                                      required></textarea>
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                    <div class="col-12 form-group">
-                                        <button class="item-btn">POST COMMENT</button>
-                                    </div>
-                                </div>
-                                <div class="form-response"></div>
-                            </form>
-                        </div>
+                        @include('blog.components.related')
+
+                        @include('blog.comment.comment')
+                        @include('blog.comment.form')
+
                     </div>
                 </div>
                 <div class="col-lg-4 sidebar-widget-area sidebar-break-md">
@@ -231,9 +159,11 @@
 
                     @include('blog.partials.widget.follow')
 
-                    @include('blog.partials.widget.newsletter')
+                    <x-newsletter></x-newsletter>
 
-                    @include('blog.partials.widget.categories')
+                    <x-categories></x-categories>
+
+                    {{--                    @include('blog.partials.widget.categories')--}}
 
                     @include('blog.partials.widget.adsense')
                 </div>
@@ -241,6 +171,6 @@
         </div>
     </section>
     <!-- Single Blog Banner End Here -->
-        @include('blog.partials.instagram')
+    <x-instagram-feed></x-instagram-feed>
 @endsection
 

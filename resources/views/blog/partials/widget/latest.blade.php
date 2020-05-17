@@ -7,19 +7,25 @@
             @foreach($latest as $post)
                 <li class="single-item">
                     <div class="item-img">
-                        <a href="#">
+                        <a href="{{ $post->url }}">
                             <img src="{{ $post->getMedia('images')[0]->getUrl('small') }}" alt="Post">
                         </a>
                         <div class="count-number">{{ $post->likes->count() }}</div>
                     </div>
                     <div class="item-content">
                         <ul class="entry-meta meta-color-dark">
-                            <li>
+                            <li data-toggle="tooltip" data-placeholder="top" title="{{ $post->published_at->toIso8601String() }}">
                                 <i class="fas fa-calendar-alt"></i>
-                                {{ $post->publish }}
+                                <time datetime="{{ $post->published_at->toIso8601String() }}" title="{{ $post->published_at->format('M d, Y g:i:s a') }}">
+                                    {{ $post->publish }}
+                                </time>
                             </li>
                         </ul>
-                        <h4 class="item-title"><a href="#">{{ $post->title }}</a></h4>
+                        <h4 class="item-title" itemprop="name headline">
+                            <a itemprop="mainEntityOfPage url" href="{{ $post->url }}">
+                                {{ $post->title }}
+                            </a>
+                        </h4>
                     </div>
                 </li>
             @endforeach

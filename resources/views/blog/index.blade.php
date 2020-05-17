@@ -16,7 +16,11 @@
                         <div class="item-content">
                             <ul class="entry-meta meta-color-dark">
                                 <li><i class="fas fa-tag"></i>{{ $post->category->title }}</li>
-                                <li><i class="fas fa-calendar-alt"></i>{{ $post->publish }}</li>
+                                <li><i class="fas fa-calendar-alt"></i>
+                                    <time datetime="{{ $post->published_at->toIso8601String() }}" title="{{ $post->published_at->format('M d, Y g:i:s a') }}">
+                                    {{ $post->publish }}
+                                    </time>
+                                </li>
                                 <li><i class="far fa-clock"></i>{{ $post->read_time }}</li>
                             </ul>
                             <h3 class="item-title"><a href="{{ $post->url }}">{{ $post->title }}</a></h3>
@@ -50,7 +54,9 @@
                                 </li>
                                 <li>
                                     <i class="fas fa-calendar-alt"></i>
+                                    <time datetime="{{ $getPost->published_at->toIso8601String() }}" title="{{ $getPost->published_at->format('M d, Y g:i:s a') }}">
                                     {{ $getPost->publish }}
+                                    </time>
                                 </li>
                                 <li>
                                     <i class="fas fa-user"></i>BY
@@ -90,9 +96,10 @@
                                                 {{ $blog->category->title }}
                                             </li>
                                             <li>
-                                                <i class="fas fa-calendar-alt"></i
-                                                >
-                                                {{ $blog->publish }}
+                                                <i class="fas fa-calendar-alt"></i>
+                                                <time datetime="{{ $blog->published_at->toIso8601String() }}" title="{{ $blog->published_at->format('M d, Y g:i:s a') }}">
+                                                    {{ $blog->publish }}
+                                                </time>
                                             </li>
                                             <li>
                                                 <i class="far fa-clock"></i>
@@ -121,7 +128,7 @@
                 </div>
                 <div class="col-xl-3 col-lg-4 sidebar-widget-area sidebar-break-md">
 
-                    @include('blog.partials.widget.about')
+{{--                    @include('blog.partials.widget.about')--}}
 
 
                     @include('blog.partials.widget.subscribe')
@@ -130,11 +137,11 @@
 
                     @include('blog.partials.widget.adsense')
 
-                    @include('blog.partials.widget.instagram')
+                    <x-instagram-widget></x-instagram-widget>
 
-                    @include('blog.partials.widget.categories')
+                    <x-categories></x-categories>
 
-                    @include('blog.partials.widget.newsletter')
+                    @include('blog.components.newsletter')
 
                     @include('blog.partials.widget.feature-feed')
                 </div>
@@ -143,5 +150,5 @@
     </section>
     <!-- Blog Area End Here -->
     <!-- Instagram Start Here -->
-    @include('blog.partials.instagram')
+    <x-instagram-feed></x-instagram-feed>
 @endsection

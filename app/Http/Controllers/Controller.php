@@ -13,7 +13,6 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
-use Instagram;
 
 /**
  * Class Controller
@@ -22,20 +21,4 @@ use Instagram;
 abstract class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-
-    /**
-     * @throws Instagram\Exception\InstagramCacheException
-     * @throws Instagram\Exception\InstagramException
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     * @return Instagram\Hydrator\Component\Feed
-     */
-    protected function instagram(): Instagram\Hydrator\Component\Feed
-    {
-        $cache = new Instagram\Storage\CacheManager(storage_path('app/public/instagram/'));
-        $api = new Instagram\Api($cache);
-        $api->setUserName('wach_1');
-
-        $feed = $api->getFeed();
-        return $feed;
-    }
 }

@@ -17,7 +17,11 @@
                         <div class="item-content">
                             <ul class="entry-meta meta-color-dark">
                                 <li><i class="fas fa-tag"></i>{{ $post->category->title }}</li>
-                                <li><i class="fas fa-calendar-alt"></i>{{ $post->published }}</li>
+                                <li><i class="fas fa-calendar-alt"></i>
+                                    <time datetime="{{ $post->published_at->toIso8601String() }}" title="{{ $post->published_at->format('M d, Y g:i:s a') }}">
+                                        {{ $post->published }}
+                                    </time>
+                                </li>
                                 <li><i class="fas fa-user"></i>BY <a href="#">{{ $post->user->name }}</a></li>
                                 <li><i class="far fa-clock"></i>{{ $post->read_time }}</li>
                             </ul>

@@ -40,7 +40,11 @@
                                         <div class="item-content">
                                             <ul class="entry-meta meta-color-dark">
                                                 <li><i class="fas fa-tag"></i>{{ $post->tags->implode('tag', ', ') }}</li>
-                                                <li><i class="fas fa-calendar-alt"></i>{{ $post->publish }}</li>
+                                                <li><i class="fas fa-calendar-alt"></i>
+                                                    <time datetime="{{ $post->published_at->toIso8601String() }}" title="{{ $post->published_at->format('M d, Y g:i:s a') }}">
+                                                    {{ $post->publish }}
+                                                    </time>
+                                                </li>
                                                 <li><i class="far fa-clock"></i>{{ $post->read_time }}</li>
                                             </ul>
                                             <h3 class="item-title">
@@ -72,11 +76,11 @@
 
                     @include('blog.partials.widget.follow')
 
-                    @include('blog.partials.widget.newsletter')
+                    @include('blog.components.newsletter')
 
                     @include('blog.partials.widget.latest')
 
-                    @include('blog.partials.widget.instagram')
+                    @include('blog.components.instagram.widget')
                 </div>
             </div>
         </div>

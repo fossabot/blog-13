@@ -39,9 +39,13 @@
                         </div>
                         <div class="item-content">
                             <ul class="entry-meta meta-color-dark">
-                                <li><i class="fas fa-calendar-alt"></i>{{ $post->publish }}</li>
+                                <li><i class="fas fa-calendar-alt"></i>
+                                    <time datetime="{{ $post->published_at->toIso8601String() }}" title="{{ $post->published_at->format('M d, Y g:i:s a') }}">
+                                        {{ $post->publish }}
+                                    </time>
+                                </li>
                             </ul>
-                            <h4 class="item-title"><a href="#">{{ $post->title }}</a></h4>
+                            <h4 class="item-title"><a href="{{ $post->url }}">{{ $post->title }}</a></h4>
                         </div>
                     </li>
                 @endforeach

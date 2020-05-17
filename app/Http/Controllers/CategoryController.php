@@ -21,10 +21,10 @@ class CategoryController extends Controller
 {
     /**
      * @param Category $category
-     * @return View
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Instagram\Exception\InstagramCacheException
      * @throws \Instagram\Exception\InstagramException
+     * @return View
      */
     public function __invoke(Category $category): View
     {
@@ -41,7 +41,6 @@ class CategoryController extends Controller
             'category' => $category,
             'posts' => $posts,
             'latest' => $latest,
-            'instagram' => $this->instagram()
         ]);
     }
 }

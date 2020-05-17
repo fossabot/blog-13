@@ -16,7 +16,6 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\MediaLibrary\HasMedia;
@@ -70,7 +69,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  * @property string $layout
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereLayout($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\MediaLibrary\MediaCollections\Models\Media[] $media
- * @property-read int|null $media_count
+ * @property-read null|int $media_count
  */
 class Category extends Model implements HasMedia
 {
