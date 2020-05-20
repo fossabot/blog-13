@@ -37,6 +37,8 @@ return [
      */
     'words_per_minute' => 230,
 
+    'analytic_id' => env('GOOGLE_ANALYTIC_ID', null),
+
     /*
     |--------------------------------------------------------------------------
     | Blog Author
