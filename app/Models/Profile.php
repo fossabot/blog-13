@@ -32,6 +32,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string $last_name
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Profile whereFirstName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Profile whereLastName($value)
+ * @property string $biography
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Profile whereBiography($value)
  */
 class Profile extends Model
 {
@@ -67,8 +69,14 @@ class Profile extends Model
         $this->attributes['first_name'] = strtolower($value);
     }
 
+    /**
+     * Return the profile's user
+     *
+     * @return BelongsTo
+     */
     public function user(): BelongsTo
     {
-        $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
+
 }

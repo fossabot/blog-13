@@ -39,41 +39,10 @@
                     <div class="blog-details">
                         {!! $blog->content_html !!}
                     </div>
-                    <div class="blog-tag">
-                        <ul>
-                            <li class="item-tag"><i class="fas fa-bookmark"></i>
-                                @foreach($blog->tags as $tag)
-                                    <a href="#">{{ $tag->tag }},</a>
-                                @endforeach
-                            </li>
-                            <li class="item-social">
-                                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#"><i class="fab fa-google-plus-g"></i></a>
-                                <a href="#"><i class="fab fa-pinterest"></i></a>
-                            </li>
-                            <li class="item-respons"><i class="fas fa-heart"></i>1,230</li>
-                        </ul>
-                    </div>
-                    <div class="blog-author">
-                        <div class="media media-none--xs">
-                            <img src="img/blog/blog212.jpg" alt="Author" class="media-img-auto">
-                            <div class="media-body">
-                                <h4 class="item-title">Lora Zaman</h4>
-                                <div class="item-subtitle">Author</div>
-                                <p>Dorem ipsum dolor sit amet, consectetuer adipiscing
-                                    elit,sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.</p>
-                                <ul class="item-social">
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+
+                    @include('blog.partials.blog.tag')
+                    @include('blog.partials.blog.author')
+
                     @include('blog.components.related')
                     @include('blog.comment.comment')
                     @include('blog.comment.form')

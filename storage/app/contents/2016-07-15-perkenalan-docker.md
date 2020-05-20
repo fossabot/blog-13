@@ -1,6 +1,6 @@
 ---
 title: Perkenalan Docker
-category: 4
+category: 5
 subtitle: Docker adalah sebuah alat yang didesain untuk memudahkan dalam create, deploy, dan run aplikasi dengan menggunakan containers.
 meta_description: Docker adalah sebuah alat yang didesain untuk memudahkan dalam create, deploy, dan run aplikasi dengan menggunakan containers.
 is_sticky: true

@@ -1,6 +1,6 @@
 ---
 title: Sekilas Tentang Dockerfile - [2]
-category: 4
+category: 5
 subtitle: null
 meta_description: null
 is_sticky: false

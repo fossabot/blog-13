@@ -1,6 +1,6 @@
 ---
 title:  Konfigurasi Auto Deploy dari Gitlab-CI ke server,
-category: 4
+category: 6
 subtitle: null
 meta_description: null
 is_sticky: false

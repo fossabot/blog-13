@@ -1,6 +1,6 @@
 ---
 title:  Menambahkan ssh key ke Gitlab
-category:  4
+category:  6
 subtitle:  Creative UI/UX desingerr how loves to craft beautiful that satisfy users needs the product.,
 meta_description:  SSH key adalah metode altenartif untuk autentikasi ke Server. Menggunakan motode SSH key ini lebih nyaman digunakan dan aman daripada menggunakan password untuk menghubungkan komputer kita dan server.
 is_sticky: false

@@ -69,32 +69,32 @@ return [
     'socials' => [
         [
             'name' => 'facebook',
-            'url'=> 'https://facebook.com/' .env('SOCIAL_FACEBOOK', 'turahe'),
+            'url'=> 'https://facebook.com/' .env('SOCIAL_FACEBOOK', null),
             'text' => 'LIKE ME ON',
         ],
         [
             'name' => 'instagram',
-            'url'=> 'https://instagram.com/' .env('SOCIAL_INSTAGRAM', 'turahe'),
+            'url'=> 'https://instagram.com/' .env('SOCIAL_INSTAGRAM', null),
             'text' => 'FOLLOW ME',
         ],
         [
             'name' => 'linkedin',
-            'url'=> 'https://instagram.com/' .env('SOCIAL_LINKEDIN', 'turahe'),
+            'url'=> 'https://instagram.com/' .env('SOCIAL_LINKEDIN', null),
             'text' => 'FOLLOW ME',
         ],
         [
             'name' => 'behance',
-            'url'=> 'https://behance.net/' .env('SOCIAL_BEHANCE', 'turahe'),
+            'url'=> 'https://behance.net/' .env('SOCIAL_BEHANCE', null),
             'text' => 'FOLLOW ME',
         ],
         [
             'name' => 'twitter',
-            'url'=> 'https://twitter.com/' .env('SOCIAL_TWITTER', 'turahe'),
+            'url'=> 'https://twitter.com/' .env('SOCIAL_TWITTER', null),
             'text' => 'FOLLOW ME',
         ],
         [
             'name' => 'github',
-            'url'=> 'https://github.com/' .env('SOCIAL_GITHUB', 'turahe'),
+            'url'=> 'https://github.com/' .env('SOCIAL_GITHUB', null),
             'text' => 'FOLLOW ME',
         ],
         [

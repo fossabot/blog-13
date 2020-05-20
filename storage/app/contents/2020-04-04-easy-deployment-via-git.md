@@ -1,6 +1,6 @@
 ---
 title: Easy deployment with git push
-category: 4
+category: 6
 subtitle: null
 meta_description: null
 is_sticky: false

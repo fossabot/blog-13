@@ -4,7 +4,7 @@
     </div>
     <div class="widget-follow-us-2">
         <ul>
-            @foreach(config('blog.socials') as $social)
+            @foreach(collect(config('blog.socials')) as $social)
                 <li class="single-item">
                     <a href="{{ $social['url'] }}">
                         <i class="fab fa-{{ $social['name'] }}"></i>

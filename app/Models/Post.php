@@ -125,6 +125,9 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereLayout($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\MediaLibrary\MediaCollections\Models\Media[] $media
  * @property-read null|int $media_count
+ * @property-read string $slide_index
+ * @property-read string $slide_show
+ * @property-read string $thumbnail
  */
 class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterface
 {
@@ -271,14 +274,11 @@ class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterfac
     public function getUrlAttribute(): string
     {
         switch ($this->type) {
-            case 'blog':
-                return route('blog.show', $this->slug);
-                break;
             case 'page':
                 return url($this->slug);
                 break;
             default:
-                return false;
+                return url($this->type .'/'.$this->slug);
         }
     }
 

@@ -24,7 +24,8 @@ Route::get('/about', 'PostController@page')->defaults('post', 'about-me');
 
 
 Route::get('/', 'PostController@index');
-Route::get('blog/{post}', 'PostController@show')->name('blog.show');
+Route::get('blog/{slug}', 'PostController@show');
+Route::get('book/{slug}', 'PostController@show');
 Route::get('category/{category}', 'CategoryController');
 
 

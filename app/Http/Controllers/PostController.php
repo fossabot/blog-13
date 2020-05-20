@@ -40,9 +40,6 @@ final class PostController extends Controller
      * Show all blog
      *
      * @param Request $request
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Instagram\Exception\InstagramCacheException
-     * @throws \Instagram\Exception\InstagramException
      * @return View
      */
     public function index(Request $request): View

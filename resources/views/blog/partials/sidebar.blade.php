@@ -18,8 +18,10 @@
         <div class="widget-follow-us">
             <ul>
                 @foreach(config('blog.socials') as $social)
-                    <li><a class="svg-icon" href="{{ $social['url'] }}">
+                    <li>
+                        <a class="svg-icon" href="{{ $social['url'] }}">
                             <i class="fab fa-{{ $social['name'] }}"></i>
+                        </a>
                     </li>
                 @endforeach
             </ul>

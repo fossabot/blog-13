@@ -120,55 +120,14 @@
                 <div class="col-lg-12">
                     <nav id="dropdown" class="template-main-menu">
                         <ul>
-                            <li class="hide-on-mobile-menu">
-                                <a href="#">HOME</a>
-                                <ul class="dropdown-menu-col-2">
-                                    <li>
-                                        <a href="{{ url('/') }}">Home 1</a>
-                                        <a href="{{ url('/') }}">Home 2</a>
-                                        <a href="{{ url('/') }}">Home 3</a>
-                                        <a href="{{ url('/') }}">Home 4</a>
-                                        <a href="index5.html">Home 5</a>
-                                        <a href="index6.html">Home 6</a>
-                                        <a href="index7.html">Home 7</a>
-                                    </li>
-                                    <li>
-                                        <a href="index8.html">Home 8</a>
-                                        <a href="index9.html">Home 9</a>
-                                        <a href="index10.html">Home 10</a>
-                                        <a href="index11.html">Home 11</a>
-                                        <a href="index12.html">Home 12</a>
-                                        <a href="index13.html">Home 13</a>
-                                        <a href="coming-soon.html">Coming Soon</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="hide-on-desktop-menu">
-                                <a href="#">HOME</a>
-                                <ul class="dropdown-menu-col-2">
-                                    <li><a href="{{ url('/') }}">Home 1</a></li>
-                                    <li><a href="index2.html">Home 2</a></li>
-                                    <li><a href="index3.html">Home 3</a></li>
-                                    <li><a href="index4.html">Home 4</a></li>
-                                    <li><a href="index5.html">Home 5</a></li>
-                                    <li><a href="index6.html">Home 6</a></li>
-                                    <li><a href="index7.html">Home 7</a></li>
-                                    <li><a href="index8.html">Home 8</a></li>
-                                    <li><a href="index9.html">Home 9</a></li>
-                                    <li><a href="index10.html">Home 10</a></li>
-                                    <li><a href="index11.html">Home 11</a></li>
-                                    <li><a href="index12.html">Home 12</a></li>
-                                    <li><a href="index13.html">Home 13</a></li>
-                                </ul>
-                            </li>
                             <li>
-                                <a href="about.html">ABOUT</a>
+                                <a href="{{ url('/') }}">@lang('blog.home')</a>
                             </li>
                             <li>
                                 <a href="{{ url('categories') }}">@lang('blog.topics')</a>
                                 <ul class="dropdown-menu-col-1">
                                     <li>
-                                        <a href="{{ url('/') }}">Blog</a>
+                                        <a href="{{ url('category/blog') }}">Blog</a>
                                     </li>
                                 </ul>
                             </li>

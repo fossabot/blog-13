@@ -25,6 +25,8 @@ class DatabaseSeeder extends Seeder
             PermissionsTableSeeder::class,
             RolesTableSeeder::class,
             UsersTableSeeder::class,
+            ProfilesTableSeeder::class,
+            SocialsTableSeeder::class,
             CategoriesTableSeeder::class,
             PostsTableSeeder::class,
             TagsTableSeeder::class,

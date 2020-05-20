@@ -146,15 +146,15 @@
 
                     @include('blog.partials.widget.latest')
 
-                    @include('blog.partials.widget.adsense')
+{{--                    @include('blog.partials.widget.adsense')--}}
 
 {{--                    <x-instagram-widget></x-instagram-widget>--}}
 
                     <x-categories></x-categories>
 
-                    @include('blog.components.newsletter')
+{{--                    @include('blog.components.newsletter')--}}
 
-                    @include('blog.partials.widget.feature-feed')
+{{--                    @include('blog.partials.widget.feature-feed')--}}
                 </div>
             </div>
         </div>

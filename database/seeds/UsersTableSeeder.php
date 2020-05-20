@@ -8,11 +8,10 @@
  */
 
 use App\Models\Profile;
+use App\Models\Social;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
-use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
-use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 
 /**
  * Class UsersTableSeeder
@@ -29,7 +28,7 @@ class UsersTableSeeder extends Seeder
         $users = self::defaultUser();
 
         foreach ($users as $index => $user) {
-            $user = User::firstOrCreate([
+            User::updateOrCreate([
                 'name' => strtolower($user['name']),
                 'email' => $user['email'],
                 'email_verified_at' => Carbon::now(),
@@ -44,22 +43,12 @@ class UsersTableSeeder extends Seeder
                 ->toMediaCollection('images');
         }
 
-        Profile::firstOrCreate([
-            'user_id' => 1,
-            'first_name' => 'Nur',
-            'last_name' => 'Wachid',
-            'gender' => true,
-            'birthplace' => 'Batang',
-            'birthday' => '1990-12-01'
-        ]);
-
         if (App::environment(['local', 'staging', 'testing'])) {
             factory(User::class, 100)->create()->each(function ($user) {
                 $user->profile()->save(factory(Profile::class)->make());
+                $user->socials()->saveMany(factory(Social::class, mt_rand(3, 5))->make());
             });
         }
-
-
     }
 
     /**

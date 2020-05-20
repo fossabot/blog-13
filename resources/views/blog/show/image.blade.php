@@ -127,21 +127,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="blog-author" itemscope itemtype="http://schema.org/Blog">
-                            <div class="media media-none--xs">
-                                <img src="{{ $blog->user->avatar }}" alt="{{ $blog->user->name }}" class="media-img-auto">
-                                <div class="media-body">
-                                    <h4 class="item-title" itemprop="name">{{ $blog->user->name }}</h4>
-                                    <div class="item-subtitle">Author</div>
-                                    <p>{{ config('blog.author.description') }}</p>
-                                    <ul class="item-social">
-                                        @foreach(config('blog.socials') as $social)
-                                            <li><a href="{{ $social['url'] }}"><i class="fab fa-{{ $social['name'] }}"></i></a></li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        @include('blog.partials.blog.author')
 
                         @include('blog.components.related')
 

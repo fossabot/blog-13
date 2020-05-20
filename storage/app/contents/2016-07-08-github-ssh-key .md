@@ -1,6 +1,6 @@
 ---
 title: Lebih Mudah GitHub dengan SSH Key
-category: 4
+category: 6
 subtitle: Pada pembahasan ini kita akan memanfaatkan *SSH key* untuk Github.
 meta_description: Pada pembahasan ini kita akan memanfaatkan *SSH key* untuk Github.
 is_sticky: true

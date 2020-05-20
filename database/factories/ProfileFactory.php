@@ -21,5 +21,6 @@ $factory->define(Model::class, function (Faker $faker) {
         'gender' => $faker->boolean,
         'birthplace' => $faker->city,
         'birthday' => $faker->dateTimeBetween('-30 years', '-20 years'),
+        'biography' => $faker->sentences(3, true),
     ];
 });

@@ -1,6 +1,6 @@
 ---
 title:  Implementasi Gitlab CI/CD untuk Test dan Deploy Aplikasi O2System,
-category:  4
+category:  6
 subtitle:  Creative UI/UX desingerr how loves to craft beautiful that satisfy users needs the product.,
 meta_description:  Praktik CI di gitlab dikenal dengan Test dan Build yang artinya setiap kali tim push kode kedalam aplikasi, kita hanya akan melakukan Test dan Build dengan cara manual  ataupun otomatis.
 is_sticky: false
