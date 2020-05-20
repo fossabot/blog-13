@@ -117,7 +117,8 @@
                 <div class="item-title">Follow Me</div>
                 <ul class="offcanvas-social">
                     @foreach(config('blog.socials') as $social)
-                        <li><a class="svg-icon" href="{{ $social['url'] }}" rel="me" title="{{ $social['name'] }}">
+                        <li>
+                            <a class="svg-icon" href="{{ $social['url'] }}" rel="me" title="{{ $social['name'] }}">
                                 <i class="fab fa-{{ $social['name'] }}"></i>
                             </a>
                         </li>
@@ -128,6 +129,8 @@
     </div>
     <!-- Offcanvas Menu End -->
 </div>
+
+@include('analytics')
 <!-- jquery-->
 <script src="{{ mix('js/manifest.js') }}"></script>
 <script src="{{ mix('js/vendor.js') }}"></script>
