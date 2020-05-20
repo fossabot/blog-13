@@ -30,7 +30,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('subtitle', 255)->nullable();
             $table->string('meta_description', 255)->nullable();
-            $table->text('content_raw');
+            $table->text('content_raw')->nullable();
             $table->text('content_html');
 
             $table->string('is_draft')->default(false);
@@ -38,7 +38,7 @@ class CreatePostsTable extends Migration
             $table->string('type');
 
             $table->timestamp('published_at');
-            $table->string('layout')->default('blog.layouts.index');
+            $table->string('layout')->default('blog.show.default');
             $table->softDeletes();
             $table->timestamps();
         });

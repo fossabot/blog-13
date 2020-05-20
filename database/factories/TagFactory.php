@@ -7,9 +7,11 @@
  *  @copyright      Copyright (c) Turahe 2020.
  */
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+/** @var Factory $factory */
 
+use App\Models\Tag;
 use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factory;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +23,7 @@ use Faker\Generator as Faker;
 | model instances for testing / seeding your application's database.
 |
 */
-$factory->define(\App\Models\Tag::class, function (Faker $faker) {
+$factory->define(Tag::class, function (Faker $faker) {
     $word = $faker->unique()->word;
     return [
         'tag' => $word,

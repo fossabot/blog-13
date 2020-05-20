@@ -13,7 +13,8 @@
             <div class="carousel-inner" role="listbox">
                 @foreach($featured as $post)
                     <div class="carousel-item slider-box-layout1 {{ $loop->first ? 'active' : '' }}">
-                        <img class="d-block img-fluid" src="{{ $post->getMedia('images')[0]->getUrl('slider') }}" alt="{{ $post->title }}">
+{{--                        {{ $post->cover }}--}}
+                        <img class="d-block img-fluid" src="{{ $post->slide }}" alt="{{ $post->title }}">
                         <div class="item-content">
                             <ul class="entry-meta meta-color-dark">
                                 <li><i class="fas fa-tag"></i>{{ $post->category->title }}</li>

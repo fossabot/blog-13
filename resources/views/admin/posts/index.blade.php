@@ -9,6 +9,11 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">@lang('dashboard.posts')</h3>
+                    <div class="card-tools">
+                        <a href="{{ route('admin.posts.create') }}" class="btn btn-danger btn-sm">
+                            <i class="fa fa-plus-square" aria-hidden="true"></i> @lang('forms.actions.add')
+                        </a>
+                    </div>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -71,15 +76,15 @@
 
 @push('styles')
     <!-- DataTables -->
-    <link rel="stylesheet" href="/admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="/admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="/assets/admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="/assets/admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 @endpush
 
 @push('scripts')
-    <script src="/admin/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="/admin/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="/admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="/assets/admin/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="/assets/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/assets/admin/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="/assets/admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
     <script>
         $(document).ready(function() {
             $('#dataTable').DataTable({

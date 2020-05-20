@@ -2,7 +2,7 @@
     <!-- Basic Card Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">new content</h6>
+            <h6 class="m-0 font-weight-bold text-primary">New content</h6>
         </div>
         <div class="card-body">
             <div class="form-group">
@@ -38,7 +38,7 @@
 <div class="col-md-3">
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">new content</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Attribute</h6>
         </div>
         <div class="card-body">
             <div class="form-group">
@@ -57,14 +57,25 @@
             </div>
             <div class="form-group">
                 <label for="publish_date">{{ __('posts.attributes.publish_date') }}</label>
-                <input type="date" name="publish_date" id="publish_date" class="form-control {{ $errors->has('publish_date') ? ' is-invalid' : '' }}" required value="{{ old('publish_date') ?? isset($post) ? $post->publish_date : null }}">
+                <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                    <input type="date" name="publish_date" id="publish_date" class="form-control {{ $errors->has('publish_date') ? ' is-invalid' : '' }} datetimepicker-input" data-target="#reservationdate" required value="{{ old('publish_date') ?? isset($post) ? $post->publish_date : null }}">
+                    <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                    </div>
+                </div>
                 @error('publish_date')
                 <span class="invalid-feedback">{{ $message }}</span>
                 @enderror
             </div>
+
             <div class="form-group">
                 <label for="publish_time">{{ __('posts.attributes.publish_time') }}</label>
-                <input type="time" name="publish_time" id="publish_time" class="form-control {{ $errors->has('publish_time') ? ' is-invalid' : '' }}" required value="{{ old('publish_time') ?? isset($post) ? $post->publish_time : null }}">
+                <div class="input-group date" id="timepicker" data-target-input="nearest">
+                    <input type="time" name="publish_time" id="publish_time" class="form-control {{ $errors->has('publish_time') ? ' is-invalid' : '' }} datetimepicker-input" data-target="#timepicker" required value="{{ old('publish_time') ?? isset($post) ? $post->publish_time : null }}">
+                    <div class="input-group-append" data-target="#timepicker" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="far fa-clock"></i></div>
+                    </div>
+                </div>
                 @error('publish_time')
                 <span class="invalid-feedback">{{ $message }}</span>
                 @enderror
@@ -75,7 +86,7 @@
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="form-group">
-                <label for="category_id">{{ __('posts.attributes.category') }}</label>
+                <label for="category_id">Category</label>
                 <select id="category_id" class="form-control select2 {{ $errors->has('category') ? ' is-invalid' : '' }}" name="category">
                     @foreach ($categories as $key => $value)
                         <option value="{{ $key }}" {{ ( isset($post) ? $key == $post->category->id: null) ? 'selected' : '' }}>
@@ -91,20 +102,12 @@
 
             <div class="form-group">
 
-                <label for="tags">{{ __('posts.attributes.tags') }}</label>
+                <label for="tags">Tags</label>
                 <select id="tags" class="form-control select2 {{ $errors->has('tags') ? ' is-invalid' : '' }}" multiple name="tags[]">
                     @foreach ($tags as $key => $value)
                         <option value="{{ $key }}" {{ ( isset($post) ? $key == $post->id: null) ? 'selected' : '' }}>
                             {{ $value }}
                         </option>
-                    @endforeach
-                </select>
-
-                <select multiple="multiple" name="sports[]" id="sports">
-                    @foreach($tags as $aKey => $tag)
-                        @foreach($post->tags as $postKey => $postTag)
-                            <option value="{{$aKey}}" @if($aKey == $postKey)selected="selected"@endif>{{$tag}}</option>
-                        @endforeach
                     @endforeach
                 </select>
 
@@ -128,9 +131,25 @@
 </div>
 
 @push('styles')
-
+    <link rel="stylesheet" href="/assets/admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet" href="/assets/admin/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="/assets/admin/plugins/summernote/summernote-bs4.css">
+    <link rel="stylesheet" href="/assets/admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 @endpush
 @push('scripts')
+    <script src="/assets/admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="/assets/admin/plugins/select2/js/select2.full.min.js"></script>
+    <script src="/assets/admin/plugins/summernote/summernote-bs4.min.js"></script>
+    <script>
+        //Initialize Select2 Elements
+        $('.select2').select2({
+            theme: 'bootstrap4'
+        })
+        $('#content').summernote({
+            height: 300
+        })
+
+    </script>
 @endpush
 
 

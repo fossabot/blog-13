@@ -33,6 +33,7 @@ class PostsTableSeeder extends Seeder
     public function run(Faker $faker)
     {
         Model::unguard();
+
         $posts = self::defaultPost();
         $images = dirToArray(storage_path('app/public/img/posts'));
 
@@ -60,7 +61,6 @@ class PostsTableSeeder extends Seeder
 
 
             if (App::environment(['local', 'staging', 'testing'])) {
-//                $post->images()->saveMany(factory(Media::class, 3)->make());
                 $post->comments()->saveMany(factory(Comment::class, mt_rand(1, 10))->make());
                 $post->rates()->saveMany(factory(Rate::class, 3)->make());
                 $post->likes()->saveMany(factory(Like::class, mt_rand(1, 20))->make());

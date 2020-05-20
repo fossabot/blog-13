@@ -10,20 +10,31 @@
                     <div class="blog-box-layout1">
                         <div class="item-img">
                             <a href="{{ $post->url }}">
-                                <img src="{{ $post->getMedia('images')[0]->getUrl('medium') }}" alt="{{ $post->title }}">
+                                <img src="{{ $post->image }}" alt="{{ $post->title }}">
                             </a>
                         </div>
                         <div class="item-content">
                             <ul class="entry-meta meta-color-dark">
-                                <li><i class="fas fa-tag"></i>{{ $post->category->title }}</li>
-                                <li><i class="fas fa-calendar-alt"></i>
+                                <li>
+                                    <i class="fas fa-tag"></i>
+                                    {{ $post->category->title }}
+                                </li>
+                                <li>
+                                    <i class="fas fa-calendar-alt"></i>
                                     <time datetime="{{ $post->published_at->toIso8601String() }}" title="{{ $post->published_at->format('M d, Y g:i:s a') }}">
                                     {{ $post->publish }}
                                     </time>
                                 </li>
-                                <li><i class="far fa-clock"></i>{{ $post->read_time }}</li>
+                                <li>
+                                    <i class="far fa-clock"></i>
+                                    {{ $post->read_time }}
+                                </li>
                             </ul>
-                            <h3 class="item-title"><a href="{{ $post->url }}">{{ $post->title }}</a></h3>
+                            <h3 class="item-title">
+                                <a href="{{ $post->url }}">
+                                    {{ $post->title }}
+                                </a>
+                            </h3>
                         </div>
                     </div>
                 </div>
@@ -43,7 +54,7 @@
                     <div class="blog-box-layout1">
                         <div class="item-img">
                             <a href="{{ $getPost->url }}">
-                                <img src="{{ $getPost->getMedia('images')[0]->getUrl('large') }}" alt="{{ $getPost->title }}">
+                                <img src="{{ $getPost->cover }}" alt="{{ $getPost->title }}">
                             </a>
                         </div>
                         <div class="item-content">
@@ -86,7 +97,7 @@
                                 <div class="blog-box-layout1">
                                     <div class="item-img">
                                         <a href="{{ $blog->url }}">
-                                            <img src="{{ $blog->getMedia('images')[0]->getUrl('medium') }}" alt="{{ $blog->title }}">
+                                            <img src="{{ $blog->image }}" alt="{{ $blog->title }}">
                                         </a>
                                     </div>
                                     <div class="item-content">
@@ -137,7 +148,7 @@
 
                     @include('blog.partials.widget.adsense')
 
-                    <x-instagram-widget></x-instagram-widget>
+{{--                    <x-instagram-widget></x-instagram-widget>--}}
 
                     <x-categories></x-categories>
 
@@ -150,5 +161,5 @@
     </section>
     <!-- Blog Area End Here -->
     <!-- Instagram Start Here -->
-    <x-instagram-feed></x-instagram-feed>
+{{--    <x-instagram-feed></x-instagram-feed>--}}
 @endsection
