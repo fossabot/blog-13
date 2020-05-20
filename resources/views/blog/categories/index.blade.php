@@ -31,7 +31,7 @@
                                 <div class="col-xl-6 col-lg-12">
                                     <div class="blog-box-layout10">
                                         <div class="item-img">
-                                            <img src="{{ $post->getMedia('images')[0]->getUrl('medium') }}" alt="{{ $post->title }}">
+                                            <img src="{{ $post->image }}" alt="{{ $post->title }}">
                                         </div>
                                     </div>
                                 </div>
@@ -72,7 +72,7 @@
                 </div>
                 <div class="col-lg-4 sidebar-widget-area sidebar-break-md">
 
-                    @include('blog.partials.widget.about')
+{{--                    @include('blog.partials.widget.about')--}}
 
                     @include('blog.partials.widget.follow')
 
@@ -80,7 +80,7 @@
 
                     @include('blog.partials.widget.latest')
 
-                    @include('blog.components.instagram.widget')
+{{--                    @include('blog.components.instagram.widget')--}}
                 </div>
             </div>
         </div>

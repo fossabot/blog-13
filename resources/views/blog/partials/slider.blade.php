@@ -14,7 +14,7 @@
                 @foreach($featured as $post)
                     <div class="carousel-item slider-box-layout1 {{ $loop->first ? 'active' : '' }}">
 {{--                        {{ $post->cover }}--}}
-                        <img class="d-block img-fluid" src="{{ $post->slide }}" alt="{{ $post->title }}">
+                        <img class="d-block img-fluid" src="{{ $post->slide_index }}" alt="{{ $post->title }}">
                         <div class="item-content">
                             <ul class="entry-meta meta-color-dark">
                                 <li><i class="fas fa-tag"></i>{{ $post->category->title }}</li>

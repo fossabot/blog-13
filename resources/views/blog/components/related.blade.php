@@ -8,7 +8,7 @@
                 <div class="blog-box-layout1 text-left">
                     <div class="item-img">
                         <a href="{{ $post->url }}">
-                            <img src="{{ $post->getMedia('images')[0]->getUrl('medium') }}" alt="{{ $post->title }}">
+                            <img src="{{ $post->image }}" alt="{{ $post->title }}">
                         </a>
                     </div>
                     <div class="item-content">

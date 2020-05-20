@@ -103,23 +103,13 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="widget">
-                        <div class="section-heading heading-dark">
-                            <h3 class="item-heading">ABOUT ME</h3>
-                        </div>
-                        <div class="widget-about">
-                            <figure class="author-figure"><img src="img/figure/figure.jpg" alt="about"></figure>
-                            <figure class="author-signature"><img src="img/figure/signature.png" alt="about"></figure>
-                            <p>Fusce mauris auctor ollicituder teary iner hendrerit risusey aeenean rauctor pibus
-                                doloer.</p>
-                        </div>
-                    </div>
+{{--                    @include('blog.partials.widget.about')--}}
 
 {{--                    <x-newsletter></x-newsletter>--}}
 
                     @include('blog.partials.widget.latest')
 
-                    @include('blog.partials.widget.adsense')
+{{--                    @include('blog.partials.widget.adsense')--}}
 
                     <x-categories></x-categories>
 

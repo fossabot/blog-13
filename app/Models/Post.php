@@ -167,25 +167,50 @@ class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterfac
      */
     public function registerMediaConversions(Media $media = null): void
     {
-        $this->addMediaConversion('small')
+        $this->addMediaConversion('xs')
+            ->crop('crop-center', 90, 80)
             ->width(90)
             ->height(80)
             ->sharpen(10)
             ->withResponsiveImages();
 
-        $this->addMediaConversion('medium')
-            ->width(510)
-            ->height(407)
+        $this->addMediaConversion('sm')
+            ->crop('crop-center', 690, 504)
+            ->width(690)
+            ->height(504)
             ->sharpen(10)
             ->withResponsiveImages();
 
-        $this->addMediaConversion('large')
-            ->width(658)
-            ->height(339)
+        $this->addMediaConversion('md')
+            ->crop('crop-center', 810, 480)
+            ->width(810)
+            ->height(480)
             ->sharpen(10)
             ->withResponsiveImages();
 
-        $this->addMediaConversion('slider')
+        $this->addMediaConversion('lg')
+            ->crop('crop-center', 870, 448)
+            ->width(870)
+            ->height(448)
+            ->sharpen(10)
+            ->withResponsiveImages();
+
+        $this->addMediaConversion('xl')
+            ->crop('crop-center', 1170, 600)
+            ->width(1170)
+            ->height(600)
+            ->sharpen(10)
+            ->withResponsiveImages();
+
+        $this->addMediaConversion('slider-index')
+            ->crop('crop-center', 1171, 568)
+            ->width(1171)
+            ->height(568)
+            ->sharpen(10)
+            ->withResponsiveImages();
+
+        $this->addMediaConversion('slider-show')
+            ->crop('crop-center', 1920, 700)
             ->width(1920)
             ->height(700)
             ->sharpen(10)
@@ -456,12 +481,23 @@ class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterfac
     /**
      * @return string
      */
-    public function getSlideAttribute(): string
+    public function getSlideIndexAttribute(): string
     {
         if ($this->getRelation('media')->count()) {
-            return $this->getMedia('images')[0]->getUrl('slider');
+            return $this->getMedia('images')[0]->getUrl('slider-index');
         }
-        return \Storage::url('images/cover.png');
+        return \Storage::url('images/default/not-found/slide-index.jpg');
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlideShowAttribute(): string
+    {
+        if ($this->getRelation('media')->count()) {
+            return $this->getMedia('images')[0]->getUrl('slider-show');
+        }
+        return \Storage::url('images/default/not-found/slide-show.jpg');
     }
 
     /**
@@ -470,9 +506,9 @@ class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterfac
     public function getCoverAttribute(): string
     {
         if ($this->getRelation('media')->count()) {
-            return $this->getMedia('images')[0]->getUrl('large');
+            return $this->getMedia('images')[0]->getUrl('lg');
         }
-        return \Storage::url('images/cover.png');
+        return \Storage::url('images/default/not-found/lg.jpg');
     }
 
     /**
@@ -481,9 +517,9 @@ class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterfac
     public function getImageAttribute(): string
     {
         if ($this->getRelation('media')->count()) {
-            return $this->getMedia('images')[0]->getUrl('medium');
+            return $this->getMedia('images')[0]->getUrl('sm');
         }
-        return \Storage::url('images/cover.png');
+        return \Storage::url('images/default/not-found/sm.jpg');
     }
 
     /**
@@ -492,9 +528,9 @@ class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterfac
     public function getThumbnailAttribute(): string
     {
         if ($this->getRelation('media')->count()) {
-            return $this->getMedia('images')[0]->getUrl('small');
+            return $this->getMedia('images')[0]->getUrl('xs');
         }
-        return \Storage::url('images/cover.png');
+        return \Storage::url('images/default/not-found/xs.jpg');
     }
 
     /**

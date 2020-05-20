@@ -42,21 +42,24 @@ class PostsTableSeeder extends Seeder
             $post = Post::updateOrCreate([
                 'user_id' => 1,
                 'category_id' => $content->category,
-                'subtitle' => $content->subtitle,
                 'title' => $content->title,
                 'content_raw' => $content->body(),
-                'meta_description' => $content->meta_description,
-                'is_draft' => $content->draft,
-                'is_sticky' => $content->is_sticky,
+                'subtitle' => isset($content->subtitle) ? $content->subtitle : null,
+                'meta_description' => isset($content->meta_description) ? $content->meta_description: null,
+                'is_draft' => isset($content->draft) ? $content->draft : false,
+                'is_sticky' => isset($content->is_sticky) ? $content->is_sticky : false,
                 'published_at' => now(),
                 'type' => $content->type
             ]);
-
-            if (!empty($images)) {
-                $post->addMedia(storage_path('app/public/img/posts/' .$faker->randomElement($images)))
+            try {
+                $post->addMedia(storage_path('app/public/img/posts/' . $content->image))
                     ->preservingOriginal()
                     ->usingName($content->title)
                     ->toMediaCollection('images');
+            } catch (\Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist $e) {
+                $e->getMessage();
+            } catch (\Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig $e) {
+                $e->getMessage();
             }
 
 

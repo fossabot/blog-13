@@ -37,10 +37,8 @@ class UsersTableSeeder extends Seeder
                 'remember_token' => Str::random(10),
                 'api_token' => Str::random(32),
                 'registered_at' => now(),
-            ]);
-
-            $user->assignRole('admin');
-            $user->addMedia(storage_path('app/public/img/users/user-' . $index . '.png'))
+            ])->assignRole('admin')
+                ->addMedia(storage_path('app/public/img/users/user-' . $index . '.png'))
                 ->preservingOriginal()
                 ->usingName($user['name'])
                 ->toMediaCollection('images');
@@ -60,6 +58,7 @@ class UsersTableSeeder extends Seeder
                 $user->profile()->save(factory(Profile::class)->make());
             });
         }
+
 
     }
 

@@ -88,14 +88,29 @@ class Category extends Model implements HasMedia
         'description'
     ];
 
-    public function registerMediaConversions(Media $media = null): void
-    {
-        $this->addMediaConversion('slider')
-            ->width(1920)
-            ->height(700)
-            ->sharpen(10)
-            ->withResponsiveImages();
-    }
+    /**
+     * @param null|Media $media
+     * @throws \Spatie\Image\Exceptions\InvalidManipulation
+     */
+//    public function registerMediaConversions(Media $media = null): void
+//    {
+//        $this->addMediaConversion('cover')
+//            ->width(1920)
+//            ->height(700)
+//            ->sharpen(10)
+//            ->withResponsiveImages();
+//    }
+
+    /**
+     * @return string
+     */
+//    public function image(): string
+//    {
+//        if ($this->getMedia('images')) {
+//            return $this->getMedia('images')[0]->getUrl('cover');
+//        }
+//        return \Storage::url('img/categories/page.jpg');
+//    }
 
 
     /**

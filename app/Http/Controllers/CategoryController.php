@@ -21,21 +21,19 @@ class CategoryController extends Controller
 {
     /**
      * @param Category $category
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Instagram\Exception\InstagramCacheException
-     * @throws \Instagram\Exception\InstagramException
      * @return View
      */
     public function __invoke(Category $category): View
     {
-        $query = Post::with(['tags', 'media', 'category', 'comments', 'likes'])->get();
+        $query = Post::with(['tags', 'media', 'comments', 'likes'])->get();
+
 
         $posts =  $query->where('category_id', $category->id)
             ->take(10);
 
         $latest = $query->take(10);
 
-        $layout = $category->layout ? $category->layout : 'blog.categories.index';
+        $layout = $category ? $category->layout : 'blog.categories.index';
 
         return view($layout, [
             'category' => $category,
