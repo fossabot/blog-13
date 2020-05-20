@@ -25,6 +25,7 @@ class CategoriesTableSeeder extends Seeder
         $categories = $this->defaultCategories;
 
         foreach ($categories as $index => $category) {
+            dd(storage_path('app/public/img/categories/' . $category['image']));
             $category =  Category::updateOrCreate([
                 'parent_id' => 1,
                 'order_column' => $index,

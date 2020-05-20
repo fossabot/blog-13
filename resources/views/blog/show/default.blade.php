@@ -115,7 +115,7 @@
                         </div>
                     </div>
 
-                    <x-newsletter></x-newsletter>
+{{--                    <x-newsletter></x-newsletter>--}}
 
                     @include('blog.partials.widget.latest')
 

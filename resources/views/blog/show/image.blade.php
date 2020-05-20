@@ -156,7 +156,7 @@
 
                     @include('blog.partials.widget.follow')
 
-                    <x-newsletter></x-newsletter>
+{{--                    <x-newsletter></x-newsletter>--}}
 
                     <x-categories></x-categories>
 
