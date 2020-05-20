@@ -86,21 +86,18 @@ final class PostController extends Controller
      * Show blog by slug
      *
      * @param string $slug
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Instagram\Exception\InstagramCacheException
-     * @throws \Instagram\Exception\InstagramException
      * @return View
      */
     public function show(string $slug): View
     {
-        $query = $this->post->with(['media', 'tags', 'category', 'comments.user.media'])->get();
+        $query = $this->post->with(['likes','media', 'tags', 'category', 'comments.user.media'])->get();
         $blog = $query->where('slug', $slug)->first();
 
         $related =  $query->where('category_id', $blog->category->id)
             ->except($blog->id);
         $latest = $query->take(10);
 
-        $layout = 'blog.show';
+        $layout = $blog ? $blog->layout : 'blog.show.default';
 
         return view($layout, [
             'blog' => $blog,

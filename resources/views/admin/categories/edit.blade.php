@@ -1,34 +1,34 @@
 @extends('admin.layouts.app', [
-    'title' => __('edit') . $post->title
+    'title' => __('edit') .$category->title
 ])
 
 @section('content')
 
 
 
-    <p>@lang('posts.show') : <a href="{{ $post->url }}">{{ $post->url }}</a></p>
+    <p>@lang('categories.show') : <a href="{{ $category->url }}">{{ $category->url }}</a></p>
 
-    <form method="POST" action="{{ route('admin.posts.update', $post) }}" enctype="multipart/form-data" accept-charset="UTF-8">
+    <form method="POST" action="{{ route('admin.categories.update', $category) }}" enctype="multipart/form-data" accept-charset="UTF-8">
         @csrf
 
         <div class="container-fluid">
             <div class="row">
-                @include('admin/posts/_form')
+                @include('admin/categories/_form')
             </div>
         </div>
         <div class="pull-left">
-            <a href="{{ route('admin.posts.index') }}" class="btn btn-secondary">{{  __('forms.actions.back') }}</a>
+            <a href="{{ route('admin.categories.index') }}" class="btn btn-secondary">{{  __('forms.actions.back') }}</a>
             <input class="btn btn-primary" type="submit" value="{{ __('forms.actions.update') }}">
         </div>
     </form>
 
 
-    <form method="POST" action="{{ route('admin.posts.destroy', $post) }}" accept-charset="UTF-8" class="form-inline pull-right" data-confirm="{{ __('forms.posts.delete') }}">
+    <form method="POST" action="{{ route('admin.categories.destroy', $category) }}" accept-charset="UTF-8" class="form-inline pull-right" data-confirm="{{ __('forms.categories.delete') }}">
         <input name="_method" type="hidden" value="DELETE">
         @csrf
         <button class="btn btn-danger" name="submit" type="submit">
             <i class="fa fa-trash" aria-hidden="true"></i>
-            {{  __('posts.delete') }}
+            {{  __('categories.delete') }}
         </button>
     </form>
 @endsection

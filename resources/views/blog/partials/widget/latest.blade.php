@@ -8,7 +8,7 @@
                 <li class="single-item">
                     <div class="item-img">
                         <a href="{{ $post->url }}">
-                            <img src="{{ $post->getMedia('images')[0]->getUrl('small') }}" alt="Post">
+                            <img src="{{ $post->thumbnail }}" alt="{{ $post->title }}">
                         </a>
                         <div class="count-number">{{ $post->likes->count() }}</div>
                     </div>

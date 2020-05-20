@@ -53,7 +53,7 @@ class RssFeed
             ->description(config('blog.description'))
             ->url(url('/'))
             ->language(config('app.locale'))
-            ->copyright('Copyright (c) '.config('blog.author.name'))
+            ->copyright('Copyright (c) '.config('blog.name'))
             ->lastBuildDate($now->timestamp)
             ->appendTo($feed);
 

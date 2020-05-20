@@ -16,7 +16,7 @@ class Categories extends Component
      */
     public function __construct(Category $category)
     {
-        $this->category = $category->with('posts')->get();
+        $this->category = $category->with('posts')->where('id', '!=', 1)->get();
     }
 
     /**

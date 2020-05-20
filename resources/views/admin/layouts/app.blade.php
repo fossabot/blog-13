@@ -6,9 +6,9 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <title>{{ isset($title) ? $title . ' | ' .config('blog.title') : config('blog.name', 'Turahe.id') }}</title>
-    <link rel="stylesheet" href="/admin/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="/assets/admin/plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="/admin/css/adminlte.min.css">
+    <link rel="stylesheet" href="/assets/admin/css/adminlte.min.css">
     @stack('styles')
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -35,7 +35,7 @@ to get the desired effect
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Dashboard v3</h1>
+                        <h1 class="m-0 text-dark">{{ $title ?? null }}</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -66,9 +66,6 @@ to get the desired effect
     <footer class="main-footer">
         <strong>Copyright &copy; {{ date('Y') }} <a href="{{url('/')}}">{{ config('app.name') }}</a>.</strong>
         All rights reserved.
-        <div class="float-right d-none d-sm-inline-block">
-            <b>Version</b> 3.0.3
-        </div>
     </footer>
 </div>
 <!-- ./wrapper -->
@@ -76,10 +73,10 @@ to get the desired effect
 <!-- REQUIRED SCRIPTS -->
 
 
-<script src="/admin/plugins/jquery/jquery.min.js"></script>
-<script src="/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/admin/plugins/jquery/jquery.min.js"></script>
+<script src="/assets/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<script src="/admin/js/adminlte.js"></script>
+<script src="/assets/admin/js/adminlte.js"></script>
 @stack('scripts')
 </body>
 </html>

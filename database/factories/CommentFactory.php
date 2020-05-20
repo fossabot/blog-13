@@ -25,9 +25,9 @@ use Illuminate\Database\Eloquent\Factory;
 */
 $factory->define(Comment::class, function (Faker $faker) {
     return [
-        'user_id' => mt_rand(1, 10), //factory(\App\Models\User::class)->create()->id,
+        'user_id' => mt_rand(1, 100), //factory(\App\Models\User::class)->create()->id,
         'title' => $faker->sentence,
-        'content' => Str::limit($faker->sentence(mt_rand(3, 5))),
+        'content' => Str::limit($faker->paragraph(mt_rand(3, 5))),
         'published_at' => $faker->dateTimeBetween('-1 Month', '+3 days'),
         'approved' => $faker->boolean
     ];

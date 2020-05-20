@@ -10,7 +10,7 @@
         <div class="single-blog-banner-layout1">
             <div class="banner-img">
                 <figure itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
-                    <img itemprop="url contentUrl" src="{{ $blog->getMedia('images')[0]->getUrl('slider') }}" alt="{{ $blog->title }}">
+                    <img itemprop="url contentUrl" src="{{ $blog->slide }}" alt="{{ $blog->title }}">
                     <figcaption itemprop="caption">{{ $blog->title }}</figcaption>
                 </figure>
             </div>
@@ -168,7 +168,7 @@
         </div>
     </section>
     <!-- Single Blog Banner End Here -->
-    <x-instagram-feed></x-instagram-feed>
+{{--    <x-instagram-feed></x-instagram-feed>--}}
 @endsection
 
 

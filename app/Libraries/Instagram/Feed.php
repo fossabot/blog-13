@@ -4,7 +4,7 @@
  *  file that was distributed with this source code.
  *
  *  @modified    5/17/20, 5:40 AM
- *  @name          Feed.php
+ *  @name          Feed
  *  @author         Nur Wachid
  *  @copyright      Copyright (c) Turahe 2020.
  *

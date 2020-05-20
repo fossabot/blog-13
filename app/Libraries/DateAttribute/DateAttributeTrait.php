@@ -88,7 +88,7 @@ trait DateAttributeTrait
      */
     public function getPublishTimeAttribute($value): string
     {
-        return $this->attributes['published_at'] = Carbon::parse($value)->format('H:i:s A');
+        return $this->attributes['published_at'] = Carbon::parse($value)->format('H:i');
     }
 
     /**

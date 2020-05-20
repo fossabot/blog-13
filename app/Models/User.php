@@ -16,84 +16,19 @@ use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Contracts\Translation\HasLocalePreference;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\DatabaseNotification;
-use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Str;
-use Laravel\Passport\Client;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Image\Exceptions\InvalidManipulation;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Permission\Traits\HasRoles;
 
-/**
- * App\Models\User
- *
- * @property int $id
- * @property string $name
- * @property string $email
- * @property null|\Illuminate\Support\Carbon $email_verified_at
- * @property string $password
- * @property null|string $remember_token
- * @property null|\Illuminate\Support\Carbon $created_at
- * @property null|\Illuminate\Support\Carbon $updated_at
- * @property-read DatabaseNotification[]|DatabaseNotificationCollection $notifications
- * @property-read null|int $notifications_count
- * @method static Builder|User newModelQuery()
- * @method static Builder|User newQuery()
- * @method static Builder|User query()
- * @method static Builder|User whereCreatedAt($value)
- * @method static Builder|User whereEmail($value)
- * @method static Builder|User whereEmailVerifiedAt($value)
- * @method static Builder|User whereId($value)
- * @method static Builder|User whereName($value)
- * @method static Builder|User wherePassword($value)
- * @method static Builder|User whereRememberToken($value)
- * @method static Builder|User whereUpdatedAt($value)
- * @mixin \Eloquent
- * @property string $slug
- * @property null|string $api_token
- * @property-read Collection|Comment[] $comments
- * @property-read null|int $comments_count
- * @property-read string $avatar
- * @property-read string $full_name
- * @property-read mixed|string $url
- * @property-read Collection|\Spatie\Permission\Models\Permission[] $permissions
- * @property-read null|int $permissions_count
- * @property-read Collection|Post[] $posts
- * @property-read null|int $posts_count
- * @property-read Collection|\Spatie\Permission\Models\Role[] $roles
- * @property-read null|int $roles_count
- * @method static Builder|User authors()
- * @method static Builder|User lastWeek()
- * @method static Builder|User latest()
- * @method static Builder|User permission($permissions)
- * @method static Builder|User role($roles, $guard = null)
- * @method static Builder|User whereApiToken($value)
- * @method static Builder|User whereSlug($value)
- * @property-read Collection|\Spatie\MediaLibrary\Models\Media[] $media
- * @property-read null|int $media_count
- * @property null|\Illuminate\Support\Carbon $registered_at
- * @property null|string $provider
- * @property null|string $provider_id
- * @property-read Collection|\Spatie\Activitylog\Models\Activity[] $activities
- * @property-read null|int $activities_count
- * @property-read Client[]|Collection $clients
- * @property-read null|int $clients_count
- * @property-read Collection|Like[] $likes
- * @property-read null|int $likes_count
- * @property-read Collection|\Laravel\Passport\Token[] $tokens
- * @property-read null|int $tokens_count
- * @method static Builder|User whereProvider($value)
- * @method static Builder|User whereProviderId($value)
- * @method static Builder|User whereRegisteredAt($value)
- * @property-read \App\Models\Media $image
- */
+
 class User extends Authenticatable implements HasMedia, MustVerifyEmail, HasLocalePreference
 {
     use Notifiable, InteractsWithMedia, HasRoles, HasApiTokens, LogsActivity, HasSlug;
@@ -116,7 +51,6 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail, HasLoca
         'registered_at'
     ];
 
-
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -136,11 +70,34 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail, HasLoca
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * @param null|Media $media
+     * @throws InvalidManipulation
+     */
     public function registerMediaConversions(Media $media = null): void
     {
-        $this->addMediaConversion('avatar')
-            ->width(90)
-            ->height(100)
+        $this->addMediaConversion('large')
+            ->width(256)
+            ->height(256)
+            ->sharpen(10)
+            ->withResponsiveImages();
+
+
+        $this->addMediaConversion('medium')
+            ->width(180)
+            ->height(180)
+            ->sharpen(10)
+            ->withResponsiveImages();
+
+        $this->addMediaConversion('small')
+            ->width(120)
+            ->height(120)
+            ->sharpen(10)
+            ->withResponsiveImages();
+
+        $this->addMediaConversion('x-small')
+            ->width(88)
+            ->height(88)
             ->sharpen(10)
             ->withResponsiveImages();
     }
@@ -168,15 +125,6 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail, HasLoca
     }
 
     /**
-     * Get the user's full_name titleized.
-     * @return string
-     */
-    public function getFullNameAttribute(): string
-    {
-        return Str::title($this->name);
-    }
-
-    /**
      * @return mixed|string
      */
     public function getUrlAttribute(): string
@@ -185,14 +133,21 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail, HasLoca
     }
 
     /**
+     * Get gravatar based username
+     *
      * @return null|string
      */
     public function getAvatarAttribute()
     {
+        if ($this->getMedia('images')->count()) {
+            return $this->getMedia('images')[0]->getUrl('x-small');
+        }
         return Avatar::get($this);
     }
     /**
      * Return a unique personal access token.
+     *
+     * @return string
      */
     public static function generate(): string
     {
@@ -268,6 +223,18 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail, HasLoca
     public function isEditor(): bool
     {
         return $this->hasRole(Role::ROLE_EDITOR);
+    }
+
+    /**
+     * One to one relationship
+     * Relation user and profile
+     * example: $user->profile
+     *
+     * @return HasOne
+     */
+    public function profile(): HasOne
+    {
+        return $this->hasOne(Profile::class, 'user_id');
     }
 
     /**

@@ -66,19 +66,19 @@ final class CategoryController extends Controller
     public function show($id): View
     {
         $category = Category::findOrFail($id);
-        return view('admin.category.edit', compact('category'));
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param Category $category
      * @return View
      */
-    public function edit($id): View
+    public function edit(Category $category): View
     {
-        $category = Category::findOrFail($id);
-        return view('admin.category.edit', compact('category'));
+//        $category-;
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**

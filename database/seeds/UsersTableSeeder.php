@@ -7,10 +7,12 @@
  *  @copyright      Copyright (c) Turahe 2020.
  */
 
-use App\Models\Media;
+use App\Models\Profile;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
+use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
+use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 
 /**
  * Class UsersTableSeeder
@@ -36,19 +38,29 @@ class UsersTableSeeder extends Seeder
                 'api_token' => Str::random(32),
                 'registered_at' => now(),
             ]);
+
             $user->assignRole('admin');
-            $user->addMedia(storage_path('app/public/img/users/user-' .$index. '.jpg'))
+            $user->addMedia(storage_path('app/public/img/users/user-' . $index . '.png'))
                 ->preservingOriginal()
                 ->usingName($user['name'])
                 ->toMediaCollection('images');
         }
 
-//        if (App::environment(['local', 'staging', 'testing'])) {
-//            // return local database settings array
-//            factory(User::class, 100)->create()->each(function ($user) {
-//                $user->avatar()->save(factory(Media::class)->make());
-//            });
-//        }
+        Profile::firstOrCreate([
+            'user_id' => 1,
+            'first_name' => 'Nur',
+            'last_name' => 'Wachid',
+            'gender' => true,
+            'birthplace' => 'Batang',
+            'birthday' => '1990-12-01'
+        ]);
+
+        if (App::environment(['local', 'staging', 'testing'])) {
+            factory(User::class, 100)->create()->each(function ($user) {
+                $user->profile()->save(factory(Profile::class)->make());
+            });
+        }
+
     }
 
     /**
@@ -62,7 +74,8 @@ class UsersTableSeeder extends Seeder
 
             [
                 'name' => "Nur Wachid",
-                'email' => 'wachid@outlook.com'
+                'email' => 'wachid@outlook.com',
+
             ],
             [
                 'name' => "Admin",

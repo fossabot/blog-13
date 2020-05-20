@@ -4,11 +4,13 @@
     </div>
     @foreach($blog->comments as $comment)
         <div class="media media-none--xs">
-            <img src="{{ $comment->user->getMedia('images')[0]->getUrl('avatar') }}" alt="Blog Comments" class="img-fluid media-img-auto">
+            <img src="{{ $comment->user->avatar }}" alt="{{ $comment->user->name }}" class="img-fluid media-img-auto">
             <div class="media-body">
                 <h4 class="item-title">{{ $comment->user->name }}</h4>
                 <div class="item-subtitle" data-toggle="tooltip" title="{{ $comment->published_at->toIso8601String() }}">
-                    {{ $comment->time_elapsed }}
+                    <time>
+                        {{ $comment->time_elapsed }}
+                    </time>
                 </div>
                 {{ $comment->content }}
                 <a href="#" class="item-btn">Reply</a>

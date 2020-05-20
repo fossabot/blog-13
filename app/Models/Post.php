@@ -161,6 +161,10 @@ class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterfac
         'published_at',
     ];
 
+    /**
+     * @param null|Media $media
+     * @throws \Spatie\Image\Exceptions\InvalidManipulation
+     */
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('small')
@@ -243,7 +247,7 @@ class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterfac
     {
         switch ($this->type) {
             case 'blog':
-                return url($this->type. '/' .$this->slug);
+                return route('blog.show', $this->slug);
                 break;
             case 'page':
                 return url($this->slug);
@@ -319,7 +323,7 @@ class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterfac
      */
     public function getContentAttribute(): string
     {
-        return $this->content_raw;
+        return $this->content_html;
     }
 
     /**
@@ -347,7 +351,6 @@ class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterfac
         $wordsPerMinute = config('blog.words_per_minute');
         $ltr =  __('read-time.reads_left_to_right');
         $translation =  __('read-time');
-//        dd($omitSeconds);
 
         return (new ReadTime($content))
             ->omitSeconds($omitSeconds)
@@ -448,6 +451,50 @@ class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterfac
         if (!empty($this->user)) {
             return $this->user->name;
         }
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlideAttribute(): string
+    {
+        if ($this->getRelation('media')->count()) {
+            return $this->getMedia('images')[0]->getUrl('slider');
+        }
+        return \Storage::url('images/cover.png');
+    }
+
+    /**
+     * @return string
+     */
+    public function getCoverAttribute(): string
+    {
+        if ($this->getRelation('media')->count()) {
+            return $this->getMedia('images')[0]->getUrl('large');
+        }
+        return \Storage::url('images/cover.png');
+    }
+
+    /**
+     * @return string
+     */
+    public function getImageAttribute(): string
+    {
+        if ($this->getRelation('media')->count()) {
+            return $this->getMedia('images')[0]->getUrl('medium');
+        }
+        return \Storage::url('images/cover.png');
+    }
+
+    /**
+     * @return string
+     */
+    public function getThumbnailAttribute(): string
+    {
+        if ($this->getRelation('media')->count()) {
+            return $this->getMedia('images')[0]->getUrl('small');
+        }
+        return \Storage::url('images/cover.png');
     }
 
     /**
