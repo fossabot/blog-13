@@ -124,7 +124,7 @@
                                 <a href="{{ url('/') }}">@lang('blog.home')</a>
                             </li>
                             <li>
-                                <a href="{{ url('categories') }}">@lang('blog.topics')</a>
+                                <a href="#">@lang('blog.topics')</a>
                                 <ul class="dropdown-menu-col-1">
                                     <li>
                                         <a href="{{ url('category/blog') }}">Blog</a>

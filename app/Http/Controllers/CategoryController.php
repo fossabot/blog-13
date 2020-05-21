@@ -28,14 +28,13 @@ class CategoryController extends Controller
         $query = Post::with(['tags', 'media', 'comments', 'likes'])->get();
 
 
-        $posts =  $query->where('category_id', $category->id)
-            ->take(10);
+        $posts =  $query->where('category_id', $category->id);
 
         $latest = $query->take(10);
 
         $layout = $category ? $category->layout : 'blog.categories.index';
 
-        return view($layout, [
+        return view('blog.categories.single', [
             'category' => $category,
             'posts' => $posts,
             'latest' => $latest,

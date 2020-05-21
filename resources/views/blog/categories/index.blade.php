@@ -39,13 +39,20 @@
                                     <div class="blog-box-layout10">
                                         <div class="item-content">
                                             <ul class="entry-meta meta-color-dark">
-                                                <li><i class="fas fa-tag"></i>{{ $post->tags->implode('tag', ', ') }}</li>
-                                                <li><i class="fas fa-calendar-alt"></i>
+                                                <li>
+                                                    <i class="fas fa-tag"></i>
+                                                    {{ $post->tags->implode('tag', ', ') }}
+                                                </li>
+                                                <li>
+                                                    <i class="fas fa-calendar-alt"></i>
                                                     <time datetime="{{ $post->published_at->toIso8601String() }}" title="{{ $post->published_at->format('M d, Y g:i:s a') }}">
                                                     {{ $post->publish }}
                                                     </time>
                                                 </li>
-                                                <li><i class="far fa-clock"></i>{{ $post->read_time }}</li>
+                                                <li>
+                                                    <i class="far fa-clock"></i>
+                                                    {{ $post->read_time }}
+                                                </li>
                                             </ul>
                                             <h3 class="item-title">
                                                 <a href="{{ $post->url }}">
@@ -54,10 +61,23 @@
                                             </h3>
                                             <p>{{ $post->subtitle }}</p>
                                             <ul class="response-area">
-                                                <li><a href="#"><i class="far fa-heart"></i>{{ $post->likes->count() }}</a></li>
-                                                <li><a href="#"><i class="far fa-comment"></i>{{ $post->comments->count() }}</a></li>
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="far fa-heart"></i>
+                                                        {{ $post->likes->count() }}
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="far fa-comment"></i>
+                                                        {{ $post->comments->count() }}
+                                                    </a>
+                                                </li>
                                             </ul>
-                                            <a href="{{ $post->url }}" class="item-btn">READ MORE<i class="fas fa-arrow-right"></i></a>
+                                            <a href="{{ $post->url }}" class="item-btn">
+                                                READ MORE
+                                                <i class="fas fa-arrow-right"></i>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
