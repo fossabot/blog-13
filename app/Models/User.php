@@ -145,6 +145,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail, HasLoca
             ->width(256)
             ->height(256)
             ->sharpen(10)
+            ->optimize()
             ->withResponsiveImages();
 
 
@@ -152,18 +153,21 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail, HasLoca
             ->width(180)
             ->height(180)
             ->sharpen(10)
+            ->optimize()
             ->withResponsiveImages();
 
         $this->addMediaConversion('small')
             ->width(120)
             ->height(120)
             ->sharpen(10)
+            ->optimize()
             ->withResponsiveImages();
 
         $this->addMediaConversion('x-small')
             ->width(88)
             ->height(88)
             ->sharpen(10)
+            ->optimize()
             ->withResponsiveImages();
     }
 

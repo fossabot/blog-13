@@ -92,14 +92,12 @@ class Category extends Model implements HasMedia
      * @param null|Media $media
      * @throws \Spatie\Image\Exceptions\InvalidManipulation
      */
-//    public function registerMediaConversions(Media $media = null): void
-//    {
-//        $this->addMediaConversion('cover')
-//            ->width(1920)
-//            ->height(700)
-//            ->sharpen(10)
-//            ->withResponsiveImages();
-//    }
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('cover')
+            ->optimize()
+            ->withResponsiveImages();
+    }
 
     /**
      * @return string

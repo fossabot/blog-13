@@ -175,6 +175,7 @@ class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterfac
             ->width(90)
             ->height(80)
             ->sharpen(10)
+            ->optimize()
             ->withResponsiveImages();
 
         $this->addMediaConversion('sm')
@@ -182,6 +183,7 @@ class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterfac
             ->width(690)
             ->height(504)
             ->sharpen(10)
+            ->optimize()
             ->withResponsiveImages();
 
         $this->addMediaConversion('md')
@@ -189,6 +191,7 @@ class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterfac
             ->width(810)
             ->height(480)
             ->sharpen(10)
+            ->optimize()
             ->withResponsiveImages();
 
         $this->addMediaConversion('lg')
@@ -196,6 +199,7 @@ class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterfac
             ->width(870)
             ->height(448)
             ->sharpen(10)
+            ->optimize()
             ->withResponsiveImages();
 
         $this->addMediaConversion('xl')
@@ -203,6 +207,7 @@ class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterfac
             ->width(1170)
             ->height(600)
             ->sharpen(10)
+            ->optimize()
             ->withResponsiveImages();
 
         $this->addMediaConversion('slider-index')
@@ -210,6 +215,7 @@ class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterfac
             ->width(1171)
             ->height(568)
             ->sharpen(10)
+            ->optimize()
             ->withResponsiveImages();
 
         $this->addMediaConversion('slider-show')
@@ -217,6 +223,7 @@ class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterfac
             ->width(1920)
             ->height(700)
             ->sharpen(10)
+            ->optimize()
             ->withResponsiveImages();
     }
 
