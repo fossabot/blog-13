@@ -91,7 +91,9 @@
     <div class="offcanvas-menu-wrap" id="offcanvas-wrap" data-position="left">
         <div class="offcanvas-content">
             <div class="offcanvas-logo">
-                <a href="{{ url('/') }}"><img src="/themes/blog/img/logo-dark2.png" alt="logo"></a>
+                <a href="{{ url('/') }}">
+                    <img src="/themes/blog/img/logo-dark2.png" alt="logo">
+                </a>
             </div>
             <ul class="offcanvas-menu">
                 <li class="nav-item">
@@ -118,7 +120,7 @@
                 <ul class="offcanvas-social">
                     @foreach(config('blog.socials') as $social)
                         <li>
-                            <a class="svg-icon" href="{{ $social['url'] }}" rel="me" title="{{ $social['name'] }}">
+                            <a href="{{ $social['url'] }}" rel="me" title="{{ $social['name'] }}">
                                 <i class="fab fa-{{ $social['name'] }}"></i>
                             </a>
                         </li>

@@ -10,7 +10,9 @@
             <div class="col-lg-4">
                 <div class="footer-box-layout1">
                     <div class="footer-logo">
-                        <a href="index.html"><img src="/themes/blogxer/img/logo-light.png" alt="logo"></a>
+                        <a href="{{ url('/') }}">
+                            <img src="/themes/blogxer/img/logo-light.png" alt="{{ config('blog.name') }}">
+                        </a>
                     </div>
                 </div>
             </div>
@@ -18,9 +20,11 @@
                 <div class="footer-box-layout1">
                     <ul class="footer-social">
                         @foreach(config('blog.socials') as $social)
-                            <li><a class="svg-icon" href="{{ $social['url'] }}">
+                            <li>
+                                <a class="svg-icon" href="{{ $social['url'] }}">
                                     <i class="fab fa-{{ $social['name'] }}"></i>
-                                </a></li>
+                                </a>
+                            </li>
                         @endforeach
                     </ul>
                 </div>

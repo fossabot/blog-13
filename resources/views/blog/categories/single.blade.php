@@ -2,25 +2,7 @@
 
 @extends('blog.layouts.layout')
 @section('content')
-    <!-- Inne Page Banner Area Start Here -->
-    <section class="inner-page-banner bg-common">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="breadcrumbs-area">
-                        <h1>Category Blogs</h1>
-                        <ul>
-                            <li>
-                                <a href="index.html">Home</a>
-                            </li>
-                            <li>Categories</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Inne Page Banner Area End Here -->
+    @include('blog.categories.breadcrumbs')
     <!-- Blog Area Start Here -->
     <section class="blog-wrap-layout24">
         <div class="container">
