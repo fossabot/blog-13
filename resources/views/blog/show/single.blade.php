@@ -22,13 +22,20 @@
                             <li><i class="far fa-clock"></i>{{ $blog->read_time }}</li>
                         </ul>
                         <h2 class="item-title">{{ $blog->title }}</h2>
-                        <ul class="item-social">
-                            <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i>SHARE</a></li>
-                            <li><a href="#" class="twitter"><i class="fab fa-twitter"></i>SHARE</a></li>
-                            <li><a href="#" class="g-plus"><i class="fab fa-google-plus-g"></i>SHARE</a></li>
-                            <li><a href="#" class="pinterest"><i class="fab fa-pinterest"></i>PIN IT</a></li>
-                            <li><a href="#" class="load-more"><i class="fas fa-plus"></i>MORE</a></li>
-                        </ul>
+                        <div class="item-social">
+                            <button class="btn btn-sm btn-default facebook social_share" data-type="fb">
+                                <i class="fab fa-facebook-f"></i>
+                            </button>
+                            <button class="btn btn-sm btn-default twitter social_share" data-type="twitter">
+                                <i class="fab fa-twitter"></i>
+                            </button>
+                            <button class="btn btn-sm btn-default g-plus social_share" data-type="gplus">
+                                <i class="fab fa-google-plus-g"></i>
+                            </button>
+                            <button class="btn btn-sm btn-default pinterest social_share" data-type="pinterest">
+                                <i class="fab fa-pinterest"></i>
+                            </button>
+                        </div>
                         <ul class="response-area">
                             <li><a href="#"><i class="far fa-comment"></i>02</a></li>
                             <li><a href="#"><i class="far fa-eye"></i>105</a></li>

@@ -10,7 +10,7 @@
                         <a href="{{ $post->url }}">
                             <img src="{{ $post->thumbnail }}" alt="{{ $post->title }}">
                         </a>
-                        <div class="count-number">{{ $post->likes->count() }}</div>
+{{--                        <div class="count-number">{{ $post->likes->count() }}</div>--}}
                     </div>
                     <div class="item-content">
                         <ul class="entry-meta meta-color-dark">

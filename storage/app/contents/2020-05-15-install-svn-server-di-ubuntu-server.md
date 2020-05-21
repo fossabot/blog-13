@@ -93,7 +93,7 @@ Perintah untuk membuat sebuah direktori untuk svn.
 sudo mkdir -p  /opt/svn
 ```
 
-Membuat repository svn. Disini kita akan membuat sebuah repository dengan nama "turaherepo"
+Buat sebuah repository SVN. Disini kita akan membuat sebuah repositori dengan nama "turaherepo"
 
 ```shell script
 sudo svnadmin create /opt/svn/turaherepo
@@ -124,19 +124,22 @@ Membuat nama pengguna yang kedua
 sudo htpasswd -m /etc/svn-auth-users turahe2
 ```
 
-
-Create Apache virtual host file for SVN- in order to do this we first need to change directory to “/etc/apache2/sites-available/”
-
-```shell script
-cd /etc/apache2/sites-available/
-```
-
-Create a virtual host file and here we create a file called “turahesvn.conf”.
+Buat sebuah berkas Virtual Host Apache untuk svn yang baru kita buat dengan cara seperti berikut ini. Disini kita akan membuat sebuah berkas Virtual Host Apache dengan nama "turahesvn.conf".
 
 ```shell script
-sudo vim turahesvn.conf
+sudo nano /etc/apache2/sites-available/turahesvn.conf
 ```
-Add following lines to file.
+
+atau
+
+```shell script
+sudo vim /etc/apache2/sites-available/turahesvn.conf
+```
+
+> Gunakan editor terminal yang biasa kamu pakai. 
+
+
+Tambahkan baris kode berikut pada file yang telah kita buat.
 
 ```apacheconfig
 <VirtualHost *:80>
@@ -155,36 +158,40 @@ Add following lines to file.
 </VirtualHost>
 ```
 
-Change “svn.turahe.com” to your hostname.
+Ubah "svn.turahe.id" dengan nama hostname Anda. kemdian tutup editor
 
-Save and exit the file.
-
-Disable default virtual host file.
+Non aktifkan berkas Virtual Host defaul yang aktif pada Apache.
 
 ```shell script
 sudo a2dissite 000-default.conf
 ```
 
-Enable newly created virtual host file.
+Aktifkan berkas Virtual Host yang baru kita buat.
 
 ```shell script
 sudo a2ensite turahesvn.conf
 ```
-Check apache syntax.
+Cek apakah sintak apache sudah benar.
 
 ```shell script
 sudo apachectl -t
 ```
-Then restart Apache.
+Kemudian restart Apache.
+
 
 ```shell script
 sudo systemctl restart apache2
 ```
-Step 4. Test Configured Apache Subversion
-Open the web browser and type repo URL and hit enter.
+### Lankah 4. Test Configured Apache Subversion
 
-http://svn.turahe.com/svn/turaherepo/
-Replace sv.turahe.com with your hostname.
+Buka browser dan ketikan alamat URL repo dan tekan enter
+
+```shell script
+http://svn.turahe.id/svn/turaherepo/
+```
+
+> Ganti svn.turahe.id dengan nama hostname Anda.
+
 
 When you will get the Authentication popup screen, enter the already created Username and Password to access svn repository.
 

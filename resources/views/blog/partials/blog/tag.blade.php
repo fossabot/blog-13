@@ -12,9 +12,9 @@
             <a href="#"><i class="fab fa-google-plus-g"></i></a>
             <a href="#"><i class="fab fa-pinterest"></i></a>
         </li>
-        <li class="item-respons">
-            <i class="fas fa-heart"></i>
-            {{ $blog->likes->count() }}
-        </li>
+{{--        <li class="item-respons">--}}
+{{--            <i class="fas fa-heart"></i>--}}
+{{--            {{ $blog->likes->count() }}--}}
+{{--        </li>--}}
     </ul>
 </div>

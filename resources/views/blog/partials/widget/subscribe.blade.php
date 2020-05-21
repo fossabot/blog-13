@@ -5,13 +5,11 @@
     <div class="widget-follow-us">
         <ul>
             @foreach(config('blog.socials') as $social)
-                @if(!empty($social['url']))
-                    <li class="single-item">
-                        <a class="svg-icon" href="{{ $social['url'] }}">
-                            <i class="fab fa-{{ $social['name'] }}"></i>
-                        </a>
-                    </li>
-                @endif
+                <li class="single-item">
+                    <a href="{{ $social['url'] }}">
+                        <i class="fab fa-{{ $social['name'] }}"></i>
+                    </a>
+                </li>
             @endforeach
         </ul>
     </div>

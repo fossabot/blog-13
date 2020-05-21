@@ -69,11 +69,12 @@
                                     {{ $getPost->publish }}
                                     </time>
                                 </li>
-                                <li>
-                                    <i class="fas fa-user"></i>BY
-                                    <a href="#">{{ $getPost->user->name }}
-                                    </a>
-                                </li>
+{{--                                <li>--}}
+{{--                                    <i class="fas fa-user"></i>BY--}}
+{{--                                    <a href="#">--}}
+{{--                                        {{ $getPost->user->name }}--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
                                 <li>
                                     <i class="far fa-clock"></i>{{ $getPost->read_time }}</li>
                             </ul>

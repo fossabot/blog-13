@@ -22,17 +22,24 @@
                                 <ul class="entry-meta meta-color-dark">
                                     <li><i class="fas fa-tag"></i>{{ $blog->category->title }}</li>
                                     <li><i class="fas fa-calendar-alt"></i>{{ $blog->category->title }}</li>
-                                    <li><i class="fas fa-user"></i>BY <a href="#">{{ $blog->user->name }}</a></li>
+{{--                                    <li><i class="fas fa-user"></i>BY <a href="#">{{ $blog->user->name }}</a></li>--}}
                                     <li><i class="far fa-clock"></i>{{ $blog->read_time }}</li>
                                 </ul>
                                 <h2 class="item-title">{{ $blog->title }}</h2>
-                                <ul class="item-social">
-                                    <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i>SHARE</a></li>
-                                    <li><a href="#" class="twitter"><i class="fab fa-twitter"></i>SHARE</a></li>
-                                    <li><a href="#" class="g-plus"><i class="fab fa-google-plus-g"></i>SHARE</a></li>
-                                    <li><a href="#" class="pinterest"><i class="fab fa-pinterest"></i>PIN IT</a></li>
-                                    <li><a href="#" class="load-more"><i class="fas fa-plus"></i>MORE</a></li>
-                                </ul>
+                                <div class="item-social">
+                                    <button class="btn btn-sm btn-default facebook social_share" data-type="fb">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-default twitter social_share" data-type="twitter">
+                                        <i class="fab fa-twitter"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-default g-plus social_share" data-type="gplus">
+                                        <i class="fab fa-google-plus-g"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-default pinterest social_share" data-type="pinterest">
+                                        <i class="fab fa-pinterest"></i>
+                                    </button>
+                                </div>
                                 <ul class="response-area">
                                     <li><a href="#"><i class="far fa-comment"></i>02</a></li>
                                     <li><a href="#"><i class="far fa-eye"></i>105</a></li>
@@ -45,12 +52,12 @@
                             </div>
 
                             @include('blog.partials.blog.tag')
-                            @include('blog.partials.blog.author')
+{{--                            @include('blog.partials.blog.author')--}}
 
                             @include('blog.components.related')
 
-                            @include('blog.comment.comment')
-                            @include('blog.comment.form')
+{{--                            @include('blog.comment.comment')--}}
+{{--                            @include('blog.comment.form')--}}
                         </div>
                     </div>
                 </div>
@@ -61,26 +68,18 @@
                         </div>
                         <div class="widget-follow-us">
                             <ul>
-                                <li class="single-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li class="single-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li class="single-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                <li class="single-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                <li class="single-item"><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
-                                <li class="single-item"><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-                                <li class="single-item"><a href="#"><i class="fab fa-github-alt"></i></a></li>
-                                <li class="single-item"><a href="#"><i class="fab fa-kickstarter-k"></i></a></li>
-                                <li class="single-item"><a href="#"><i class="fab fa-behance"></i></a></li>
-                                <li class="single-item"><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                @foreach(config('blog.socials') as $social)
+                                    <li class="single-item">
+                                        <a href="{{ $social['url'] }}">
+                                            <i class="fab fa-{{ $social['name'] }}"></i>
+                                        </a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
-                    {{--                    @include('blog.partials.widget.about')--}}
-
-                    {{--                    <x-newsletter></x-newsletter>--}}
 
                     @include('blog.partials.widget.latest')
-
-                    {{--                    @include('blog.partials.widget.adsense')--}}
 
                     <x-categories></x-categories>
 

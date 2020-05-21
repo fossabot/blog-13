@@ -47,8 +47,8 @@ final class PostController extends Controller
         $query = Post::where('published_at', '<=', now())
             ->where('is_draft', 0)
             ->orderBy('published_at', 'desc')
-            ->where('type', '!=', 'page')
-            ->with(['category', 'user', 'likes', 'media'])->get();
+            ->where('type', 'blog')
+            ->with(['category', 'media'])->get();
 
         if ($request->has('query')  && $request->input('query')  != '') {
             $query = $this->post->search($request->input('query'));
@@ -87,7 +87,7 @@ final class PostController extends Controller
      */
     public function show(string $slug): View
     {
-        $query = $this->post->with(['likes','media', 'tags', 'category', 'comments.user.media'])->get();
+        $query = $this->post->with(['media', 'tags', 'category'])->get();
         $blog = $query->where('slug', $slug)->first();
 
         $related =  $query->where('category_id', $blog->category->id)
