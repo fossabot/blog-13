@@ -2,7 +2,6 @@
 
 namespace App\Http\Resources;
 
-use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class Category extends JsonResource
@@ -17,11 +16,13 @@ class Category extends JsonResource
     {
         return [
             'id' => $this->id,
+            'cover' => $this->cover,
             'title' => $this->title,
             'subtitle' => $this->subtitle,
             'description' => $this->description,
             'created_at' => $this->created_at->toIso8601String(),
-            'time_humanize' => Carbon::parse($this->created_at)->diffForHumans(),
+            'time_humanize' => $this->created_at->diffForHumans(),
         ];
+//        return parent::toArray($request);
     }
 }

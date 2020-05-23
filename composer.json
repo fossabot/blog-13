@@ -26,7 +26,9 @@
         "spatie/laravel-analytics": "^3.9",
         "spatie/laravel-backup": "^6.9",
         "spatie/laravel-medialibrary": "^8.2",
-        "spatie/laravel-permission": "^3.12"
+        "spatie/laravel-permission": "^3.12",
+        "ext-dom": "*",
+        "ext-libxml": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.3",

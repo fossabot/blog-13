@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use App\Libraries\Tag\HasTags;
 use Spatie\MediaLibrary\MediaCollections\Models\Media as Model;
 
 /**
@@ -11,26 +11,26 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media as Model;
  * @property int $id
  * @property string $model_type
  * @property int $model_id
- * @property string|null $uuid
+ * @property null|string $uuid
  * @property string $collection_name
  * @property string $name
  * @property string $file_name
- * @property string|null $mime_type
+ * @property null|string $mime_type
  * @property string $disk
- * @property string|null $conversions_disk
+ * @property null|string $conversions_disk
  * @property int $size
  * @property array $manipulations
  * @property array $custom_properties
  * @property array $responsive_images
- * @property int|null $order_column
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property null|int $order_column
+ * @property null|\Illuminate\Support\Carbon $created_at
+ * @property null|\Illuminate\Support\Carbon $updated_at
  * @property-read string $extension
  * @property-read string $human_readable_size
  * @property-read string $type
- * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $model
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Tag[] $tags
- * @property-read int|null $tags_count
+ * @property-read \Eloquent|\Illuminate\Database\Eloquent\Model $model
+ * @property \App\Models\Tag[]|\Illuminate\Database\Eloquent\Collection $tags
+ * @property-read null|int $tags_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Media newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Media newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Spatie\MediaLibrary\MediaCollections\Models\Media ordered()
@@ -52,22 +52,13 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Media whereSize($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Media whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Media whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Media withAllTags($tags, $type = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Media withAllTagsOfAnyType($tags)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Media withAnyTags($tags, $type = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Media withAnyTagsOfAnyType($tags)
  * @mixin \Eloquent
  */
 class Media extends Model
 {
-    /**
-     * many to many polymorphic relationship between tags and images
-     * every image has one or many tags
-     * example:
-     *
-     * @foreach($image->tags as $tag)
-     * $tag->title
-     *
-     * @return MorphToMany
-     */
-    public function tags(): MorphToMany
-    {
-        return $this->morphToMany(Tag::class, 'taggable');
-    }
+    use HasTags;
 }

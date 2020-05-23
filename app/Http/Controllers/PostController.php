@@ -94,6 +94,10 @@ final class PostController extends Controller
             ->except($blog->id);
         $latest = $query->take(10);
 
+//        dd($blog->getFirstMedia('images'));
+//        dd($blog->getFirstMedia('images')->getResponsiveImageUrls('original'));
+//        dd($blog->getFirstMedia('images', ['all', 'lazy']));
+
         $layout = $blog ? $blog->layout : 'blog.show.default';
 
         return view($layout, [

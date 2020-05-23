@@ -33,6 +33,7 @@ class PostController extends Controller
     {
         return PostResource::collection(
             Post::search($request->input('q'))
+                ->where('type', 'blog')
                 ->withCount('comments', 'likes')->latest()
                 ->with('user')
                 ->paginate($request->input('limit', 20))

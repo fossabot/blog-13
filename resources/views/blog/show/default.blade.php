@@ -1,7 +1,7 @@
 @extends('blog.layouts.layout', [
     'title' => $blog->title,
     'author' => $blog->user->name,
-    'description' => $blog->meta_description
+    'description' => $blog->meta_description ?? $blog->subtitle
 ])
 
 @section('content')
@@ -12,9 +12,10 @@
             <div class="row gutters-50">
                 <div class="col-lg-8">
                     <div class="single-blog-box-layout3">
-                        @if($blog->getMedia('images')->count())
+                        @if($blog->hasMedia('images'))
                             <div class="blog-banner">
-                                <img src="{{ $blog->image }}" alt="{{ $blog->title }}">
+                                {{ $blog->getFirstMedia('lg') }}
+{{--                                <img src="{{ $blog->image }}" alt="{{ $blog->title }}">--}}
                             </div>
                         @endif
                         <div class="single-blog-content">

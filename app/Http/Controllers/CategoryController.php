@@ -10,7 +10,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Models\Post;
 use Illuminate\View\View;
 
 /**
@@ -25,19 +24,11 @@ class CategoryController extends Controller
      */
     public function __invoke(Category $category): View
     {
-        $query = Post::with(['tags', 'media', 'comments', 'likes'])->get();
-
-
-        $posts =  $query->where('category_id', $category->id);
-
-        $latest = $query->take(10);
-
         $layout = $category ? $category->layout : 'blog.categories.index';
 
         return view('blog.categories.single', [
             'category' => $category,
-            'posts' => $posts,
-            'latest' => $latest,
+            'posts' => $category->posts()->with('media')->get(),
         ]);
     }
 }

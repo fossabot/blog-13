@@ -1,5 +1,5 @@
 ---
-title: Sekilas Tentang Dockerfile - [2]
+title: Sekilas Tentang Dockerfile
 category: 5
 subtitle: null
 meta_description: null

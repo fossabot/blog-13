@@ -39,20 +39,28 @@ class PostsTableSeeder extends Seeder
 
         foreach ($posts as  $post) {
             $content = YamlFrontMatter::parse($post);
+//            dd(is_string($content->cont));
             $post = Post::updateOrCreate([
                 'user_id' => 1,
                 'category_id' => $content->category,
                 'title' => $content->title,
                 'content_raw' => $content->body(),
-                'subtitle' => isset($content->subtitle) ? $content->subtitle : null,
-                'meta_description' => isset($content->meta_description) ? $content->meta_description: null,
-                'is_draft' => isset($content->draft) ? $content->draft : false,
-                'is_sticky' => isset($content->is_sticky) ? $content->is_sticky : false,
+                'subtitle' => is_string($content->subtitle) ? $content->subtitle : null,
+                'meta_description' => is_string($content->meta_description) ? $content->meta_description: null,
+                'is_draft' => is_string($content->draft) ? $content->draft : false,
+                'is_sticky' => is_string($content->is_sticky) ? $content->is_sticky : false,
                 'published_at' => now(),
                 'type' => $content->type
             ]);
             try {
                 $post->addMedia(storage_path('app/public/img/posts/' . $content->image))
+                    ->withManipulations([
+                        'thumb' => ['w' => '90', 'h' => '80'],
+                        'image' => ['w' => '690', 'h' => '504'],
+                        'cover' => ['w' => '810', 'h' => '480'],
+                        'large' => ['w' => '870', 'h' => '448'],
+                        'orientation' => ['orientation' => '90'],
+                    ])
                     ->preservingOriginal()
                     ->usingName($content->title)
                     ->toMediaCollection('images');

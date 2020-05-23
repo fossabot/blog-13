@@ -12,9 +12,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $user_id
  * @property string $name
  * @property string $url
- * @property string|null $text
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property null|string $text
+ * @property null|\Illuminate\Support\Carbon $created_at
+ * @property null|\Illuminate\Support\Carbon $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Social newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Social newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Social query()
@@ -26,6 +26,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Social whereUrl($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Social whereUserId($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\User $user
  */
 class Social extends Model
 {
@@ -38,5 +39,4 @@ class Social extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-
 }

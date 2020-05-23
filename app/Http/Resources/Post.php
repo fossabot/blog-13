@@ -31,16 +31,19 @@ class Post extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'slug' => $this->slug,
+            'slug' => $this->url,
             'subtitle' => $this->subtitle,
+            'description' => $this->meta_description,
+            'content' => $this->content_html,
             'published_at' => $this->published_at,
             'time_humanize' => Carbon::parse($this->published_at)->diffForHumans(),
+            'category' => $this->category->title,
             'author' => $this->user->name,
             'avatar' => $this->user->avatar,
             'comments_count' => $this->comments_count ?? $this->comments()->count(),
             'likes_count' => $this->likes_count ?? $this->likes()->count(),
-//            'thumbnail_url' => $this->when($this->hasThumbnail(), url(optional($this->thumbnail)->getUrl())),
-//            'thumb_thumbnail_url' => $this->when($this->hasThumbnail(), url(optional($this->thumbnail)->getUrl('thumb')))
+            'image_thumbnail' => $this->thumbnail,
+            'image_cover' => $this->cover
         ];
     }
 }

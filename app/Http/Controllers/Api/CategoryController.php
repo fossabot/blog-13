@@ -66,7 +66,7 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request, Category $category): CategoryResource
     {
-        $this->authorize('store', Category::class);
+        $this->authorize('store', $category);
 
         return new CategoryResource(
             $category->create($request->all())

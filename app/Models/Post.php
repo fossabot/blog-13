@@ -12,11 +12,12 @@ namespace App\Models;
 use App\Libraries\DateAttribute\DateAttributeInterface;
 use App\Libraries\DateAttribute\DateAttributeTrait;
 use App\Libraries\Like\Likeable;
+use App\Libraries\Post\ImageAttribute;
 use App\Libraries\Post\ReadTime\ReadTime;
 use App\Libraries\Slug\HasSlug;
 use App\Libraries\Slug\SlugOptions;
+use App\Libraries\Tag\HasTags;
 use App\Scopes\PostedScope;
-use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Contracts\Routing\UrlRoutable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -24,7 +25,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use League\CommonMark\CommonMarkConverter;
 use Spatie\Activitylog\Traits\LogsActivity;
@@ -42,92 +42,92 @@ use Spatie\Permission\Traits\HasRoles;
  * @property null|int $parent_id
  * @property string $slug
  * @property string $title
- * @property string $subtitle
- * @property string $meta_description
- * @property string $content_raw
+ * @property null|string $subtitle
+ * @property null|string $meta_description
+ * @property null|string $content_raw
  * @property string $content_html
  * @property string $is_draft
+ * @property string $is_sticky
  * @property string $type
- * @property string $published_at
- * @property null|string $deleted_at
+ * @property \Illuminate\Support\Carbon $published_at
+ * @property string $layout
+ * @property null|\Illuminate\Support\Carbon $deleted_at
  * @property null|\Illuminate\Support\Carbon $created_at
  * @property null|\Illuminate\Support\Carbon $updated_at
- * @method static Builder|Post newModelQuery()
- * @method static Builder|Post newQuery()
- * @method static Builder|Post query()
- * @method static Builder|Post whereCategoryId($value)
- * @method static Builder|Post whereContentHtml($value)
- * @method static Builder|Post whereContentRaw($value)
- * @method static Builder|Post whereCreatedAt($value)
- * @method static Builder|Post whereDeletedAt($value)
- * @method static Builder|Post whereId($value)
- * @method static Builder|Post whereIsDraft($value)
- * @method static Builder|Post whereMetaDescription($value)
- * @method static Builder|Post whereParentId($value)
- * @method static Builder|Post wherePublishedAt($value)
- * @method static Builder|Post whereSlug($value)
- * @method static Builder|Post whereSubtitle($value)
- * @method static Builder|Post whereTitle($value)
- * @method static Builder|Post whereType($value)
- * @method static Builder|Post whereUpdatedAt($value)
- * @method static Builder|Post whereUserId($value)
- * @mixin \Eloquent
- * @property-read Category $category
- * @property-read Collection|Post[] $children
+ * @property-read \App\Models\Activity[]|\Illuminate\Database\Eloquent\Collection $activities
+ * @property-read null|int $activities_count
+ * @property-read \App\Models\Category $category
+ * @property-read \App\Models\Post[]|\Illuminate\Database\Eloquent\Collection $children
  * @property-read null|int $children_count
- * @property-read Collection|Comment[] $comments
+ * @property-read \App\Models\Comment[]|\Illuminate\Database\Eloquent\Collection $comments
  * @property-read null|int $comments_count
+ * @property-read string $author
  * @property-read mixed $content
+ * @property-read string $cover
  * @property-read string $date
  * @property-read string $excerpt
  * @property-read \Post $first_child
- * @property-read string|UrlGenerator $image
+ * @property-read string $image
  * @property-read string $month
+ * @property-read mixed $publish
  * @property-read mixed $publish_date
  * @property-read mixed $publish_time
  * @property-read \ReadTime $read_time
- * @property-read Collection|\Post[] $siblings
- * @property-read string $time_elapsed
- * @property-read string $url
- * @property-read Collection|Like[] $likes
- * @property-read null|int $likes_count
- * @property-read null|Post $parent
- * @property-read Collection|\Spatie\Permission\Models\Permission[] $permissions
- * @property-read null|int $permissions_count
- * @property-read Collection|\Spatie\Permission\Models\Role[] $roles
- * @property-read null|int $roles_count
- * @property-read Collection|Tag[] $tags
- * @property-read null|int $tags_count
- * @property-read User $user
- * @method static bool|null forceDelete()
- * @method static Builder|Post lastMonth($limit = 5)
- * @method static Builder|Post lastWeek()
- * @method static Builder|Post latest()
- * @method static \Illuminate\Database\Query\Builder|Post onlyTrashed()
- * @method static Builder|Post permission($permissions)
- * @method static bool|null restore()
- * @method static Builder|Post role($roles, $guard = null)
- * @method static Builder|Post search($search)
- * @method static \Illuminate\Database\Query\Builder|Post withTrashed()
- * @method static \Illuminate\Database\Query\Builder|Post withoutTrashed()
- * @property-read Collection|\Spatie\Activitylog\Models\Activity[] $activities
- * @property-read null|int $activities_count
- * @property-read mixed $author
- * @property-read \App\Models\Posts\Rate[]|\Illuminate\Database\Eloquent\Collection $rates
- * @property-read null|int $rates_count
- * @property string $is_sticky
- * @property-read \App\Models\Media[]|\Illuminate\Database\Eloquent\Collection $images
- * @property-read null|int $images_count
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereIsSticky($value)
- * @property-read mixed $publish
- * @property string $layout
- * @property-read null|\App\Models\Media $cover
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereLayout($value)
- * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\MediaLibrary\MediaCollections\Models\Media[] $media
- * @property-read null|int $media_count
+ * @property-read \Collection|\Post[] $siblings
  * @property-read string $slide_index
  * @property-read string $slide_show
  * @property-read string $thumbnail
+ * @property-read string $time_elapsed
+ * @property-read string $url
+ * @property-read \App\Models\Like[]|\Illuminate\Database\Eloquent\Collection $likes
+ * @property-read null|int $likes_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\MediaLibrary\MediaCollections\Models\Media[] $media
+ * @property-read null|int $media_count
+ * @property-read null|\App\Models\Post $parent
+ * @property-read \App\Models\Permission[]|\Illuminate\Database\Eloquent\Collection $permissions
+ * @property-read null|int $permissions_count
+ * @property-read \App\Models\Rate[]|\Illuminate\Database\Eloquent\Collection $rates
+ * @property-read null|int $rates_count
+ * @property-read \App\Models\Role[]|\Illuminate\Database\Eloquent\Collection $roles
+ * @property-read null|int $roles_count
+ * @property \App\Models\Tag[]|\Illuminate\Database\Eloquent\Collection $tags
+ * @property-read null|int $tags_count
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post lastMonth($limit = 5)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post lastWeek()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post latest()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post newQuery()
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Post onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post permission($permissions)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post role($roles, $guard = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post search($search)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereCategoryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereContentHtml($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereContentRaw($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereIsDraft($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereIsSticky($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereLayout($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereMetaDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereParentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post wherePublishedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereSubtitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post withAllTags($tags, $type = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post withAllTagsOfAnyType($tags)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post withAnyTags($tags, $type = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post withAnyTagsOfAnyType($tags)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Post withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Post withoutTrashed()
+ * @mixin \Eloquent
  */
 class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterface
 {
@@ -137,6 +137,8 @@ class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterfac
         Likeable,
         LogsActivity,
         HasSlug,
+        HasTags,
+        ImageAttribute,
         DateAttributeTrait;
 
     /**
@@ -176,57 +178,68 @@ class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterfac
             ->height(80)
             ->sharpen(10)
             ->optimize()
+            ->quality(80)
             ->withResponsiveImages();
 
         $this->addMediaConversion('sm')
-            ->crop('crop-center', 690, 504)
+//            ->crop('crop-center', 690, 504)
             ->width(690)
             ->height(504)
             ->sharpen(10)
             ->optimize()
+            ->quality(80)
             ->withResponsiveImages();
 
         $this->addMediaConversion('md')
-            ->crop('crop-center', 810, 480)
+//            ->crop('crop-center', 810, 480)
             ->width(810)
             ->height(480)
             ->sharpen(10)
             ->optimize()
+            ->quality(80)
             ->withResponsiveImages();
 
         $this->addMediaConversion('lg')
-            ->crop('crop-center', 870, 448)
+//            ->crop('crop-center', 870, 448)
             ->width(870)
             ->height(448)
             ->sharpen(10)
             ->optimize()
+            ->quality(80)
             ->withResponsiveImages();
 
         $this->addMediaConversion('xl')
-            ->crop('crop-center', 1170, 600)
+//            ->crop('crop-center', 1170, 600)
             ->width(1170)
             ->height(600)
             ->sharpen(10)
             ->optimize()
+            ->quality(80)
             ->withResponsiveImages();
 
         $this->addMediaConversion('slider-index')
-            ->crop('crop-center', 1171, 568)
+//            ->crop('crop-center', 1171, 568)
             ->width(1171)
             ->height(568)
             ->sharpen(10)
             ->optimize()
+            ->quality(80)
             ->withResponsiveImages();
 
         $this->addMediaConversion('slider-show')
-            ->crop('crop-center', 1920, 700)
+//            ->crop('crop-center', 1920, 700)
             ->width(1920)
             ->height(700)
             ->sharpen(10)
             ->optimize()
+            ->quality(80)
+            ->withResponsiveImages();
+
+        $this->addMediaConversion('original')
+            ->optimize()
+            ->quality(80)
             ->withResponsiveImages();
     }
-
 
     /**
      * The "booting" method of the model.
@@ -483,95 +496,6 @@ class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterfac
         if (!empty($this->user)) {
             return $this->user->name;
         }
-    }
-
-    /**
-     * @return string
-     */
-    public function getSlideIndexAttribute(): string
-    {
-        if ($this->getRelation('media')->count()) {
-            return $this->getMedia('images')[0]->getUrl('slider-index');
-        }
-        return \Storage::url('images/default/not-found/slide-index.jpg');
-    }
-
-    /**
-     * @return string
-     */
-    public function getSlideShowAttribute(): string
-    {
-        if ($this->getRelation('media')->count()) {
-            return $this->getMedia('images')[0]->getUrl('slider-show');
-        }
-        return \Storage::url('images/default/not-found/slide-show.jpg');
-    }
-
-    /**
-     * @return string
-     */
-    public function getCoverAttribute(): string
-    {
-        if ($this->getRelation('media')->count()) {
-            return $this->getMedia('images')[0]->getUrl('lg');
-        }
-        return \Storage::url('images/default/not-found/lg.jpg');
-    }
-
-    /**
-     * @return string
-     */
-    public function getImageAttribute(): string
-    {
-        if ($this->getRelation('media')->count()) {
-            return $this->getMedia('images')[0]->getUrl('sm');
-        }
-        return \Storage::url('images/default/not-found/sm.jpg');
-    }
-
-    /**
-     * @return string
-     */
-    public function getThumbnailAttribute(): string
-    {
-        if ($this->getRelation('media')->count()) {
-            return $this->getMedia('images')[0]->getUrl('xs');
-        }
-        return \Storage::url('images/default/not-found/xs.jpg');
-    }
-
-    /**
-     * many to many polymorphic relationship between tags and posts
-     * every post has one or many tags
-     * example:
-     *
-     * @foreach($post->tags as $tag)
-     * $tag->title
-     *
-     * @return MorphToMany
-     */
-    public function tags(): MorphToMany
-    {
-        return $this->morphToMany(Tag::class, 'taggable');
-    }
-
-    /**
-     * Sync tag relation adding new tags as needed
-     *
-     * @param array $tags
-     */
-    public function syncTags(array $tags)
-    {
-        Tag::addNeededTags($tags);
-
-        if (count($tags)) {
-            $this->tags()->sync(
-                Tag::whereIn('tag', $tags)->pluck('id')->toArray()
-            );
-            return;
-        }
-
-        $this->tags()->detach();
     }
 
 

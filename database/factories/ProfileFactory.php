@@ -4,6 +4,7 @@
 
 use App\Models\Profile as Model;
 use Faker\Generator as Faker;
+
 /*
 |--------------------------------------------------------------------------
 | Model Factories

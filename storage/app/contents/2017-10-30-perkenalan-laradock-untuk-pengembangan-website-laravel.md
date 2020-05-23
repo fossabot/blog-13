@@ -1,17 +1,15 @@
 ---
 title: Perkenalan Laradock untuk Pengembangan Website Laravel
-category: 4
+category: 5
 subtitle: null
 meta_description: null
-is_sticky: false
-draft : true
 type: blog
 image: laradock.jpg
 --- 
 
 ## Latar Belakang
 
-Pengembangan website atau _webapp_ menggunakan _framework_ Laravel sepertinya masih demikian populer. Karena belum ada artikel baru mengenai Laravel, penulis memberanikan diri untuk menyumbang satu artikel lagi. Tulisan ini menjelaskan cara lain untuk _development_ Laravel menggunakan teknologi Docker, atau lebih tepatnya Laradock.
+Pengembangan website atau *webapp* menggunakan *framework* Laravel sepertinya masih demikian populer. Karena belum ada artikel baru mengenai Laravel, penulis memberanikan diri untuk menyumbang satu artikel lagi. Tulisan ini menjelaskan cara lain untuk *development* Laravel menggunakan teknologi Docker, atau lebih tepatnya Laradock.
 
 ## Docker dan Laradock
 
@@ -19,13 +17,13 @@ Docker adalah... silakan ketik kata kunci "docker adalah" di Google. Maaf bercan
 Di SinauDev sudah ada artikel tentang [Perkenalan Docker](/linux/perkenalan_docker/) dan [Sekilas tentang Dockerfile](/linux/sekilas-tentang-dockerfile/).
 Jadi, silakan bacalah artikel-artikel tersebut.
 
-Penulis sendiri memahami Docker merupakan alternatif dari Virtualbox atau VMWare, yang lebih _resource friendly_ alias hemat sumber daya. 
+Penulis sendiri memahami Docker merupakan alternatif dari Virtualbox atau VMWare, yang lebih *resource friendly* alias hemat sumber daya. 
 Pembaca yang sudah akrab dengan Laravel pasti kenal juga dengan Vagrant, kan? 
-Nah, karena laptop penulis tidak cukup kuat untuk Virtualbox, dicarilah alternatif yang lebih _affordable_ demi kenyamanan meng-kode, sehingga sampai pada pilihan Laradock.
+Nah, karena laptop penulis tidak cukup kuat untuk Virtualbox, dicarilah alternatif yang lebih *affordable* demi kenyamanan meng-kode, sehingga sampai pada pilihan Laradock.
 
 Laradock sendiri adalah "_A Docker PHP development environment that facilitates running PHP Apps on Docker_". 
-Definisi tersebut diambil dari _repository_ [Laradock di Github](https://github.com/laradock/laradock).
-Jadi, Laradock ini merupakan kumpulan _Dockerfile_ untuk membuat _container_ yang dibutuhkan untuk _development_ Laravel.
+Definisi tersebut diambil dari *repository* [Laradock di Github](https://github.com/laradock/laradock).
+Jadi, Laradock ini merupakan kumpulan *Dockerfile* untuk membuat *container* yang dibutuhkan untuk *development* Laravel.
 Kita pasti butuh, sebut saja PHP dengan versi tertentu, Apache atau NGINX, MySQL atau Postgres atau MongoDB, dll. 
 
 Oke, kira-kira paham ya? Lanjut.
@@ -39,15 +37,15 @@ Syarat yang perlu dipenuhi untuk meng-kode Laravel dengan Laradock antara lain:
 3. Sebuah projek Laravel
 4. Git
 
-dan koneksi internet (yang kencang) untuk mengunduh _image_ Docker yang dibutuhkan.
+dan koneksi internet (yang kencang) untuk mengunduh *image* Docker yang dibutuhkan.
 
 ### Install Docker
 
 Di sistem operasi Linux (atau GNU/Linux deh), Docker sudah tersedia di repository aplikasi (seharusnya demikian). 
 Kita hanya perlu install dari repository distro Linux yang kita pakai. 
 Misalnya penulis pakai Fedora, maka tinggal memerintahkan `sudo dnf install docker`, Enter. 
-Tapi, bagi pengguna Fedora, perlu diperhatikan, bahwa Docker dari repo utama Fedora _tidak bisa digunakan_, entah kenapa. 
-Maka, kita (pengguna Fedora) perlu mengunduh [Docker dari situs resminya](https://store.docker.com/editions/community/docker-ce-server-fedora), dan menginstall _package_ `docker-ce`.
+Tapi, bagi pengguna Fedora, perlu diperhatikan, bahwa Docker dari repo utama Fedora *tidak bisa digunakan_, entah kenapa. 
+Maka, kita (pengguna Fedora) perlu mengunduh [Docker dari situs resminya](https://store.docker.com/editions/community/docker-ce-server-fedora), dan menginstall *package* `docker-ce`.
 Caranya agak ribet, jadi silakan baca di laman [dokumentasi resminya](https://docs.docker.com/engine/installation/linux/docker-ce/fedora/).
 
 Bagi yang menggunakan Windows atau Mac, silakan unduh Docker dari [laman unduhan resminya](https://www.docker.com/get-docker).
@@ -55,7 +53,7 @@ Bagi yang menggunakan Windows atau Mac, silakan unduh Docker dari [laman unduhan
 ### Install docker-compose
 
 Untuk instalasi **docker-compose**, terutama pengguna Linux, silakan mengacu pada [laman resminya](https://docs.docker.com/compose/install/#install-compose). 
-Versi Docker untuk Windows dan Mac sepertinya sudah menyertakan **docker-compose** dalam _installer_-nya.
+Versi Docker untuk Windows dan Mac sepertinya sudah menyertakan **docker-compose** dalam *installer_-nya.
 
 ## Set up projek Laravel dan Laradock
 
@@ -111,6 +109,8 @@ Di sana ada keterangan container apa saja yang berjalan, dan jika ada error, aka
 Di dalam container yang disediakan Laradock, yaitu `workspace`, sudah disediakan *tools* yang diperlukan untuk *development* Laravel. Antara lain Composer, Git, NodeJS, dll.
 Kita bisa menjalankan *tools* itu dengan mengakses container tersebut via SSH.
 Perintah untuk masuk ke container adalah:
+
+
 ```
 sudo docker-compose exec workspace bash
 ```

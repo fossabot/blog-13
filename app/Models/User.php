@@ -28,7 +28,6 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Permission\Traits\HasRoles;
 
-
 /**
  * App\Models\User
  *
@@ -37,40 +36,40 @@ use Spatie\Permission\Traits\HasRoles;
  * @property string $slug
  * @property string $name
  * @property string $email
- * @property \Illuminate\Support\Carbon|null $email_verified_at
+ * @property null|\Illuminate\Support\Carbon $email_verified_at
  * @property string $password
- * @property \Illuminate\Support\Carbon|null $registered_at
- * @property string|null $api_token
- * @property string|null $provider
- * @property string|null $provider_id
- * @property string|null $remember_token
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Activity[] $activities
- * @property-read int|null $activities_count
+ * @property null|\Illuminate\Support\Carbon $registered_at
+ * @property null|string $api_token
+ * @property null|string $provider
+ * @property null|string $provider_id
+ * @property null|string $remember_token
+ * @property null|\Illuminate\Support\Carbon $created_at
+ * @property null|\Illuminate\Support\Carbon $updated_at
+ * @property-read \App\Models\Activity[]|\Illuminate\Database\Eloquent\Collection $activities
+ * @property-read null|int $activities_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Passport\Client[] $clients
- * @property-read int|null $clients_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Comment[] $comments
- * @property-read int|null $comments_count
+ * @property-read null|int $clients_count
+ * @property-read \App\Models\Comment[]|\Illuminate\Database\Eloquent\Collection $comments
+ * @property-read null|int $comments_count
  * @property-read null|string $avatar
  * @property-read mixed|string $url
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Like[] $likes
- * @property-read int|null $likes_count
+ * @property-read \App\Models\Like[]|\Illuminate\Database\Eloquent\Collection $likes
+ * @property-read null|int $likes_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\MediaLibrary\MediaCollections\Models\Media[] $media
- * @property-read int|null $media_count
- * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
- * @property-read int|null $notifications_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Permission[] $permissions
- * @property-read int|null $permissions_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Post[] $posts
- * @property-read int|null $posts_count
- * @property-read \App\Models\Profile|null $profile
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Role[] $roles
- * @property-read int|null $roles_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Social[] $socials
- * @property-read int|null $socials_count
+ * @property-read null|int $media_count
+ * @property-read \Illuminate\Notifications\DatabaseNotification[]|\Illuminate\Notifications\DatabaseNotificationCollection $notifications
+ * @property-read null|int $notifications_count
+ * @property-read \App\Models\Permission[]|\Illuminate\Database\Eloquent\Collection $permissions
+ * @property-read null|int $permissions_count
+ * @property-read \App\Models\Post[]|\Illuminate\Database\Eloquent\Collection $posts
+ * @property-read null|int $posts_count
+ * @property-read null|\App\Models\Profile $profile
+ * @property-read \App\Models\Role[]|\Illuminate\Database\Eloquent\Collection $roles
+ * @property-read null|int $roles_count
+ * @property-read \App\Models\Social[]|\Illuminate\Database\Eloquent\Collection $socials
+ * @property-read null|int $socials_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Passport\Token[] $tokens
- * @property-read int|null $tokens_count
+ * @property-read null|int $tokens_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User authors()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User lastWeek()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User latest()

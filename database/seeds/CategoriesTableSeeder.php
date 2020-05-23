@@ -25,7 +25,6 @@ class CategoriesTableSeeder extends Seeder
         $categories = self::defaultCategories();
 
         foreach ($categories as $index => $content) {
-
             $image = storage_path("app/public/img/categories/{$content['image']}");
 
             Category::updateOrCreate([

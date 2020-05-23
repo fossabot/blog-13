@@ -14,8 +14,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $gender
  * @property string $birthplace
  * @property string $birthday
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property null|\Illuminate\Support\Carbon $created_at
+ * @property null|\Illuminate\Support\Carbon $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Profile newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Profile newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Profile query()
@@ -34,6 +34,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Profile whereLastName($value)
  * @property string $biography
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Profile whereBiography($value)
+ * @property-read \App\Models\User $user
  */
 class Profile extends Model
 {
@@ -78,5 +79,4 @@ class Profile extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-
 }

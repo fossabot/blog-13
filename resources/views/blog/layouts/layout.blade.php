@@ -3,17 +3,17 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    @if(Auth::check())
+    @auth
         <meta name="csrf-token" content="{{ csrf_token() }}">
-    @endif
+    @endauth
     <title>{{ isset($title) ? $title . ' | ' .config('blog.title') : config('blog.name', 'Turahe.id') }}</title>
     <link rel="alternate" type="application/rss+xml" href="{{ url('rss') }}" title="RSS Feed {{ config('blog.title') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="robots" content="index, follow">
-    <meta name="author" content="{{ $author ?? config('blog.author.name') }}" />
-    <meta name="description" content="{{ $description ?? config('blog.description') }}" />
+    <meta name="author" content="{{ config('blog.author.name') }}" />
+    <meta name="description" content="{{ isset($description) ? $description : config('blog.description')  }}" />
     <meta property="og:site_name" content="turahe.id">
     <meta property="og:locale" content="{{ config('app.locale') }}">
     <meta name="og:title" property="og:title" content="{{ $title ?? config('blog.title') }}" />
