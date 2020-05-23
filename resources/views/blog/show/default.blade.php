@@ -57,7 +57,7 @@
 
                             @include('blog.components.related')
 
-{{--                            @include('blog.comment.comment')--}}
+                            @include('blog.comment.comment')
 {{--                            @include('blog.comment.form')--}}
                         </div>
                     </div>
@@ -95,4 +95,5 @@
 
 @push('scripts')
     <script src="{{ mix('js/show.js') }}"></script>
+    <script src="{{ mix('js/comment.js') }}"></script>
 @endpush

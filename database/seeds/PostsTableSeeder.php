@@ -39,7 +39,6 @@ class PostsTableSeeder extends Seeder
 
         foreach ($posts as  $post) {
             $content = YamlFrontMatter::parse($post);
-//            dd(is_string($content->cont));
             $post = Post::updateOrCreate([
                 'user_id' => 1,
                 'category_id' => $content->category,

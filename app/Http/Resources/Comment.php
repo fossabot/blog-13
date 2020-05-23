@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
  * @property mixed published_at
  * @property mixed content
  * @property int id
+ * @property string title
  * @package App\Http\Resources
  */
 class Comment extends JsonResource
@@ -33,12 +34,13 @@ class Comment extends JsonResource
 
         return [
             'id' => $this->id,
+            'title' => $this->title,
             'content' => $this->content,
             'published_at' => $this->published_at->toIso8601String(),
             'time_humanize' => Carbon::parse($this->published_at)->diffForHumans(),
             'author' => $this->user->name,
             'avatar' => $this->user->avatar,
-            'post' => ! is_null($this->commentable) ? $this->commentable->title : null,
+            'post' => ! is_null($this->post) ? $this->post->title : null,
             'author_name' => $this->user->name,
             'author_url' => route('users.show', $this->user),
             'approved' => $this->approved,

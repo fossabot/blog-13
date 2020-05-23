@@ -17,6 +17,7 @@ mix.js('resources/assets/blog/js/script.js', 'public/js')
   .sass('resources/assets/blog/sass/style.scss', 'public/css')
 
   .js('resources/assets/blog/js/show.js', 'public/js')
+  .js('resources/assets/blog/js/comment.js', 'public/js')
   .js('resources/assets/blog/js/scripts/map.js', 'public/js')
   // .sass('resources/assets/blog/sass/carousel.scss', 'public/css')
 
