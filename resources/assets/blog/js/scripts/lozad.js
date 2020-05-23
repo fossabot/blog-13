@@ -8,15 +8,8 @@
  *  @copyright      Copyright (c) Turahe 2020.
  *
  */
-// import lozad from 'lozad'
-//
-// const el = document.querySelector('img');
-// const observer = lozad(el);
-// // passing a `NodeList` (e.g. `document.querySelectorAll()`) is also valid
-// observer.observe();
-
 if ('loading' in HTMLImageElement.prototype) {
-  const images = document.querySelectorAll("img");
+  const images = document.querySelectorAll("img.lazy");
   images.forEach(img => {
     img.src = img.dataset.src;
   });

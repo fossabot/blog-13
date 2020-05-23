@@ -1,22 +1,23 @@
 @extends('blog.layouts.layout')
 @section('content')
-{{--    @includeIf('blog.partials.slider')--}}
-{{--@include('blog.featured.triple')--}}
+    {{--    @includeIf('blog.partials.slider')--}}
+    {{--@include('blog.featured.triple')--}}
     <!-- Blog Area Start Here -->
     <section class="blog-wrap-layout2">
         <div class="container">
             <div class="row gutters-40">
                 <div class="col-xl-9 col-lg-8">
 
-{{--                    @include('blog.featured.single')--}}
+                    {{--                    @include('blog.featured.single')--}}
 
                     <div class="row gutters-40">
-                        @foreach($blogs as $blog)
-                            <div class="col-sm-6 col-12">
+                        @foreach($blogs as $index =>  $blog)
+                            <div class="col-sm-6 col-12 blogBox moreBox" @if($loop->index >= 10) style="display: none;" @endif>
                                 <div class="blog-box-layout1">
                                     <div class="item-img">
                                         <a href="{{ $blog->url }}">
-                                            <img src="{{ $blog->image }}" alt="{{ $blog->title }}">
+                                            {{ $blog->getFirstMedia('images') }}
+{{--                                            <img class="lazy" src="{{ $blog->image }}" alt="{{ $blog->title }}">--}}
                                         </a>
                                     </div>
                                     <div class="item-content">
@@ -53,32 +54,59 @@
 
                     </div>
 
-{{--                    {{ $blogs->links('blog.vendor.pagination') }}--}}
+                    <div class="d-flex justify-content-center pb-5">
+                        <button id="loadMore" class="btn btn-outline-danger" type="button">
+                            LOAD MORE
+                        </button>
+                    </div>
+
+                    {{--                    {{ $blogs->links('blog.vendor.pagination') }}--}}
 
                 </div>
                 <div class="col-xl-3 col-lg-4 sidebar-widget-area sidebar-break-md">
 
-{{--                    @include('blog.partials.widget.about')--}}
+                    {{--                    @include('blog.partials.widget.about')--}}
 
 
                     @include('blog.partials.widget.subscribe')
 
                     @include('blog.partials.widget.latest')
 
-{{--                    @include('blog.partials.widget.adsense')--}}
+                    {{--                    @include('blog.partials.widget.adsense')--}}
 
-{{--                    <x-instagram-widget></x-instagram-widget>--}}
+                    {{--                    <x-instagram-widget></x-instagram-widget>--}}
 
                     <x-categories></x-categories>
 
-{{--                    @include('blog.components.newsletter')--}}
+                    {{--                    @include('blog.components.newsletter')--}}
 
-{{--                    @include('blog.partials.widget.feature-feed')--}}
+                    {{--                    @include('blog.partials.widget.feature-feed')--}}
                 </div>
             </div>
         </div>
     </section>
     <!-- Blog Area End Here -->
     <!-- Instagram Start Here -->
-{{--    <x-instagram-feed></x-instagram-feed>--}}
+    {{--    <x-instagram-feed></x-instagram-feed>--}}
 @endsection
+@push('scripts')
+
+    <script type="text/javascript">
+
+
+
+        $( document ).ready(function () {
+            $(".moreBox").slice(0, 10).show();
+            if ($(".blogBox:hidden").length != 0) {
+                $("#loadMore").show();
+            }
+            $("#loadMore").on('click', function (e) {
+                e.preventDefault();
+                $(".moreBox:hidden").slice(0, 6).slideDown();
+                if ($(".moreBox:hidden").length == 0) {
+                    $("#loadMore").fadeOut('slow');
+                }
+            });
+        });
+    </script>
+@endpush

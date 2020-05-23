@@ -33,8 +33,17 @@ mix.js('resources/assets/blog/js/script.js', 'public/js')
   .extract(['jquery', 'bootstrap', 'popper.js'])
   .sourceMaps()
   // .purgeCss()
+
   .options({
     // purifyCss: true,
+    processCssUrls: true,
+    postCss: [
+      require('postcss-custom-properties')
+    ],
+    hmrOptions: {
+      host: 'blog.test',  // site's host name
+      port: 8080,
+    },
     autoprefixer: {
       options: {
         browsers: [
@@ -55,12 +64,7 @@ if (! mix.inProduction()) {
     devtool: 'source-map'
   })
 }
-mix.options({
-  hmrOptions: {
-    host: 'blog.test',  // site's host name
-    port: 8080,
-  }
-});
+
 
 // // fix css files 404 issue
 mix.webpackConfig({

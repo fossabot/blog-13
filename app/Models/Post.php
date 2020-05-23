@@ -28,6 +28,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use League\CommonMark\CommonMarkConverter;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -236,6 +237,7 @@ class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterfac
             ->withResponsiveImages();
 
         $this->addMediaConversion('original')
+            ->fit(Manipulations::FIT_FILL, 1920, 1080)
             ->optimize()
             ->quality(80)
             ->withResponsiveImages();

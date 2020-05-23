@@ -14,7 +14,7 @@
                     <div class="single-blog-box-layout3">
                         @if($blog->hasMedia('images'))
                             <div class="blog-banner">
-                                {{ $blog->getFirstMedia('lg') }}
+                                {{ $blog->getFirstMedia('images') }}
 {{--                                <img src="{{ $blog->image }}" alt="{{ $blog->title }}">--}}
                             </div>
                         @endif
