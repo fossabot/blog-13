@@ -39,6 +39,7 @@ class PostsTableSeeder extends Seeder
 
         foreach ($posts as  $post) {
             $content = YamlFrontMatter::parse($post);
+            $collection =  is_string($content->colection) ? $content->colection : 'images';
             $post = Post::updateOrCreate([
                 'user_id' => 1,
                 'category_id' => $content->category,
@@ -62,7 +63,7 @@ class PostsTableSeeder extends Seeder
                     ])
                     ->preservingOriginal()
                     ->usingName($content->title)
-                    ->toMediaCollection('images');
+                    ->toMediaCollection($collection);
             } catch (\Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist $e) {
                 $e->getMessage();
             } catch (\Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig $e) {

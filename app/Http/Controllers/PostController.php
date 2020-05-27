@@ -11,6 +11,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 
@@ -80,6 +81,18 @@ final class PostController extends Controller
             'related' => $related,
             'latest' => $latest,
         ]);
+    }
+
+    /**
+     * @return Response
+     */
+    public function rss(): Response
+    {
+        $posts = Cache::remember('feed-posts', now()->addHour(), fn () => Post::latest()->limit(20)->get());
+
+        return response()->view('posts_feed.index', [
+            'posts' => $posts
+        ], 200)->header('Content-Type', 'text/xml');
     }
 
     /**
