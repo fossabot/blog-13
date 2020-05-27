@@ -34,3 +34,9 @@ $factory->define(User::class, function (Faker $faker) {
         'registered_at' => $faker->dateTimeBetween('-1 Month', 'now'),
     ];
 });
+$factory->state(User::class, 'turahe', function (Generator $faker) {
+    return [
+        'name' => 'Turahe',
+        'email' => 'wachid@turahe.id'
+    ];
+});

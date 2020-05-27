@@ -1,4 +1,14 @@
 <?php
+/**
+ * For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
+ *
+ *  @modified    5/24/20, 1:20 AM
+ *  @name          Bootstrap.php
+ *  @author         Nur Wachid
+ *  @copyright      Copyright (c) Turahe 2020.
+ *
+ */
 
 namespace Tests;
 
@@ -39,4 +49,5 @@ class Bootstrap implements BeforeFirstTestHook, AfterLastTestHook
     {
         array_map('unlink', glob('bootstrap/cache/*.phpunit.php'));
     }
+
 }

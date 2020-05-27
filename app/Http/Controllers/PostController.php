@@ -14,6 +14,7 @@ use App\Libraries\SiteMap\SiteMap;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Collection;
 use Illuminate\View\View;
 
 /**
@@ -23,26 +24,12 @@ use Illuminate\View\View;
 final class PostController extends Controller
 {
     /**
-     * @var Post
-     */
-    protected ?Post $post;
-
-    /**
-     * PostController constructor.
-     * @param Post $post
-     */
-    public function __construct(Post $post)
-    {
-        $this->post = $post;
-    }
-
-    /**
      * Show all blog
      *
      * @param Request $request
      * @return View
      */
-    public function index(Request $request): View
+    public function index(Request $request)
     {
         $query = Post::where('published_at', '<=', now())
             ->where('is_draft', 0)
@@ -51,7 +38,7 @@ final class PostController extends Controller
             ->with(['category', 'media'])->get();
 
         if ($request->has('query')  && $request->input('query')  != '') {
-            $query = $this->post->search($request->input('query'));
+            $query = Post::search($request->input('query'));
         }
 
         $blogs = $query
@@ -87,16 +74,15 @@ final class PostController extends Controller
      */
     public function show(string $slug): View
     {
-        $query = $this->post->with(['media', 'tags', 'category'])->get();
+
+        $query = Post::with(['media', 'tags', 'category'])->get();
         $blog = $query->where('slug', $slug)->first();
 
         $related =  $query->where('category_id', $blog->category->id)
             ->except($blog->id);
         $latest = $query->take(10);
 
-//        dd($blog->getFirstMedia('images')->img('', ['class'=>'shadow', 'alt'=>'Sunset']));
-//        dd($blog->getFirstMedia('images')->responsiveImages('original')->getSrcset());
-//        dd($blog->getFirstMedia('images', ['all', 'lazy']));
+
 
         $layout = $blog ? $blog->layout : 'blog.show.default';
 
@@ -106,6 +92,8 @@ final class PostController extends Controller
             'latest' => $latest,
         ]);
     }
+
+
 
     /**
      * @param Post $page
