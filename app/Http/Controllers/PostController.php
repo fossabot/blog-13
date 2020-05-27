@@ -14,7 +14,7 @@ use App\Libraries\SiteMap\SiteMap;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 
 /**
@@ -31,27 +31,18 @@ final class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Post::where('published_at', '<=', now())
-            ->where('is_draft', 0)
-            ->orderBy('published_at', 'desc')
-            ->where('type', 'blog')
-            ->with(['category', 'media'])->get();
+        $posts = $this->queryAll($request);
 
-        if ($request->has('query')  && $request->input('query')  != '') {
-            $query = Post::search($request->input('query'));
-        }
-
-        $blogs = $query
+        $blogs = $posts
             ->where('type', 'blog')
             ->all();
 
-        $latest = $query->take(10);
-        $posts = $query;
+        $latest = $posts->take(10);
 
 
-        $featured = $query->where('is_sticky', true);
+        $featured = $posts->where('is_sticky', true);
 
-        $getPost = $query->random();
+        $getPost = $posts->random();
 
 
         $layout = 'blog.index';
@@ -69,18 +60,19 @@ final class PostController extends Controller
     /**
      * Show blog by slug
      *
+     * @param Request $request
      * @param string $slug
      * @return View
      */
-    public function show(string $slug): View
+    public function show(Request $request, string $slug): View
     {
+        $posts = $this->queryAll($request);
+        $blog = $posts->where('slug', $slug)->first();
 
-        $query = Post::with(['media', 'tags', 'category'])->get();
-        $blog = $query->where('slug', $slug)->first();
 
-        $related =  $query->where('category_id', $blog->category->id)
+        $related =  $posts->where('category_id', $blog->category->id)
             ->except($blog->id);
-        $latest = $query->take(10);
+        $latest = $posts->take(10);
 
 
 
@@ -128,5 +120,24 @@ final class PostController extends Controller
 
         return response($map)
             ->header('Content-type', 'text/xml');
+    }
+
+    /**
+     * @param Request $request
+     * @return mixed
+     */
+    private function queryAll(Request $request)
+    {
+        $query = Post::where('published_at', '<=', now())
+            ->where('is_draft', 0)
+            ->orderBy('published_at', 'desc')
+            ->where('type', 'blog')
+            ->with(['category', 'media'])->get();
+
+        if ($request->has('query') && $request->input('query') != '') {
+            $query = Post::search($request->input('query'));
+        }
+
+        return Cache::remember('feed-posts', now()->addHour(), fn () => $query);
     }
 }
