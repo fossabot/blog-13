@@ -8,7 +8,10 @@
                     <div class="col-lg-12 d-flex justify-content-center">
                         <div class="logo-area">
                             <a href="{{ url('/') }}" class="temp-logo" id="temp-logo">
-                                <img src="/themes/blogxer/img/logo-dark.png" alt="logo" class="img-fluid">
+
+                                {!! svg('turahe-dark') !!}
+
+{{--                                <img src="{{ Storage::url('turahe.png') }}" alt="logo" class="img-fluid">--}}
                             </a>
                         </div>
                     </div>

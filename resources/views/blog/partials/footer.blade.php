@@ -11,7 +11,8 @@
                 <div class="footer-box-layout1">
                     <div class="footer-logo">
                         <a href="{{ url('/') }}">
-                            <img src="/themes/blogxer/img/logo-light.png" alt="{{ config('blog.name') }}">
+                            {!! svg('turahe-light') !!}
+{{--                            <img src="#" alt="{{ config('blog.name') }}">--}}
                         </a>
                     </div>
                 </div>
