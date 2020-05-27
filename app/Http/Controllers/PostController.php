@@ -9,11 +9,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Libraries\Rss\RssFeed;
-use App\Libraries\SiteMap\SiteMap;
 use App\Models\Post;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 
@@ -83,43 +80,6 @@ final class PostController extends Controller
             'related' => $related,
             'latest' => $latest,
         ]);
-    }
-
-
-
-    /**
-     * @param Post $page
-     * @return View
-     */
-    public function page(Post $page): View
-    {
-        return view('blog.page', [
-            'post' => $page
-        ]);
-    }
-
-    /**
-     * @param RssFeed $feed
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
-     */
-    public function rss(RssFeed $feed): Response
-    {
-        $rss = $feed->getRSS();
-
-        return response($rss)
-            ->header('Content-type', 'application/rss+xml');
-    }
-
-    /**
-     * @param SiteMap $siteMap
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
-     */
-    public function siteMap(SiteMap $siteMap): Response
-    {
-        $map = $siteMap->getSiteMap();
-
-        return response($map)
-            ->header('Content-type', 'text/xml');
     }
 
     /**

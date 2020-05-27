@@ -14,6 +14,8 @@ use App\Libraries\DateAttribute\DateAttributeTrait;
 use App\Libraries\Like\Likeable;
 use App\Libraries\Post\ImageAttribute;
 use App\Libraries\Post\ReadTime\ReadTime;
+use App\Libraries\Rss\Feedable;
+use App\Libraries\Rss\FeedItem;
 use App\Libraries\Slug\HasSlug;
 use App\Libraries\Slug\SlugOptions;
 use App\Libraries\Tag\HasTags;
@@ -262,6 +264,7 @@ class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterfac
             ->generateSlugsFrom('title')
             ->saveSlugsTo('slug');
     }
+
 
     /**
      * Prepare a date for array / JSON serialization.

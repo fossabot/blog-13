@@ -29,7 +29,7 @@ class ManifestService
             'background_color' => config('pwa.manifest.background_color'),
             'orientation' =>  config('pwa.manifest.orientation'),
             'status_bar' =>  config('pwa.manifest.status_bar'),
-            'splash' =>  config('pwa.manifest.splash')
+//            'splash' =>  config('pwa.manifest.splash')
         ];
 
         foreach (config('pwa.manifest.icons') as $size => $file) {
