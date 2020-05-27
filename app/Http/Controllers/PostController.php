@@ -9,6 +9,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Libraries\SiteMap\SiteMap;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -93,6 +94,14 @@ final class PostController extends Controller
         return response()->view('posts_feed.index', [
             'posts' => $posts
         ], 200)->header('Content-Type', 'text/xml');
+    }
+
+    public function siteMap(SiteMap $siteMap): Response
+    {
+        $map = $siteMap->getSiteMap();
+
+        return response($map)
+            ->header('Content-type', 'text/xml');
     }
 
     /**
