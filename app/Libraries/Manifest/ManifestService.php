@@ -35,7 +35,7 @@ class ManifestService
         foreach (config('pwa.manifest.icons') as $size => $file) {
             $fileInfo = pathinfo($file['path']);
             $basicManifest['icons'][] = [
-                'src' => $file['path'],
+                'src' => url($file['path']),
                 'type' => 'image/' . $fileInfo['extension'],
                 'sizes' => $size,
                 'purpose' => $file['purpose']
