@@ -10,7 +10,7 @@ services:
   - mysql:latest
 
 variables:
-  MYSQL_DATABASE: project_name
+  MYSQL_DATABASE: turahe_database
   MYSQL_ROOT_PASSWORD: secret
 
 # This folder is cached between builds
@@ -27,8 +27,8 @@ before_script:
   - apt-get update -yqq
   # Prep for Node
   - apt-get install gnupg -yqq
-  # Upgrade to Node 8
-  - curl -sL https://deb.nodesource.com/setup_8.x | bash -
+  # Upgrade to Node 14
+  - curl -sL https://deb.nodesource.com/setup_14.x | bash -
   # Install dependencies
   - apt-get install git nodejs libcurl4-gnutls-dev libicu-dev libmcrypt-dev libvpx-dev libjpeg-dev libpng-dev libxpm-dev zlib1g-dev libfreetype6-dev libxml2-dev libexpat1-dev libbz2-dev libgmp3-dev libldap2-dev unixodbc-dev libpq-dev libsqlite3-dev libaspell-dev libsnmp-dev libpcre3-dev libtidy-dev -yqq
   # Install php extensions
@@ -45,7 +45,7 @@ before_script:
   # Copy over testing configuration.
   # Don't forget to set the database config in .env.testing correctly
   # DB_HOST=mysql
-  # DB_DATABASE=project_name
+  # DB_DATABASE=turahe_database
   # DB_USERNAME=root
   # DB_PASSWORD=secret
   - cp .env.testing .env
@@ -61,6 +61,13 @@ before_script:
   - php artisan migrate
   # Run database seed
   - php artisan db:seed
+
+  # Setup SSH deploy keys
+  - 'which ssh-agent || ( apt-get install -qq openssh-client )'
+  - eval $(ssh-agent -s)
+  - ssh-add <(echo "$SSH_PRIVATE_KEY")
+  - mkdir -p ~/.ssh
+  - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
 
 test:
   script:
