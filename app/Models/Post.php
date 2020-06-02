@@ -323,44 +323,13 @@ class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterfac
     }
 
     /**
-     * Creating new query databases with relations
-     *
-     * @param Builder $query
-     * @param array $relation
-     * @return Builder
-     */
-    public function queryAll(Builder $query, array $relation = []): Builder
-    {
-        return $query->where('published_at', '<=', now())
-            ->where('is_draft', 0)
-            ->orderBy('published_at', 'desc')
-            ->with($relation);
-    }
-
-    /**
-     * @param string $model
-     * @param array $relation
-     * @param int $id
-     * @param int $limit
-     * @return Collection
-     */
-    public function queryFilter(string $model, array $relation, int $id, int $limit)
-    {
-        return $this->queryAll($relation)->filter(function ($post) use ($model, $id) {
-            return $post->postable_type = $model && $post->postable_id == $id;
-        })->take($limit);
-    }
-
-
-
-    /**
      * set content raw markdown to convert to html with Parsedown
      *
      * @param $value
      * @throws \Exception
      * @return string
      */
-    public function setContentRawAttribute($value)
+    public function setContentRawAttribute($value): string
     {
         $this->attributes['content_raw'] = $value;
         $this->attributes['content_html'] = $this->markdown($value);
@@ -373,7 +342,7 @@ class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterfac
      */
     public function getContentAttribute(): string
     {
-        return $this->content_html;
+        return $this->content_raw;
     }
 
     /**

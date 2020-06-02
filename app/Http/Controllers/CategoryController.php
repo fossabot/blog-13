@@ -20,13 +20,13 @@ class CategoryController extends Controller
 {
     /**
      * @param Category $category
-     * @return View
+     * @return \Illuminate\Http\Response
      */
-    public function __invoke(Category $category): View
+    public function __invoke(Category $category)
     {
         $layout = $category ? $category->layout : 'blog.categories.index';
 
-        return view('blog.categories.single', [
+        return response()->view('blog.categories.single', [
             'category' => $category,
             'posts' => $category->posts()->with('media')->get(),
         ]);

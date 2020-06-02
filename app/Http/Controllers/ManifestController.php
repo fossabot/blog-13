@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Libraries\Manifest\ManifestService;
 
 /**
  * Class ManifestController
  * @package App\Http\Controllers
  */
-class ManifestController extends Controller
+final class ManifestController extends Controller
 {
     /**
+     * @param ManifestService $service
      * @return \Illuminate\Http\JsonResponse
      */
-    public function manifestJson()
+    public function manifestJson(ManifestService $service)
     {
-        $output = (new ManifestService)->generate();
-        return response()->json($output);
+        return response()->json($service->generate());
     }
 
     /**

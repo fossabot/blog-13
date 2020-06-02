@@ -6,9 +6,8 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <title>{{ isset($title) ? $title . ' | ' .config('blog.title') : config('blog.name', 'Turahe.id') }}</title>
-    <link rel="stylesheet" href="/assets/admin/plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="/assets/admin/css/adminlte.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ mix('css/admin.css') }}">
     @stack('styles')
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -39,7 +38,7 @@ to get the desired effect
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ url('admin') }}">Home</a></li>
                             <li class="breadcrumb-item active">Dashboard v3</li>
                         </ol>
                     </div><!-- /.col -->
@@ -72,11 +71,13 @@ to get the desired effect
 
 <!-- REQUIRED SCRIPTS -->
 
+<script src="{{ mix('js/manifest.js') }}"></script>
+<script src="{{ mix('js/vendor.js') }}"></script>
+<script src="{{ mix('js/admin.js') }}"></script>
+{{--<script src="/assets/admin/plugins/jquery/jquery.min.js"></script>--}}
+{{--<script src="/assets/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>--}}
 
-<script src="/assets/admin/plugins/jquery/jquery.min.js"></script>
-<script src="/assets/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<script src="/assets/admin/js/adminlte.js"></script>
+{{--<script src="/assets/admin/js/adminlte.js"></script>--}}
 @stack('scripts')
 </body>
 </html>

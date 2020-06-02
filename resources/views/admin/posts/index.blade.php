@@ -90,6 +90,7 @@
             $('#dataTable').DataTable({
                 "responsive": true,
                 "autoWidth": false,
+                "ordering": false
             });
         });
     </script>

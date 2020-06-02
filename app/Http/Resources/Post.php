@@ -16,6 +16,11 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * @property mixed id
  * @property mixed subtitle
  * @property mixed user
+ * @property mixed meta_description
+ * @property mixed category
+ * @property mixed content_html
+ * @property mixed thumbnail
+ * @property mixed cover
  * @package App\Http\Resources
  */
 class Post extends JsonResource
@@ -36,14 +41,14 @@ class Post extends JsonResource
             'description' => $this->meta_description,
             'content' => $this->content_html,
             'published_at' => $this->published_at,
-            'time_humanize' => Carbon::parse($this->published_at)->diffForHumans(),
-            'category' => $this->category->title,
-            'author' => $this->user->name,
-            'avatar' => $this->user->avatar,
-            'comments_count' => $this->comments_count ?? $this->comments()->count(),
-            'likes_count' => $this->likes_count ?? $this->likes()->count(),
-            'image_thumbnail' => $this->thumbnail,
-            'image_cover' => $this->cover
+            'time_humanize' => $this->published_at->diffForHumans(),
+//            'category' => $this->category->title,
+//            'author' => $this->user->name,
+//            'avatar' => $this->user->avatar,
+//            'comments_count' => $this->comments_count ?? $this->comments()->count(),
+//            'likes_count' => $this->likes_count ?? $this->likes()->count(),
+//            'image_thumbnail' => $this->thumbnail,
+//            'image_cover' => $this->cover
         ];
     }
 }

@@ -18,8 +18,11 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
+Route::get('user/{name?}', function ($name = null) {
+    return $name;
+});
 Route::prefix('v1')->namespace('Api')->group(function () {
-    Route::middleware(['auth:api', 'verified'])->group(function () {
+    Route::middleware(['auth:api', 'verified', 'throttle:3'])->group(function () {
         // Comments
         Route::apiResource('comments', 'CommentController')->only('destroy');
         Route::apiResource('posts.comments', 'PostCommentController')->only('store');
@@ -34,6 +37,10 @@ Route::prefix('v1')->namespace('Api')->group(function () {
 
         // Media
 //        Route::apiResource('media', 'MediaController')->only(['store', 'destroy']);
+    });
+
+    Route::get('user/{name?}', function ($name = null) {
+        return response()->json($name);
     });
 
 

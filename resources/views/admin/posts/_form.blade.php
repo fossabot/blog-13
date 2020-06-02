@@ -6,7 +6,7 @@
         </div>
         <div class="card-body">
             <div class="form-group">
-                <label for="title">Title</label>
+                <label for="title">@lang('forms.label.title')</label>
                 <input class="form-control {{ $errors->has('title') ? ' is-invalid' : '' }}"  name="title" type="text" id="title" value="{{ old('title') ?? isset($post) ? $post->title : null }}" required>
 
                 @error('title')
@@ -14,7 +14,7 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label for="subtitle">SubTitle</label>
+                <label for="subtitle">@lang('forms.label.subtitle')</label>
                 <textarea class="form-control {{ $errors->has('subtitle') ? ' is-invalid' : '' }}"  name="subtitle" type="text" id="subtitle" required>{{ old('subtitle') ?? isset($post) ? $post->subtitle : null }}</textarea>
 
                 @error('subtitle')
@@ -23,7 +23,7 @@
             </div>
 
             <div class="form-group">
-                <label for="content">{{  __('posts.attributes.content') }}</label>
+                <label for="content">@lang('forms.label.content')</label>
                 <textarea class="form-control editor {{ $errors->has('content') ? ' is-invalid' : '' }}" id="content" name="content" rows="5" required>{{ old('content') ?? isset($post) ? $post->content : null }}</textarea>
 
                 @error('content')
@@ -42,7 +42,7 @@
         </div>
         <div class="card-body">
             <div class="form-group">
-                <label for="user_id">{{ __('posts.attributes.author') }}</label>
+                <label for="user_id">@lang('forms.label.author')</label>
                 <select id="user_id" class="form-control select2 {{ $errors->has('user_id') ? ' is-invalid' : '' }}" name="category">
                     @foreach ($users as $key => $value)
                         <option value="{{ $key }}" {{ ( isset($post) ? $key == $post->user->id: null) ? 'selected' : '' }}>
@@ -56,7 +56,7 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label for="publish_date">{{ __('posts.attributes.publish_date') }}</label>
+                <label for="publish_date">@lang('forms.label.publish_date')</label>
                 <div class="input-group date" id="reservationdate" data-target-input="nearest">
                     <input type="date" name="publish_date" id="publish_date" class="form-control {{ $errors->has('publish_date') ? ' is-invalid' : '' }} datetimepicker-input" data-target="#reservationdate" required value="{{ old('publish_date') ?? isset($post) ? $post->publish_date : null }}">
                     <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
@@ -69,7 +69,7 @@
             </div>
 
             <div class="form-group">
-                <label for="publish_time">{{ __('posts.attributes.publish_time') }}</label>
+                <label for="publish_time">@lang('forms.label.publish_time')</label>
                 <div class="input-group date" id="timepicker" data-target-input="nearest">
                     <input type="time" name="publish_time" id="publish_time" class="form-control {{ $errors->has('publish_time') ? ' is-invalid' : '' }} datetimepicker-input" data-target="#timepicker" required value="{{ old('publish_time') ?? isset($post) ? $post->publish_time : null }}">
                     <div class="input-group-append" data-target="#timepicker" data-toggle="datetimepicker">
@@ -86,7 +86,7 @@
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="form-group">
-                <label for="category_id">Category</label>
+                <label for="category_id">@lang('forms.label.category')</label>
                 <select id="category_id" class="form-control select2 {{ $errors->has('category') ? ' is-invalid' : '' }}" name="category">
                     @foreach ($categories as $key => $value)
                         <option value="{{ $key }}" {{ ( isset($post) ? $key == $post->category->id: null) ? 'selected' : '' }}>
@@ -102,7 +102,7 @@
 
             <div class="form-group">
 
-                <label for="tags">Tags</label>
+                <label for="tags">@lang('forms.label.tags')</label>
                 <select id="tags" class="form-control select2 {{ $errors->has('tags') ? ' is-invalid' : '' }}" multiple name="tags[]">
                     @foreach ($tags as $key => $value)
                         <option value="{{ $key }}" {{ ( isset($post) ? $key == $post->id: null) ? 'selected' : '' }}>
@@ -117,7 +117,7 @@
             </div>
 
             <div class="form-group">
-                <label for="image">Product Image</label>
+                <label for="image">@lang('forms.label.cover')</label>
                 <input name="image" type="file" class="form-control-file {{ $errors->has('image') ? ' is-invalid' : '' }}" id="image">
 
                 @error('image')

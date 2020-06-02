@@ -28,7 +28,7 @@ mix.js('resources/assets/blog/js/script.js', 'public/js')
   .js('resources/assets/admin/js/editor.js', 'public/js')
   .sass('resources/assets/admin/sass/editor.scss', 'public/css')
 
-  .js('resources/assets/admin/js/datatables.js', 'public/js')
+  // .js('resources/assets/admin/js/datatables.js', 'public/js')
 
   .extract(['jquery', 'bootstrap', 'popper.js'])
   .sourceMaps()

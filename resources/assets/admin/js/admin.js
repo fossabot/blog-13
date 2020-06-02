@@ -11,7 +11,8 @@ try {
   window.Vue = require('vue');
 
   require('bootstrap');
-  window.bootbox = require('bootbox');
+  require('./AdminLTE');
+
 
   $.ajaxSetup({
     headers: {

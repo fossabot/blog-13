@@ -16,6 +16,7 @@
     <meta name="robots" content="index, follow">
     <meta name="author" content="{{ config('blog.author.name') }}" />
     <meta name="description" content="{{ isset($description) ? $description : config('blog.description')  }}" />
+    <meta name="keywords" content="{{ isset($keyword) ? $keyword : config('blog.keyword')  }}">
     <meta property="og:site_name" content="turahe.id">
     <meta property="og:locale" content="{{ config('app.locale') }}">
     <meta name="og:title" property="og:title" content="{{ $title ?? config('blog.title') }}" />

@@ -35,6 +35,7 @@ class CategoryController extends Controller
     {
         return CategoryResource::collection(
             $category->latest()
+                ->with(['media', 'posts'])
                 ->paginate($request->input('limit', 20))
         );
     }

@@ -1,13 +1,13 @@
-import ControlSidebar from './ControlSidebar'
-import Layout from './Layout'
-import PushMenu from './PushMenu'
-import Treeview from './Treeview'
-import DirectChat from './DirectChat'
-import TodoList from './TodoList'
-import CardWidget from './CardWidget'
-import CardRefresh from './CardRefresh'
-import Dropdown from './Dropdown'
-import Toasts from './Toasts'
+import ControlSidebar from './admin/ControlSidebar'
+import Layout from './admin/Layout'
+import PushMenu from './admin/PushMenu'
+import Treeview from './admin/Treeview'
+import DirectChat from './admin/DirectChat'
+import TodoList from './admin/TodoList'
+import CardWidget from './admin/CardWidget'
+import CardRefresh from './admin/CardRefresh'
+import Dropdown from './admin/Dropdown'
+import Toasts from './admin/Toasts'
 
 export {
   ControlSidebar,

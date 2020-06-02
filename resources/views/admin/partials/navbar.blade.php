@@ -163,9 +163,4 @@
         </div>
     </div>
 </div>
-<script>
-    import Button from "../../../assets/admin-vue/views/components/vuesax/button/Button";
-    export default {
-        components: {Button}
-    }
-</script>
+

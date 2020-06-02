@@ -6,7 +6,7 @@
         </div>
         <div class="card-body">
             <div class="form-group">
-                <label for="title">Title</label>
+                <label for="title">@lang('forms.label.title')</label>
                 <input class="form-control {{ $errors->has('title') ? ' is-invalid' : '' }}"  name="title" type="text" id="title" value="{{ old('title') ?? isset($page) ? $page->title : null }}" required>
 
                 @error('title')
@@ -15,7 +15,7 @@
             </div>
 
             <div class="form-group">
-                <label for="subtitle">Subtitle</label>
+                <label for="subtitle">@lang('forms.label.subtitle')</label>
                 <textarea class="form-control {{ $errors->has('subtitle') ? ' is-invalid' : '' }}"  name="subtitle" type="text" id="subtitle" required>{{ old('subtitle') ?? isset($page) ? $page->subtitle : null }}</textarea>
 
                 @error('subtitle')
@@ -24,7 +24,7 @@
             </div>
 
             <div class="form-group">
-                <label for="content">Content</label>
+                <label for="content">@lang('forms.label.content')</label>
                 <textarea class="form-control editor {{ $errors->has('content') ? ' is-invalid' : '' }}" id="content" name="content" rows="5" required>{{ old('content') ?? isset($page) ? $page->content : null }}</textarea>
 
                 @error('content')

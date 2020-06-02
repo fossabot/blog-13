@@ -21,18 +21,18 @@ class ManifestService
     public function generate(): array
     {
         $basicManifest =  [
-            'name' => config('pwa.manifest.name'),
-            'short_name' => config('pwa.manifest.short_name'),
-            'start_url' => asset(config('pwa.manifest.start_url')),
-            'display' => config('pwa.manifest.display'),
-            'theme_color' => config('pwa.manifest.theme_color'),
-            'background_color' => config('pwa.manifest.background_color'),
-            'orientation' =>  config('pwa.manifest.orientation'),
-            'status_bar' =>  config('pwa.manifest.status_bar'),
-//            'splash' =>  config('pwa.manifest.splash')
+            'name' => config('blog.manifest.name'),
+            'short_name' => config('blog.manifest.short_name'),
+            'start_url' => asset(config('blog.manifest.start_url')),
+            'display' => config('blog.manifest.display'),
+            'theme_color' => config('blog.manifest.theme_color'),
+            'background_color' => config('blog.manifest.background_color'),
+            'orientation' =>  config('blog.manifest.orientation'),
+            'status_bar' =>  config('blog.manifest.status_bar'),
+//            'splash' =>  config('blog.manifest.splash')
         ];
 
-        foreach (config('pwa.manifest.icons') as $size => $file) {
+        foreach (config('blog.manifest.icons') as $size => $file) {
             $fileInfo = pathinfo($file['path']);
             $basicManifest['icons'][] = [
                 'src' => url($file['path']),
@@ -42,7 +42,7 @@ class ManifestService
             ];
         }
 
-        foreach (config('pwa.manifest.custom') as $tag => $value) {
+        foreach (config('blog.manifest.custom') as $tag => $value) {
             $basicManifest[$tag] = $value;
         }
         return $basicManifest;

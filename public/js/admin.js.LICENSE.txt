@@ -3,11 +3,3 @@
  * (c) 2014-2019 Evan You
  * Released under the MIT License.
  */
-
-/*! @preserve
- * bootbox.js
- * version: 5.4.0
- * author: Nick Payne <nick@kurai.co.uk>
- * license: MIT
- * http://bootboxjs.com/
- */

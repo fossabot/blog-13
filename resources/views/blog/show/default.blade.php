@@ -1,7 +1,8 @@
 @extends('blog.layouts.layout', [
     'title' => $blog->title,
     'author' => $blog->user->name,
-    'description' => $blog->meta_description ?? $blog->subtitle
+    'description' => $blog->meta_description ?? $blog->subtitle,
+    'keyword' => $blog->tags->implode('tag', ', ')
 ])
 
 @section('content')
