@@ -10,7 +10,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use Illuminate\View\View;
 
 /**
  * Class CategoryController

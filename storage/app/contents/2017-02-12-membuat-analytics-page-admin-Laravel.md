@@ -1,18 +1,13 @@
 ---
 title: Membuat Analytics Page Admin Laravel
 category: 4
-subtitle: null
-meta_description: null
+subtitle: Analytics page merupakan fitur yang biasanya ditempatkan pada admin page.
+meta_description: Analytics page merupakan fitur yang biasanya ditempatkan pada admin page. Gunanya adalah untuk memantau jumlah pengunjung website.
 is_sticky: false
 draft : true
 type: blog
 image: analytic.jpg
 ---
-
-
-[Laravel](http://laravel.com) merupakan framework PHP yang semakin populer sekarang ini. Karena kepopulerannya, penulis pun menjadi tertarik untuk mendalaminya. Semakin banyak tutorial tentang Laravel di luar sana, entah dalam blog, kursus daring, buku, maupun video. Pengembang Laravel sendiri sudah menyediakan platform belajar Laravel di [Laracasts](https://laracasts.com). Kali ini penulis ingin berbagi sedikit pengetahuan tentang Laravel.
-
-## Membuat Analytics Page Admin
 
 Analytics page merupakan fitur yang biasanya ditempatkan pada admin page. Gunanya adalah untuk memantau jumlah pengunjung website. Tulisan ini akan menerangkan sedikit bagaimana menambahkan fitur analytics pada admin page di Laravel dengan memanfaatkan Google Analytics API.
 

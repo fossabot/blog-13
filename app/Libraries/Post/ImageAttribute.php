@@ -11,7 +11,6 @@
 
 namespace App\Libraries\Post;
 
-
 trait ImageAttribute
 {
     /**

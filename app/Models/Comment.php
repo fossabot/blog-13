@@ -9,7 +9,6 @@
 
 namespace App\Models;
 
-use App\Libraries\DateAttribute\DateAttributeInterface;
 use App\Libraries\DateAttribute\DateAttributeTrait;
 use App\Libraries\Like\Likeable;
 use App\Libraries\Like\LikeInterface;
@@ -77,8 +76,9 @@ use Spatie\Permission\Traits\HasRoles;
  * @property-read mixed $publish
  * @property-read \App\Models\Like[]|\Illuminate\Database\Eloquent\Collection $likes
  * @property-read null|int $likes_count
+ * @property-read string $publish_atom
  */
-class Comment extends Model implements DateAttributeInterface, LikeInterface
+class Comment extends Model implements LikeInterface
 {
     use SoftDeletes, Likeable, LogsActivity, HasRoles, DateAttributeTrait;
 

@@ -9,7 +9,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Libraries\SiteMap\SiteMap;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -98,18 +97,14 @@ final class PostController extends Controller
     }
 
     /**
-     * @param SiteMap $siteMap
-     * @return Response
+     * @param SitemapGenerator $siteMap
+     * @return void
      */
     public function siteMap(SitemapGenerator $siteMap)
     {
-        SitemapGenerator::create('https://example.com')
+        $siteMap->create('https://example.com')
             ->getSitemap()
             ->writeToDisk('public', 'sitemap.xml');
-//        $map = $siteMap->getSiteMap();
-//
-//        return response($map)
-//            ->header('Content-type', 'text/xml');
     }
 
     /**

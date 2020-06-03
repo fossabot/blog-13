@@ -18,16 +18,19 @@ class CategoriesTableSeeder extends Seeder
     /**
      * Run the database seeds.
      *
+     * @param Category $category
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
      * @return void
      */
-    public function run()
+    public function run(Category $category)
     {
         $categories = self::defaultCategories();
 
         foreach ($categories as $index => $content) {
             $image = storage_path("app/public/img/categories/{$content['image']}");
 
-            Category::updateOrCreate([
+            $category->updateOrCreate([
                 'parent_id' => 1,
                 'order_column' => $index,
                 'title' => $content['title'],
@@ -36,6 +39,7 @@ class CategoriesTableSeeder extends Seeder
             ])->addMedia($image)
                 ->usingName($content['title'])
                 ->preservingOriginal()
+                ->withResponsiveImages()
                 ->toMediaCollection('images');
         }
     }

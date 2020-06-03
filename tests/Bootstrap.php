@@ -49,5 +49,4 @@ class Bootstrap implements BeforeFirstTestHook, AfterLastTestHook
     {
         array_map('unlink', glob('bootstrap/cache/*.phpunit.php'));
     }
-
 }

@@ -38,14 +38,8 @@ class UsersTableSeeder extends Seeder
                 'registered_at' => now(),
             ])->assignRole('admin')
                 ->addMedia(storage_path('app/public/img/users/user-' . $index . '.png'))
-                ->withManipulations([
-                    'thumb' => ['w' => '90', 'h' => '80'],
-                    'image' => ['w' => '690', 'h' => '504'],
-                    'cover' => ['w' => '810', 'h' => '480'],
-                    'large' => ['w' => '870', 'h' => '448'],
-                    'orientation' => ['orientation' => '90'],
-                ])
                 ->preservingOriginal()
+                ->withResponsiveImages()
                 ->usingName($user['name'])
                 ->toMediaCollection('images');
         }

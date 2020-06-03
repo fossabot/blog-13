@@ -4,7 +4,6 @@
  *  file that was distributed with this source code.
  *
  *  @modified    5/6/20, 1:29 AM
- *  @name          SiteMap.php
  *  @author         Nur Wachid
  *  @copyright      Copyright (c) Turahe 2020.
  *

@@ -30,12 +30,11 @@ class PostsTableSeeder extends Seeder
      * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
      * @return void
      */
-    public function run(Faker $faker)
+    public function run()
     {
         Model::unguard();
 
         $posts = self::defaultPost();
-        $images = dirToArray(storage_path('app/public/img/posts'));
 
         foreach ($posts as  $post) {
             $content = YamlFrontMatter::parse($post);
@@ -54,14 +53,8 @@ class PostsTableSeeder extends Seeder
             ]);
             try {
                 $post->addMedia(storage_path('app/public/img/posts/' . $content->image))
-                    ->withManipulations([
-                        'thumb' => ['w' => '90', 'h' => '80'],
-                        'image' => ['w' => '690', 'h' => '504'],
-                        'cover' => ['w' => '810', 'h' => '480'],
-                        'large' => ['w' => '870', 'h' => '448'],
-                        'orientation' => ['orientation' => '90'],
-                    ])
                     ->preservingOriginal()
+                    ->withResponsiveImages()
                     ->usingName($content->title)
                     ->toMediaCollection($collection);
             } catch (\Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist $e) {
@@ -76,6 +69,21 @@ class PostsTableSeeder extends Seeder
                 $post->rates()->saveMany(factory(Rate::class, 3)->make());
                 $post->likes()->saveMany(factory(Like::class, mt_rand(1, 20))->make());
             }
+        }
+
+        if (App::environment(['local', 'staging', 'testing'])) {
+            factory(Post::class, 100)
+                ->create()
+                ->each(function (Post $post, Faker $faker) {
+                    $post
+                        ->addMediaFromUrl($faker->imageUrl(1920, 1080))
+                        ->withResponsiveImages()
+                        ->toMediaCollection();
+
+                    $post->comments()->saveMany(factory(Comment::class, mt_rand(1, 10))->make());
+                    $post->rates()->saveMany(factory(Rate::class, 3)->make());
+                    $post->likes()->saveMany(factory(Like::class, mt_rand(1, 20))->make());
+                });
         }
     }
 

@@ -9,13 +9,10 @@
 
 namespace App\Models;
 
-use App\Libraries\DateAttribute\DateAttributeInterface;
 use App\Libraries\DateAttribute\DateAttributeTrait;
 use App\Libraries\Like\Likeable;
 use App\Libraries\Post\ImageAttribute;
 use App\Libraries\Post\ReadTime\ReadTime;
-use App\Libraries\Rss\Feedable;
-use App\Libraries\Rss\FeedItem;
 use App\Libraries\Slug\HasSlug;
 use App\Libraries\Slug\SlugOptions;
 use App\Libraries\Tag\HasTags;
@@ -131,8 +128,9 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Post withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Post withoutTrashed()
  * @mixin \Eloquent
+ * @property-read string $publish_atom
  */
-class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterface
+class Post extends Model implements HasMedia, UrlRoutable
 {
     use HasRoles,
         InteractsWithMedia,
@@ -329,7 +327,7 @@ class Post extends Model implements HasMedia, UrlRoutable, DateAttributeInterfac
      * @throws \Exception
      * @return string
      */
-    public function setContentRawAttribute($value): string
+    public function setContentRawAttribute($value)
     {
         $this->attributes['content_raw'] = $value;
         $this->attributes['content_html'] = $this->markdown($value);

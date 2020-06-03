@@ -65,19 +65,30 @@ before_script:
   # Run database seed
   - php artisan db:seed
 
-  # Setup SSH deploy keys
-  - 'which ssh-agent || ( apt-get install -qq openssh-client )'
-  - eval $(ssh-agent -s)
-  - ssh-add <(echo "$SSH_PRIVATE_KEY")
-  - mkdir -p ~/.ssh
-  - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
-
 test:
   script:
     # run laravel tests
+    - vendor/bin/php-cs-fixer fix --config=.php_cs --verbose --dry-run --diff
     - php vendor/bin/phpunit --coverage-text --colors=never
     # run frontend tests
     # if you have any task for testing frontend
     # set it in your package.json script
     # comment this out if you don't have a frontend test
     - npm test
+
+deploy_production:
+  stage: deploy
+  script:
+    # Setup SSH deploy keys
+    - 'which ssh-agent || ( apt-get install -qq openssh-client )'
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$SSH_PRIVATE_KEY")
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - ~/.composer/vendor/bin/envoy run deploy
+  environment:
+    name: production
+    url: https://turahe.id
+  when: manual
+  only:
+    - master
