@@ -15,7 +15,6 @@ Route::get('/manifest.json', 'ManifestController@manifestJson');
 Route::get('/offline', 'ManifestController@offline');
 
 Route::get('rss', 'PostController@rss');
-Route::get('sitemap.xml', 'PostController@siteMap');
 //static pages
 Route::get('contact', 'ContactUsController@contactUs');
 Route::post('contact', 'ContactUsController@store');
