@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
+use Spatie\Sitemap\SitemapGenerator;
 
 /**
  * Class PostController
@@ -96,12 +97,19 @@ final class PostController extends Controller
         ], 200)->header('Content-Type', 'text/xml');
     }
 
-    public function siteMap(SiteMap $siteMap): Response
+    /**
+     * @param SiteMap $siteMap
+     * @return Response
+     */
+    public function siteMap(SitemapGenerator $siteMap)
     {
-        $map = $siteMap->getSiteMap();
-
-        return response($map)
-            ->header('Content-type', 'text/xml');
+        SitemapGenerator::create('https://example.com')
+            ->getSitemap()
+            ->writeToDisk('public', 'sitemap.xml');
+//        $map = $siteMap->getSiteMap();
+//
+//        return response($map)
+//            ->header('Content-type', 'text/xml');
     }
 
     /**

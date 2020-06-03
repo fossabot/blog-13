@@ -122,4 +122,15 @@ trait DateAttributeTrait
     {
         return  Carbon::parse($this->attributes['published_at'])->diffForHumans();
     }
+
+    /**
+     * get publish time elapsed attribute
+     *
+     * @param $value
+     * @return string
+     */
+    public function getPublishAtomAttribute($value): string
+    {
+        return $this->attributes['updated_at'] = Carbon::parse($value)->format(\DateTime::ATOM);
+    }
 }

@@ -12,8 +12,11 @@
 
 namespace App\Libraries\SiteMap;
 
+use App\Models\Category;
 use App\Models\Post;
 use Carbon\Carbon;
+use DateTime;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Cache;
 
 class SiteMap
@@ -38,8 +41,10 @@ class SiteMap
     protected function buildSiteMap()
     {
         $postsInfo = $this->getPostsInfo();
-        $lastPost = $postsInfo->last();
-        $lastmod = $lastPost->published_at->toIso8601String();
+        $categoriesInfo = $this->getCategoriesInfo();
+        $data = new Collection([$postsInfo, $categoriesInfo]);
+        $lastPost = $data->last();
+        $lastmod = $lastPost->updated_at->format(DateTime::ATOM) ;
         $url = trim(url('/'), '/') . '/';
 
 
@@ -58,7 +63,7 @@ class SiteMap
         foreach ($postsInfo as $post) {
             $xml[] = '  <url>';
             $xml[] = "    <loc>$post->url</loc>";
-            $xml[] = "    <lastmod>$post->published_at</lastmod>";
+            $xml[] = "    <lastmod>$post->publish_atom </lastmod>";
             $xml[] = "  </url>";
         }
 
@@ -76,5 +81,12 @@ class SiteMap
             ->where('is_draft', 0)
             ->orderBy('published_at', 'desc')
             ->get();
+    }
+    /**
+     * Return all the categories
+     */
+    protected function getCategoriesInfo()
+    {
+        return Category::all();
     }
 }
