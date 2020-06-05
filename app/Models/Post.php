@@ -25,9 +25,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use League\CommonMark\CommonMarkConverter;
+use League\CommonMark\GithubFlavoredMarkdownConverter;
 use Spatie\Activitylog\Traits\LogsActivity;
-use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -174,72 +173,43 @@ class Post extends Model implements HasMedia, UrlRoutable
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('xs')
-            ->crop('crop-center', 90, 80)
             ->width(90)
             ->height(80)
             ->sharpen(10)
             ->optimize()
-            ->quality(80)
+            ->quality(70)
             ->withResponsiveImages();
 
         $this->addMediaConversion('sm')
-//            ->crop('crop-center', 690, 504)
             ->width(690)
             ->height(504)
             ->sharpen(10)
             ->optimize()
-            ->quality(80)
+            ->quality(70)
             ->withResponsiveImages();
 
         $this->addMediaConversion('md')
-//            ->crop('crop-center', 810, 480)
             ->width(810)
             ->height(480)
             ->sharpen(10)
             ->optimize()
-            ->quality(80)
+            ->quality(70)
             ->withResponsiveImages();
 
         $this->addMediaConversion('lg')
-//            ->crop('crop-center', 870, 448)
             ->width(870)
             ->height(448)
             ->sharpen(10)
             ->optimize()
-            ->quality(80)
+            ->quality(70)
             ->withResponsiveImages();
 
         $this->addMediaConversion('xl')
-//            ->crop('crop-center', 1170, 600)
             ->width(1170)
             ->height(600)
             ->sharpen(10)
             ->optimize()
-            ->quality(80)
-            ->withResponsiveImages();
-
-        $this->addMediaConversion('slider-index')
-//            ->crop('crop-center', 1171, 568)
-            ->width(1171)
-            ->height(568)
-            ->sharpen(10)
-            ->optimize()
-            ->quality(80)
-            ->withResponsiveImages();
-
-        $this->addMediaConversion('slider-show')
-//            ->crop('crop-center', 1920, 700)
-            ->width(1920)
-            ->height(700)
-            ->sharpen(10)
-            ->optimize()
-            ->quality(80)
-            ->withResponsiveImages();
-
-        $this->addMediaConversion('original')
-            ->fit(Manipulations::FIT_FILL, 1920, 1080)
-            ->optimize()
-            ->quality(80)
+            ->quality(70)
             ->withResponsiveImages();
     }
 
@@ -303,6 +273,17 @@ class Post extends Model implements HasMedia, UrlRoutable
             default:
                 return url($this->type .'/'.$this->slug);
         }
+    }
+
+    /**
+     * Return keyword of post based tags
+     *
+     * @return string
+     */
+    public function getKeywordsAttribute(): string
+    {
+        $tags = $this->tags();
+        return $tags->implode('tag', ', ');
     }
 
     /**
@@ -511,7 +492,7 @@ class Post extends Model implements HasMedia, UrlRoutable
     private function markdown(string $text): string
     {
         try {
-            $markdown = new CommonMarkConverter();
+            $markdown = new GithubFlavoredMarkdownConverter();
             return $markdown->convertToHtml($text);
         } catch (\Exception $exception) {
             $exception->getMessage();

@@ -135,22 +135,32 @@
     <link rel="stylesheet" href="/assets/admin/plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="/assets/admin/plugins/summernote/summernote-bs4.css">
     <link rel="stylesheet" href="/assets/admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
 @endpush
 @push('scripts')
     <script src="/assets/admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
     <script src="/assets/admin/plugins/select2/js/select2.full.min.js"></script>
     <script src="/assets/admin/plugins/summernote/summernote-bs4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
     <script>
         //Initialize Select2 Elements
         $('.select2').select2({
             theme: 'bootstrap4'
         })
-        $('#content').summernote({
-            height: 300
-        })
+        // $('#content').summernote({
+        //     height: 300
+        // })
+        var simplemde = new SimpleMDE({
+            // previewRender: function(plainText) {
+            //     return customMarkdownParser(plainText); // Returns HTML from a custom parser
+            // },
+            element: document.getElementById("content")
+        });
+
 
     </script>
 @endpush
+
 
 
 

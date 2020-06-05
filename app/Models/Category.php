@@ -85,8 +85,6 @@ class Category extends Model implements HasMedia
         'description'
     ];
 
-//    protected $with  = ['posts'];
-
     /**
      * @param null|Media $media
      * @throws \Spatie\Image\Exceptions\InvalidManipulation

@@ -111,6 +111,16 @@ class CategoriesTableSeeder extends Seeder
                 'description' => 'SASS merupakan singkatan dari Syntactically Awesome Style Sheets. SASS adalah sebuah bahasa pra-prosesor (preprocessor) untuk CSS.',
                 'image' => 'sass.jpg'
             ],
+            [
+                'title' => 'Laravel',
+                'description' => 'Laravel adalah kerangka kerja aplikasi web berbasis PHP yang sumber terbuka, menggunakan konsep Model-View-Controller. Laravel berada dibawah lisensi MIT, dengan menggunakan GitHub sebagai tempat berbagi kode.',
+                'image' => 'laravel.jpg'
+            ],
+            [
+                'title' => 'O2system',
+                'description' => 'O2System adalah sebuah kerangka kerja yang menyediakan struktur dasar yang tertata rapih sesuai dengan peruntukkannya. O2System didesain untuk dapat memberikan hasil render yang sangat cepat dengan penggunaan memory yang sangat kecil.',
+                'image' => 'o2system.png'
+            ]
 
         ];
 //        return ['book', 'video', 'blog', 'test', 'docker', 'git', 'code', 'deploy', 'monitor', 'plan', 'release', 'Continuous Integration', 'Continuous Delivery', 'Continuous Deployment', 'server', 'Internet Of Think', 'Mobile Apps', 'Development', 'Production', 'Design', 'Business', 'testing', 'seeding', 'PHP', 'Javascript', 'CSS', 'SCSS', 'LESS', 'HTML', 'Unit Testing', 'Gitlab', 'Github'];

@@ -14,7 +14,6 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
-use Spatie\Sitemap\SitemapGenerator;
 
 /**
  * Class PostController
@@ -73,6 +72,8 @@ final class PostController extends Controller
             ->except($blog->id);
         $latest = $posts->take(10);
 
+        dd($blog->getFirstMedia('images'));
+
 
 
         $layout = $blog ? $blog->layout : 'blog.show.default';
@@ -97,17 +98,6 @@ final class PostController extends Controller
     }
 
     /**
-     * @param SitemapGenerator $siteMap
-     * @return void
-     */
-    public function siteMap(SitemapGenerator $siteMap)
-    {
-        $siteMap->create('https://example.com')
-            ->getSitemap()
-            ->writeToDisk('public', 'sitemap.xml');
-    }
-
-    /**
      * @param Request $request
      * @return mixed
      */
@@ -123,6 +113,11 @@ final class PostController extends Controller
             $query = Post::search($request->input('query'));
         }
 
-        return Cache::remember('feed-posts', now()->addHour(), fn () => $query);
+        if (\App::environment('production')) {
+            return Cache::remember('posts', now()->addHour(), fn () => $query);
+        }
+
+        return $query;
+
     }
 }

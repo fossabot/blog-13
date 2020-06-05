@@ -16,10 +16,22 @@
                 <div class="single-blog-content">
                     <div class="blog-entry-content">
                         <ul class="entry-meta meta-color-dark">
-                            <li><i class="fas fa-tag"></i>{{ $blog->category->title }}</li>
-                            <li><i class="fas fa-calendar-alt"></i>{{ $blog->publish }}</li>
-                            <li><i class="fas fa-user"></i>BY <a href="#">{{ $blog->username }}</a></li>
-                            <li><i class="far fa-clock"></i>{{ $blog->read_time }}</li>
+                            <li>
+                                <i class="fas fa-tag"></i>
+                                {{ $blog->category->title }}
+                            </li>
+                            <li>
+                                <i class="fas fa-calendar-alt"></i>
+                                {{ $blog->publish }}
+                            </li>
+                            <li>
+                                <i class="fas fa-user"></i>
+                                @lang('by') <a href="#">{{ $blog->username }}</a>
+                            </li>
+                            <li>
+                                <i class="far fa-clock"></i>
+                                {{ $blog->read_time }}
+                            </li>
                         </ul>
                         <h2 class="item-title">{{ $blog->title }}</h2>
                         <div class="item-social">

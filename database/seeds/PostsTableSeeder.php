@@ -12,7 +12,6 @@ use App\Models\Comment;
 use App\Models\Like;
 use App\Models\Post;
 use App\Models\Rate;
-use Faker\Generator as Faker;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 
@@ -69,21 +68,6 @@ class PostsTableSeeder extends Seeder
                 $post->rates()->saveMany(factory(Rate::class, 3)->make());
                 $post->likes()->saveMany(factory(Like::class, mt_rand(1, 20))->make());
             }
-        }
-
-        if (App::environment(['local', 'staging', 'testing'])) {
-            factory(Post::class, 100)
-                ->create()
-                ->each(function (Post $post, Faker $faker) {
-                    $post
-                        ->addMediaFromUrl($faker->imageUrl(1920, 1080))
-                        ->withResponsiveImages()
-                        ->toMediaCollection();
-
-                    $post->comments()->saveMany(factory(Comment::class, mt_rand(1, 10))->make());
-                    $post->rates()->saveMany(factory(Rate::class, 3)->make());
-                    $post->likes()->saveMany(factory(Like::class, mt_rand(1, 20))->make());
-                });
         }
     }
 
