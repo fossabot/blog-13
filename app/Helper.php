@@ -52,7 +52,7 @@ if (! function_exists('svg')) {
      */
     function svg($src): string
     {
-        return file_get_contents(storage_path('app/public/' . $src . '.svg'));
+        return file_get_contents(resource_path('assets/icons/' . $src . '.svg'));
     }
 }
 
