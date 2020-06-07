@@ -13,6 +13,7 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UploadFileRequest extends FormRequest
 {
@@ -23,7 +24,7 @@ class UploadFileRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        Auth::check();
     }
 
     /**

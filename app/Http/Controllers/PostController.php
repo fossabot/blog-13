@@ -72,7 +72,6 @@ final class PostController extends Controller
             ->except($blog->id);
         $latest = $posts->take(10);
 
-        dd($blog->getFirstMedia('images'));
 
 
 

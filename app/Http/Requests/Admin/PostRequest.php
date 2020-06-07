@@ -12,10 +12,10 @@
 
 namespace App\Http\Requests\Admin;
 
-use Auth;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class PostRequest
@@ -40,7 +40,7 @@ class PostRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return Auth::check();
     }
 
     /**
@@ -81,7 +81,7 @@ class PostRequest extends FormRequest
         return [
             'title' => $this->title,
             'subtitle' => $this->subtitle,
-            'content_raw' => $this->get('content'),
+            'content' => $this->get('content'),
             'user_id' => $this->user ?: Auth::id(),
             'category_id' => $this->category,
             'type' => $this->type ?: 'blog',

@@ -30,8 +30,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('subtitle', 255)->nullable();
             $table->string('meta_description', 255)->nullable();
-            $table->text('content_raw')->nullable();
-            $table->text('content_html');
+            $table->text('content');
 
             $table->string('is_draft')->default(false);
             $table->string('is_sticky')->default(false);

@@ -13,6 +13,7 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class PermissionRequest
@@ -27,7 +28,7 @@ class PermissionRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        Auth::check();
     }
 
     /**

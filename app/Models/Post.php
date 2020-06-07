@@ -25,7 +25,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use League\CommonMark\GithubFlavoredMarkdownConverter;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -160,7 +159,7 @@ class Post extends Model implements HasMedia, UrlRoutable
         'subtitle',
         'type',
         'order_column',
-        'content_raw',
+        'content',
         'meta_description',
         'status',
         'published_at',
@@ -301,40 +300,6 @@ class Post extends Model implements HasMedia, UrlRoutable
         }
     }
 
-    /**
-     * set content raw markdown to convert to html with Parsedown
-     *
-     * @param $value
-     * @throws \Exception
-     * @return string
-     */
-    public function setContentRawAttribute($value)
-    {
-        $this->attributes['content_raw'] = $value;
-        $this->attributes['content_html'] = $this->markdown($value);
-    }
-
-    /**
-     * get content attribute
-     *
-     * @return mixed
-     */
-    public function getContentAttribute(): string
-    {
-        return $this->content_raw;
-    }
-
-    /**
-     * return the excerpt of the post content
-     *
-     * @throws \Exception
-     * @return string
-     */
-    public function getExcerptAttribute(): string
-    {
-        $text = \Str::limit($this->content_raw);
-        return $this->markdown($text);
-    }
 
     /**
      * @throws \Exception
@@ -483,19 +448,5 @@ class Post extends Model implements HasMedia, UrlRoutable
         return $this->morphMany(Comment::class, 'comment');
     }
 
-    /**
-     * Convert markdown to HTML
-     *
-     * @param string $text
-     * @return string
-     */
-    private function markdown(string $text): string
-    {
-        try {
-            $markdown = new GithubFlavoredMarkdownConverter();
-            return $markdown->convertToHtml($text);
-        } catch (\Exception $exception) {
-            $exception->getMessage();
-        }
-    }
+
 }

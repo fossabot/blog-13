@@ -14,6 +14,7 @@ namespace App\Http\Requests\Admin;
 
 use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class CommentRequest extends FormRequest
 {
@@ -24,7 +25,7 @@ class CommentRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return Auth::check();
     }
 
     /**

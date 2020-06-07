@@ -24,9 +24,6 @@ class PostsTableSeeder extends Seeder
     /**
      * Run the database seeds.
      *
-     * @param Faker $faker
-     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
-     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
      * @return void
      */
     public function run()
@@ -42,7 +39,7 @@ class PostsTableSeeder extends Seeder
                 'user_id' => 1,
                 'category_id' => $content->category,
                 'title' => $content->title,
-                'content_raw' => $content->body(),
+                'content_html' => (new App\Libraries\Post\Markdown)->generate($content->body()),
                 'subtitle' => is_string($content->subtitle) ? $content->subtitle : null,
                 'meta_description' => is_string($content->meta_description) ? $content->meta_description: null,
                 'is_draft' => is_string($content->draft) ? $content->draft : false,
@@ -79,10 +76,11 @@ class PostsTableSeeder extends Seeder
      */
     protected static function defaultPost()
     {
-        $contents = dirToArray(storage_path('app/contents/'));
+        $path = 'contents/_posts';
+        $contents = dirToArray(storage_path($path));
         $data = [];
         foreach ($contents as $key => $content) {
-            $data[] = file_get_contents(storage_path('app/contents/' .$content));
+            $data[] = file_get_contents(storage_path($path. DIRECTORY_SEPARATOR .$content));
         }
         return  $data;
     }

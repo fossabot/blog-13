@@ -37,7 +37,7 @@ class UsersTableSeeder extends Seeder
                 'api_token' => Str::random(32),
                 'registered_at' => now(),
             ])->assignRole('admin')
-                ->addMedia(storage_path('app/public/img/users/user-' . $index . '.png'))
+                ->addMedia(storage_path('contents/assets/img/users/user-' . $index . '.png'))
                 ->preservingOriginal()
                 ->withResponsiveImages()
                 ->usingName($user['name'])

@@ -14,6 +14,7 @@ namespace App\Http\Requests\Admin;
 
 use Hash;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Validator;
 
 /**
@@ -30,7 +31,7 @@ class PasswordUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        Auth::check();
     }
 
     /**

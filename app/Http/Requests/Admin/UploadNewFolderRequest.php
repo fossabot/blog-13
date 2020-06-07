@@ -13,6 +13,7 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UploadNewFolderRequest extends FormRequest
 {
@@ -23,7 +24,7 @@ class UploadNewFolderRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        Auth::check();
     }
 
     /**
