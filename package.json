@@ -63,6 +63,7 @@
         "laravel-mix-alias": "^1.0.2",
         "laravel-mix-polyfill": "^2.0.0",
         "laravel-mix-purgecss": "^5.0.0",
+        "minify-html-webpack-plugin": "0.0.5",
         "node-sass": "^4.14.1",
         "postcss-custom-properties": "^9.1.1",
         "postcss-loader": "^3.0.0",

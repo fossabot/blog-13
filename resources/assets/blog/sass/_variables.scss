@@ -89,18 +89,21 @@ $telegram:          #0088cc !default;
 $clarity:           #61bed9 !default;
 
 $icons: (
-  twitter:  (char: "\F099", color: $twitter),
-  google:   (char: "\F0D5", color: $googlered),
-  facebook: (char: "\F09A", color: $facebook),
-  github:   (char: "\F09B", color: #231f20),
-  linkedin: (char: "\F0E1", color: $linkedin),
-  dribbble: (char: "\F17D", color: $dribbble),
-  pinterest: (char: "\F0D2", color: $pinterest),
-  g-plus: (char: "\F2B3", color: $googleplus),
-  vk: (char: "\F2B3", color: $vk),
-  email: (char: "\F2B3", color: $primary),
-  skype: (char: "\F2B3", color: $skypeblue),
-  telegram: (char: "\F2B3", color: $telegram),
-  whatsapp: (char: "\F2B3", color: $whatsappgreen),
-  rss:      (char: "\F09E", color: #ff6600)
+  twitter:    (char: "\F099", color: $twitter),
+  google:     (char: "\F0D5", color: $googlered),
+  facebook:   (char: "\F09A", color: $facebook),
+  github:     (char: "\F09B", color: #231f20),
+  linkedin:   (char: "\F0E1", color: $linkedin),
+  dribbble:   (char: "\F17D", color: $dribbble),
+  pinterest:  (char: "\F0D2", color: $pinterest),
+  g-plus:     (char: "\F2B3", color: $googleplus),
+  vk:         (char: "\F2B3", color: $vk),
+  email:      (char: "\F2B3", color: $primary),
+  skype:      (char: "\F2B3", color: $skypeblue),
+  telegram:   (char: "\F2B3", color: $telegram),
+  whatsapp:   (char: "\F2B3", color: $whatsappgreen),
+  rss:        (char: "\F09E", color: #ff6600)
 );
+
+$quote1: './../img/quote.jpg';
+$quote2: './../img/quote2.jpg';

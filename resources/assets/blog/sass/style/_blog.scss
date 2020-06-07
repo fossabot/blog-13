@@ -620,7 +620,7 @@
       content: "";
       height: 100%;
       width: 100%;
-      background-color: rgba(0, 0, 0, 0.6);
+      background-color: rgba($black, 0.6);
       border-radius: 4px 4px 0 0;
       position: absolute;
       top: 0;
@@ -1163,8 +1163,8 @@
       content: "";
       height: 70%;
       width: 100%;
-      background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.8)));
-      background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8));
+      background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba($black, 0.8)));
+      background: linear-gradient(to bottom, transparent, rgba($black, 0.8));
       border-radius: 4px;
       position: absolute;
       bottom: 0;
@@ -1474,10 +1474,8 @@
       content: "";
       height: 70%;
       width: 100%;
-      background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.8)));
-      background: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.8));
-      background: -o-linear-gradient(top, transparent, rgba(0, 0, 0, 0.8));
-      background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8));
+      background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba($black, 0.8)));
+      background: linear-gradient(to bottom, transparent, rgba($black, 0.8));
       position: absolute;
       bottom: 0;
       right: 0;
@@ -1521,7 +1519,7 @@
   z-index: 1;
 
   &:after {
-    content: url('img/figure/quote.jpg');
+    content: url($quote1);
     position: absolute;
     bottom: 0;
     right: 0;
@@ -1760,7 +1758,7 @@
       padding: 20px 30px 30px;
 
       &:after {
-        content: url('img/figure/quote2.png');
+        content: url($quote1);
         position: absolute;
         top: 0;
         left: 0;
@@ -2278,7 +2276,7 @@
       padding: 20px 40px 30px;
 
       &:after {
-        content: url('img/figure/quote2.png');
+        content: url($quote1);
         position: absolute;
         top: 0;
         left: 0;
@@ -2733,7 +2731,7 @@
         padding: 20px 40px 30px;
 
         &:after {
-          content: url('img/figure/quote2.png');
+          content: url($quote1);
           position: absolute;
           top: 0;
           left: 0;

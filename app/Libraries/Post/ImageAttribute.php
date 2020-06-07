@@ -62,7 +62,6 @@ trait ImageAttribute
      */
     public function getThumbnailAttribute(): string
     {
-        dd($this->hasMedia('images'));
         if ($this->hasMedia('images')) {
             return $this->getFirstMediaUrl('images', 'xs');
         }

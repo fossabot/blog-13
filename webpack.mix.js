@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const MinifyHtmlWebpackPlugin = require('minify-html-webpack-plugin');
 require('laravel-mix-purgecss');
 require('laravel-mix-polyfill');
 
@@ -79,5 +80,17 @@ mix.webpackConfig({
       poll:5000
     },
 
-  }
+  },
+  plugins: [
+    new MinifyHtmlWebpackPlugin({
+      src: './storage/framework/views',
+      ignoreFileNameRegex: /\.(gitignore)$/,
+      rules: {
+        collapseWhitespace: true,
+        removeAttributeQuotes: true,
+        removeComments: true,
+        minifyJS: true,
+      }
+    })
+  ]
 });
