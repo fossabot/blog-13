@@ -39,7 +39,7 @@ class PostsTableSeeder extends Seeder
                 'user_id' => 1,
                 'category_id' => $content->category,
                 'title' => $content->title,
-                'content_html' => (new App\Libraries\Post\Markdown)->generate($content->body()),
+                'content' => (new App\Libraries\Post\Markdown)->generate($content->body()),
                 'subtitle' => is_string($content->subtitle) ? $content->subtitle : null,
                 'meta_description' => is_string($content->meta_description) ? $content->meta_description: null,
                 'is_draft' => is_string($content->draft) ? $content->draft : false,
