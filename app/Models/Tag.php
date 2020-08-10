@@ -10,16 +10,16 @@
 namespace App\Models;
 
 use App\Libraries\Sortable\Sortable;
-use App\Libraries\Sortable\SortableTrait;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Query\Builder;
-use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\Model;
+use App\Libraries\Sortable\SortableTrait;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 /**
- * App\Models\Tag
+ * App\Models\Tag.
  *
  * @property int $id
  * @property string $tag
@@ -76,7 +76,7 @@ class Tag extends Model implements Sortable
     ];
 
     /**
-     * Return URL to post
+     * Return URL to post.
      *
      * @return string
      */
@@ -85,9 +85,8 @@ class Tag extends Model implements Sortable
         return '?tag='.urlencode($this->tag);
     }
 
-
     /**
-     * many to many polymorphic relationship between posts and tags
+     * many to many polymorphic relationship between posts and tags.
      *
      * @return MorphToMany
      */
@@ -97,7 +96,7 @@ class Tag extends Model implements Sortable
     }
 
     /**
-     * Add any tags needed from the list
+     * Add any tags needed from the list.
      *
      * @param array $tags List of tags to check/add
      */
@@ -145,7 +144,6 @@ class Tag extends Model implements Sortable
 
         return $query->whereRaw('lower('.$this->getQuery()->getGrammar()->wrap('name->'.$locale).') like ?', ['%'.mb_strtolower($name).'%']);
     }
-
 
     /**
      * @param $values
