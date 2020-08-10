@@ -1,11 +1,10 @@
-
-
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/turahe/blog/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/turahe/blog/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/turahe/blog/badges/build.png?b=master)](https://scrutinizer-ci.com/g/turahe/blog/build-status/master)
 [![Build Status](https://travis-ci.org/turahe/blog.svg?branch=master)](https://travis-ci.org/turahe/blog)
 [![Latest Stable Version](https://poser.pugx.org/turahe/blog/v/stable)](https://packagist.org/packages/turahe/blog)
 [![Total Downloads](https://poser.pugx.org/turahe/blog/downloads)](https://packagist.org/packages/turahe/blog)
 [![License](https://poser.pugx.org/turahe/blog/license)](https://packagist.org/packages/turahe/blog)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fturahe%2Fblog.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fturahe%2Fblog?ref=badge_shield)
 
 ## About Turahe
 
@@ -132,3 +131,6 @@ $ docker-compose run --rm --no-deps blog-server php artisan route:list --path=ap
 ## License
 
 This project is released under the [MIT](http://opensource.org/licenses/MIT) license.
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fturahe%2Fblog.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fturahe%2Fblog?ref=badge_large)
